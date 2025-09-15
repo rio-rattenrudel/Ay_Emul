@@ -1,0 +1,28 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="playlistitem"></A>"List's item adjusting" dialog box</H1>
+
+<P>This box is called from "Playlist" window by right clicking on an item and choosing <I>Item adjusting...</I> from the popup menu.</P>
+
+<P>In <I>"Information"</I> fields input text information about item: song author, title, original program, musical editor, original computer, date of composing and any comments. Comments can be divided to lines; press <I>Enter</I> key for it.</P>
+
+<P>If comment contain author's string from AS0, ASC, ST3, STC or STP native player (it's extracted automatically if opening files like TRD), then the string will be inserted to saved file (if was no such tag in it already). String format and length must be exact as in original player, including all space chars at end, and with tag ' BY " for some types. You can research structure of tags in various players in some viewers (like Far Manager's)  if you want to paste it here manually. For example, the most ASC players contain string like "ASM COMPILATION OF SAVAGE II. 48K GAME BY ANDREW SENDETSKI ASC".</P>
+
+<P>Also, when opening containers like TRD, information about the original file name is stored in the "Program" field, for example "Disk Image: ANICS.TRD->boot.muz.C".</P>
+
+<P>In <I>"File"</I> fields input file name with path, module type, module offset from beginning of file, length of module in bytes, address of compilation (not needed for most types), time of playing (in ms for OUT, ZXAY EPSG, MIDI and BASS files, in special units for CD-tracks or in VBLs for other types) or 0 to autodetect, loop time in VBL (-1 to autodetect). OUT, ZXAY, PSG and EPSG files loops to 0 in any cases, and for AY and AYM files "Loop point" term is not defined at all.</P>
+
+<P>Into <I>Time</I> parameter you can include all reiterations. So, if song length is 1000 VBL, you may set <I>Time</I> parameter to 500 VBL for playing only half of song, or to 1500 for playing it one with half times. Changing OUT, ZXAY and EPSG time length is not recommended. Other fields values changing is not recommended too.</P>
+
+<P><I>Specific</I> parameter is used for several formats and can be researched in Ay_Emul sources if it is not described in this manual in corresponding part.</P>
+
+<P>In <I>"Playing"</I> fields mixer settings are stored for the item. Playlist consists of two types of settings: global for all items and individual for each item. For looking global settings push <B>Load</B> button. All global settings are <I>By default</I> for just created playlist. For storing global settings: set all required elements (Chip, Number of channels, Chip frequency, Channels amplification and Player frequency) and push <B>Save</B> button. Do same to just edit individual item settings, but don't push <B>Save</B> button. Don't forget to check <I>Get from list</I> for corresponding settings in "Mixer" window.</P>
+
+<P>If you check <I>Another</I> for <I>Channels amplification</I>, set coefficients (0&ndash;255) manually (left field for left channel and right for right one).</P>
+
+<P>For more details about filling <I>"Playing"</I> fields see "Mixer" window description.</P>
+
+<P><B>OK</B> button closes the box and saves new settings for the item. <B>Cancel</B> button just closes box without changing the item settings. Corresponding keys are <I>Enter</I> and <I>Esc</I>.</P>
+
+</BODY>
+</HTML>

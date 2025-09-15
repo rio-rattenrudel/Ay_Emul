@@ -1,0 +1,100 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="psm"></A>PSM</H1>
+
+<H2>Introduction</H2>
+
+<P>These are compiled modules of Pro Sound Maker, a project of Denis Dratov (Dexus). In the mid-90s it was presented as a demo version. After 10 years, the project was finalized, and the format of the compiled modules is well documented (including the source code of the player).</P> 
+
+<P>The editor ideas are interesting, but not many modules have been written: a little more than 50 (mostly by Dexus, but there are several by Scratcher).</P>
+
+<H2>Format features</H2>
+
+<P>There is a transposition in the positions list like in Sound Tracker. However, the playback speed is not a property of the entire module, but of each pattern like in SQ Tracker (the set delay command was planned, but was not implemented).<P>
+
+<P>Envelopes can be set traditionally, but the envelope period possible values choice is limited to the ranges 0x0000..0x00F0 (the highest byte is always zero) and 0x0100..0x0F00 (here, on the contrary, the lowest byte is always zero), or it is possible to automatically calculate the period according to the frequency of the note (including an automatic envelope calculation on every note setting).</P>
+
+<P>Channel volume control is done rationally (as in STP, SQT and GTR, see descriptions of these formats), i.e. without using a cumbersome table or a similar complex formula.</P>
+
+<P>Samples and ornaments may be not looped. At the same time, when looping a sample, the possibility of an amplitude long decrease or increase is provided (this is no longer in any tracker).</P>
+
+<P>There is no envelope mask in the sample, but since the channel volume is applied to the amplitude register after setting the envelope bit, at certain volume values, some of the ticks may sound with an envelope, and some without.</P>
+
+<P>The notes in the pattern channel descriptor are stored not as in other trackers, but as relative values (described in detail below).</P>
+
+<H2>Module format</H2>
+
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Designation<TH>Description</TR>
+<TR><TD>+0<TD>2<TD>PossPtr<TD>Pointer to the positions list in the playback order.</TR>
+<TR><TD>+2<TD>2<TD>SamsPtr<TD>Pointer to the sample list.</TR>
+<TR><TD>+4<TD>2<TD>OrnsPtr<TD>Pointer to the ornament list.</TR>
+<TR><TD>+6<TD>2<TD>PatsPtr<TD>Pointer to a pattern list.</TR>
+<TR><TD>+8<TD>0..128<TD>Remark<TD>It starts with five bytes of "psm1" with a trailing zero in all existing modules. The presence of a remark continuation can be assumed by the value of the PossPtr.</TR>
+<TR><TD>+PossPtr<TD>?<TD>PosList<TD>Position list (byte-pairs "pattern:transposition"). It ends with the byte 0xFF, followed by the second byte: this is either the loop position, or 0xFF for no loop.</TR>
+<TR><TD>+SamsPtr<TD>?<TD>SamPtrs<TD>Sample pointers.</TR>
+<TR><TD><nobr>SamPtrs[]</nobr><TD>?<TD>Samples<TD>Samples (described below).</TR>
+<TR><TD>+OrnsPtr<TD>?<TD>OrnPtrs<TD>Ornament pointers.</TR>
+<TR><TD><nobr>OrnPtrs[]</nobr><TD>?<TD>Ornaments<TD>Ornaments (described below).</TR>
+<TR><TD>+PatsPtr<TD>?<TD>PatChanPtrs<TD>List of seven-byte blocks (the first byte is the playback speed, then three words are pointers to pattern channels A, B, C).</TR>
+<TR><TD><nobr>PatChanPtrs[]</nobr><TD>?<TD>PatChans<TD>Pattern channels (described below).</TR>
+</TABLE>
+
+<H3>Pattern channel</H3>
+
+<P>A sequence of bytes ending with 0xFF.</P>
+
+<TABLE>
+<TR><TH>Channel bytes<TH>Description</TR>
+<TR><TD>0x00..0x5F<TD>Calculate the note number (described below). If necessary, calculate the type and period of the envelope (described below). Exit.</TR>
+<TR><TD>0x60<TD>Mute the sound. Exit.</TR>
+<TR><TD>0x61..0x6F<TD>Set the sample to 0..14.</TR>
+<TR><TD>0x70..0x8F<TD>Set the ornament to 0..31. Disable envelopes.</TR>
+<TR><TD>0x90<TD>Exit.</TR>
+<TR><TD>0x91..0x9F<TD>Set the volume to 1..15.</TR>
+<TR><TD>0xA0<TD>Disable ornaments.</TR>
+<TR><TD>0xA1..0xB0<TD>Enable envelopes via variant 2 (described below), calculate and set at each note setting (the mode can be changed via 0xFA/0xFB).</TR>
+<TR><TD><nobr>0xB1..0xB7, EnvDiv</nobr><TD>Enable envelopes via variant 1 (described below), calculate and set once (the mode can be changed via 0xFB/0xFA).</TR>
+<TR><TD>0xB8..0xF8<TD>Do skipping on 1..65 (1..64 in the author's documentation) lines since now.</TR>
+<TR><TD><nobr>0xF9, AddrL, AddrH, Cnt</nobr><TD>Remember the address of the next byte after these four (for later return to this place) and continue analyzing the pattern from the Addr address (subroutine). Cnt decreases at each pattern analyzer entry. Analysis will continue from the stored address as soon as Cnt will zero. The command was not implemented in the compiler.</TR>
+<TR><TD>0xFA<TD>Disable mode of calculation and setting envelope at each note setting.</TR>
+<TR><TD>0xFB<TD>Enable mode of calculation and setting envelope at each note setting.</TR>
+<TR><TD>0xFC, Delay<TD>Change the playback speed (project). The command was not implemented either in the native player or in the compiler.</TR>
+</TABLE>
+
+<H4>Calculating the note number in the pattern analyzer</H4>
+
+<P>The value from the pattern (0..95) is subtracted from the previous note number of the pattern, and if it is the first, then from the value "pattern transposition + 48"). If the received number is less than zero, increase it by 96.</P>
+
+<P>Further check it for the range 0..95 (according to the number of notes in the table) after applying the ornament.</P>
+
+<H4>Calculation of the envelope type and period in the pattern analyzer</H4>
+
+<P>If the envelope is set via 0xB1..0xB7 bytes (option 1), then set the envelope type to 8..14 respectively; if EnvDiv &lt;= 0xF0, set high byte of the envelope period to 0, and low to EnvDiv, otherwise set the low byte of the envelope to 0, and the high to the value in bits 3-0 of EnvDiv.</P>
+
+<P>If the envelope is set via 0xA1..0xB0 bytes (option 2), then multiply the value of bits 1&ndash;0 by 2, add 8 and use the result for the envelope type; multiply the bits 3&ndash;2 value by 12, add the note number, and do decreasing by 48 until the result is within [0..47], add 48 and use this result as an index in the note table to set both bytes of the envelope period.</P>
+
+<H3>Sample</H3>
+
+<TABLE>
+<TR><TH>Offset<TH>Description</TR>
+<TR><TD>+0<TD>Bits 7&ndash;6: volume change value in the sample (reduced by 1 if the volume is decreased). Bit 5: the direction of the volume change in the sample (0 for increase, 1 for decrease). Bits 4&ndash;0: sample length reduced by 1.</TR>
+<TR><TD>+1<TD>Bits 7&ndash;5: 0, if the sample is not looped, 1&ndash;7 is the number of sample repetitions before the next volume change in the sample. Bits 4&ndash;0: loop point.</TR>
+<TR><TD>+2<TD>Three-byte sample ticks in order. Every tick:<BR>
+ +0 Bit 7: noise mask. Bit 4: tone mask. Bits 3&ndash;0: amplitude.<BR>
+ +1 Bits 7&ndash;3: noise period (used only if noise is enabled by a mask). Bits 2&ndash;0: high bits of the tone period offset accumulation (the highest bit is signed).<BR>
+ +2 The lowest byte of the tone period offset accumulation. When the tone goes beyond the range of 0..4095, the tone is set at the appropriate boundary.</TR>
+</TABLE>
+
+
+<H3>Ornament</H3>
+
+<TABLE>
+<TR><TH>Offset<TH>Description</TR>
+<TR><TD>+0<TD>The length of the ornament, reduced by 1.</TR>
+<TR><TD>+1<TD>Bit 7: 1 if the ornament is looped. Bits 4&ndash;0: loop point.</TR>
+<TR><TD>+2<TD>Single-byte ticks of the ornament in order.</TR>
+</TABLE>
+
+</BODY>
+</HTML>

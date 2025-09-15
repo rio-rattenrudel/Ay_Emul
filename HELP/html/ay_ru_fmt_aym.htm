@@ -1,0 +1,43 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="aym"></A>AYM</H1>
+
+<P>Этот формат хранит ту же самую музыку, что и AY-файлы типа 'EMUL'.</P>
+
+<P>Оригинальное описание формата подразумевает эмуляцию только AY (как Amstrad CPC, так и ZX Spectrum). Однако в Ay_Emul дополнительно поддержан и порт динамика Speccy.</P>
+
+<P>Формат до этого поддерживался только одной программой &ndash; RDOSPLAY, которая является универсальным плеером через OPL2/OPL3 чипы.</P>
+
+<P>Формат AYM-файла придумал Roman Dolejsi. Ниже слегка отредактированный текст из RDOSPLAY.TXT.</P>
+
+<P>-------Начало----------</P>
+<pre>
+name	size	pos	info
+'AYM0'	dword	00	identifier (AY Music, format revision 0)
+name	db 28	04	music name
+author	db 16	20	music author name
+init	word	30	music init entry (A = music number)
+play	word	32	interrupt player entry
+musmin	byte	34	min music number
+musmax	byte	35	max music number (musmax - musmin = number of musics)
+muspos	byte	36	starting music number
+regpos	byte	37	reg in which musnum is stored when entering init (00-0B)
+AFreg	word	38	AF register before entering init routine
+BCreg	word	3A	BC register
+DEreg	word	3C	DE register
+HLreg	word	3E	HL register
+IXreg	word	40	IX register
+IYreg	word	42	IY register
+blocks	byte	44	number of memory blocks
+
+from pos 45h, rest of the file contains memory blocks each carrying this:
+begin	word	b+00	where in the memory this block begins (64k addr space)
+size	word	b+02	how long is this block
+bdata	[size]	b+04	block of Z80 music code data for AY-3-8910 (currently
+                        for ZX128 envir.: FFFD=Ctrl, BFFD=Data, and for Amstrad
+                        CPC envir.: F6=Switch, F4=Ctrl/Data)
+</pre>
+<P>-------Конец----------</P>
+
+</BODY>
+</HTML>

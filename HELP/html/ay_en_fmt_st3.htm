@@ -1,0 +1,107 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="st3"></A>ST3</H1>
+
+<H2>Introduction</H2>
+
+<P>This format modules are the recompilation result of ordinary STC in the S.T. Music's Recompiler Version 2.x utility by KSA. There are not many of them, and they are found in a small number of ZX Spectrum programs.</P>
+
+<P>You can find the author's 55-byte string starting with "KSA SOFTWARE COMPILATION OF " inside the player codes of this format. Unlike similar strings in other players, it does not have a fixed " BY " tag.</P>
+
+<P>The utility description mentions the pros and cons: a fast player, but the playback speed should be more than 3.</P>
+
+<P>The ST3 file name extension has become common to denote the format in various music collections, i.e. the format is mistakenly attributed to Sound Tracker 3.</P>
+
+<P>I have analyzed Sound Tracker 3 editors from a variety of sources and have not found any that compiles to a format other than the standard one.</P>
+
+<P>The available to me versions of Sound Tracker 3 add a player to the standard STC module with an author's string starting with another identifier: "SOUND TRACKER COMPILATION OF ", in which the " BY " tag is in a fixed place.</P>
+
+<P>A lossless reverse ST3 to STC recompilation process is also possible. So, Ay_Emul allows you to save loaded ST3 from the playlist window as STC, while the author's strings found are not lost and inserted into the body of the module.</P>
+
+<H2>Module structure</H2>
+
+<P>The structure is similar to STC, the terminology is the same (see the description of STC or ST1). The ellipses in the table below indicate that from this place, similar structures to the one described above follow each other.</P>
+
+<P>The pointers are relative (from the beginning of the module). However, after calling the playback initialization in the native player, the offsets to the body of the ornaments and samples are linked to the module loading address.</P>
+
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Designation<TH>Description</TR>
+<TR><TD>+0<TD>1<TD>tempo<TD>Playback speed.</TR>
+<TR><TD>+1<TD>2<TD>posptr<TD>Pointer to the list of positions.</TR>
+<TR><TD>+3<TD>2<TD>samptr<TD>Pointer to the list of samples.</TR>
+<TR><TD>+5<TD>2<TD>ornptr<TD>Pointer to the list of ornaments.</TR>
+<TR><TD>+7<TD>2<TD>patptr<TD>Pointer to the list of patterns.</TR>
+<TR><TD colspan="4">Samples (the structure is described at the end).</TR>
+<TR><TD>+9=sam0ptr<TD>130<TD>sam0<TD>Sample 0 body.</TR>
+<TR><TD>+sam1ptr<TD>130<TD>sam1<TD>Sample 1 body.</TR>
+<TR><TD colspan="4">...</TR>
+<TR><TD>+posptr<TD>1<TD>len<TD>The number of positions (there are modules where len is decreased by 1, and the lost position in the worst case refers to a non-existent pattern).</TR>
+<TR><TD>+posptr+1<TD>2<TD>transposition,(pat-1)*6<TD>Transposition and pattern number at position 1.</TR>
+<TR><TD>+posptr+3<TD>2<TD>transposition,(pat-1)*6<TD>Transposition and pattern number at position 2.</TR>
+<TR><TD colspan="4">...</TR>
+<TR><TD>+samptr<TD>1<TD>len<TD>The number of items in the sample list (the numbering of samples is not from 1 as in ST1, but from zero, pointers can be linked to the module loading address).</TR>
+<TR><TD>+samptr+1<TD>2<TD>sam0ptr<TD>Pointer to sample 0, usually equal to +9.</TR>
+<TR><TD>+samptr+3<TD>2<TD>sam1ptr<TD>Pointer to sample 1.</TR>
+<TR><TD colspan="4">...</TR>
+<TR><TD colspan="4">Ornaments (each in structure like a regular ornament in STC).</TR>
+<TR><TD>+orn0ptr<TD>32<TD>orn0<TD>Ornament body 0 (should be 32 zeros).</TR>
+<TR><TD>+orn1ptr<TD>32<TD>orn1<TD>Ornament body 1.</TR>
+<TR><TD colspan="4">...</TR>
+<TR><TD>+ornptr<TD>1<TD>len<TD>The number of elements in the list of ornaments (pointers can be linked to the module loading address).</TR>
+<TR><TD>+ornptr+1<TD>2<TD>orn0ptr<TD>Pointer to the ornament 0.</TR>
+<TR><TD>+ornptr+3<TD>2<TD>orn1ptr<TD>Pointer to the ornament 1.</TR>
+<TR><TD colspan="4">...</TR>
+<TR><TD colspan="4">Next come the bodies of the channel patterns (duplicates are eliminated).</TR>
+<TR><TD>+pat1ptrA<TD>?<TD>patdata<TD>The usual channel pattern of the STC ended with 255.</TR>
+<TR><TD>+pat1ptrB<TD>?<TD>patdata<TD>The usual channel pattern of the STC ended with 255.</TR>
+<TR><TD>+pat1ptrC<TD>?<TD>patdata<TD>The usual channel pattern of the STC ended with 255.</TR>
+<TR><TD>+pat2ptrA<TD>?<TD>patdata<TD>The usual channel pattern of the STC ended with 255.</TR>
+<TR><TD>+pat2ptrB<TD>?<TD>patdata<TD>The usual channel pattern of the STC ended with 255.</TR>
+<TR><TD>+pat2ptrC<TD>?<TD>patdata<TD>The usual channel pattern of the STC ended with 255.</TR>
+<TR><TD colspan="4">...</TR>
+<TR><TD>?<TD>1<TD>unknown<TD>Unknown byte (in one module 0, in the other 0x76, and in TheLast1.st3 it does not exist at all).</TR>
+<TR><TD>+patptr<TD>6<TD>pat1ptrA,pat1ptrB,pat1ptrC<TD>Pattern 1 pointers to the pattern bodies of each of the channels.</TR>
+<TR><TD>+patptr+6<TD>6<TD>pat2ptrA,pat2ptrB,pat2ptrC<TD>Pattern 2 pointers to the pattern bodies of each of the channels.</TR>
+<TR><TD colspan="4">...</TR>
+</TABLE>
+
+<H3>Features of sample numbering</H3>
+
+<P>The samples used are renumbered starting from 0 in order not to store an extra 130 bytes for each unused sample. Accordingly, there are references to the sample 0 in the channel patterns, which confuses some STC decompilers.</P>
+
+<P>However, this is a regular STC pattern and it is enough to simply copy it without changes when converting from ST3 to STC.</P>
+
+<P>And for a properly written decompiler (such as in Vortex Tracker II), samples renumbering does not cause problems, since it is fully compatible with the original STC player.</P>
+
+<H3>Sample structure (size 130 bytes = 2+4*32):</H3>
+
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Designation<TH>Description</TR>
+<TR><TD>+0<TD>1<TD>lpbegin<TD>Loop begin (0..31).</TR>
+<TR><TD>+1<TD>1<TD>lpend<TD>Loop end (0..31). If lpbegin = lpend = 0 then not looped.</TR>
+<TR><TD>+2<TD>2<TD>tone0<TD>Tick 2: tone deviation (-0xFFF..0xFFF).</TR>
+<TR><TD>+4<TD>1<TD>ampmsk0<TD>Bits 0..3 &ndash; amplitude, bit 4 &ndash; tone mask, bit 7 &ndash; noise mask.</TR>
+<TR><TD>+5<TD>1<TD>noise0<TD>Bits 0..4 &ndash; the noise period.</TR>
+<TR><TD>+6<TD>2<TD>tone1<TD>Tick 1: tone deviation (-0xFFF..0xFFF).</TR>
+<TR><TD>+8<TD>1<TD>ampmsk1<TD>Bits 0..3 &ndash; amplitude, bit 4 &ndash; tone mask, bit 7 &ndash; noise mask.</TR>
+<TR><TD>+9<TD>1<TD>noise1<TD>Bits 0..4 &ndash; the noise period.</TR>
+<TR><TD colspan="4">...</TR>
+</TABLE>
+
+<H2>Features of the native player</H2>
+
+<P>In the ST3 player, unlike the native STC player, unlooped samples on the 33rd tick are muted in a different way, and channels are output in reverse order from C to A (as a result, the priority of setting sample noise changes). Therefore, if you record and compare the PSG of these players on the same modules, you can see the difference on the corresponding ticks.</P>
+
+<H2>The author's string inside the module body</H2>
+
+<P>There are ST3s with the author's string inside in various music collections. This is a copy of the string from the player body. It is inserted at an offset of +9 (in the place where the sample 0 body is located in the source module).</P>
+
+<P>Modification of the module is carried out in several steps:</P>
+<UL>
+<LI>data from +9 to the end of the module moves 55 bytes forward;
+<LI>the author's string is copied into the resulting gap;
+<LI>the values of all pointers in the file are increased by 55.
+</UL>
+
+</BODY>
+</HTML>

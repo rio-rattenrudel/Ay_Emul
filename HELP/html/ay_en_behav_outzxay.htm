@@ -1,0 +1,18 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="outzxay"></A>Converting from OUT and ZXAY</H1>
+
+<P>Formats for storing arrays of registers of a soundchip can be divided into two types: synchronized (i.e. in the source program they are played synchronously with interrupts, VBL, MFP timers, etc.) and not synchronized. The first group includes VTX, YM6 and PSG files, in which it is unambiguously possible to distinguish groups of registers and their values in each tick of the timer (frame, quantum, hence the terms "quantized music", "music on interrupts"), while information about output delays between registers inside the frame is lost.</P>
+
+<P>The OUT, ZXAY, EPSG, AY (EMUL), AYM and SNDH formats can be attributed to the second group. The first ones (OUT, ZXAY and EPSG) store register numbers and its values up to the clock cycle (tact) accuracy of the CPU of the computer for which the original program was written. And the AY, AYM and SNDH formats just store such a program inside themselves, and by emulating the operation of the corresponding computer, you can get a similar stream of register numbers and their values with CPU tact accuracy.</P>
+
+<P>However, the approach laid down in the OUT, ZXAY and EPSG formats, in addition to the obvious advantages, stores no less obvious disadvantages: a large size and, if quantized music is played in the source, an abundance of redundant information (for the vast majority of quantized music, delays between outputs inside the frame are almost not audible by ear or, conversely, lead to unpleasant artifacts for example, in the form of clicks, but for effects like "full envelope+tone retrig" in the latest versions of Fast Tracker, such delays are important).</P>
+
+<P>If it is known that the music in the original is played synchronously with interrupts, and output to all registers of the soundcip is carried out almost simultaneously once per interrupt, the task may arise to get VTX, YM6 or PSG from OUT, ZXAY, EPSG, AY (EMUL), AYM or SNDH files. The EPSG file contains interrupt markers, also when playing formats with a native player, the moments of occurrence of interruptions are known, therefore, unlike OUT and ZXAY, no additional parameters are needed for successful conversion.</P>
+
+<P>But for correct conversion from OUT or ZXAY to any synchronized file, two Ay_Emul parameters must be correctly configured: <I>TStates per frame</I> and <I>Interrupt offset</I> (see "Mixer" window). The first parameter by default (69888) is suitable for OUT files created in the ZX Spectrum emulator "Z80" v.3.02 and v3.03 by G.A. Lunter, it must be configured exactly. If the value of the second parameter negatively affects the generation of the synchronized file, it must be increased or decreased by about half of the first parameter (+35000 or -35000).</P>
+
+<P>If it is not possible to achieve an acceptable result with any parameters, it means that the output in the real program was not synchronized with interrupts.</P>
+
+</BODY>
+</HTML>

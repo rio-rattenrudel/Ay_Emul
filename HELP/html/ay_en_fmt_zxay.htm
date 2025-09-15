@@ -1,0 +1,30 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="zxay"></A>ZXAY</H1>
+
+<P>ZXAY-file was designed speccially for Ay_Emul. It can be converted from any OUT-, EPSG-, AY- or AYM-file and has more optimal format for storing AY chip outing than OUT-file.</P>
+
+<P>ZXAY-file structure is a sequence of four bytes blocks. First block of ZXAY-file is ASCII string 'ZXAY'. All further blocks have next structure:</P>
+
+<TABLE>
+<TR><TH>Bit numbers<TH>Name</TR>
+<TR><TD>0&ndash;19<TD>Time</TR>
+<TR><TD>20&ndash;23<TD>Register</TR>
+<TR><TD>24&ndash;31<TD>Data</TR>
+</TABLE>
+
+<P><I>Time</I> is a time (in range 0&ndash;0FFFFFh in Z80 processor tacts) of outing <I>Data</I> value to <I>Register</I> number in range 0&ndash;13. If during <I>Time</I> = 0 was no outing then block is written into ZXAY-file with <I>Register</I> = 15. Available range of <I>Data</I> field depends of <I>Register</I> number:</P>
+<TABLE>
+<TR><TH>Register number<TH>Range of Data</TR>
+<TR><TD>1, 3, 5 or 13<TD>0&ndash;15</TR>
+<TR><TD>6, 8, 9 or 10<TD>0&ndash;31</TR>
+<TR><TD>7<TD>0&ndash;63</TR>
+<TR><TD>other<TD>0&ndash;255</TR>
+</TABLE>
+
+<P>If previous value of registers from 0 to 12 is equal to value of current outing, then current block is not written to ZXAY-file. Outing to register 13 is always written.</P>
+
+<P>As you can see, ZXAY-file structure is same as OUT-file structure.</P>
+
+</BODY>
+</HTML>

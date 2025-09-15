@@ -1,0 +1,71 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="vtx"></A>VTX</H1>
+
+<H2>About format</H2>
+
+<P>Roman Scherbakov (V_Soft) designed this format. This is a format with detailed header for storing huge register dumps of interrupt synchronized music from different AY-3-8910/12 and YM2149 based platforms in small size files.</P>
+
+<H2>From README.TXT (translation from Russian):</H2>
+
+<P>---------------------------cut here-------------------</P>
+<pre>
+Offset  Size    Type     Description
+00 dec  2 bytes Word     VTX file identifier (ay or ym)
+                         Its chip type by default:
+                         this is 7961h or 31073 dec (ay)
+                         this is 6D79h or 28025 dec (ym)
+02      1                Byte bit               Playing mode by default:
+                         Bits 0-2 determine stereo mode:
+                         0 &ndash; MONO, 1 &ndash; ABC, 2 &ndash; ACB, 3 &ndash; BAC,
+                         4 &ndash; BCA, 5 &ndash; CAB, 6 &ndash; CBA (dec)
+03      2       Word     Loop VBL number (from zero =
+                         beginning of melody).
+05      4       Dword    AY chip frequency for this melody
+                         ( for compatibility with non-Spectrum platforms)
+                         Standard values:
+                         ZX_Spectrum: 1773400 (or 001B0F58h)
+                         Atari: 2000000 (or 001E8480h)
+                         Amstrad CPC: 1000000 (or 000F4240h)
+09      1       Byte     Player frequency (VBL per sec).
+                         Standard value 50 =
+                         1/50 sec (20ms).
+10      2 bytes Word     Year of composition creating.
+12      4       Dword    Size of not packed data.
+                         Needed for unpacking.
+16      1-255   NTString String with melody name
+                         (1-254 chars), must be ended with zero even
+                         if no title at all!
+??      1-255   NTString String with author name (see ^)
+??      1-255   NTString Melody source program (see ^)
+??      1-255   NTString Musical editor name (see ^)
+??      1-255   NTString Comment string (see ^)
+??      ??      Array    Compressed data packet...
+</pre>
+<P>---------------------------cut here-------------------</P>
+
+<H2>Remarks</H2>
+
+<OL>
+<LI>Data compressed with LHA type 5. May to pack with LHA.EXE (as YM-files), but need to cut header and last zero byte of compressed file. Header of LHA-archive file is found at start of file. Its length is value of first byte of header plus 2.
+<LI>After unpacking the data block is equivalent to YM3 data block.
+</OL>
+
+<P>Also can be found old version of VTX-files (of Vortex plug-in older than 2.00 version). Ay_Emul can to play it too.</P>
+
+<P>Until recently, the VTX format was the most optimal and, in fact, the only one suitable for storing quantized music recorded from emulators (when the original is not available, and the AY-file is not created for some reason).
+
+<P>However, recently, music that does not fit into the framework of the format has begun to appear. The weak point turned out to be the "Player frequency" field, in which it is impossible to save a value of more than 255 Hz. For such music, you have to use the YM6 format.
+
+<P>Moreover, it is impossible to save non-standard frequencies of such ZX Spectrum clones as Pentagon (approximately 48.828 Hz) in this field: after rounding, the playback speed will differ slightly from the original.
+
+<H2>How to create</H2>
+
+<P>VTX-files can be converted from various AY and YM based computers emulators' sound dump files (for ZX Spectrum and MSX these are usually PSG-files).</P>
+
+<P>But you can find emulators with ability to dump music in VTX format too. One of them is Unreal Speccy by SMT, however, there is a significant drawback: in the maximum speed mode, VTX is not recorded.</P>
+
+<P>For high-speed recording of PSG or EPSG with subsequent conversion to VTX (or ZXAY), I can recommend the emulator Z80 Stealth by Mr.Kirill.</P>
+
+</BODY>
+</HTML>

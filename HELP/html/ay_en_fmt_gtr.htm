@@ -1,0 +1,81 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="gtr"></A>GTR</H1>
+
+<H2>Introduction</H2>
+
+<P>These are compiled modules of Global Tracker, the project author is Maxim Krassa (Doctor Max). The main idea of the project is maximum convenience and performance with a minimum of functions. As a result, the format turned out to be close in capabilities to PT1.</P>
+
+<P>It was not widely recognized, since version 1.0 contained significant errors. They were later fixed in version 1.1.</P>
+
+<P>The bulk of the GTR modules that fell into my hands turned out to be conversions of other formats. There are only two original modules in my collection and they are written in GTR v1.0 (one by Nik-O, the other by Trefi).</P>
+
+<H2>Module format</H2>
+
+<P>The GTR format can be called traditional.</P>
+
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Designation<TH>Description</TR>
+<TR><TD>+0<TD>1<TD>Delay<TD>Playback speed.</TR>
+<TR><TD>+1<TD>3<TD>ID<TD>Identifier "GTR".</TR>
+<TR><TD>+4<TD>1<TD>Version<TD>Version in BCD (0x10 for 1.0, 0x11 for 1.1).</TR>
+<TR><TD>+5<TD>2<TD>Address<TD>Compilation address.</TR>
+<TR><TD>+7<TD>32<TD>Name<TD>The song name.</TR>
+<TR><TD>+39<TD>30<TD>SamPtrs<TD>Pointers to 15 samples.</TR>
+<TR><TD>+69<TD>32<TD>OrnPtrs<TD>Pointers to 16 ornaments.</TR>
+<TR><TD>+101<TD>192<TD>PatPtrs<TD>Three pointers to channels A, B, C per each of 32 patterns.</TR>
+<TR><TD>+293<TD>1<TD>NumOfPoss<TD>The length of the positions list.</TR>
+<TR><TD>+294<TD>1<TD>LoopPos<TD>Position number for looping.</TR>
+<TR><TD>+295<TD>NumOfPoss<TD>Positions<TD>Positions list in the playing order (pattern numbers multiplied by 6, one after the other).</TR>
+<TR><TD><nobr>+PatPtrs[]</nobr><TD>?<TD>PatChns<TD>The pattern channel descriptors (described below).</TR>
+<TR><TD><nobr>+SamPtrs[]</nobr><TD>?<TD>Samples<TD>Samples (described below).</TR>
+<TR><TD><nobr>+OrnPtrs[]</nobr><TD>?<TD>Ornaments<TD>Ornaments (described below).</TR>
+</TABLE>
+
+<H3>Pattern channel descriptor</H3>
+
+<P>It is a string of bytes ending with 0xFF.</P>
+
+<TABLE>
+<TR><TH>Байт<TH>Описание</TR>
+<TR><TD>0x00..0x5F<TD>Set the note. Exit.</TR>
+<TR><TD>0x60..0x6F<TD>Set the sample (0..14).</TR>
+<TR><TD>0x70..0x7F<TD>Set the ornament (0..15). For versions after 1.0: disable envelopes.</TR>
+<TR><TD>0x80..0xBF<TD>Skip the specified number of lines (0..63). Valid once.</TR>
+<TR><TD><nobr>0xC0..0xCF, Env</nobr><TD>Set the envelope type (0..15). Set low byte of the envelope period to Env. Enable envelopes.</TR>
+<TR><TD>0xD0..0xDF<TD>Exit.</TR>
+<TR><TD>0xE0<TD>Turn off the sound. For versions after 1.0: exit.</TR>
+<TR><TD>0xE1..0xEF<TD>Set volume (1..15).</TR>
+</TABLE>
+
+<H3>Sample</H3>
+
+<P>It consists of two header bytes and a list of ticks.</P>
+
+<TABLE>
+<TR><TH>Offset<TH>Description</TR>
+<TR><TD>+0<TD>Tick for looping.</TR>
+<TR><TD>+1<TD>Number of ticks.</TR>
+<TR><TD>+2<TD>Sample ticks one after the other, 4 bytes per tick. Tick structure:<BR>
+ +0 Amplitude.<BR>
+ +1 Bit 7: 1 to  enable envelopes. Bit 6: noise mask. Bit 5: tone mask. Bits 4-0: noise (mixed with other channels by the "OR" logical operation).<BR>
+ +2 Two-byte tone deviation (signed number).</TR>
+</TABLE>
+
+<H3>Ornament</H3>
+
+<P>It also represents two header bytes and a list of ticks.</P>
+
+<TABLE>
+<TR><TH>Offset<TH>Description</TR>
+<TR><TD>+0<TD>Tick for looping.</TR>
+<TR><TD>+1<TD>Number of ticks.</TR>
+<TR><TD>+2<TD>Ticks of the ornament one after another (tone deviations in semitones), 1 byte per tick (a signed number).</TR>
+</TABLE>
+
+<H2>Channel volume</H2>
+
+<P>Global Tracker refers to one of the four trackers on the ZX Spectrum (PSM, STP, SQT and GTR) with the most rational channel volume control: taking into account the fact that the DAC output characteristic for both AY and YM is close to logarithmic, the value (15-volume) is simply subtracted from the sample amplitude.</P>
+
+</BODY>
+</HTML>

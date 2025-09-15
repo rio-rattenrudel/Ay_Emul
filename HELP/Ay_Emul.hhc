@@ -1,0 +1,302 @@
+<HTML>
+<!--Sitemap 1.0-->
+<OBJECT type="text/site properties">
+</OBJECT>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Introduction">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="What is Ay_Emul">
+			<param name="Local" value="html/ay_en_intro_whatdo.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_intro_whatdo.htm">What is AY-3-8910/12 Emulator</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Whats new in this version">
+			<param name="Local" value="html/ay_en_intro_whatsnew.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_intro_whatsnew.htm">Whats new in this version</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="History of changes">
+			<param name="Local" value="html/ay_en_history.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_history.htm">History of changes</A><BR>
+	</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Using">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Main window controls">
+			<param name="Local" value="html/ay_en_using_controls.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_using_controls.htm">Main window elements</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="&quot;Mixer&quot; dialog box">
+			<param name="Local" value="html/ay_en_using_mixer.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_using_mixer.htm">&quot;Mixer&quot; dialog box</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="&quot;Tools&quot; dialog box">
+			<param name="Local" value="html/ay_en_using_tools.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_using_tools.htm">&quot;Tools&quot; dialog box</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="&quot;Playlist&quot; window">
+			<param name="Local" value="html/ay_en_using_playlist.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_using_playlist.htm">&quot;Playlist&quot; window</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="&quot;List's item adjusting&quot; dialog box">
+			<param name="Local" value="html/ay_en_using_playlistitem.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_using_playlistitem.htm">&quot;List's item adjusting&quot; dialog box</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="&quot;Information in the file header&quot; dialog box">
+			<param name="Local" value="html/ay_en_using_header.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_using_header.htm">&quot;Information in the file header&quot; dialog box</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Command line">
+			<param name="Local" value="html/ay_en_using_commandline.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_using_commandline.htm">Command line</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Hot keys">
+			<param name="Local" value="html/ay_en_using_hotkeys.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_using_hotkeys.htm">Hot keys</A><BR>
+	</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Behavior">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Playing order">
+			<param name="Local" value="html/ay_en_behav_playingorder.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_behav_playingorder.htm">Playing order</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Looping melody">
+			<param name="Local" value="html/ay_en_behav_looping.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_behav_looping.htm">Looping melody</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Starting time of Ay_Emul">
+			<param name="Local" value="html/ay_en_behav_startingemul.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_behav_startingemul.htm">Starting time of Emulator</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Opening files">
+			<param name="Local" value="html/ay_en_behav_fopen.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_behav_fopen.htm">Opening files</P></A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Searching for tunes in files">
+			<param name="Local" value="html/ay_en_behav_finder.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_behav_finder.htm">Searching for tunes in files</P></A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Converting from OUT and ZXAY">
+			<param name="Local" value="html/ay_en_behav_outzxay.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_behav_outzxay.htm">Converting from OUT and ZXAY</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Playback position changing">
+			<param name="Local" value="html/ay_en_behav_slider.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_behav_slider.htm">Playback position changing</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="How to abort the conversion">
+			<param name="Local" value="html/ay_en_behav_intconv.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_behav_intconv.htm">How to abort the conversion</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Windows managing">
+			<param name="Local" value="html/ay_en_behav_winman.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_behav_winman.htm">Windows managing</A><BR>
+	</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Files formats">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="OUT">
+			<param name="Local" value="html/ay_en_fmt_out.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_out.htm">OUT</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="ZXAY">
+			<param name="Local" value="html/ay_en_fmt_zxay.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_zxay.htm">ZXAY</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="PSG">
+			<param name="Local" value="html/ay_en_fmt_psg.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_psg.htm">PSG</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="ZX50">
+			<param name="Local" value="html/ay_en_fmt_zx50.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_zx50.htm">ZX50</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="YM">
+			<param name="Local" value="html/ay_en_fmt_ym.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_ym.htm">YM</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="VTX">
+			<param name="Local" value="html/ay_en_fmt_vtx.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_vtx.htm">VTX</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="FXM">
+			<param name="Local" value="html/ay_en_fmt_fxm.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_fxm.htm">FXM</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="ST1">
+			<param name="Local" value="html/ay_en_fmt_st1.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_st1.htm">ST1</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="STC">
+			<param name="Local" value="html/ay_en_fmt_stc.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_stc.htm">STC</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="FLS">
+			<param name="Local" value="html/ay_en_fmt_fls.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_fls.htm">FLS</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="ST3">
+			<param name="Local" value="html/ay_en_fmt_st3.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_st3.htm">ST3</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="STF">
+			<param name="Local" value="html/ay_en_fmt_stf.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_stf.htm">STF</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="STP">
+			<param name="Local" value="html/ay_en_fmt_stp.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_stp.htm">STP</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="SQT">
+			<param name="Local" value="html/ay_en_fmt_sqt.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_sqt.htm">SQT</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="PSM">
+			<param name="Local" value="html/ay_en_fmt_psm.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_psm.htm">PSM</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="AS0">
+			<param name="Local" value="html/ay_en_fmt_as0.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_as0.htm">AS0</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="ASC">
+			<param name="Local" value="html/ay_en_fmt_asc.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_asc.htm">ASC</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="PSC">
+			<param name="Local" value="html/ay_en_fmt_psc.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_psc.htm">PSC</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="PT1">
+			<param name="Local" value="html/ay_en_fmt_pt1.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_pt1.htm">PT1</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="PT2">
+			<param name="Local" value="html/ay_en_fmt_pt2.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_pt2.htm">PT2</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="PT3">
+			<param name="Local" value="html/ay_en_fmt_pt3.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_pt3.htm">PT3</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="GTR">
+			<param name="Local" value="html/ay_en_fmt_gtr.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_gtr.htm">GTR</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="FTC">
+			<param name="Local" value="html/ay_en_fmt_ftc.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_ftc.htm">FTC</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="AY">
+			<param name="Local" value="html/ay_en_fmt_ay.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_ay.htm">AY</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="AYM">
+			<param name="Local" value="html/ay_en_fmt_aym.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_aym.htm">AYM</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="SNDH">
+			<param name="Local" value="html/ay_en_fmt_sndh.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_fmt_sndh.htm">SNDH</A><BR>
+	</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Support">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Distribution">
+			<param name="Local" value="html/ay_en_sup_distribution.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_sup_distribution.htm">Distribution</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Music archives">
+			<param name="Local" value="html/ay_en_sup_musicarch.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_sup_musicarch.htm">Music archives</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Skin files">
+			<param name="Local" value="html/ay_en_sup_skinfiles.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_sup_skinfiles.htm">Skin files</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Official site">
+			<param name="Local" value="html/ay_en_sup_homepage.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_sup_homepage.htm">Official site</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Contact with author">
+			<param name="Local" value="html/ay_en_sup_email.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_sup_email.htm">Contact with author</A><BR>
+	</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Authors and assistants">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Acknowledgements">
+			<param name="Local" value="html/ay_en_auth_blago.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_auth_blago.htm">Message of thanks</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Authors">
+			<param name="Local" value="html/ay_en_auth_authors.htm">
+			</OBJECT>
+			<A HREF="html/ay_en_auth_authors.htm">Authors</A><BR>
+	</UL>
+</UL>
+</HTML>

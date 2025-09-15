@@ -1,0 +1,639 @@
+[type AY]
+#AY Native format
+[type AYR]
+#AY Registers Dump
+[type AYRS]
+#AY Registers Stream
+[type AYEMUL]
+#Z80 or MC68K Memory Dump
+[type WAV]
+#Digital Sound Stream
+[type MOD]
+#Digital Samples Module 
+[type CDA]
+#CD Audio
+[type MIDI]
+#MIDI Sequence
+[type PL]
+#Playlist
+[type Skin]
+#Skin
+#+ for not NoDisplay
+[command+ open]
+name=open
+visname=Open in Ay_Emul
+visname[ru]=Открыть в Ay_Emul
+pref=10
+[command opens]
+name=open
+visname=Open in Ay_Emul
+visname[ru]=Открыть в Ay_Emul
+param=-p
+[command add]
+name=add
+visname=Add to Ay_Emul playlist
+visname[ru]=Добавить в список проигрывания Ay_Emul
+param=-add 
+pref=9
+[command addplay]
+name=addplay
+visname=Add'n'play in Ay_Emul
+visname[ru]=Добавить и проиграть в Ay_Emul
+param=-adp 
+pref=8
+[group Ay_Emul Audio File]
+types=AY;AYR;AYRS;AYEMUL;CDA;MIDI
+desc=AY Emulator Audio File
+desc[ru]=Аудио файл эмулятора AY
+commands=open;add;addplay
+[group Ay_Emul Playlist File]
+types=PL
+desc=AY Emulator Playlist
+desc[ru]=Список проигрывания эмулятора AY
+commands=open;add;addplay
+[group Ay_Emul Skin File]
+types=Skin
+desc=AY Emulator Skin
+desc[ru]=Обшивка эмулятора AY
+commands=opens
+[group Ay_Emul BASS File]
+types=WAV;MOD
+desc=Ay_Emul&BASS Audio File
+desc[ru]=Аудио файл Ay_Emul&BASS
+commands=open;add;addplay
+[fnext out]
+desc=Z80 emulator outing log files
+desc[ru]=Файлы с логом вывода эмулятора Z80
+[fnext zxay]
+desc=ZX Spectrum sound chip outing files
+desc[ru]=Файлы вывода музыкального сопроцессора ZX Spectrum
+[fnext psg]
+desc=ZX Spectrum emulators' sound files
+desc[ru]=Звуковые файлы эмуляторов ZX Spectrum
+[fnext ay]
+desc=AYPlay and DeliAY files
+desc[ru]=Файлы AYPlay и DeliAY
+[fnext aym]
+desc=RDOSPLAY files
+desc[ru]=Файлы RDOSPLAY
+[fnext st1]
+desc=Uncompiled Sound Tracker 1 files
+desc[ru]=Файлы Sound Tracker 1 (не компилированные)
+[fnext stc]
+desc=Sound Tracker files
+desc[ru]=Файлы Sound Tracker
+[fnext st3]
+desc=S.T. Music's Recompiler files
+desc[ru]=Файлы S.T. Music's Recompiler
+[fnext asc]
+desc=ASM music editor files
+desc[ru]=Файлы редактора ASM
+[fnext as0]
+desc=ASM v0 music editor files
+desc[ru]=Файлы редактора ASM v0
+[fnext stf]
+desc=Uncompiled Sound Tracker Pro files
+desc[ru]=Файлы Sound Tracker Pro (не компилированные)
+[fnext stp]
+desc=Sound Tracker Pro files
+desc[ru]=Файлы Sound Tracker Pro
+[fnext psc]
+desc=Pro Sound Creator files
+desc[ru]=Файлы Pro Sound Creator
+[fnext fls]
+desc=Flash Tracker files
+desc[ru]=Файлы Flash Tracker
+[fnext ftc]
+desc=Fast Tracker files
+desc[ru]=Файлы Fast Tracker
+[fnext pt1]
+desc=Pro Tracker 1 files
+desc[ru]=Файлы Pro Tracker 1
+[fnext pt2]
+desc=Pro Tracker 2 files
+desc[ru]=Файлы Pro Tracker 2
+[fnext pt3]
+desc=Pro Tracker 3 files
+desc[ru]=Файлы Pro Tracker 3
+[fnext sqt]
+desc=SQ-Tracker files
+desc[ru]=Файлы SQ-Tracker
+[fnext gtr]
+desc=Global Tracker files
+desc[ru]=Файлы Global Tracker
+[fnext fxm]
+desc=Fuxoft AY Language
+desc[ru]=Файлы AY Language Fuxoft'a
+[fnext psm]
+desc=Pro Sound Maker files
+desc[ru]=Файлы Pro Sound Maker
+[fnext vtx]
+desc=Vortex files
+desc[ru]=Файлы Vortex
+[fnext ym]
+desc=ST-Sound files
+desc[ru]=Файлы ST-Sound
+[fnext ts]
+desc=Turbo Sound containers for ZX Trackers' modules
+desc[ru]=Контейнеры Turbo Sound для модулей ZX редакторов
+[fnext sndh]
+desc=Atari ST's SNDH files
+desc[ru]=Файлы Atari ST SNDH
+[fnext mp3]
+desc=MPEG-1 Layer 3 files
+desc[ru]=Файлы MPEG-1 Layer 3
+[fnext mp2]
+desc=MPEG-1 Layer 2 files
+desc[ru]=Файлы MPEG-1 Layer 2
+[fnext mp1]
+desc=MPEG-1 Layer 1 files
+desc[ru]=Файлы MPEG-1 Layer 1
+[fnext ogg]
+desc=Vorbis files
+desc[ru]=Файлы Vorbis
+[fnext opus]
+desc=Opus files
+desc[ru]=Файлы Opus
+[fnext wav]
+desc=Wave files
+desc[ru]=Файлы звукозаписи
+[fnext aiff]
+desc=AIFF files
+desc[ru]=Файлы звукозаписи
+[fnext ape]
+desc=Monkey's Audio files
+desc[ru]=Файлы Monkey's Audio
+[fnext flac]
+desc=Free Lossless Audio Codec files
+desc[ru]=Файлы Free Lossless Audio Codec
+[fnext wv]
+desc=WavPack Audio files
+desc[ru]=Файлы WavPack Audio
+[fnext ac3]
+desc=Multichannel audio files
+desc[ru]=Файлы многоканальной звукозаписи
+[fnext aac]
+desc=Advanced Audio Coding files
+desc[ru]=Файлы Advanced Audio Coding
+[fnext m4a]
+desc=MPEG-4 audio (Advanced Audio Coding, Apple Lossless Audio Codec)
+desc[ru]=Аудио MPEG-4 (Advanced Audio Coding, Apple Lossless Audio Codec)
+[fnext dff]
+desc=Direct Stream Digital files
+desc[ru]=Файлы Direct Stream Digital
+[fnext wma]
+desc=Windows Media audio files
+desc[ru]=Файлы звукозаписи Windows Media
+[fnext mo3]
+desc=MOD2MO3 files
+desc[ru]=Файлы MOD2MO3
+[fnext it]
+desc=PC Impulse Tracker files
+desc[ru]=Файлы PC Impulse Tracker
+[fnext xm]
+desc=PC Fast Tracker 2 files
+desc[ru]=Файлы PC Fast Tracker 2
+[fnext s3m]
+desc=PC Scream Tracker 3 files
+desc[ru]=Файлы PC Scream Tracker 3
+[fnext mtm]
+desc=PC MultiTracker files
+desc[ru]=Файлы PC MultiTracker
+[fnext mod]
+desc=Generic module format files
+desc[ru]=Файлы Generic module format
+[fnext umx]
+desc=Unreal Tournament music package
+desc[ru]=Пакет музыки Unreal Tournament
+[fnext cda]
+desc=AudioCD Tracks
+desc[ru]=Дорожки AudioCD
+[fnext mid]
+desc=Standard MIDI files
+desc[ru]=Стандартные MIDI файлы
+[fnext rmi]
+desc=MIDI files in RIFF container
+desc[ru]=Файлы MIDI в RIFF контейнере
+[fnext xmi]
+desc=Miles Design XMIDI files
+desc[ru]=Файлы Miles Design XMIDI
+[fnext ayl]
+desc=Ay_Emul Playlists
+desc[ru]=Списки проигрывания Ay_Emul
+[fnext m3u]
+desc=Winamp Playlists
+desc[ru]=Списки проигрывания Winamp
+[fnext pls]
+desc=XMPlay Playlists
+desc[ru]=Списки проигрывания XMPlay
+[fnext cue]
+desc=CD cuesheets
+desc[ru]=Разметка компакт-диска
+[fnext ays]
+desc=Skin files
+desc[ru]=Файлы обшивок
+#format+ - no in freedesktop.org.xml
+#in matches for nums 0..255 use #NNN; so for # use ##
+[format+ OUT]
+type=AYRS
+mimetype=audio/z80-out
+fnext=out
+desc=ZX emulators' output log file
+desc[ru]=Файл эмуляторов ZX с логом вывода
+[format+ ZXAY]
+type=AYRS
+mimetype=audio/ay-stream
+fnext=zxay
+desc=ZX's sound chip register stream file
+desc[ru]=Файл с потоком регистров музыкального сопроцессора ZX
+matchprior=49
+match=0:ZXAY
+[format+ EPSG]
+type=AYRS
+mimetype=audio/ay-epsg
+fnext=psg
+desc=Z80 Stealth's PSG register stream file
+desc[ru]=Файл Z80 Stealth с потоком регистров PSG
+match=0:EPSG#26;
+match=10:#0;#0;#0;#0;#0;#0;
+[format+ AY]
+type=AYEMUL
+mimetype=audio/ay-ayemul
+fnext=ay
+desc=Music in .AY-container with Z80-player
+desc[ru]=Музыка в контейнере .AY с Z80-проигрывателем
+match=0:ZXAYEMUL
+[format+ AYAMAD]
+type=AY
+mimetype=audio/ay-ayamad
+fnext=ay
+desc=Music in .AY-container (Fuxoft AY Language)
+desc[ru]=Музыка в контейнере .AY (AY Language Fuxoft'а)
+match=0:ZXAYAMAD
+[format+ AYM]
+type=AYEMUL
+mimetype=audio/ay-aym
+fnext=aym
+desc=RDOSPLAY Z80 snapshot file
+desc[ru]=Файл RDOSPLAY со слепком памяти Z80
+match=0:AYM0
+[format+ ST1]
+type=AY
+mimetype=audio/ay-st1
+fnext=st1
+desc=ZX Spectrum Sound Tracker uncompiled module
+desc[ru]=Не компилированный модуль ZX Spectrum Sound Tracker
+editor=ZX Spectrum Sound Tracker v1.1-1.3
+[format+ STC]
+type=AY
+mimetype=audio/ay-stc
+fnext=stc;zxs
+desc=ZX Spectrum Sound Tracker compiled module
+desc[ru]=Компилированный модуль ZX Spectrum Sound Tracker
+editor=ZX Spectrum Sound Tracker v1.1-1.3
+match1=7:SONG BY ST COMPILE
+match2=7:SONG BY MB COMPILE
+match3=7:SONG BY ST-COMPILE
+match4=7:SOUND TRACKER v1.1
+match5=7:S.T.FULL EDITION  
+match6=7:S.T.FULL EDITION 
+match7=7:SOUND TRACKER v1.3
+match8=7: STU SONG COMPILER
+match9=7:(C) KLAV "S_SONIC"
+match10=7:ZX81 Compiler A.Re
+[format+ ST3]
+type=AY
+mimetype=audio/ay-st3
+fnext=st3
+desc=ZX Spectrum S.T. Music's Recompiler module
+desc[ru]=Модуль ZX Spectrum S.T. Music's Recompiler
+editor=ZX Spectrum Sound Tracker v1.1-1.3
+[format+ ASC]
+type=AY
+mimetype=audio/ay-asc
+fnext=asc
+desc=ZX Spectrum ASC Sound Master compiled module
+desc[ru]=Компилированный модуль ZX Spectrum ASC Sound Master
+editor=ZX Spectrum ASM v1.xx-2.xx
+[format+ ASC0]
+type=AY
+mimetype=audio/ay-asc0
+fnext=as0
+desc=ZX Spectrum ASC Sound Master v0 compiled module
+desc[ru]=Компилированный модуль ZX Spectrum ASC Sound Master v0
+editor=ZX Spectrum ASM v0.xx
+[format+ STF]
+type=AY
+mimetype=audio/ay-stf
+fnext=stf
+desc=ZX Spectrum Sound Tracker Pro uncompiled module
+desc[ru]=Не компилированный модуль ZX Spectrum Sound Tracker Pro
+editor=ZX Spectrum Sound Tracker Pro
+[format+ STP]
+type=AY
+mimetype=audio/ay-stp
+fnext=stp
+desc=ZX Spectrum Sound Tracker Pro compiled module
+desc[ru]=Компилированный модуль ZX Spectrum Sound Tracker Pro
+editor=ZX Spectrum Sound Tracker Pro
+[format+ PSC]
+type=AY
+mimetype=audio/ay-psc
+fnext=psc
+desc=ZX Spectrum Pro Sound Creator module
+desc[ru]=Модуль ZX Spectrum Pro Sound Creator
+editor=ZX Spectrum Pro Sound Creator
+match1=0:PSC V1.0
+match1=9: COMPILATION OF 
+match1=45: BY 
+[format+ FLS]
+type=AY
+mimetype=audio/ay-fls
+fnext=fls
+desc=ZX Spectrum Flash Tracker module
+desc[ru]=Модуль ZX Spectrum Flash Tracker
+editor=ZX Spectrum Flash Tracker
+[format+ FTC]
+type=AY
+mimetype=audio/ay-ftc
+fnext=ftc
+desc=ZX Spectrum Fast Tracker module
+desc[ru]=Модуль ZX Spectrum Fast Tracker
+editor=ZX Spectrum Fast Tracker
+match1=0:Module: 
+match1=50:;Fast Tracker v1.00
+[format+ PT1]
+type=AY
+mimetype=audio/ay-pt1
+fnext=pt1
+desc=ZX Spectrum Pro Tracker 1 module
+desc[ru]=Модуль ZX Spectrum Pro Tracker 1
+editor=ZX Spectrum Pro Tracker v1.xx
+[format+ PT2]
+type=AY
+mimetype=audio/ay-pt2
+fnext=pt2
+desc=ZX Spectrum Pro Tracker 2 module
+desc[ru]=Модуль ZX Spectrum Pro Tracker 2
+editor=ZX Spectrum Pro Tracker v2.xx
+[format+ PT3]
+type=AY
+mimetype=audio/ay-pt3
+fnext=pt3
+desc=ZX Spectrum Pro Tracker 3 module
+desc[ru]=Модуль ZX Spectrum Pro Tracker 3
+editor=ZX Spectrum Pro Tracker v3.xx
+match1=0:ProTracker 3.
+match1=14: compilation of 
+match1=62: by 
+match2=0:Vortex Tracker II 1.0 module: 
+match2=62: by 
+[format+ SQT]
+type=AY
+mimetype=audio/ay-sqt
+fnext=sqt
+desc=ZX Spectrum SQ-Tracker compiled module
+desc[ru]=Компилированный модуль ZX Spectrum SQ-Tracker
+editor=ZX Spectrum SQ-Tracker
+[format+ GTR]
+type=AY
+mimetype=audio/ay-gtr
+fnext=gtr
+desc=ZX Spectrum Global Tracker module
+desc[ru]=Модуль ZX Spectrum Global Tracker
+editor=ZX Spectrum Global Tracker
+match=1:GTR#10;
+[format+ FXM]
+type=AY
+mimetype=audio/ay-fxm
+fnext=fxm
+desc=Fuxoft AY Language file
+desc[ru]=Файл AY Language Fuxoft'а
+editor=Fuxoft AY Language
+match=0:FXSM
+[format+ PSM]
+type=AY
+mimetype=audio/ay-psm
+fnext=psm
+desc=ZX Spectrum Pro Sound Maker module
+desc[ru]=Модуль ZX Spectrum Pro Sound Maker
+editor=ZX Spectrum Pro Sound Maker
+match=8:psm1
+[format+ VTX]
+type=AYR
+mimetype=audio/ay-vtx
+fnext=vtx
+desc=Vortex Project file
+desc[ru]=Файл проекта Vortex
+matchprior=49
+match1=0:ay
+match2=0:ym
+match3=0:AY
+match4=0:YM
+[format+ YM]
+type=AYR
+mimetype=audio/ay-ym
+fnext=ym
+desc=ST-Sound Project file in LHA archive
+desc[ru]=Файл проекта ST-Sound в архиве LHA
+match=2:-lh5-
+[format+ YM2]
+type=AYR
+mimetype=audio/ay-ym2
+fnext=ym
+desc=ST-Sound Project file (YM2)
+desc[ru]=Файл проекта ST-Sound (YM2)
+match=0:YM2!
+[format+ YM3]
+type=AYR
+mimetype=audio/ay-ym3
+fnext=ym
+desc=ST-Sound Project file (YM3)
+desc[ru]=Файл проекта ST-Sound (YM3)
+match=0:YM3!
+[format+ YM3b]
+type=AYR
+mimetype=audio/ay-ym3b
+fnext=ym
+desc=ST-Sound Project file (YM3b)
+desc[ru]=Файл проекта ST-Sound (YM3b)
+match=0:YM3b
+[format+ YM5]
+type=AYR
+mimetype=audio/ay-ym5
+fnext=ym
+desc=ST-Sound Project file (YM5)
+desc[ru]=Файл проекта ST-Sound (YM5)
+match=0:YM5!LeOnArD!
+[format+ YM6]
+type=AYR
+mimetype=audio/ay-ym6
+fnext=ym
+desc=ST-Sound Project file (YM6)
+desc[ru]=Файл проекта ST-Sound (YM6)
+match=0:YM6!LeOnArD!
+[format+ PSG]
+type=AYR
+mimetype=audio/ay-psg
+fnext=psg
+desc=PSG register dump file
+desc[ru]=Файл дампа регистров PSG
+match=0:PSG#26;
+[format+ TS]
+type=AY
+mimetype=audio/ay-ts
+fnext=ts
+desc=Turbo Sound container for ZX Trackers' modules
+desc[ru]=Контейнер Turbo Sound для модулей ZX редакторов
+[format+ SNDH]
+type=AYEMUL
+mimetype=audio/ay-ayemul
+fnext=sndh;snd
+desc=Atari ST music with SNDH-header and MC68000-player
+desc[ru]=Музыка Atari ST c SNDH-заголовком и MC68000-проигрывателем
+match1=0:ICE!
+match2=12:SNDH
+[format MP3]
+type=WAV
+mimetype=audio/mpeg;audio/x-mp3;audio/x-mpeg;audio/mp3
+fnext=mp3;mpga
+[format MP2]
+type=WAV
+mimetype=audio/mp2;audio/x-mp2
+fnext=mp2
+[format+ MP1]
+type=WAV
+mimetype=audio/mp1
+fnext=mp1;m1a
+desc=MPEG-1 Layer 1 audio file
+desc[ru]=Аудио-файл MPEG-1 Layer 1
+[format OGG]
+type=WAV
+mimetype=audio/ogg;audio/x-ogg
+fnext=ogg;oga
+[format OPUS]
+type=WAV
+mimetype=audio/x-opus+ogg
+fnext=opus
+[format WAV]
+type=WAV
+mimetype=audio/x-wav;audio/wav;audio/vnd.wave
+fnext=wav
+[format AIFF]
+type=WAV
+mimetype=audio/x-aiff
+fnext=aiff;aif
+[format APE]
+type=WAV
+mimetype=audio/x-ape
+fnext=ape;mac
+[format FLAC]
+type=WAV
+mimetype=audio/flac;audio/x-flac
+fnext=flac;fla
+[format WV]
+type=WAV
+mimetype=audio/x-wavpack
+fnext=wv;wvp
+[format AC3]
+type=WAV
+mimetype=audio/ac3
+fnext=ac3
+[format AAC]
+type=WAV
+mimetype=audio/aac
+fnext=aac
+[format M4A]
+type=WAV
+mimetype=audio/mp4;audio/x-m4a;audio/x-m4b
+fnext=m4a;f4a;m4b;f4b;mp4
+[format+ DFF]
+type=WAV
+mimetype=audio/dff;audio/dsf
+fnext=dff;dsf
+desc=Direct Stream Digital (Sony'n'Philips' audio format)
+desc[ru]=Direct Stream Digital (аудиоформат Sony и Philips)
+[format WMA]
+type=WAV
+mimetype=audio/x-ms-wma;audio/wma
+fnext=wma
+[format MO3]
+type=MOD
+mimetype=audio/x-mo3
+fnext=mo3
+[format IT]
+type=MOD
+mimetype=audio/x-it
+fnext=it
+[format XM]
+type=MOD
+mimetype=audio/x-xm
+fnext=xm
+[format S3M]
+type=MOD
+mimetype=audio/x-s3m
+fnext=s3m
+[format MTM]
+type=MOD
+mimetype=audio/x-mod
+fnext=mtm
+[format MOD]
+type=MOD
+mimetype=audio/x-mod
+fnext=mod;ult;uni;m15;669;med
+[format+ UMX]
+type=MOD
+mimetype=audio/umx
+fnext=umx
+desc=Unreal Tournament music package
+desc[ru]=Unreal Tournament music package
+[format CDA]
+type=CDA
+mimetype=application/x-cda
+fnext=cda
+[format MID]
+type=MIDI
+mimetype=audio/midi;audio/x-midi
+fnext=mid;midi;kar
+[format+ RMI]
+type=MIDI
+mimetype=audio/rmi
+fnext=rmi
+desc=MIDI file in RIFF container
+desc[ru]=Файл MIDI в RIFF контейнере
+match=0:RIFF
+match=8:RMID
+[format+ XMI]
+type=MIDI
+mimetype=audio/xmi
+fnext=xmi
+desc=Miles Design XMIDI file
+desc[ru]=Файл Miles Design XMIDI
+match=0:FORM
+match=8:X
+[format+ AYL]
+type=PL
+mimetype=audio/ayemullist
+fnext=ayl
+desc=AY Emulator Playlist
+desc[ru]=Список проигрывания эмулятора AY
+match=0:ZX Spectrum Sound Chip Emulator Play List File v1.
+[format M3U]
+type=PL
+mimetype=audio/x-mpegurl
+fnext=m3u;m3u8;vlc
+[format PLS]
+type=PL
+mimetype=audio/x-scpls;application/pls
+fnext=pls
+[format CUE]
+type=PL
+mimetype=application/x-cue
+fnext=cue
+[format+ AYS]
+type=Skin
+mimetype=application/ayemulskin
+fnext=ays
+desc=AY Emulator Skin
+desc[ru]=Обшивка эмулятора AY
+match=0:Ay_Emul 2.0 Skin File#13;#10;#26;

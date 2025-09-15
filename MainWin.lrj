@@ -1,0 +1,19 @@
+{"version":1,"strings":[
+{"hash":266528878,"name":"tfrmmain.hint","sourcebytes":[67,108,105,99,107,32,111,114,32,112,114,101,115,115,32,69,115,99,32,116,111,32,99,97,110,99,101,108,32,111,112,101,114,97,116,105,111,110],"value":"Click or press Esc to cancel operation"},
+{"hash":84164514,"name":"tfrmmain.caption","sourcebytes":[65,89,32,69,109,117,108,97,116,111,114],"value":"AY Emulator"},
+{"hash":69470117,"name":"tfrmmain.miplaypause.caption","sourcebytes":[80,108,97,121,32,47,32,80,97,117,115,101],"value":"Play / Pause"},
+{"hash":147499204,"name":"tfrmmain.mirestart.caption","sourcebytes":[82,101,115,116,97,114,116],"value":"Restart"},
+{"hash":371552,"name":"tfrmmain.mistop.caption","sourcebytes":[83,116,111,112],"value":"Stop"},
+{"hash":147653555,"name":"tfrmmain.miprevious.caption","sourcebytes":[80,114,101,118,105,111,117,115],"value":"Previous"},
+{"hash":347380,"name":"tfrmmain.minext.caption","sourcebytes":[78,101,120,116],"value":"Next"},
+{"hash":92818269,"name":"tfrmmain.mirandom.caption","sourcebytes":[82,97,110,100,111,109],"value":"Random"},
+{"hash":353982,"name":"tfrmmain.miopen.caption","sourcebytes":[79,112,101,110],"value":"Open"},
+{"hash":2909662,"name":"tfrmmain.miopenfiles.caption","sourcebytes":[70,105,108,101,115,46,46,46],"value":"Files..."},
+{"hash":44834414,"name":"tfrmmain.miopenfolder.caption","sourcebytes":[70,111,108,100,101,114,46,46,46],"value":"Folder..."},
+{"hash":4681998,"name":"tfrmmain.miopencd.caption","sourcebytes":[67,68,46,46,46],"value":"CD..."},
+{"hash":5508802,"name":"tfrmmain.mimixer.caption","sourcebytes":[77,105,120,101,114],"value":"Mixer"},
+{"hash":5989939,"name":"tfrmmain.mitools.caption","sourcebytes":[84,111,111,108,115],"value":"Tools"},
+{"hash":43005396,"name":"tfrmmain.miplaylist.caption","sourcebytes":[80,108,97,121,108,105,115,116],"value":"Playlist"},
+{"hash":244135829,"name":"tfrmmain.miminres.caption","sourcebytes":[77,105,110,105,109,105,122,101,32,47,32,82,101,115,116,111,114,101],"value":"Minimize / Restore"},
+{"hash":4863637,"name":"tfrmmain.miclose.caption","sourcebytes":[67,108,111,115,101],"value":"Close"}
+]}

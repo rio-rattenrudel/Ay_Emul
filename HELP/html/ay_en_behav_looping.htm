@@ -1,0 +1,20 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="looping"></A>Looping melody</H1>
+
+<P>Number of reiterations and loop point for soundchip music (except OUT, ZXAY, PSG and EPSG) both are defined in "List's Item Adjusting" dialog box by <I>Time</I> and <I>Loop</I> members. <I>Time</I> field includes on itself all number of reiterations. In this version of Ay_Emul OUT, ZXAY, PSG and EPSG files always loop to the begin.</P>
+
+<P>Suppose Ay_Emul automatically determined the duration and loop point of the module and entered them in the <I>Time</I> and <I>Loop</I> fields, respectively. Then this will be the real duration of the module. With this data, the module will be played once from start to finish.</P>
+
+<P>If you'll manually enter the value of the <I>Time</I> field, then two options are possible. If the entered value is less than the real duration, then the module will be played once from the beginning and will not be played to the end. If the entered value is greater than the real duration, the module will be played from beginning to end, and will be repeated from the loop point until the specified number of VBL (interrupts) in the <I>Time</I> field is played.</P>
+
+<P>If you manually enter the loop point, it should be borne in mind that this value is actually used only for playing YM and VTX files. For other formats, it is of a reference nature (if automatic filling), since Ay_Emul loops either to the position specified in the module or to the begin, if the loop point is not provided by format (for example, for AY, AYM and SNDH everything is decided by the native player built into these files).</P>
+
+<P>If <B>Loop</B> button of main window is in pushed state then the melody will be played infinitely. After real end of the melody Progress slider is stoped, but playing and time counting are continued. If playing is simply repeats (for some formats), then thumb of Progress bar jumps to corresponding position.</P>
+
+<P>Looping can not be applied to CD audio tracks in current version.</P>
+
+<P>There are also nuances when looping modules in a TS pair. In general, it may turn out that there are different duration modules inside the TS container (you can see only the first module duration in the playlist item settings, if you want to see the data for the second module, you can save the playlist and open the AYL file in a text file viewer). If the main window <B>Loop</B> button is not pressed, the shorter module can play to the end and become silent, while the second one will continue to playback. To avoid this, you can either enable looping with this button, or select the <I>Loop shorter of TS pair</I> option in the Tools window.</P>
+
+</BODY>
+</HTML>

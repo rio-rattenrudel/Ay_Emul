@@ -1,0 +1,30 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="startingemul"></A>Starting time of Ay_Emul</H1>
+
+<P>During starting Ay_Emul sets all of its parameters to values previously saved to configuration file. Therefore if you don't like current settings, just tune it once and they will be used for next times.</P>
+
+<P>You don't need to point full path to Ay_Emul in Windows system if you want to start it from command line or "Run" system dialog and if you was registering application (see "Tools" window description).</P>
+
+<P>Ay_Emul does not allow starting second instance of it. It simply redirects all command line parameters to first instance. So, you can change Ay_Emul settings from command line during playing even. For example, if VTX is playing, you can pass in command line:</P>
+
+<pre>Ay_Emul -n100000</pre>
+
+<P style="text-indent: 0;">and playing speed will be changed to 100 quants per second, but second instance of Ay_Emul will not start.</P>
+
+<P>To implement this mechanism, first executed Ay_Emul started special server, and further Ay_Emul processes work as its clients.</P>
+
+<P>If file names passed by several clients, the server mesures delays, and if they small then playlist is not reset and all files passed at short time range just added in playlist.</P>
+
+<P>The Windows version implements a more subtle mechanism of interaction with the standard file shell – DDE. After registering file types in the system (see the "Tools" window), Windows knows that Ay_Emul is able to work with these file types as a DDE server and, in the case of launching several files from the shell, does not launch several instances of Ay_Emul, but simply transfers them to a single instance of Ay_Emul through this exchange mechanism.</P>
+
+<P>In the Linux version, after registering the application, the system knows that Ay_Emul is able to perceive a list of files on the command line, which fully compensates for the lack of a DDE-type mechanism in this system.</P>
+
+<P>If you are launching a new version of Ay_Emul for the first time (even if it is just a new beta version) or moving it to another folder, you need to re-register the application, since the full version number and the full path to the application are part of the configuration settings of the servers mentioned above.</P>
+
+<P>Also, after starting Ay_Emul searches for file Ay_Emul.ayl in folder with executable or (if not found) in user home folder and load it into "Playlist" window. After closing Ay_Emul automatically saves current playlist to that <I>Ay_Emul.ayl</I> and remember current tune in <I>Ay_Emul.cfg</I>.</P>
+
+<P>If you have problem during starting Ay_Emul, you can remove <I>Ay_Emul.ayl</I> or <I>Ay_Emul.cfg</I> to start with default settings and empty playlist (see "Tools" window desctiption for possible location of theese files).</P>
+
+</BODY>
+</HTML>

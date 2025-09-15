@@ -1,0 +1,51 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="as0"></A>AS0</H1>
+
+<H2>Introduction</H2>
+
+<P>These are compiled modules of ASC Sound Master (Advanced Sound Master, ASM) version 0.12, a project of Andrey Sendetsky (ASC). A few words about this project can be found in the description of the ASC format. I recommend getting acquainted with it beforehand, since the AS0 format, as its predecessor, has only one minor difference, and the following description is devoted only to it.</P>
+                                                	
+<P>To smooth out your disappointment a little, at the end there is a description of a format similar to AS0, three files of this format in the form of a player+module can be found on TR-DOS disks on the Internet (file names AT, CHIP'DAL, TENNIS). The structure is so close that it leads to false triggering of some music rippers that mistake them for a regular AS0.</P>
+
+<H2>Features of the AS0 format</H2>
+
+<P>There is no concept of "Looping position" at the positions list  in 0.12 version, that is, looping is always performed to the beginning. AS0 modules, both in general structure and in the structure of patterns, samples and ornaments, are no different from ASC, with the exception of the single-byte LoopPos field, which was added to ASC at offset +2.</P>
+
+<P>Due to such a slight difference, ASM 0.12 compiled modules had no own filename extension in Ay_Emul, instead it is converted to ASC on the fly (although it is marked as ASC0 in the playlist).</P>
+
+<P>However, ASM 0.12 modules with the file extension ".as0" have often come across on the Internet in recent years, some have the author string from the player inserted into them, and many of them are cut off from the end (but usually it is not affected for sound, since mostly unused ornaments trimmed). In order for Ay_Emul to "see" them (Ay_Emul's finder ignores obviously damaged modules), it was decided to add the ".as0" extension to the list of supported file types.</P>
+
+<P>In order to turn the AS0 module into an ASC, it is enough to move the data from offset +2 to 1 byte forward and insert byte 0 into the gap formed (looping to the zero position, i.e. to the beginning) and increase by 1 the value of the three pointers to patterns, samples and ornaments.</P>
+
+<H2>The predecessor format of AS0</H2>
+
+<P>At one time, I came across strange ASM modules that resemble AS0 in structure, but they were not played by the standard ASM v0.12 player. I "temporarily" solved the problem by adding them to Tr_Songs along with players in AY format (AT.ay, CHIP'DAL.ay, TENNIS.ay) and therefore took a close look they are only in 2022.</P>
+
+<P>As it turned out, these are indeed modules of the same structure as AS0, both samples and ornaments coincided, the difference was only in the pattern channel descriptors. Moreover, the analysis showed that there is nothing in the pattern that does not fit into the AS0 and ASC format.</P>
+
+<P>As a result, the converter "as02as0" was written, and all three modules converted to ASC are in Tr_Songs now. Due to the small number of available modules, this converter did not integrate into Ay_Emul' finder, because it is difficult to make the detector reliable with such an insignificant collection for debugging.</P>
+
+<H3>The pattern structure of the AS0 predecessor</H3>
+
+<TABLE>
+<TR><TH>Bytes<TH>Description</TR>
+<TR><TD>0x00..0x55, [Env]<TD>Note. If envelope is on then added Env, the envelope period low byte. Exit.</TR>
+<TR><TD>0x56..0x7d<TD>Exit.</TR>
+<TR><TD>0x7e<TD>Interrupt the sample cycle. Exit.</TR>
+<TR><TD>0x7f<TD>Turn off the sound. Exit.</TR>
+<TR><TD>0x80..0x9f<TD>Sample 0..31.</TR>
+<TR><TD>0xa0..0xbf<TD>Ornament 0..31.</TR>
+<TR><TD>0xc0<TD>Turn on the envelope. The period Env immediately after the note.</TR>
+<TR><TD>0xc1..0xcf<TD>Volume of channel 1..15. Turn off the envelope.</TR>
+<TR><TD>0xd0..0xef<TD>Noise 0..31.</TR>
+<TR><TD>0xf0, Skip<TD>Skip 1..64 lines. 1 is default.</TR>
+<TR><TD>0xf8<TD>Envelope type 8.</TR>
+<TR><TD>0xfa<TD>Envelope type 10.</TR>
+<TR><TD>0xfс<TD>Envelope type 12.</TR>
+<TR><TD>0xfe<TD>Envelope type 14.</TR>
+<TR><TD>0xff<TD>Pattern end.</TR>
+</TABLE>
+
+</BODY>
+</HTML>

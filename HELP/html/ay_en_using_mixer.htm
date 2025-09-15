@@ -1,0 +1,68 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="mixer"></A>"Mixer" dialog box</H1>
+
+<P>Hot key is <B>G</B>. "Mixer" box give you full control under AY/YM sound emulation. The settings are used both for playing and for generating WAV-files. The most parameters can be changed during playing. If "Get from list" option were checked then corresponding setting would be got from playlist either global or playing item parameters (if it set manually or loaded from corresponding file format header). In grayed fields current playing parameters are shown.</P>
+
+<H2>Tab sheet "AY Emulation"</H2>
+
+<P><B>Channels amplification.</B> For each of chip channels (A, B and C) amplification to right and left channels can be set by inputting number (range 0&ndash;255, equivalent to k=0.0&ndash;1.0) or by moving sliders. <B>Beeper</B> (ZX Spectrum speaker) and <B>DMA-Sound</B> (Atari STe digital output device) amplification is set by same way. <b>Preamp</b> is common amplification parameter for all devices. To set predefined patterns press <i>Helper</i> button.</P>
+
+<P>If a combination of the values of the selected coefficients can lead to an overflow of any device (TS or DMA), a corresponding warning appears. <i>Helper</i> button opens the "Mixer Amplifier Helper" dialog, which helps to set the maximum possible values of coefficients and avoid overflow, it is enough to select the desired channel layout and the devices you need and click the <i>Set</i> button.</P>
+
+<P><B>Resampler.</B> Sound chip works at high frequency clock (higher than human ear can hear), therefore need to rearrange it to sound card's sample rate. This task has no unambiguous solution, the closer to ideal, the more CPU usage. So, you can select "averager" option to use simple low CPU usage algorithm: it slightly mutes resampling artifacts and can be used for the most music modules. But there are some special modules require more exact method: some musicians use high and even ultra-high frequencies for some effects, and it is recommended using <i>FIR-filter</i> to play it in Ay_Emul. Number of coefficients are chosen automatically (depends of sample rate and chip frequency) and displayed here too.</P>
+
+<P><B>Sound chip frequency.</B> Choose standard external clock frequency or input own value.</P>
+
+<P><B>Chip type.</B> Choose chip type (AY or YM).</P>
+
+<P><B>Interrupt frequency.</B> Choose or input player frequency (not used for playing non-synchronized files &ndash; OUT, ZXAY, EPSG, AY and AYM, they use <I>TStates per frame</I> instead).</P>
+
+<P><B>OUT, ZXAY, AY, AYM.</B> <I>Interrupt offset</I> parameter is used for converting from OUT and ZXAY into PSG, VTX and YM6. Its value is time of first outing to chip from beginning of OUT or ZXAY file (in Z80 tacts). The offset must be smaller than <I>TStates per frame</I> parameter. <I>TStates per frame</I> parameter defines range in Z80 TStates (tacts) between interrupts. The parameter is used with <I>Z80 frequency </I>for playing AY and AYM files, and with <I>Interrupt offset</I> for converting from OUT and ZXAY. If OUT and ZXAY are created by using "Z80" Speccy emulator by G.A. Lunter then <I>TStates per frame</I> must be 69888.</P>
+
+<P><B>Z80 frequency.</B> Set Z80 clock frequency for playing OUT, ZXAY, EPSG, AY and AYM. If OUT files are created in "Z80" Speccy emulator by G.A. Lunter then Z80 frequency is 3494400 Hz. If EPSG files are created in “Pentagon 128K” mode of Z80 Stealth emulator then Z80 frequency is 3500000 Hz.</P>
+
+<P><B>MC68000 frequency.</B> Used for playing SNDH-files. Select standard 8000000 Hz or input own value.</P>
+
+<P><B>YM5, YM6, SNDH (MFP Timer).</B> Timer frequency both for playing Atari ST special effects in YM5 and YM6 files and for its emulation for playing SNDH-files. Option <I>AY/YM x 16/13 </I>attaches MFP timer frequency to clock frequency of the sound chip with factor 16/13. Very conveniently for listening these files on frequency AY/YM other than 2 MHz. Option <I>Atari ST</I> allows to set documented frequency 2457600 Hz. Option <I>Another</I> allows to enter any other value.</P>
+
+<P><B>Atari ST emulation (SNDH).</B> Select architecture: ST for ordinary Atari ST, STe for DMA-Sound; 'YM mono' option to force set YM channels amplification coefficients to mono; and 'Mono' option to force set sound driver mono mode (even if Stereo is pointed on "Digital Sound" tab sheet).</P>
+
+<P>You can switch ST/STe to listen different versions of some music with digital samples (player in SNDH can detect DMA-Sound presence and select different ways to play), or if you not sure that SNDH is played correctly in one of this mode. Natively Atari ST has YM2149F with mono output, and there are some digital sound engines used it on Atari ST, for this kind of music "YM mono" option can be useful.</P>
+
+<H2>Tab sheet "Digital Sound"</H2>
+
+<P><B>Sample rate, Bit rate, Channels.</B> Parameters of your sound card for digital audio playing. For better emulation use 16-bit stereo sound at sample rate frequency is equal to AY counters frequency (press <I>AY / 8</I> button and required frequency will be calculated automatically). In fact, this high sample rate can be used only for generating WAV files for resampling to some lower rate with external resampler. For listening sound in Ay_Emul select sample rate not lower than 44100 Hz. If your sound device does not support selected sample rate, error message will appear during trying start playing or maybe sound quality will be worse because of additional resampling will be performed by system or sound card driver. Anyway, refer to your sound card documentation.</P>
+
+<P><B>Buffers</B>. Allows set sound <I>Buffer length</I> in ms and select <I>Number of buffers</I>. <I>Total length</I> is calculated automatically. It defines sound latency after changing AY emulation parameters on corresponding tab sheet. Small length can bring to unstable sound.</P>
+
+<P><B>Device.</B> Allows select sound device. <I>Wave Mapper</I> is recommended.</P>
+
+<P>All setting of tab sheet <B><I>Digital Sound</I></B> cannot be changed during playing. To stop playing, press <B>Stop playing</B> button at lower side of tab sheet.</P>
+
+<H2>Tab sheet "MIDIOut"</H2>
+
+<P><I>Unfortunately, MIDI support is implemented only in the Windows version of Ay_Emul at the moment.</I></P>
+
+<P><B>Device.</B> Allows select MIDI-device (cannot be changed during playing).</P>
+
+<P><B>Seek to first “Note On” MIDI-event.</B> Allows to skip silence at begin of MIDI-files. There are many ones in Internet MIDI-collections, that have 2&ndash;3 seconds delay before playing (some time about 10 seconds), so it is very useful feature. Option works only if pause is greater than 0.5 sec, then <B><I>Progress</I></B> thumb jumps to 20 ms before first note in MIDI-file.</P>
+
+<H2>Tab sheet "Global Volume Control"</H2>
+
+<P>Select desired mixer to associate with global volume control on main window. By checking <I>Linear scale (as is)</I> you are disabling logarithmic correction and low part of range will be controlled rougher. <I>Save volume position</I> allows to store current volume position before closing application and restore it at next launch.</P>
+
+<H2>Tab sheet "BASS v2.4 (optional)"</H2>
+
+<P>If you want to play some extra music formats then place BASS library files into folder with Ay_Emul (bass.dll, bass_aac.dll, bass_ac3.dll, bassape.dll, bassalac.dll, bassdsd.dll, bassflac.dll, bassopus.dll, basswma.dll, basswv.dll for Windows, and libbass.so, libbass_aac.so, libbass_ac3.so, libbassape.so, libbassalac.so, libbassdsd.so, libbassflac.so, libbassopus.so, libbasswv.so for Linux).</P>
+
+<P>The most parameters for BASS are not adjustable in Ay_Emul (they are set either to default, or to some fixed in source code values). </P>
+
+<P><B>Visualistaion</B> group allows to set parameters of spectrum and amplitude analyzers. <I>Number of FFT coef.</I> &ndash; higher value for better visualization in low frequency range, but it takes more CPU time and dynamics are decreasing due bigger sound buffer. Check <I>Hann window</I> for more accurate FFT algorithm. Check <I>Remove DC bias</I> to point BASS align the data in the analyzed buffer (if they are shifted up or down the amplitude ax) before proceeding FFT algorithm. <I>AmpMin/AmpMax</I> &ndash; parameter for logarithmic amplitude scale (inversely proportional value to average number of heard levels). 0.003 corresponds to about 300 levels of sound volume (very close to human ears possibilities).</P>
+
+<P><B>Connection parameters</B> group allows to adjust BASS net parameters for playing Internet radio or any BASS supported music files located at external hosts. You can override default BASS <I>User-Agent</I> (just set not empty value) if the server returns data only for some limited list of browsers or players (usually they identified by User-Agent in HTTP-query). Also, you can check <I>Use proxy</I> if you need it for accessing Internet, and even point own to override system proxy settings.</P>
+
+<P><B>Restore </B>button is used for setting all "Mixer" box parameters to default values. <B>Close</B> button closes mixer window (use Esc from keyboard).</P>
+
+</BODY>
+</HTML>

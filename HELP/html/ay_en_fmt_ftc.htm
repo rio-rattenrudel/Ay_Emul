@@ -1,0 +1,115 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="ftc"></A>FTC</H1>
+
+<H2>General remarks</H2>
+
+<P>These are compiled Fast Tracker modules, a project of Sergey Matveev (Orion), modified from version 1.07 by Alexander Pluzhnikov (Sand).</P>
+
+<P>The format was built with capabilities that hypothetically allow to import modules of such various tracker families as ASC–PSC and ST–PT3 with almost no loss. Despite this, only a few dozen original modules can be found  (i.e., not conversions from other formats).</P>
+
+<P>Since the ideas are not original, the format has improved some points, worsened some, and repeated some without changes (up to the point that it inherited known problems).<P>
+
+<P>The FTC did not repeat the PSC's mistakes, and regulates the amplitude in the sample, as it should, and not the channel volume.</P>
+
+<P>However, the portamento variant is implemented not the same as in ASC (this is an ideal that no tracker has repeated anymore), but the same as in PT3 (the command parameter is not the number of ticks, but the tone period change value). However, this has already been done without the PT3 mistakes.</P>
+
+<P>But the questionable tone and volume tables are simply copied from the PT 1.xx–3.xx project without changes, and these are false notes and an irrational way to control the channel volume.</P>
+
+<P>The FTC (unlike the ASC) does not allow you to specify an envelope period without a type. However (unlike PT3), the same envelope type is not rewritten in R13 (that is, it will not be possible to reinitialize the envelope). That is, PT3 and the FTC made almost (i.e. mirrored) the same mistake.</P>
+
+<P>The FTC abandoned some of the not-so-frequently used features and special commands of both ASC and PT2 (not to mention PT3), but it nevertheless stayed the most featured of all known trackers. Therefore, the reason for the low popularity may need to be looked for in something else.</P>
+
+<H2>Improvements in 1.07 and 1.08 versions</H2>
+
+<P>The project got rid of the unsuccessful note table since 1.07 version. Instead, the musician (as in PT3) had a choice of two options. But unlike PT3, this is a choice of two correct options: the original table from Sound Tracker for the frequency of 1773400 Hz (original ZX Spectrum) and its own for 1750000 Hz (clones from former USSR).</P>
+
+<P>And in version 1.08, the editor was spared another drawback: the lack of the one type envelope reinitialization. And not just spared &ndash; there was a choice between the old behavior and the new one through a new effect launched by the special command "Full env+tone retrig".</P>
+
+<P>In addition to the forced reinitialization of the envelope, the new effect tries to output the tone and envelopes so that the envelope period and the tone period always start in the same place: almost simultaneously (with a fixed delay). According to the chip specification, the tone does not have reinitialization, therefore, when a new period value is written to the tone registers, the previous one wiil finish "ticking" first (how much is left before the new value, a random number), and only after that the new one starts ticking from zero.</P>
+
+<P>But from the description of the chip logic , which was made by G.A.Lunter and which is the basis for many emulators (including Ay_Emul and Vortex Tracker II), it follows that if you write 0 to the tone registers, the "ticking" ends already at the next AY clock cycle. After that, you can write the desired tone value, the countdown will immediately start from zero, that is, from the beginning.</P>
+
+<P>That is, if you write the envelope type in R13, then 0 in tone, wait at least 1 tick of AY, and write the desired tone, then you will get a retrig. When retrigging, the tone+envelope will always sound the same. And without a retrigue, the same note placed on different lines of the pattern with the same envelope period will sound louder, quieter, or barely audible at all.</P>
+
+<P>However, one should not hope that the tone generators of all manufactured AY-3-891x and YM2149F chips work the same way: this is far from the case, not to mention the emulators. Therefore, I would recommend using the Retrig command in Fast Tracker only when reinitialization of the envelope is required, otherwise the listener of your music may not hear exactly what you hear on your hardware or in the ZX Spectrum emulator.</P>
+
+<H2>Module format</H2>
+
+<P>There is a lot of "extra" data in the format from the player's point of view. Since I have not researched the FTC format from other points of view, only assumptions have been made about some of such data.</P>
+
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Designation<TH>Description</TR>
+<TR><TD>+0<TD>8<TD>Pretitle<TD>String "Module: ".</TR>
+<TR><TD>+8<TD>42<TD>Title<TD>Song name.</TR>
+<TR><TD>+50<TD>1<TD>ToneTable<TD>For versions before 1.07 symbol ";" (ST table from PT 1.xx&ndash;3.xx), otherwise the number of the note table (1 means original ST for 1.7734 MHz; 2 means own FT for 1.75 MHz).</TR>
+<TR><TD>+51<TD>18<TD>Version<TD>String "Fast Tracker v1.00", the version can be from 1.00 to 1.08.</TR>
+<TR><TD>+69<TD>1<TD>Delay<TD>Playback speed.</TR>
+<TR><TD>+70<TD>1<TD>LoopPos<TD>Position number for looping.</TR>
+<TR><TD>+71<TD>4<TD>Unknown<TD>Unknown (not used in the player).</TR>
+<TR><TD>+75<TD>2<TD>PatsPtr<TD>Pointer to patterns.</TR>
+<TR><TD>+77<TD>2<TD>SamTtlsPtr<TD>Pointer to the sample names (not used in the player).</TR>
+<TR><TD>+79<TD>2<TD>OrnTtlsPtr<TD>Pointer to the ornament names (not used in the player).</TR>
+<TR><TD>+81<TD>1<TD>Unknown<TD>Unknown (not used in the player).</TR>
+<TR><TD>+82<TD>64<TD>SamPtrs<TD>Pointers to 32 samples (described below).</TR>
+<TR><TD>+146<TD>66<TD>OrnPtrs<TD>Pointers to 33 ornaments (described below).</TR>
+<TR><TD>+212<TD>?<TD>PosList<TD>Position list (described below).</TR>
+<TR><TD>+SamTtlsPtr<TD>?<TD>SamTtls<TD>Compressed sample names (not used in the player).</TR>
+<TR><TD>+OrnTtlsPtr<TD>?<TD>OrnTtls<TD>Compressed ornament names (not used in the player).</TR>
+<TR><TD>+PatsPtr<TD>?<TD>ChanPatPtrs<TD>For each pattern, three A, B, C pointers to the channel descriptors; 0xFFFF is the marker of the list end.</TR>
+<TR><TD><nobr>+ChanPatPtrs[]</nobr><TD>?<TD>ChanPats<TD>Pattern channel descriptors (described below).</TR>
+<TR><TD><nobr>+SamPtrs[]</nobr><TD>?<TD>Samples<TD>Sample list (with a separating byte 0, which is not used in the player).</TR>
+<TR><TD><nobr>+OrnPtrs[]</nobr><TD>?<TD>Ornaments<TD>Ornament list (with a separating byte 0 and some other elements that are not used in the player).</TR>
+</TABLE>
+
+<H3>Pattern channel descriptor</H3>
+
+<P>As in other trackers, it is a sequence of bytes ended with 0xFF (may be missing).</P>
+
+<TABLE>
+<TR><TH>Bytes<TH>Description</TR>
+<TR><TD>0x00..0x1F<TD>Set the sample (0..31).</TR>
+<TR><TD>0x20..0x2F<TD>Set the volume (0..15).</TR>
+<TR><TD>0x30<TD>Turn off the sound. Exit. Skip 0 lines.</TR>
+<TR><TD><nobr>0x31..0x3E, EnvPL, EnvPH</nobr><TD>Enable envelopes (type 1..14). Set the envelope period to EnvP. The player outputs the specified envelope type to R13 only if it differs from the previous value.</TR>
+<TR><TD>0x3F<TD>Disable envelopes.</TR>
+<TR><TD>0x40..0x5F<TD>Exit. Skip 0..31 lines.</TR>
+<TR><TD>0x60..0xCB<TD>Set the note (0..107, in reality the player cuts off to 95 the upper bound of the result after all the offsets addition). Exit. Skip 0 lines.</TR>
+<TR><TD>0xCC..0xEC<TD>Set the ornament (0..32).</TR>
+<TR><TD><nobr>0xED, TSlStpL, TSlStpH</nobr><TD>Start the slide with a TSlStp step per interrupt (a two-byte signed number).</TR>
+<TR><TD>0xEE, TSlStp<TD>Start the portamento from the previous note with a TSlStp step (a single-byte unsigned number).</TR>
+<TR><TD>0xEF, Val<TD>Before 1.08 version, the range of the Val parameter is 0..255: set the noise period (bits 7-5 are ignored). Since 1.08 version, for Val=0..31: set the noise period; for Val=254: run the "Full env+tone retrig" effect, the remaining Val values are filtered out by the compiler.</TR>
+<TR><TD>0xF0..0xFE, Delay<TD>Set the playback speed.</TR>
+</TABLE>
+
+<H3>Sample</H3>
+
+<TABLE>
+<TR><TH>Bytes<TH>Description</TR>
+<TR><TD>+0<TD>Tick number for looping.</TR>
+<TR><TD>+1<TD>Sample length in ticks, reduced by 1.</TR>
+<TR><TD>+2<TD>List of five-bytes ticks. Every tick:<BR>
+ +0 Bit 7:1, if accumulates the noise period addition. Bit 6: noise mask. Bits 5&ndash;0 are noise period addition.<BR>
+ +1 low byte of the tone period addition.<BR>
+ +2 Bits 7:1, if accumulates the tone period addition. Bit 6: Tone mask. Bits 5&ndash;0 are high bits of the tone period addition (the tone register is 12–bit, so a 12-bit signed number is obtained, the remaining bits are not important).
+ +3 Bits 7: 1, if accumulates envelope period addition. Bit 6: 1, if envelopes are allowed. Bit 5: 1, if a change by 1 of the sample amplitude is enabled. Bit 4: 1, if it is a decrease of the sample amplitude, 0 is an increase. Bits 3&ndash;0 are the amplitude.<BR>
+ +4 The envelope period addition (a number with a sign).</TR>
+</TABLE>
+
+<H3>Ornament</H3>
+
+<TABLE>
+<TR><TH>Bytes<TH>Description</TR>
+<TR><TD>+0<TD>Tick number for looping.</TR>
+<TR><TD>+1<TD>Ornament length in ticks, reduced by 1.</TR>
+<TR><TD>+2<TD>List of two-bytes ticks. Every tick:<BR>
+ +0 Bit 7: 1, if accumulates the noise period addition. Bit 6: 1, if accumulates the note number addition. Bits 5&ndash;0 are the noise period addition.<BR>
+ +1 The note number addition in semitones.</TR>
+</TABLE>
+
+<H3>Position list</H3>
+
+<P>Two bytes per position: pattern number and transposition (signed number). The list of positions ends with 0xFF.</P>
+
+</BODY>
+</HTML>

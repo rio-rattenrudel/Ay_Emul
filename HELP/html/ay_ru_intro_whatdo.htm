@@ -1,0 +1,85 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="whatdo"></A>Что делает Ay_Emul</H1>
+
+<P>Программа "Эмулятор музыкального сопроцессора ZX Spectrum" для Windows или Linux (далее Ay_Emul) предназначена для проигрывания музыки, написанной для музыкального сопроцессора AY-3-8912 (или его аналогов, таких как AY-3-8910 и YM2149F). Проигрывание осуществляется путем эмулирования, то есть наличие настоящих микросхем не требуется. Также Ay_Emul умеет проигрывать музыку для динамика ZX Spectrum (упрощённая эмуляция бипера). Дополнительно в Ay_Emul встроена возможность проигрывания аудиодорожек компакт дисков и MIDI-файлов. С помощью дополнительной библиотеки BASS Ian'а Luck'а Ay_Emul может проигрывать цифровые трекерные модули и звукозапись.
+<P>Ay_Emul может проигрывать файлы следующих типов.
+<OL>
+<LI>Дампы регистров, записанные в эмуляторах различных компьютеров:
+<UL>
+<LI>OUT (получаемые в эмуляторе ZX Spectrum 'Z80' v3.xx by G.A. Lunter);
+<LI>PSG (создаются эмулятором ZX Spectrum 'Z80 Stealth' by Mr.Kirill, а также некоторыми другими эмуляторами);
+<LI>EPSG (создаются эмулятором ZX Spectrum 'Z80 Stealth');
+<LI>YM (файлы 'StSound Project' by Leonard/Oxygen, поддержаны YM2, YM3, YM3b, YM5 и YM6 подтипы);
+<LI>VTX (файлы 'Vortex Project' by V_Soft);
+<LI>ZXAY (файл, разработанный специально для Ay_Emul).
+</UL>
+<LI>Модули популярных музыкальных редакторов ZX Spectrum:
+<UL>
+<LI>ST1 &ndash; Sound Tracker v1.xx (некомпилированные);
+<LI>AY подтипа ST11 &ndash; Sound Tracker v1.1 (некомипилированные), аналог ST1;
+<LI>STC, ZXS &ndash; Sound Tracker v1.xx, Super Sonic v1.xx;
+<LI>ST3 &ndash; перекомпиляция STC (в S.T. Music's Recompiler от KSA);
+<LI>PSC &ndash; Pro Sound Creator v1.xx;
+<LI>AS0, ASC &ndash; ASC Sound Master v0.xx-2.xx;
+<LI>PT1, PT2, PT3 &ndash; Pro Tracker v1.xx-3.xx, Vortex Tracker II v1.0;
+<LI>STF &ndash; Sound Tracker Pro (некомпилированные);
+<LI>STP &ndash; Sound Tracker Pro;
+<LI>FTC &ndash; Fast Tracker v1.xx;
+<LI>FLS &ndash; Flash Tracker;
+<LI>SQT &ndash; SQ-Tracker;
+<LI>GTR &ndash; Global Tracker v1.x;
+<LI>FXM &ndash; Fuxoft AY Language;
+<LI>AY подтипа AMAD &ndash; модули Amadeus, аналог FXM;
+<LI>PSM &ndash; Pro Sound Maker.
+</UL>
+<LI>Дампы памяти ZX Spectrum, Atari ST/STe или Amstrad CPC, содержащие проигрыватель для процессора (Z80 или MC68000):
+<UL>
+<LI>AY подтипа EMUL (файлы проектов DeliAY и AYPlay);
+<LI>AYM (файлы проекта RDOSPLAY);
+<LI>SNDH (файлы с музыкой Atari ST или Atari STe).
+</UL>
+<LI>Аудиодорожки компакт дисков (CDA). Предусмотрена возможность работы сразу с несколькими приводами CD, а также с дисками, содержащими не только аудиодорожки.
+<LI>MIDI-файлы:
+<UL>
+<LI>MID, MIDI &ndash; стандартный формат MIDI-файлов;
+<LI>RMI &ndash; MID-файлы в RIFF-контейнере;
+<LI>KAR &ndash; стандартные MID-файлы с текстами песен для караоке;
+<LI>XMI &ndash; файлы в формате Miles Design XMIDI.
+</UL>
+<LI>Файлы, проигрываемые библиотекой BASS:
+<UL>
+<LI>MP3, MP2, MP1 &ndash; кодированная звукозапись MPEG 1;
+<LI>OGG &ndash; кодированная звукозапись Vorbis;
+<LI>OPUS &ndash; кодированная звукозапись Opus;
+<LI>WAV &ndash; звукозапись, проигрывается все, для чего в системе установлены соответствующие кодеки;
+<LI>WMA &ndash; кодированная звукозапись Windows Media (через расширение basswma);
+<LI>AIFF, AIF &ndash; кодированная звукозапись AIFF;
+<LI>APE &ndash; звукозапись Monkey's Audio (через расширение bassape);
+<LI>FLAC &ndash; звукозапись Free Lossless Audio Codec (через расширение bassflac);
+<LI>WV &ndash; звукозапись WavPack (через расширение basswv);
+<LI>AC3 &ndash; многоканальная кодированная звукозапись стандарта AC3;
+<LI>AAC &ndash; звукозапись Advanced Audio Coding;
+<LI>M4A, MP4 &ndash; Аудио MPEG-4 (Advanced Audio Coding, Apple Lossless Audio Codec)
+<LI>DFF, DSF &ndash; Direct Stream Digital (аудиоформат Sony и Philips)
+<LI>MO3 &ndash; модули с кодированными в MP3/OGG сэмплами;
+<LI>IT &ndash; Impulse Tracker;
+<LI>XM &ndash; Fast Tracker 2;
+<LI>S3M &ndash; Scream Tracker 3;
+<LI>MTM &ndash; MultiTracker;
+<LI>MOD &ndash; основной формат модулей;
+<LI>UMX &ndash; пакет музыки Unreal Tournament;
+<LI>HTTP:// и FTP:// shout cast потоки (интернет-радио и т.п.).
+</UL>
+</OL>
+<p>Два из большинства указанных в п.2 типов трекерных модулей могут играться одновременно посредством специального формата в режиме Turbo Sound (TS, устройство для ZX Spectrum, позволяющее одновременно подключить два музыкальных сопроцессора). Также поддержан TS-формат PT v3.7+.
+<p>При проигрывании SNDH эмулируются таймеры MFP, DMA-Sound, а также некоторые функции TOS. Для эмуляции MC68000 используется библиотека Starscream 680x0 emulation library by Neill Corlett (corlett@elwha.nrrc.ncsu.edu). Поддерживается база данных продолжительности SNDH-музыки от Benjamin Gerard, если timedb.inc.h или sndhtimedb обнаруживаются в папке Ay_Emul. Чтобы использовать или обновить, просто поместите исходный файл timedb.inc.h в папку Ay_Emul, и sndhtimedb будет сгенерирован/перегенерирован при следующем запуске. Указанную базу можно найти в <A href="https://sourceforge.net/p/sc68/code/HEAD/tree/file68/src/timedb.inc.h" target="_blank">исходниках проекта sc68</A>.
+
+<p>Ay_Emul поддерживает списки проигрывания (плейлисты) Winamp'а (M3U, M3U8), XMPlay (PLS) и собственного формата (AYL), для звуковых потоков также поддержана разметка звуковых дорожек в формате CUE. AYL может содержать полный набор параметров для каждого элемента списка.
+<p>Ay_Emul может использоваться как мощный инструмент для работы с файлами музыкального сопроцессора. Встроенный риппер может отыскать в заданных несжатых файлах модули большинства спектрумовских музыкальных редакторов. Ay_Emul может конвертировать файлы в WAV, ZXAY, VTX, YM6 или PSG форматы, а при наличии библиотеки BASSENC &ndash; в MP3, OGG, FLAC и OPUS. Ay_Emul проигрывает цифровую музыку, хранящуюся в OUT, ZXAY, EPSG, AY или AYM файлах. Также проигрывается и музыка для бипера ZX Spectrum (форматы AY и AYM).  Поддержано проигрывание специальных эффектов, используемых музыкантами с Atari ST и предусмотренных форматами YM2, YM5 и YM6.
+<p>Главное окно Ay_Emul может быть оформлено сторонними дизайнерами благодаря поддержке обшивок (скинов AYS).
+<p>Библиотека BASS загружается только перед проигрыванием файла соответствующего типа и выгружается по окончании его проигрывания. Аналогичное поведение реализовано для библиотеки BASSENC &ndash; она подгружается только на время кодирования.
+<p>Требования программы: операционная система Linux либо Windows XP или новее, для работы нужен процессор 386 или новее, а для проигрывания звуковая карта, поддерживающая воспроизведение 8- или 16-битного стерео или моно звука с любой частотой сэмплов из диапазона от 8000 до 300000 Гц, и высокопроизводительный процессор (по умолчанию включен фильтр, позволяющий получить более качественную эмуляцию как сопроцессора, так и бипера). Требования BASS для проигрывания соответствующих файлов следующие: DirectX 3 или выше (для Windows), для проигрывания MOD-файлов требуется процессор с поддержкой MMX.
+
+</BODY>
+</HTML>

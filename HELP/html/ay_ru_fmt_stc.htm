@@ -1,0 +1,127 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="stc"></A>STC</H1>
+
+<H2>Введение</H2>
+
+<P>STC &ndash; это родной формат компилированного модуля ZX Spectrum Sound Tracker. Sound Tracker &ndash; первый трекер на ZX Spectrum, который с момента появления в 1990 году получил широкую известность.</P>
+
+<P>В большинстве музыкальных коллекций расширение имени файла &ndash; STC, но, например, в пакете с ZXMUS.EXE Version 1.02 Beta от Super Dima из Калуги можно найти с расширением ZXS.</P>
+
+<P>STC-файлы создаются в Sound Tracker Song Compiler v1.2 (поставляется вместе с редактором Sound Tracker). Появившиеся в последствии компиляторы (включая встроенные в некоторые модификации редактора Sound Tracker) на выходе дают полностью совместимый результат.</B>
+
+<P>Также Ay_Emul имеет встроенный компилятор, поэтому вы можете загружать некомпилированные модули (помечаются как ST1 в окне плейлиста) и сохранять их как STC.<P>
+
+<P>Файлы редактора Super Sonic от KLAV полностью совместимы с компилированными модулями Sound Tracker, просто поменялись местами некоторые области в структуре.</P>
+
+<P>Ay_Emul может искать и обнаруживать как оригинальную, так и Super Sonic структуру (если расширение имени исходного файла не STC или если используется инструмент "Поиск модулей в файлах").</P>
+
+<H2>Технические подробности</H2>
+
+<P>Структура STC была подробно описана Ramsoft в 1993 году в документе SoundTracker Technical Reference (см. далее).</P>
+
+<H2>Использование "лишних" полей для заметок</H2>
+
+<P>В своём документе Ramsoft пропустили описание 20-байтовой области от +7 до +26. Поэтому, несколько слов от меня.</P>
+
+<P>Родной компилятор использовал 18 байт со смещения +7 для хранения строки 'SONG BY ST COMPILE' и следующего слова со смещения +25 для хранения размера всего модуля. А Super Sonic хранит здесь строку '(C) KLAV "S_SONIC"'. Другие программы-компиляторы (и перекомпиляторы) хранят здесь аналогичную информацию или о своём названии, или о версии (всего в моей базе имеется 10 вариантов).</P>
+
+<P>Безусловно, информационная строка компилятора пользователям не нужна, поэтому многие заменяли её своей строкой с именем песни, автора, разными приветствиями или даже мусором (для "защиты" от выдирания). Более того, те кто, обнаружил, что размер модуля тоже не нужен, могли добавить к своему сообщению ещё две дополнительные буквы (что обычно делал Agent-X).</P>
+
+<H2>Другой способ вставки авторской строки</H2>
+
+<P>Длины строки в 18 или 20 символов, конечно, недостаточно. Поэтому появившиеся в дальнейшем компиляторы Sound Tracker начали вставлять более длинный вариант прямо в код проигрывателя.</P>
+
+<P>Есть два вида авторской строки длиной 55 символов, каждая из которых начинается с "SOUND TRACKER COMPILATION OF " и "KSA SOFTWARE COMPILATION OF ". Первая появилась во встроенном в Sound Tracker 3 компиляторе в новом плеере для обычного STC, а вторая &ndash; в плеере ST3 (перекомпилированный STС).
+
+<P>Ay_Emul может извлечь эти строки из плеера и вставить в тело STC при сохранении из окна плейлиста или с помощью инструмента "Поиск модулей в файлах".</P>
+
+<P>Для вставки строки область, начиная с patterns data (указатель по смещению +5, см. описание термина ниже), перемещается вперёд на 55 байт; в появившийся промежуток вставляется авторская строка, а затем некоторые указатели увеличиваются на 55: указатель на patterns data (по смещению +5) и в самих patterns data (по три указателя на каждый паттерн). Примечание: в конце patterns data есть маркёр 255 (информация об этом отсутствует в описании от Ramsoft).</P>
+
+<P>Метод вставки лучше, чем простое добавление строки в конец файла: она не будет утеряна при повторном выдирании, при этом сохраняется полная совместимость с имеющимися проигрывателями STC.</P>
+
+<H2>Описание от Ramsoft</H2>
+
+<P>Далее вы можете прочитать часть документа Ramsoft (файл ST11FMT.TXT), посвящённую компилированной структуре песни.</P>
+
+<P>---------------------------cut here-------------------</P>
+<pre>
+COMPILED SONG STRUCTURE                                         
+                                                                
+Start            = delay value                                  
+Start + 1        = offset of positions map                      
+Start + 3        = offset of compiled ornaments                 
+Start + 5        = offset of patterns data                      
+Start + 27 (1Bh) = compiled samples                             
+                                                                
+Note: every offset must be added to 'Start' address.            
+                                                                
+                                                                
+COMPILED POSITIONS MAP STRUCTURE                                
+                                                                
+Byte 1 = song's lenght in patterns                              
+Remaining bytes are the same as uncompiled.                     
+End marker = 255 (FFh)                                          
+                                                                
+                                                                
+COMPILED ORNAMENTS STRUCTURE                                    
+                                                                
+Lenght of compiled ornament = 33 (21h) bytes                    
+Byte 1 = ornament number                                        
+Remaining bytes are the same as uncompiled.                     
+                                                                
+Note:ornaments are stored from number 0 (empty ornament)        
+                                                                
+                                                                
+COMPILED PATTERNS DATA STRUCTURE                                
+                                                                
+Lenght of each pattern data = 7 bytes                           
+                                                                
+Byte    1   = pattern number                                    
+Bytes  2/3  = offset of channel A data                          
+Bytes  4/5  = offset of channel B data                          
+Bytes  6/7  = offset of channel C data                          
+                                                                
+                                                                
+COMPILED SAMPLES STRUCTURE                                      
+                                                                
+Lenght of compiled sample = 99 (63h) bytes                      
+                                                                
+Byte      1     (01h) = sample number                           
+Bytes 02-97 (02h-61h) = 32 (20h) groups of 3 bytes; each group  
+                        holds the values for envelope,noise     
+                        and addition for effects                
+Byte     98     (62h) = repeat value                            
+Byte     99     (63h) = repeat lenght value                     
+                                                                
+Each group of 3 bytes is arranged as below:                     
+                                                                
+Byte n.1:     bits 0-3 = envelope value (volume)                
+              bits 4-7 = high part of addition for effects      
+                                                                
+Byte n.2:     bits 0-4 = noise value                            
+              bit   5  = addition for effects sign              
+              bit   6  = envelope mask setting                  
+              bit   7  = noise mask setting                     
+                                                                
+Byte n.3:     bits 0-8 = low part of addition for effects       
+                                                                
+                                                                
+CODES MEANING ON CHANNEL DATA                                   
+                                                                
+If:    code<96  (60h)  => bits 0-4 = note in semitones (00=C-1) 
+       code<112 (70h)  => bits 0-4 = sample number              
+       code<128 (80h)  => bits 0-4 = ornament number            
+       code=128 (80h)  => rest (shuts channel)                  
+       code=129 (81h)  => empty location                        
+       code=130 (82h)  => selects ornament 0                    
+       code<143 (8Fh)  => selects effect                        
+       code=255 (FFh)  => end channel data                      
+                                                                
+Codes between 161 (A1h) and 224 (E0h),by subtracting 161 (A1h), 
+tell the number of empty locations after the subsequent code.
+</pre>
+<P>---------------------------cut here-------------------</P>
+
+</BODY>
+</HTML>

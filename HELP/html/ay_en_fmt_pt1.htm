@@ -1,0 +1,72 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="pt1"></A>PT1</H1>
+
+<H2>Introduction</H2>
+
+<P>This is the original Pro Tracker v1.1 module is AY music editor for ZX Spectrum, author is Nikolay Khudentsov (Nick).</P>
+
+<P>According to the native documentation, it is positioned as the successor of the famous Sound Tracker. Perhaps in 1995 it sounded too presumptuous, but the subsequent versions of Pro Tracker 2 and 3 still managed to outshine the competitors' music editors.</P>
+
+<P>Commands to change the volume and playback speed, the loop position, and the configurable size of each pattern were added to the capabilities of Sound Tracker. The author's string appeared, which was saved in the body of the module (and not in the player) for the first time, which is especially valuable for the proper distribution of music, because before that a large number of Sound Tracker modules were on hand, and many in credits wrote "thanks to an unknown author".</P>
+
+<P>But the approach to saving modules turned out to be truly revolutionary. If Sound Tracker Pro removed unused patterns from the editor's stored memory dump and applied compression (which gave a compact result, but led to the loss of patterns accidentally excluded from the position list), then Pro Tracker versions 1-3 compiles before saving, which in itself works no worse than a compressor. That is why in the collections of discs and music, you can often find two versions of the same Pro Tracker module (any version), which differ only in file size: a larger size version is saved to disk from save module menu (is saved even what is not used and does not affect the sound), and with a smaller size one is saved (with or without the player) from compile menu (in this case there is nothing superfluous inside).</P>
+
+<H2>Module structure</H2>
+
+<P>The structure of the module can be called traditional, so if you have any questions with an understanding of what is described below, you can refer to the description of the predecessor formats.</P>
+
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Designation<TH>Description</TR>
+<TR><TD>+0<TD>1<TD>tempo<TD>Playback speed.</TR>
+<TR><TD>+1<TD>1<TD>numpos<TD>Number of positions</TR>
+<TR><TD>+2<TD>1<TD>lppos<TD>Looping position</TR>
+<TR><TD>+3<TD>32<TD>samptrs<TD>Pointers to samples (16 pieces, if there is no sample with this number then 0x0000, the 0th sample is always 0x0000).</TR>
+<TR><TD>+35<TD>32<TD>ornptrs<TD>Pointers to ornaments (16 pieces, if there is no sample with this number then 0x0000).</TR>
+<TR><TD>+67<TD>2<TD>patsptr<TD>Pointer to patptrs.</TR>
+<TR><TD>+69<TD>30<TD>title<TD>Author's string.</TR>
+<TR><TD>+99<TD>numpos+1<TD>poslist<TD>Positions list is pattern numbers in playing order (one byte per position) with 0xFF at the end.</TR>
+<TR><TD>+patsptr<TD><nobr>(maxpat+1)*6+2</nobr><TD>patptrs<TD>Pattern pointers list  (three pointers for each channel of the pattern) with 0x0000 at the end, maxpat is the maximum pattern number in the positions list.</TR>
+<TR><TD><nobr>+patptrs[]</nobr><TD>?<TD>patsdata<TD>Patterns data (described below).</TR>
+<TR><TD><nobr>+samptrs[]</nobr><TD>?<TD>samsdata<TD>Samples data (described below).</TR>
+<TR><TD><nobr>+orntrs[]</nobr><TD>?<TD>ornsdata<TD>Ornaments data (described below).</TR>
+</TABLE>
+
+<H3>Patterns data</H3>
+
+<P>The pattern is stored as three pointers to the pattern channels data is a sequence of bytes with 0xFF at the end.</p>
+
+<TABLE>
+<TR><TH>Channel's byte<TH>Description</TR>
+<TR><TD>0x00..0x5F<TD>Note from C-1 to B-8. Exit.</TR>
+<TR><TD>0x60..0x6F<TD>Sample from 0 to 15.</TR>
+<TR><TD>0x70..0x7F<TD>Ornaments from 0 to 15.</TR>
+<TR><TD>0x80<TD>R--. Exit.</TR>
+<TR><TD>0x81<TD>Envelope off.</TR>
+<TR><TD>0x82..0x8F<TD>Envelope type from 1 to 14 on. Next 2 bytes are envelope period.</TR>
+<TR><TD>0x90<TD>Exit.</TR>
+<TR><TD>0x91..0xA0<TD>Speed from 0 to 15.</TR>
+<TR><TD>0xA1..0xB0<TD>Volume from 0 to 15.</TR>
+<TR><TD>0xB1..0xF0<TD>The number of skipping lines from now on (from 0 to 63, initially 0).</TR>
+<TR><TD>0xF1..0xFE<TD>Ignored.</TR>
+<TR><TD>0xFF<TD>Pattern data end.</TR>
+</TABLE>
+
+<H3>Samples data</H3>
+
+<P>Samples can be up to 64 ticks long, 3 bytes per tick.</p>
+
+<TABLE>
+<TR><TH>Offset<TH>Description</TR>
+<TR><TD>+0<TD>Length from 1 to 64.</TR>
+<TR><TD>+1<TD>Loop from 0 to Length-1.</TR>
+<TR><TD>+2<TD>Tick of 3 bytes:<BR>+0 Bits 0-3 &ndash; amplitude, Bits 4-7 &ndash; high byte of tone deviation;<BR>+1 Bits 0-4 &ndash; noise period (if mask turned on), Bit 5 &ndash; tone deviation sign (1 for minus), Bit 6 &ndash; tone mask, Bit 7 &ndash; noise mask;<BR>+2 low byte of tone deviation.</TR>
+<TR><TD>+5<TD>Next ticks of 3 bytes.</TR>
+</TABLE>
+
+<H3>Ornaments data</H3>
+
+<P>Ornaments can be up to 64 ticks long, 1 byte per tick (deviation in semitones from -63 to +63), but do not have their own loop body (they loop synchronously with the sample). The editor does not save all 64 ticks to the module, but only the part that will be needed for playback.</p>
+
+</BODY>
+</HTML>

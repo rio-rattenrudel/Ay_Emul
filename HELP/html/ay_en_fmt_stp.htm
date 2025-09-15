@@ -1,0 +1,154 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="stp"></A>STP</H1>
+
+<H2>Introduction</H2>
+
+<P>STP is the native format of the compiled ZX Spectrum Sound Tracker Pro module (see the description of STF).</P>
+
+<P>The compiler is built into the editor and in different versions of Sound Tracker Pro it has certain errors.</P>
+
+<P>In some compilers, this is an optimization error, in which, removing a seemingly superfluous (repetitive) ornament, they forget about the slide command turned on before, and it begins to be duplicated on subsequent notes. A striking examples: the module "IMP49:FOOLISH GIRL" or Sumea_FN.stp by Visual.</P>
+
+<P>In others, there is no such error, but there is a lot of extra garbage and the set volume 1 commands are changed to set volume 2 ones (although this is no longer noticeable by ear since the volume is too low).</P>
+
+<P>Unfortunately, there is no numbering of the editor versions, so you will have to choose for yourself which one you have on hand is better by trial and error.</P>
+
+<P>If your goal is just to compile STF, then this can be done using the built-in compiler of Ay_Emul: I fixed all the errors found in native compilers and worked out the optimization by size.</P>
+
+<P>The STP format was well described by VfNG in the Echo #3 e-paper (given at the end). Therefore, if there are some unclear points in the further text, you can read it first.</P>
+
+<H2>Some notes on the format</H2>
+
+<P>When I chose the STP extension to use this format in Ay_Emul, I did not voice one important point (in other things, I made this mistake with some other formats). Many compiled module formats have two states: initialized and non-initialized. There is a special initialization routine is called before starting playback in the native player. In the most formats, it simply prepares internal variables for the start of playback and does not make any changes to the module itself. But there are players of some formats in which the module data is bound to the load address during initialization, and there are even those that use the header area for their needs (and, therefore, spoil it).</P>
+
+<P>A part of the offsets is bound to the load address during the initialization of the compiled Sound Tracker Pro module. Moreover, there is a byte identifier inside the file to signal that the module has already been initialized.</P>
+
+<P>The STP extension is given only to those modules that are either not initialized (that is, they are in the state in which they were saved from the editor), or the reverse operation of unbinding from the load address was performed.</P>
+
+<P>Ay_Emul, while saving the found modules (this applies not only to STP), does everything necessary to return them to the "pre-initialization" state.</P>
+
+<P>Unfortunately, in recent years, modules have begun to appear on the Internet that are saved without observing this rule, and even with incorrectly inserted author's strings (see below).</P>
+
+<P>Therefore, I had to add additional checks into Ay_Emul for some formats (including STP) after loading to take into account this feature of modern time.</P>
+
+<H2>The author's string in the body of the module</H2>
+
+<P>The first tracker formats on the ZX Spectrum suffered from the similar disease: the authors of the editors either did not provide a place for the author's string (Sound Tracker) in the format at all, or they provided, but not in the format, but in the player. At the same time, if there is a hint in an editor like ASC Sound Master that the player and the data (module) are one indivisible whole, then in STP it is mentioned directly in the documentation that different modules can be played with one player (and in such a use case it becomes unclear which module the author's string belongs to).</P>
+
+<P>We discussed this problem with Ilya Kudryavtsev (Himik's ZxZ), and he suggested modifying the ASC modules a little. I, in turn, suggested doing the same with STP. Thus, we have agreed on two new formats, the main advantage of which is full compatibility with the originals. The new STP and ASC are easily played by the original players, since they do not even know about the presence of additional information in the body of the data block.</P>
+
+<P>To insert the author's string (length 53 bytes, starts with "KSA SOFTWARE COMPILATION OF ") from the player into the body of the module, it is necessary:</P>
+<OL>
+<LI>The area starting at offset +10 should be moved 53 bytes forward.
+<LI>The author's string is inserted into the gap that has appeared.
+<LI>All offsets in the module (4 main ones at the beginning of the module, and everything starting with pattern offsets at the end) are increased by 53.
+</OL>
+
+<H2>Compiled module format</H2>
+
+<P>The following is a slightly edited excerpt from the VfNG article in the Echo #3 e-paper.</P>
+
+<P>---------------------------cut here-------------------</P>
+<P>There may be some inaccuracies in the description, so be careful. This description is not written to eliminate all the issues, but only to help you figure out some things when working with the player.</P>
+
+<TABLE>
+<TR><TD>+0<TD>Playback speed;</TR>
+<TR><TD>+1<TD>Offset to TABL1;</TR>
+<TR><TD>+3,4<TD>Offset to TABL2;</TR>
+<TR><TD>+5,6<TD>Offset to TABL3;</TR>
+<TR><TD>+7,8<TD>Offset to TABL4;</TR>
+<TR><TD>+9<TD>This byte contains the number of offsets to which you need to add the real address +0 in memory. This is done by the initialization section. If this byte=0, then initialization has already been performed. The first offset that requires initialization is from the address TABL2. Each offset size is 2 bytes (minor, major bytes of offset from +0);</TR>
+<TR><TD>+10<TD>The first pattern;</TR>
+<TR><TD>TABL1+0<TD>length of music in positions;</TR>
+<TR><TD>TABL1+1<TD>position number for looping;</TR>
+<TR><TD>TABL1+2<TD>2 bytes/position:<BR>+0 6*PATTERN number;<BR>+1 HEIGHT (deviations in notes from the usual sounding PATTERN);</TR>
+<TR><TD>TABL2<TD>PATTERN descriptors: 2 bytes of offset for each channel, which means 6 bytes/PATTERN;</TR>
+<TR><TD>TABL3<TD>offsets to ornaments. The 0th ornament is used to disable ornaments in the channel;</TR>
+<TR><TD>ТABL4<TD>offsets to samples;</TR>
+</TABLE>
+
+<P>Ornament format:</P>
+
+<TABLE>
+<TR><TD>+0<TD>looping point;</TR>
+<TR><TD>+1<TD>full length;</TR>
+<TR><TD>+2, 1*(+1)<TD>deviations from the note value;</TR>
+</TABLE>
+
+<P>Sample format:</P>
+
+<TABLE>
+<TR><TD>+0<TD>looping point;</TR>
+<TR><TD>+1<TD>full length;</TR>
+<TR><TD>+2<TD>4 bytes/QUARK:<BR>+0 bits 0-3 amplitude; bit 4 tone mask; bit 7 noise mask;<BR>+1 bit 0 envelope mask; bits 1-5 noise frequency;<BR>+2,3 bytes of frequency vibrato;</TR>
+</TABLE>
+
+<P>Each PATTERN descriptor contains pointers to channel descriptors. Channels are analyzed as follows:</P>
+
+<pre>
+        LD   HL,CHAN_POS
+        LD   A,(HL)
+        OR   A
+        JR   Z,PATTERN end
+        LD   C,#10
+LOOP    LD   A,(HL)
+        INC  HL
+        CP   #C0
+        JR   C,L9
+        SUB  C
+        JR   NC,L1
+        SUB  C
+        JR   NC,L2
+        SUB  C
+        JR   NC,L3
+        SUB  C
+        JR   L4
+L9      SUB  #80
+        JR   NC,L5
+        SUB  C
+        JR   NC,L6
+        SBC  A,C
+        JR   NC,L7
+L8      ADD  A,#60
+</pre>
+
+
+<P style="text-indent: 0;">in A is the note number. Its installation, exit;</P>
+<pre>
+L7
+</pre>
+<P style="text-indent: 0;">in A is the sample number. LOOP;</P>
+<pre>
+L6
+</pre>
+<P style="text-indent: 0;">in A is the number of the ornament. LOOP;</P>
+<pre>
+L5
+</pre>
+<P style="text-indent: 0;">in A is how many INTs you don't need to analyze the channel. LOOP;</P>
+<pre>
+L4
+</pre>
+<P style="text-indent: 0;">in A is the type of envelope. Its period in the next byte. Setting the amplitude register to #1F, LOOP;</P>
+<pre>
+L3
+</pre>
+<P style="text-indent: 0;">mute channel, exit;</P>
+<pre>
+L2
+</pre>
+<P style="text-indent: 0;">setting the value obtained in L5, exit;</P>
+<pre>
+L1      JR   Z,L0
+        DEC  A
+</pre>
+<P style="text-indent: 0;">in A is the number that must be subtracted from #0F to get the volume value. LOOP;</P>
+<pre>
+L0
+</pre>
+<P style="text-indent: 0;">glissade in the next byte. LOOP;</P>
+<P>---------------------------cut here-------------------</P>
+
+</BODY>
+</HTML>

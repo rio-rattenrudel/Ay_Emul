@@ -1,0 +1,86 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="psg"></A>PSG</H1>
+
+<P>Supported ordinary PSG and extended EPSG.</P>
+
+<P>There are exists PSG2-files (see description at RDOSPLAY site), but no plans to support it in Ay_Emul.</P>
+
+<P>Also, there are many PSG from BK (Russian computers) emulators in the Internet, but they not supported in Ay_Emul too.</P>
+
+<H2>PSG</H2>
+
+<P>These files are produced by 'x128' Speccy emulator by James McKey and 'fMSX' emulator. x128 creates PSG with errors.</P>
+
+<P>Therefore better to use 'Z80 Stealth' Speccy emulator by Kirill Kolpakov (Mr.Kirill). This emulator contains special features for creating PSG-files and also has good debugger to simplify PSG-files creating process.</P>
+
+<H3>Header structure</H3>
+<TABLE>
+<TR><TH>Offset<TH>Number of bytes<TH>Description</TR>
+<TR><TD>+0<TD>3<TD>Identifier 'PSG'.</TR>
+<TR><TD>+3<TD>1<TD>Marker "End of Text" (1Ah).</TR>
+<TR><TD>+4<TD>1<TD>Version number.</TR>
+<TR><TD>+5<TD>1<TD>Player frequency (for versions 10+).</TR>
+<TR><TD>+6<TD>10<TD>Unknown.</TR></TR>
+</TABLE>
+
+<H3>Further byte pairs and single byte markers are followed.</H3>
+
+<P>Byte 0FFh is marker of interrupt beginning.</P>
+
+<P>Byte after 0FEh is multiplied by four is a number of interrupts without outing to AY. For example, sequence "FE 01 FF" is equivalent to "FF FF FF FF FF".</P>
+
+<P>If first byte of pair is in range 0&ndash;15 then it is number of AY register, and next byte is output value of this register.</P>
+
+<P>RDOSPLAY documentation introduces yet another marker is 253 called 'End of Music'.</P>
+
+<P>If first byte of pair is in range 16&ndash;252, then this is outing to other MSX devices (ignored in Ay_Emul).</P>
+
+<H3>More about header</H3>
+
+<P>Also, RDOSPLAY documentation and some my researching of existing PSG-files talk about simpler header of PSG. This header consists of only first 4 bytes of described header and outing log starts at +4 file offset (instead of +16).</P>
+
+<P>It's not supported in Ay_Emul, but if you are still trying to play such PSG-files, you don't hear differences in the most cases.</P>
+
+<P>But it's need to add zeros to expanse header size to 16 bytes length for correct playing or converting to VTX or YM6 in Ay_Emul.</P>
+
+<H2>EPSG</H2>
+
+<P>Z80 Stealth emulator creates these files.</P>
+
+<P>EPSG additionally contains information about time of outing to AY registers, so, like OUT and ZXAY, it can store outing with Z80 CPU tact precision.</P>
+
+<P>Next text from z80s.faq file.</P>
+
+<P>-------Begin----------</P>
+<pre>
+Q: What is it &ndash; this EPSG format?
+A: It's PSG format improved just a bit to handle output of digitized samples 
+
+Here's the description:
+
+Offset	Length	Value
+============================
+Header
+============================
+0	4	'EPSG'
+4	1	0x1A marker
+5	1	Machine type: 0x00 &ndash; ZX Spectrum 128 0x01 &ndash; Pentagon
+		0xFF &ndash; Other machines
+6	4	Zero for machine type 0x00 and 0x01 or
+		Number of Z80 tacts between interrupt markers
+		for other machines
+10	6	zeroes
+============================
+AY(YM) log during 1 frame
+============================
+16	1	AY(YM) register number
+17	1	value written to this register
+18	3	T-state
+.....
+??	5	0xFFFFFFFFFF &ndash; interrupt marker
+</pre>
+<P>-------End----------</P>
+
+</BODY>
+</HTML>

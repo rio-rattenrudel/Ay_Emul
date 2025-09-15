@@ -1,0 +1,99 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="stf"></A>STF</H1>
+
+<H2>Introduction</H2>
+
+<P>This is the original uncompiled module of Sound Tracker Pro, an AY music editor for ZX Spectrum, author Stanislav Kuzin (KSA). It was developed by improving the capabilities of Sound Tracker, so in many ways it retained compatibility with it.</P>
+
+<P>Just like ST1, the STF module file is a dump of the editor's memory from the address 25000, but pre-prepared for saving and compressed. It may contain some patterns and all internal structures, samples and ornaments.
+
+<P>The original files on TR-DOS disks can be identified by the extension 'F' with the load address 25000.</P>
+
+<H2>General notes on data compression</H2>
+
+<P>One of the disadvantages of the source Sound Tracker is the large size of uncompiled modules. The KSA solution turned out to be quite straightforward: excluding not used in positions' list patterns and packing the data using the RLE method.</P>
+
+<P>The packing algorithm may not be very successful, since after unpacking usually more data is obtained than necessary. However, this does not lead to a failure, and the extra data can simply be ignored.</P>
+
+<H2>Structure of compressed data</H2>
+
+<P>The RLE type compression method is applied. In order to understand how to unpack a compressed block, it is enough to study it bit by bit using the following pseudocode.</P>
+
+<TABLE>
+<TR><TD colspan="4">first byte &ndash; to the stack</TR>
+<TR><TD colspan="4">next byte</TR>
+<TR><TD colspan="4">bit0</TR>
+<TR><TD>1<TD colspan="3">{bit1</TR>
+<TR><TD><TD>1<TD colspan="2">{bit2</TR>
+<TR><TD><TD><TD>1<TD>{(bit3-7)-1->[decompression buffer]x2 times</TR>
+<TR><TD><TD><TD><TD>}</TR>
+<TR><TD><TD><TD>0<TD>{first byte from the stack to [decompression buffer], end</TR>
+<TR><TD><TD><TD><TD>}</TR>
+<TR><TD><TD><TD colspan="2">}</TR>
+<TR><TD><TD>0<TD colspan="2">{bit2-4->B,bit5-7->C,move C bytes from [decompression buffer-(B*256+next byte)] to [decompression buffer]</TR>
+<TR><TD><TD><TD colspan="2">}</TR>
+<TR><TD><TD colspan="3">}</TR>
+<TR><TD>0<TD colspan="3">{bit1</TR>
+<TR><TD><TD>1<TD colspan="2">{bit2</TR>
+<TR><TD><TD><TD>1<TD>{bit3-7->C,move (C+1) bytes to [decompression buffer]</TR>
+<TR><TD><TD><TD><TD>}</TR>
+<TR><TD><TD><TD>0<TD>{bit3-7->B,next byte->C,move C bytes from [decompression buffer-(B*256+next byte)] to [decompression buffer]</TR>
+<TR><TD><TD><TD><TD>}</TR>
+<TR><TD><TD><TD colspan="2">}</TR>
+<TR><TD><TD>0<TD colspan="2">{bit2</TR>
+<TR><TD><TD><TD>1<TD>{bit3-7->C,next byte->[decompression buffer]x(C+3) times</TR>
+<TR><TD><TD><TD><TD>}</TR>
+<TR><TD><TD><TD>0<TD>{bit3-7->B,next byte->C,next byte->[decompression buffer]x(BC+3) times</TR>
+<TR><TD><TD><TD><TD>}</TR>
+<TR><TD><TD><TD colspan="2">}</TR>
+<TR><TD><TD colspan="3">}</TR>
+</TABLE>
+
+<H2>Excluded patterns</H2>
+
+<P>The patterns' bodies have the same size and follow each other in the editor's memory. It's determining the patterns used in the positions' list before compression, and only they get into the saved file.</P>
+
+<P>All the used patterns turn out to be next to each other after unpacking (for example, if the second pattern is not used, then the first pattern will be immediately followed by the third one in the unpacked data). Therefore, the reverse operation is performed in the native editor's memory: the unpacked patterns are moved in their places.</P>
+
+<H2>Structure of unpacked data</H2>
+
+<TABLE>
+<TR><TH>Offset<TH>Description</TR>
+<TR><TD>0x0000<TD>Samples 1-15 (15 items), 0x82 bytes each:
+	<TABLE>
+	<TR><TD>+0x00<TD>32 bytes amplitudes.</TR>
+	<TR><TD>+0x20<TD>32 bytes noises and masks (bits0-4 &ndash; noise period, bit7 &ndash; noise, бит6 &ndash; tone, bit5 &ndash; env).</TR>
+	<TR><TD>+0x40<TD>32 words tones (bit0-11 &ndash; ton deviation, bit12 &ndash; deviation sign, 1 &ndash; shown as minus, but acts as plus).</TR>
+	<TR><TD>+0x80<TD>Loop begin (numeration not from 0, but from 1), if 0 then not looped and all 32 ticks are played.</TR>
+	<TR><TD>+0x81<TD>Loop body length (decreased by 1).</TR>
+	</TABLE>
+<TR><TD>0x079E<TD>256 positions (byte pairs "pattern_number[1..31]:transposition[-128..127])", patterns removed before compression if they absent in this list, next patterns moved to their place, and vice versa, all moved back after unpacking.</TR>
+<TR><TD>0x099E<TD>The number of active positions has been reduced by 1.</TR>
+<TR><TD>0x099F<TD>Empty zero ornament? (32 zeros).</TR>
+<TR><TD>0x09B1<TD>Ornaments 1-15 (15 items), 32 bytes each:
+	<TABLE>
+	<TR><TD>+0<TD>Loop.</TR>
+	<TR><TD>+1<TD>Length-1.</TR>
+	<TR><TD>+2<TD>30 deviations in semitones.</TR>
+	</TABLE>
+<TR><TD>0x0B9F<TD>Empty zero ornament? (32 zeros).</TR>
+<TR><TD>0x0BBF<TD>Playback speed.</TR>
+<TR><TD>0x0BC0<TD>Patterns lengths (total 31 patterns).</TR>
+<TR><TD>0x0BDF<TD>Loop position.</TR>
+<TR><TD>0x0BE0<TD>Title (25 chars).</TR>
+<TR><TD>0x0BF9<TD>Patterns (3 bytes per channel's line, 3*3*64=576 bytes per pattern), unused patterns are removed before compressing (see upper).<BR>Pattern channel's line format:
+	<TABLE>
+	<TR><TD>+0<TD>0xF0 &ndash; R--, otherwise bits4-7 &ndash; note (0 &ndash; no note, 1 &ndash; A, 2 &ndash; B, 3 &ndash; C), bits0-2 &ndash; octave starting from 0, bit3 &ndash; sharp.</TR>
+	<TR><TD>+1<TD>bits4-7 &ndash; sample, bits0-3: 1/2 &ndash; tone frequency down/up, 3-7 &ndash; turn on ornament 0 (though officially do nothing), 8-Е envelope (if with note then volume is set to F), F &ndash; ornament, at the same time 3-F turn off tone slide.</TR>
+	<TR><TD>+2<TD>bits4-7 &ndash; volume, bits0-3 &ndash; ornament (if F prefix) or all bits &ndash; either envelope period (0..FF), or addition to tone for slide (0..7F as in manual, but can be 80..FF in fact, just is changing slide direction).</TR>
+	</TABLE>
+</TABLE>
+
+<H2>Sound Tracker Pro 48K</H2>
+
+<P>This is the 48K mode adaptation of Sound Tracker Pro, made in 1998 by Oleg Ivanov (Saruman).</P>
+<P>Saves uncompiled modules with extension 'f' and load address 25000. I haven't looked inside yet, but due the program docs, they should have the structure of an unpacked STF module.</P>
+
+</BODY>
+</HTML>

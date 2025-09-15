@@ -1,0 +1,8 @@
+{"version":1,"strings":[
+{"hash":161468365,"name":"tfrmfndplitm.caption","sourcebytes":[70,105,110,100,32,112,108,97,121,108,105,115,116,32,105,116,101,109],"value":"Find playlist item"},
+{"hash":236128183,"name":"tfrmfndplitm.groupbox1.caption","sourcebytes":[83,101,97,114,99,104,32,115,116,114,105,110,103],"value":"Search string"},
+{"hash":167718961,"name":"tfrmfndplitm.radiogroup1.caption","sourcebytes":[83,101,97,114,99,104,32,97,114,101,97],"value":"Search area"},
+{"hash":73859572,"name":"tfrmfndplitm.button1.caption","sourcebytes":[70,105,110,100,32,110,101,120,116],"value":"Find next"},
+{"hash":4613372,"name":"tfrmfndplitm.button2.caption","sourcebytes":[70,105,110,100,32,97,108,108],"value":"Find all"},
+{"hash":4863637,"name":"tfrmfndplitm.button3.caption","sourcebytes":[67,108,111,115,101],"value":"Close"}
+]}

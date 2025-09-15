@@ -1,0 +1,18 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="zx50"></A>ZX50</H1>
+
+<P>ZX50-format was designed especially for Ay_Emul for storing synchronized music (50 Hz). This format is better than PSG, but is worse than YM and VTX. So ZX50 support was removed from Ay_Emul.</P>
+
+<P>First four bytes of ZX50-file are ASCII string 'ZX50'. After them data strings are followed (of variable length). Each string starts with <I>Mask</I> of word size.</P>
+
+<P>If bits from 0 to 13 of the <I>Mask</I> is set (1), then bytes are followed after <I>Mask</I>. Each byte is value of AY chip register number corresponding to <I>Mask</I> bit number. For example, if <I>Mask</I> = 0000000010010001b then next three bytes after this mask are data of register 0, 4 and 7 correspondently.</P>
+
+<P>Each string is data of current quant (VBL, interrupt time). If during current quant no any outing then <I>Mask</I> = 0000000000000000b.</P>
+
+<P>Same as for ZXAY-files, if registers 0&ndash;12 previous value is equal to current value, then this value is not written to current string; but outing to register 13 always is written. Acceptable range of value for each register number see in ZXAY-format description.</P>
+
+<P>On RDOSPLAY site you can find PSG-file description. ZX50-file idea is very close to PSG2's one.</P>
+
+</BODY>
+</HTML>

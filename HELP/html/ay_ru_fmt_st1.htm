@@ -1,0 +1,82 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="st1"></A>ST1</H1>
+
+<P>Это оригинальный некомпилированный модуль Sound Tracker v1.1 &ndash; музыкальный AY редактор для ZX Spectrum, автор Jarek Burczynski (Bzyk) из Pentagram.</P>
+
+<P>Файл модуля &ndash; просто несжатый дамп памяти редактора с адреса 25000. В нём могут быть некоторые паттерны и все внутренние структуры, сэмплы и орнаменты (даже те, что не используются и не влияют на звучание). Поэтому у многих некомпилированных модулей Sound Tracker такой большой размер.</P>
+
+<P>Оригинальные файлы на дисках TR-DOS можно идентифицировать по расширению 'S' с адресом загрузки 25000 и особыми значениями размера файла (см. далее).</P>
+
+<P>Файлы с расширением ST1 &ndash; всего лишь переименованные копии оригинальных модулей, их можно найти в различных музыкальных коллекциях. Знаменитый формат AY-файла может быть контейнером и для ST1 (см. тип данных ST11 в описании AY-файлов).</P>
+
+<P>Ramsoft в 1993 году хорошо задокументировал структуру ST1 в документе SoundTracker Technical Reference.</P>
+
+<P>Далее приведена выдержка из этого документа (файл ST11FMT.TXT), посвящённая структуре некомпилированных песен.</P>
+
+<P>---------------------------cut here-------------------</P>
+<pre>
+UNCOMPILED SONGS STRUCTURE                                      
+                                                                
+Start address= 25000  (61A8h)                                   
+Lenght= 3009 (0BC1h)+576 (0240h)x[number of patterns]           
+                                                                
+Start                = uncompiled samples                       
+Start + 1950 (079Eh) = positions map                            
+Start + 2462 (099Eh) = song's lenght in patterns                
+Start + 2463 (099Fh) = uncompiled ornaments                     
+Start + 3007 (0BBFh) = delay value                              
+Start + 3008 (0BC0h) = patterns lenght                          
+Start + 3009 (0BC1h) = patterns data                            
+                                                                
+                                                                
+UNCOMPILED SAMPLES STRUCTURE                                    
+                                                                
+Length= 130 (82h) bytes per sample                              
+                                                                
+Bytes 00-31  (00h-1Fh) = envelope values (volumes)              
+Bytes 32-63  (20h-3Fh) = noise values                           
+Bytes 64-127 (40h-7Fh) = addition for effects                   
+Byte   128     (80h)   = repeat value                           
+Byte   129     (81h)   = repeat lenght value                    
+                                                                
+Note: bit 4 of additions is for sign.                           
+                                                                
+                                                                
+UNCOMPILED POSITIONS MAP STRUCTURE                              
+                                                                
+Lenght= 2 bytes per positions                                   
+                                                                
+Byte 1 = pattern number in position                             
+Byte 2 = height of pattern in this position                     
+                                                                
+                                                                
+UNCOMPILED ORNAMENT STRUCTURE                                   
+                                                                
+Lenght= 32 (20h) bytes per ornament                             
+                                                                
+Positive values = normal                                        
+Negative values = obtained with one's complement                
+                                                                
+                                                                
+UNCOMPILED PATTERN STRUCTURE                                    
+                                                                
+Lenght= 576 (0240h) bytes per pattern                           
+Lenght of location data= 9 bytes (3 bytes per channel)          
+Channel data sequence= A,B,C.                                   
+                                                                
+Byte n.1:     bits 0-2  = octave number                         
+              bit   3   = flat note flag (0=no;1=yes)           
+              bits 4-6  = note name (0=A;7=G)                   
+              bit   7   = rest flag                             
+                                                                
+Byte n.2:     bits 0-3  = effect selected number                
+              bits 4-7  = sample number                         
+                                                                
+Byte n.3:     bits 0-3  = low part of effect or ornament number 
+              bits 4-7  = high part of effect                   
+</pre>
+<P>---------------------------cut here-------------------</P>
+
+</BODY>
+</HTML>

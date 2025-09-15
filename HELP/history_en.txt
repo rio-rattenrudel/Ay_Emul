@@ -1,0 +1,5 @@
+<H1><A NAME="history"></A>History of changes</H1>
+
+<H2>The contents of the file readme.beta.txt</H2>
+
+<PRE>

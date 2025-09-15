@@ -1,0 +1,157 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="psc"></A>PSC</H1>
+
+<H2>Introduction</H2>
+
+<P>These are compiled modules of Pro Sound Creator, the project of Viktor Kuzmin (KVA). The ideology is similar to ASC Sound Master, most of the features are inherited from ASM with almost no changes. And together with the new ones, it turned out to be a good tool for musicians who either already had experience in ASM, or wanted to, but could not approach it (see the list of ASM problems in the description of the ASC format).</P>
+
+<H2>Module format</H2>
+
+<P>Pro Sound Creator is similar to ASM, including the features of the compiled module format: in some ways initially, and in some ways as it develops. So, starting from version 1.04, the samples and ornaments data offsets began to be made not relative to the beginning of the module, but relative to the beginning of these structures (as in ASM), but here the PSC author clearly did not understand the idea why this was done in ASC, since it does not give the same advantages in PSC.</P>
+
+<P>Therefore, first of all it is necessary to familiarize yourself with the ASC format, because without this, some of the points described below without too much detail may seem incomprehensible.</P>
+
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Designation<TH>Description</TR>
+<TR><TD>+0<TD>25<TD>ID<TD>"PSC V1.00 COMPILATION OF " identifier (may differ in versions, latest 1.07).</TR>
+<TR><TD>+25<TD>20<TD>Title<TD>Title (unused characters are filled with spaces).</TR>
+<TR><TD>+45<TD>4<TD>BY<TD>String " BY " (visual field separator).</TR>
+<TR><TD>+49<TD>20<TD>Author<TD>Author (unused characters are filled with spaces).</TR>
+<TR><TD>+69<TD>2<TD>Samples<TD>The sample area pointer (not used in the player).</TR>
+<TR><TD>+71<TD>2<TD>PatsPtr<TD>Pointer to the patterns playing order area.</TR>
+<TR><TD>+73<TD>1<TD>Delay<TD>Playback speed.</TR>
+<TR><TD>+74<TD>2<TD>OrnsPtr<TD>Pointer to the ornaments' offsets.</TR>
+<TR><TD>+76<TD>?<TD>SamPtrs<TD>Offsets (relative to +76 since version 1.04) to each sample body (there can be up to 32 samples in total).</TR>
+<TR><TD>+OrnsPtr<TD>?<TD>OrnPtrs<TD>Offsets (relative to +OrnsPtr since version 1.04) to each ornament body (there can be up to 32 ornaments in total).</TR>
+<TR><TD>+Samples<TD>?<TD>SamsArea<TD>Samples area: samples one after another (the structure of each is described below).</TR>
+<TR><TD>+Ornaments<TD>?<TD>OrnsArea<TD>Ornaments area: ornaments one after another (the structure of each is described below). The offset +Ornaments is not explicitly stored in the format, but it can be calculated from the zero ornament offset by reducing it by 1, or by going through all the samples in order (apparently the editor's decompiler works according to the second variant).</TR>
+<TR><TD>+Patterns<TD>?<TD>PatsArea<TD>Patterns area: patterns one after another (the structure of each is described below). The offset +Patterns is not explicitly stored in the format, but it can be calculated by going through all the ornaments in order.</TR>
+<TR><TD>+PatsPtr<TD>?<TD>PlayOrder<TD>Area of the order in which patterns are played (the structure is described below).</TR>
+</TABLE>
+
+<P>As you can see, the format is designed so that the decompiler does not seek in different areas of the structure when loading the module into the editor, but goes in order, unwinding area by area. As a result, a lot of redundant (unnecessary for playback) information is stored inside the module.</P>
+
+<P>I usually look at the format through the eyes of the player in order to take only what is really necessary from the format and ignore everything that does not affect the sound. But in the case of PSC, this approach leaves too many questions. Therefore, we will make an exception for PSC and describe the format from the decompiler point of view.</P>
+
+<H3>Samples area</H3>
+
+<P>The first pointer in the format is not used in the player. So this is the decompiler's entry point: a pointer to the samples area.</P>
+
+<P>The samples area is a list of paired fields "Number:Data". The end of the list is defined by byte 0xFF.</P>
+
+<P>Number field is the original (before compilation) sample number (it is in the range 0..31), is not used by the player, because the compiled pattern stores the relative numbers of the saved samples. If only two samples are stored in the module, for example, the 4th and 8th, then their numbering in the compiled pattern will be 0 and 1, respectively.</P>
+
+<P>The sample's Data field consists of 6-byte ticks of the following structure:</P>
+
+<TABLE>
+<TR><TH>Offset<TH>Description</TR>
+<TR><TD>+0<TD>Two-byte deviation accumulation (signed number) for the tone period.</TR>
+<TR><TD>+2<TD>Deviation accumulation (signed number) for noise or envelopes (the latter only if envelopes are simultaneously allowed in both the track and the sample).</TR>
+<TR><TD>+3<TD>Bits 7&ndash;4: unknown. Bits 3&ndash;0: amplitude.</TR>
+<TR><TD>+4<TD>Bit 7: 0, if this tick is a looping point. Bit 6: 0, if this tick is the last tick in the loop body. Bit 5: 0, if this tick is the last tick in the sample. Bit 4: 0, if envelopes are allowed. Bit 3 is the noise mask. Bit 2: 1 for channel volume decrease by 1. Bit 1: 1 for channel volume increase by 1. Bit 0 is the tone mask.</TR>
+<TR><TD>+5<TD>Unknown.</TR>
+</TABLE>
+
+<P>Analyzing samples tick by tick, the decompiler reaches byte 0xFF instead of the sample number. And this means that there are no more samples, and then the ornaments area begins.</P>
+
+<H3>Ornaments area</H3>
+
+<P>The ornaments area is also a list of paired fields "Number:Data". And also, the end of the list is defined by byte 0xFF.</P>
+
+<P>Number field is the original number of the ornament before compilation (it is in the range 0..31), not used by the player (see the description of the samples area, the reason is the same).</P>
+
+<P>The ornament's Data field consists of 2-byte ticks of the following structure:</P>
+
+<TABLE>
+<TR><TH>Offset<TH>Description</TR>
+<TR><TD>+0<TD>Bit 7: 0, if this tick is a looping point. Bit 6: 0, if this tick is the last tick in the loop body. Bit 5: 0, if this tick is the last tick of the ornament. Bits 4&ndash;0 is deviation accumulation for the noise period (high bit is signed).</TR>
+<TR><TD>+1<TD>Deviation accumulation for the note in semitones (a signed number).</TR>
+</TABLE>
+
+<H3>Patterns area</H3>
+
+<P>The patterns area, although a rather complex structure, is also a list that allows the decompiler to unwind the module further pattern by pattern. But this list consists of five elements: "Size:Number:Channel Data:Channel Data:Channel data". The end of the list is determined similarly by the byte 0xFF.</P>
+
+<P>Size field is the number of lines in the pattern in the range 1..64 (not used in the player). Number field is the pattern number (also not used in the player). Then there are three identical structures describing each pattern channel in the A, B, C order.</P>
+
+<P>The pattern's Channel data field is a sequence of bytes ending with a 0xFE marker. The structure is as follows:</P>
+
+<TABLE>
+<TR><TH>Bytes<TH>Description</TR>
+<TR><TD>0x00..0x56<TD>Set the note.</TR>
+<TR><TD>0x57<TD>Set the channel volume 15. Turn on the envelope.</TR>
+<TR><TD>0x58..0x66<TD>Set the channel volume 1..15. Turn off the envelope.</TR>
+<TR><TD>0x67..0x6a, Unkn<TD>Reserve for special commands with the parameter.</TR>
+<TR><TD>0x6b, Tones<TD>Start the tone slide up. Tones is the amount of changes in the tone register units per each interrupt.</TR>
+<TR><TD>0x6c, Tones<TD>Start the tone slide down. Tones is the amount of changes in the tone register units per each interrupt.</TR>
+<TR><TD>0x6d, Tones<TD>Run the portamento from the current tone frequency to the frequency of the note being set. Tones is the amount of changes in the tone register units per each interrupt.</TR>
+<TR><TD>0x6e, Delay<TD>Set a new playback speed value (Delay in interrupts).</TR>
+<TR><TD>0x6f, Unkn<TD>Disable the ornament. In the Unkn byte is a random value.</TR>
+<TR><TD>0x70, Period<TD>Start a periodic increase or decrease of channel volume by 1. Period is a 7-bit number (the 6th bit is signed), i.e. theoretically the range is -64..63. Negative Period for decreasing the volume, positive for increasing, absolute value is the volume changes period in interrupts.</TR>
+<TR><TD>0x71, Unkn<TD>Break the ornament loop. In the Unkn byte is a random value.</TR>
+<TR><TD>0x72..0x79, Unkn<TD>Reserve for special commands with the parameter.</TR>
+<TR><TD>0x7a, EnvT, [EnvPL, EnvPH]<TD>Set the envelope type (if it is channel B). EnvT is ignored in other channels. Two bytes following are extracted in channel B: EnvPL and EnvPH (the lowest and highest bytes of the envelope period). Note: a failure is potentially possible, but in fact this data should not get into channel A or C, because the PSC format does not optimize the saving of identical channels.</TR>
+<TR><TD>0x7b, Noise<TD>Set the noise period base (if it is channel B).</TR>
+<TR><TD>0x7c<TD>Turn off the sound.</TR>
+<TR><TD>0x7d<TD>Break the sample loop.</TR>
+<TR><TD>0x7e..0x7f<TD>Is a reserve for commands without a parameter.</TR>
+<TR><TD>0x80..0x9f<TD>Set the sample to 0..31.</TR>
+<TR><TD>0xa0..0xbf<TD>Set the ornament to 0..31.</TR>
+<TR><TD>0xc0..0xff<TD>From now on do skipping the specified number of lines (0..63). 0 by default.</TR>
+</TABLE>
+
+<H3>Patterns playing order area</H3>
+
+<P>The order of playback is determined by the positions list, each position occupies 8 bytes. A two-byte marker ends the list: the first byte is the position number for looping, the second byte is 0xFF. After the marker there is a two-byte pointer to the loop position, which number was specified in the first byte of the marker.</P>
+
+<P>The structure of one position is as follows:</P>
+
+<TABLE>
+<TR><TH>Offset<TH>Description</TR>
+<TR><TD>+0<TD>Position number starting from 0.</TR>
+<TR><TD>+1<TD>The number of lines in this pattern.</TR>
+<TR><TD>+2<TD>A two-byte pointer to the channel A data of this pattern.</TR>
+<TR><TD>+4<TD>A two-byte pointer to the channel B data of this pattern.</TR>
+<TR><TD>+6<TD>A two-byte pointer to the channel C data of this pattern.</TR>
+</TABLE>
+
+<H2>Conclusion</H2>
+
+<P>The Vortex Tracker II documentation suggests that the format is not optimal, leading to large module sizes. Later, a clarification was added that, perhaps, the large size of those modules that are simply saved, and not compiled through the compilation menu.</P>
+
+<P>Now, after a detailed study of the "extra" information in the module, we can state both.</P>
+
+<P>Nevertheless, if you do not focus on the size of the module, you can sum up some results.</P>
+
+<H3>Advantages of PSC in comparison with ASC</H3>
+
+<UL>
+<LI>With just one unused bit in ASC, the ornaments have been radically improved: the ornament can be not looped; you can either interrupt the cycle or disable the ornament by two new commands in the track.
+<LI>The accumulation for a tone in a sample has become two-byte, but perhaps this is unnecessary, since the accumulations (that is, the difference between the current and previous tone values) inside any sample rarely exceed the byte size.
+<LI>The envelope period in the tracks has become two-byte.
+<LI>Faster player of compiled modules.
+</UL>
+
+<H3>Disadvantages of PSC in comparison with ASC</H3>
+
+<UL>
+<LI>Two types of flawless portamento in ASC replaced by one unsuccessful type in PSC:
+ <UL>
+ <LI>the portamento parameter does not contain the number of interrupts (as it should be), but a fixed amount of changes per interrupt (which makes this command similar to the one in PT3 with all its disadvantages);
+ <LI>due to the known optimization "analysis of no more than one pattern channel per interrupt", only an attempt was made to refine the current deviation from the previous slides or portamento (it works correctly only with a slide without ornament and without tone fluctuations in the sample).
+ </UL>
+<LI>In PSC, it is impossible to independently set both the period and the type of envelope (the same drawback as in PT3).
+<LI>Decreasing and increasing the volume (both by a command from the tracks and by a flag in the sample) regulates the channel volume, not the sample amplitude (i.e. it is impossible to make the initially quiet sample sound louder).
+</UL>
+
+<H3>Disadvantages in the PSC format itself</H3>
+
+<UL>
+<LI>A lot of extra data: numbers of patterns, samples, ornaments, positions; the end markers of pattern, channel; the size of the pattern (at least duplicated); at least 16 bits are not involved in each tick of the sample; an extra garbage byte in most special commands.
+<LI>The format does not provide the possibility not to save completely matching pattern channel data (both within one pattern and in general for all patterns of the module).
+<LI>The structure of the positions list is unsuccessful, it is 8 times larger than in most other trackers.
+</UL>
+
+</BODY>
+</HTML>

@@ -1,0 +1,7 @@
+{"version":1,"strings":[
+{"hash":173510162,"name":"tfrmmxhlp.caption","sourcebytes":[77,105,120,101,114,32,65,109,112,108,105,102,105,101,114,32,72,101,108,112,101,114],"value":"Mixer Amplifier Helper"},
+{"hash":15232798,"name":"tfrmmxhlp.chansrg.caption","sourcebytes":[65,89,45,51,45,56,57,49,48,47,89,77,50,49,52,57,70,32,67,104,97,110,110,101,108,115,32,65,108,108,111,99,97,116,105,111,110],"value":"AY-3-8910/YM2149F Channels Allocation"},
+{"hash":125794501,"name":"tfrmmxhlp.tsdmachg.caption","sourcebytes":[76,101,97,118,101,32,115,112,97,99,101,32,102,111,114,32,97,100,100,105,116,105,111,110,97,108,32,100,101,118,105,99,101],"value":"Leave space for additional device"},
+{"hash":22980,"name":"tfrmmxhlp.button1.caption","sourcebytes":[83,101,116],"value":"Set"},
+{"hash":77089212,"name":"tfrmmxhlp.button2.caption","sourcebytes":[67,97,110,99,101,108],"value":"Cancel"}
+]}

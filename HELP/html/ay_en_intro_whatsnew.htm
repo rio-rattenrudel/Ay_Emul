@@ -1,0 +1,33 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="whatsnew"></A>What's new in this version</H1>
+
+<P>This help is written for the release of Ay_Emul version 3.0. The most important changes since the release of the previous version 2.9 are listed below.</P>
+
+<UL>
+<LI>Saving the entire list to a folder has been added to the playlist tools, two new file auto-naming modes have been added instead of the previous one, along with the ability to save individual playlist items from the pop-up menu. This simplifies working with Vitamin's xtractor (don't forget to disable music search in xtractor with the --skip-chiptunes key).
+<LI>Fixed the Z80's RRD and RLD commands emulation (used by the volume table generator in the Spirius demo from Enlight'97).
+<LI>Added BASSENC libraries support for encoding to MP3, OGG, FLAC and OPUS.
+<LI>Selected or all playlist files group convertion is possible (without having to manually enter the name, tags, and encoding options for each) to WAV, MP3, OGG, FLAC, and OPUS. Group conversion to other formats has been improved (file names and headers are now filled in automatically).
+<LI>The Benjamin Gerard's SNDH database and the BASS library have been updated to the latest versions.
+<LI>The type of file/stream accepted for playback via BASS is being clarified (useful if the Internet radio is not MP3, or the type does not match the file extension).
+<LI>The Linux version has been improved (displaying the "Author - Title" string in the main window title; the ability to interrupt long-running processes with the Esc key or mouse click was previously only available in the Windows version).
+<LI>The number of long-running processes which can now be interrupted by pressing Esc or clicking the mouse has been increased.
+<LI>Improved PSG support: added marker 253 (end of music) for PSG from zxtune123, zeroing registers before looping PSG, EPSG, OUT and ZXAY, converting TS tracks into 2 PSG files.
+<LI>An option has been added to loop a shorter module in a TS pair, and the error of a rewind point seeking in such TS pairs, which occurs if the first module is shorter, has been fixed. This option also affects the conversion to 2 PSG files.
+<LI>Added a forced recalculation of the duration when editing some parameters (including in the list's item adjusting dialog).
+<LI>The work was made more comfortable if the playlist items duration is calculated in the background.
+<LI>The MP3/OGG prescan has returned, but an option has been added to disable it.
+<LI>Added support for High DPI and adapted the design of all windows (except the main one) for correct scaling in accordance with the monitor settings in Windows.
+<LI>To avoid blurring the main window in the case of High DPI, the "Main window double sized" option has been added.
+<LI>Added an extensive popup menu for system tray icon.
+<LI>The FLS finder has been completely rewritten. Its reliability and speed are comparable to other tracker formats finders, so it is now enabled by default.
+<LI>The Tools window search options are now stored in the configuration file and are also used to open or add to the playlist files with a non-musical extension (disc images, snapshots, etc.).
+<LI>Improved PSC, SQT, PT2 and PT3 v3.1 finders.
+<LI>A lot of improvements have been made, a large number of flaws and errors have been fixed both in the program and in the help.
+</UL>
+
+<P>For full and detailed list of changes see <A href="ay_en_history.htm" title="History of changes">readme.beta.txt</A>.</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,162 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="pt2"></A>PT2</H1>
+
+<H2>Introduction</H2>
+
+<P>This is the original module of Pro Tracker v2.x, an AY music editor for ZX Spectrum, author is Nikolay Khudentsov (Nick).<//P>
+
+<P>The story began with Pro Tracker 1.1 (see the description of the PT1-format). The format became a development of his ideas: glisses, portamento, noise control from the tracks (and not just from the samples), looping of ornaments independent of samples were added. And together with the capabilities inherited from PT1, it turned out to be a powerful instrument recognized by most musicians of the second half of the 90s.</P>
+
+<P>The PT2-format was well described by VfNG in the Echo #2 e-paper (given at the end; study to understand some notation further).</P>
+
+<H2>Features of Pro Tracker 2.4 Phantom Family modules</H2>
+
+<P>The modules of this editor do not differ in structure from other versions of Pro Tracker v2.x, but the module is bound to the compilation address, namely, the module loading address in RAM is added to the PAT, SAMP_A and ORN_A offsets.</P>
+
+<P>Such modules can be loaded and used in Ay_Emul as usual, and, if necessary, saved as regular PT2 (without binding to the address).</P>
+
+<H2>Module format</H2>
+
+<P>The following is a slightly edited excerpt from the VfNG article in Echo #2 e-paper (with notes by the Ay_Emul author).</P>
+
+<P>---------------------------cut here-------------------</P>
+<H3>Terminology:</H3>
+
+<P><strong>QUARK:</strong> the elements that make up SAMPLES, ORNAMENTS.</P>
+<P><strong>QUANT:</strong> the number of QUARKS in each element of the PATTERN. In fact, the playback speed.</P>
+<P><strong>PATTERN:</strong> couplet.</P>
+<P><strong>POSITION LIST:</strong> the order in which PATTERNS are played.</P>
+<P><strong>POSITION:</strong> position in the POSITION LIST.</P>
+
+<H3>Compiled module format:</H3>
+
+<DL>
+<DT>+0
+<DD>DELAY &ndash; the number of QUARKS for which 1 QUANT is played;
+
+<DT>+1
+<DD>MUS_LEN &ndash; the number of positions in the melody;
+
+<DT>+2
+<DD>LOOP TO POSITION &ndash; the number of the position to which looping will be performed when the entire melody is played (0–#FF);
+
+<DT>+3,64
+<DD>SAMP_A &ndash; offsets from +0 to each of the 32 SAMPLES. SAMPLE with number 0 is not described. Its number is used to mute the channel.
+
+<DT>+67,32
+<DD>ORN_A &ndash; similar to SAMP_A for 16 ornaments. Ornament number 0 means "no ornament".
+
+<DT>+99,2
+<DD>PAT_OFFSET &ndash; offset from +0 to the first descriptor PAT of PATTERNs.
+
+<DT>+101,30
+<DD>NAME &ndash; the name of the music in ASCII.
+
+<DT>+131
+<DD>POSITION LIST &ndash; a list of positions: PATTERN numbers for each position. The end of the table is #FF.
+
+<DT>+?
+<DD>PAT &ndash; descriptors of PATTERNs. Each PATTERN consists of 3 channels. This table shows the offsets from +0 to the channel descriptors of each PATTERN. Thus, 6 bytes/PATTERN. The end of the table is #0000.
+
+<DT>+?
+<DD>CHAN &ndash; channel descriptors. The channel is represented as a list of bytes, which are analyzed as follows:
+</DL>
+
+<pre>
+LOOP   LD A,(DE)
+       INC DE
+       ADD A,#20
+       JR C,L1
+       ADD A,#60
+       JR C,L2
+       ADD A,#10
+       JR C,L3
+       ADD A,#10
+       JR C,L4
+       ADD A,#40
+       JR C,L5
+       ADD A,#10
+       JR C,L6
+       INC A
+       JR Z,L7
+       INC A
+       JR Z,L8
+       INC A
+       JR Z,L9
+       INC A
+       JR NZ,L10
+L11
+</pre>
+<P style="text-indent: 0;">Turn off commands (Sergey Bulba's note: namely, GLISSADE or PORT) and jump to LOOP.</P>
+<pre>
+L10
+</pre>
+<P style="text-indent: 0;">Extract the next byte, it contains the value for adding to NOISE frequency. Then to LOOP.</P>
+<pre>
+L9
+</pre>
+<P style="text-indent: 0;">Extract three bytes. In the 1st one is the PORT value, i.e. the number that will be added to the current frequency of the note. It should be noted that the frequency value of the highest note is the smallest, and the lowest is the largest, which means: posit. 128-255, negat. 0-127. In the 2nd and 3rd bytes (Sergey Bulba's note: they are ignored in Ay_Emul, because it is impossible to accurately calculate at the compilation stage if alternating different patterns) is the difference in the frequency values of the new (the one on which PORT is called) and the previous note. There is a compiler error that incorrectly determines this value if a new note is at the beginning of the PATTERN (Sergey Bulba's note: this is not a compiler error, but a miscalculation in the format itself; if the frequency difference is calculated right during playback, then there is no error). The command should be turned off when the sum of additions from +1 exceeds the value of +2,+3. Jump to LOOP.</P>
+<pre>
+L8
+</pre>
+<P style="text-indent: 0;">Extract 1 byte. It has the GLISSADE value. Signs are similar to PORT. Then jump to LOOP.</P>
+<pre>
+L7
+</pre>
+<P style="text-indent: 0;">Extract 1 byte. It has a value for DELAY (playback speed). Then jump to LOOP.</P>
+<pre>
+L6
+</pre>
+<P style="text-indent: 0;">In A is volume (0&ndash;F). This value is multiplied by 16 and added to the beginning of the TABL1 table (Sergey Bulba's note: see in the e-paper or in the source codes of Ay_Emul). The resulting value should be treated as the beginning of a 16-byte table, which contains values for the amplitude registers of the sound chip for each value extracted from SAMPLE. Then jump to LOOP.</P>
+<pre>
+L5
+</pre>
+<P style="text-indent: 0;">In A is how many QUANTS it is not necessary to analyze the channel, i.e. the distance in QUANTS between the next changes in channel parameters. Then to the LOOP.</P>
+<pre>
+L4
+</pre>
+<P style="text-indent: 0;">In A is the number of the ornament. If it is equal to 0, then there is no ornament. Jump to LOOP.</P>
+<pre>
+L3
+</pre>
+<P style="text-indent: 0;">If A=0 then exit. If 0&lt;А&lt;F then setting the envelope type, then extracting the next 2 bytes with the envelope period, jump to LOOP. If A=F then disabling envelopes, jump to LOOP.</P>
+<pre>
+L2
+</pre>
+<P style="text-indent: 0;">In A is the note number. There are 8 octaves of 12 notes, a total of 96 notes. The frequency values for each of the notes in the TABL2 table (2 bytes/each, Sergey Bulba's note: see in the e-paper or in the source codes of Ay_Emul). Jump to LOOP.</P>
+<pre>
+L1
+</pre>
+<P style="text-indent: 0;">In A is the SAMPLE number. If=0 then turn off channel, exit. Otherwise, setting the SAMPLE number and jump to LOOP.</P>
+
+<DL>
+<DT>+?
+<DD>SAMPLES &ndash; SAMPLES descriptors. Each SAMPLE consists of:<BR>
+&nbsp;++0 The number of QUARKS in the SAMPLE.<BR>
+&nbsp;++1 The QUARK number in SAMPLE to which looping is performed at the end of SAMPLE.<BR>
+&nbsp;++2 QUARKS descriptors of 3 bytes each:<BR>
+&nbsp;&nbsp;+++0<BR>
+&nbsp;&nbsp;&nbsp;Bits 7&ndash;3 &ndash; NOISE frequency (0&ndash;31);<BR>
+&nbsp;&nbsp;&nbsp;Bit 2 &ndash; vibrato sign (1="-", 0="+");<BR>
+&nbsp;&nbsp;&nbsp;Bit 1 &ndash; TONE mask;<BR>
+&nbsp;&nbsp;&nbsp;Bit 0 &ndash; NOISE mask.<BR>
+&nbsp;&nbsp;+++1<BR>
+&nbsp;&nbsp;&nbsp;Bits 7&ndash;4 &ndash; amplitude (0&ndash;15);<BR>
+&nbsp;&nbsp;&nbsp;Bits 3&ndash;0 &ndash; high part of the frequency vibrato value.<BR>
+&nbsp;&nbsp;+++2<BR>
+&nbsp;&nbsp;&nbsp;Bits 7&ndash;0 &ndash; low part of the frequency vibrato value.
+
+<DT>+?
+<DD>ORNAMENTS &ndash; descriptors of ornaments. They consist of:<BR>
+&nbsp;++0 &ndash; The length of the ornament in QUARKS;<BR>
+&nbsp;++1 &ndash; The QUARK number in the ornament, which you need to switch to at the end of the ORNAMENT;<BR>
+&nbsp;++2 &ndash; Deviations from the current note value in semitones. Values 0&ndash;63. The highest bit is signed: 0='+', 1='-'.
+</DL>
+
+<P>There may be some inaccuracies in the description that are not difficult to detect and correct.</P>
+<P>Now about how music is played in general. The value of DELAY is taken and written to a special variable. Each time the player is called, this value decreases by 1. If it is greater than 2, the channel parameters do not change. If 2, then it is checked for the end of the channel. If it is the end, then the next position is processed, new values are set in variables indicating the current positions in the channels. Channel A is being processed. If 1, then channel B is being processed. If 0, then channel C is processed and the data obtained as a result of processing all three channels (SAMPLES, ORNAMENTS, etc...) are set to playback, the variable again gets the value DELAY (Sergey Bulba's note: this approach to speed optimization, which was then repeated in other projects, created a problem for musicians: the inability to set the playback speed to less than 3; this restriction has been removed in Ay_Emul and PTxTools players).</P>
+<P>---------------------------cut here-------------------</P>
+
+</BODY>
+</HTML>

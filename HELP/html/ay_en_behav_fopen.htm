@@ -1,0 +1,20 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="fopen"></A>Opening files</H1>
+
+<P>Ay_Emul tries to automatically recognize files type while opening it.</P>
+
+<P>If the file extension is standard (STC, VTX, and so on), then Ay_Emul performs a minimum of additional checks and considers that it is a file of the appropriate type. This approach has a significant drawback: if there is a different format or just a damaged structure inside a file with a standard extension, a failure is likely to occur when trying to open or play it.</P>
+
+<P>If the file extension is non-standard (including $m, $c, TRD, BIN, SNA, etc.), then Ay_Emul tries to determine the file type by its header.</P>
+
+<P>If this does not give a positive result, the "Search for tunes in files" tool is automatically launched (see the "Tools" window), and Ay_Emul tries to find all the modules that are in this file. Since this process can take a long time, a window with progress and two cancel buttons appears: by clicking on the first one, you can interrupt the process of analyzing the current file, and on the second, you can interrupt opening further files in queue. The found modules are compared with the information in the TRD, SCL and Hobeta formats header, while additionally extracting information about the original file name and author's string from the AS0, ASC, ST3, STC or STP native players (see the description of the <I>Program</I> and <I>Comment</I> fields of the "List's Item Adjusting" dialog). If Ay_Emul incorrectly recognizes any module in the file, this can lead to the same problems as when opening a damaged file with a standard extension (described above).</P>
+
+<P>During finding, the modules types that are checked in the built-in <I>Search for tunes in files</I> tool settings are searched for.</P>
+
+<P>The modules opened by Ay_Emul are added to the playlist after extracting the minimum necessary (as well as other quickly extracted) information. The missing information is loaded as needed: either before the start of playback, or when the user clicks on the corresponding area of the playlist window to calculate its duration, or when it is necessary to the first display the item in the playlist window.</P>
+
+<P>Most modules can be saved from the playlist window (the <I>Save as...</I> command of the pop-up menu or <I>Save all to folder...</I> of the "Tools" button), while modifications or transformations can be performed (for example, unlinking from the compilation address; inserting the author's string if found in the body of the native player; substituting the native file name; for ST1/ST3 formats compilation/conversion to STC, for AS0 – to ASC, for STF – to STP). If there is a need to save the found modules without most of these modifications, you can use the "Search for tunes in files" tool.</P>
+
+</BODY>
+</HTML>

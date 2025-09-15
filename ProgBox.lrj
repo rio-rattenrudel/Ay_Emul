@@ -1,0 +1,5 @@
+{"version":1,"strings":[
+{"hash":59400723,"name":"tfrmprbox.caption","sourcebytes":[83,101,97,114,99,104,105,110,103,32,102,111,114,32,116,117,110,101,115],"value":"Searching for tunes"},
+{"hash":49538862,"name":"tfrmprbox.button1.caption","sourcebytes":[65,98,111,114,116,32,99,117,114,114,101,110,116,32,111,112,101,114,97,116,105,111,110],"value":"Abort current operation"},
+{"hash":143243954,"name":"tfrmprbox.button2.caption","sourcebytes":[83,119,105,116,99,104,32,111,102,102,32,116,117,110,101,115,32,102,105,110,100,101,114],"value":"Switch off tunes finder"}
+]}

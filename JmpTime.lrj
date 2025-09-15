@@ -1,0 +1,7 @@
+{"version":1,"strings":[
+{"hash":782005,"name":"tfrmjptime.caption","sourcebytes":[74,117,109,112,32,116,111,32,116,105,109,101],"value":"Jump to time"},
+{"hash":208983619,"name":"tfrmjptime.label1.caption","sourcebytes":[77,105,110,117,116,101,115,58,83,101,99,111,110,100,115],"value":"Minutes:Seconds"},
+{"hash":129566110,"name":"tfrmjptime.lbtrklen.caption","sourcebytes":[108,98,84,114,107,76,101,110],"value":"lbTrkLen"},
+{"hash":334912,"name":"tfrmjptime.button1.caption","sourcebytes":[74,117,109,112],"value":"Jump"},
+{"hash":77089212,"name":"tfrmjptime.button2.caption","sourcebytes":[67,97,110,99,101,108],"value":"Cancel"}
+]}

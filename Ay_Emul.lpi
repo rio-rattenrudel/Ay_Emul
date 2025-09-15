@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="12"/>
+    <PathDelim Value="\"/>
+    <General>
+      <Flags>
+        <SaveClosedFiles Value="False"/>
+        <SaveJumpHistory Value="False"/>
+        <SaveFoldState Value="False"/>
+        <CompatibilityMode Value="True"/>
+      </Flags>
+      <SessionStorage Value="InProjectDir"/>
+      <Title Value="Ay_Emul"/>
+      <Scaled Value="True"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <XPManifest>
+        <DpiAware Value="True/PM_V2"/>
+        <TextName Value="AY Emulator"/>
+        <TextDesc Value="AY-3-8910, AY-3-8912 and YM2149F Emulator, Player, Converter and Music Ripper"/>
+      </XPManifest>
+      <Resources Count="20">
+        <Resource_0 FileName="Ay_Emul2.ays" Type="RCDATA" ResourceName="DEFAULTSKIN"/>
+        <Resource_1 FileName="Icons/Sergey Bulba/Ay_Emul.ico" Type="ICON" ResourceName="ICON00"/>
+        <Resource_2 FileName="Icons/X-agon/Ay_Emul1.ico" Type="ICON" ResourceName="ICON01"/>
+        <Resource_3 FileName="Icons/X-agon/Ay_Emul2.ico" Type="ICON" ResourceName="ICON02"/>
+        <Resource_4 FileName="Icons/X-agon/Ay_Emul3.ico" Type="ICON" ResourceName="ICON03"/>
+        <Resource_5 FileName="Icons/X-agon/Ay_Emul4.ico" Type="ICON" ResourceName="ICON04"/>
+        <Resource_6 FileName="Icons/David Willis/ay.ico" Type="ICON" ResourceName="ICON05"/>
+        <Resource_7 FileName="Icons/Graham Goring/icon32.ico" Type="ICON" ResourceName="ICON06"/>
+        <Resource_8 FileName="Icons/Graham Goring/icon16.ico" Type="ICON" ResourceName="ICON07"/>
+        <Resource_9 FileName="Icons/Graham Goring/icon32b.ico" Type="ICON" ResourceName="ICON08"/>
+        <Resource_10 FileName="Icons/Graham Goring/icon16b.ico" Type="ICON" ResourceName="ICON09"/>
+        <Resource_11 FileName="Icons/bcass/ayico32.ico" Type="ICON" ResourceName="ICON10"/>
+        <Resource_12 FileName="Icons/bcass/ayico16.ico" Type="ICON" ResourceName="ICON11"/>
+        <Resource_13 FileName="Icons/Exocet/ay_emul_big.ico" Type="ICON" ResourceName="ICON12"/>
+        <Resource_14 FileName="Icons/Exocet/ay_emul_small.ico" Type="ICON" ResourceName="ICON13"/>
+        <Resource_15 FileName="Icons/Roman Morozov/ay.ico" Type="ICON" ResourceName="ICON14"/>
+        <Resource_16 FileName="Icons/Ivan Reshetnikov/BULBE2.ico" Type="ICON" ResourceName="ICON15"/>
+        <Resource_17 FileName="Icons/Ivan Reshetnikov/favicon.ico" Type="ICON" ResourceName="ICON16"/>
+        <Resource_18 FileName="Ay_Emul.fmt" Type="RCDATA" ResourceName="FILETYPES"/>
+        <Resource_19 FileName="About.bmc" Type="RCDATA" ResourceName="ABOUTSCREEN"/>
+      </Resources>
+    </General>
+    <i18n>
+      <EnableI18N Value="True"/>
+      <OutDir Value="lib\$(TargetCPU)-$(TargetOS)\languages"/>
+      <ExcludedIdentifiers Count="16">
+        <Item1 Value="tfrmmain.caption"/>
+        <Item2 Value="tfrmtools.evisperiod.text"/>
+        <Item3 Value="tfrmmixer.layovfl.caption"/>
+        <Item4 Value="tfrmmixer.ltsovfl.caption"/>
+        <Item5 Value="tfrmmixer.ldmaovfl.caption"/>
+        <Item6 Value="tfrmmixer.lbuflen.caption"/>
+        <Item7 Value="tfrmmixer.lnumbuf.caption"/>
+        <Item8 Value="tfrmmixer.ltotlen.caption"/>
+        <Item9 Value="tfrmmixer.cbmodevice.text"/>
+        <Item10 Value="tfrmmixer.ffttyp.caption"/>
+        <Item11 Value="tfrmmixer.aminmax.caption"/>
+        <Item12 Value="tfrmmixer.rbmfpfrq1613.caption"/>
+        <Item13 Value="tfrmmixer.sbsrayby8.caption"/>
+        <Item14 Value="tfrmjptime.lbtrklen.caption"/>
+        <Item15 Value="tfrmselvolctrl.caption"/>
+        <Item16 Value="tseldirdlg.caption"/>
+      </ExcludedIdentifiers>
+      <ExcludedOriginals Count="59">
+        <Item1 Value="A"/>
+        <Item2 Value="B"/>
+        <Item3 Value="C"/>
+        <Item4 Value="F"/>
+        <Item5 Value="OK"/>
+        <Item6 Value="0/0"/>
+        <Item7 Value="0:00"/>
+        <Item8 Value="50"/>
+        <Item9 Value="11025"/>
+        <Item10 Value="22050"/>
+        <Item11 Value="44100"/>
+        <Item12 Value="48000"/>
+        <Item13 Value="96000"/>
+        <Item14 Value="192000"/>
+        <Item15 Value="50000"/>
+        <Item16 Value="48828"/>
+        <Item17 Value="8000000"/>
+        <Item18 Value="3500000"/>
+        <Item19 Value="3494400"/>
+        <Item20 Value="2457600"/>
+        <Item21 Value="1000000"/>
+        <Item22 Value="1773400"/>
+        <Item23 Value="1750000"/>
+        <Item24 Value="1750000"/>
+        <Item25 Value="2000000"/>
+        <Item26 Value="DMA-Sound"/>
+        <Item27 Value="AY-3-8910/12"/>
+        <Item28 Value="YM2149F"/>
+        <Item29 Value="YM2149"/>
+        <Item30 Value="ZX Spectrum"/>
+        <Item31 Value="Pentagon 128K"/>
+        <Item32 Value="Atari ST"/>
+        <Item33 Value="Amstrad CPC"/>
+        <Item34 Value="STe"/>
+        <Item35 Value="ST"/>
+        <Item36 Value="PSG..."/>
+        <Item37 Value="VTX..."/>
+        <Item38 Value="WAV..."/>
+        <Item39 Value="YM6..."/>
+        <Item40 Value="ZXAY..."/>
+        <Item41 Value="MP3..."/>
+        <Item42 Value="OGG..."/>
+        <Item43 Value="FLAC..."/>
+        <Item44 Value="OPUS..."/>
+        <Item45 Value="Sound Tracker 1.x"/>
+        <Item46 Value="Sound Tracker 3"/>
+        <Item47 Value="ASC Sound Master 1.xx"/>
+        <Item48 Value="SQ-Tracker"/>
+        <Item49 Value="ASC Sound Master 0.xx"/>
+        <Item50 Value="Pro Tracker 1.xx"/>
+        <Item51 Value="Global Tracker"/>
+        <Item52 Value="Pro Tracker 2.xx"/>
+        <Item53 Value="Pro Tracker 3.xx"/>
+        <Item54 Value="Pro Sound Creator"/>
+        <Item55 Value="Fast Tracker"/>
+        <Item56 Value="Sound Tracker Pro"/>
+        <Item57 Value="Flash Tracker"/>
+        <Item58 Value="Amstrad"/>
+        <Item59 Value="Atari"/>
+      </ExcludedOriginals>
+    </i18n>
+    <VersionInfo>
+      <UseVersionInfo Value="True"/>
+      <AutoIncrementBuild Value="True"/>
+      <MajorVersionNr Value="3"/>
+      <RevisionNr Value="2"/>
+      <BuildNr Value="119"/>
+      <StringTable FileDescription="AY-3-8910, AY-3-8912 and YM2149F Emulator, Player, Converter and Music Ripper" InternalName="AY Emulator" LegalCopyright="Sergey Bulba" OriginalFilename="Ay_Emul" ProductName="AY Emulator" ProductVersion="3.0.2.0"/>
+    </VersionInfo>
+    <BuildModes Count="2">
+      <Item1 Name="release" Default="True"/>
+      <Item2 Name="debug">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="fpalsa\src"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <Style Value="1"/>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf2"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CompilerMessages>
+              <IgnoredMessages idx5091="True" idx5057="True" idx5024="True"/>
+            </CompilerMessages>
+            <CustomOptions Value="-dnobeta
+-ddbgmode"/>
+          </Other>
+        </CompilerOptions>
+      </Item2>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
+      </local>
+      <FormatVersion Value="2"/>
+      <Modes Count="1">
+        <Mode0 Name="default">
+          <local>
+            <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
+          </local>
+        </Mode0>
+      </Modes>
+    </RunParams>
+    <RequiredPackages Count="1">
+      <Item1>
+        <PackageName Value="LCL"/>
+      </Item1>
+    </RequiredPackages>
+    <Units Count="43">
+      <Unit0>
+        <Filename Value="Ay_Emul.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="About.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="AboutBox"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="MainWin.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="lh5.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Lh5"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="HeadEdit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="HeaderEditor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="Mixer.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmMixer"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="PlayList.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmPLst"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="ProgBox.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmPrBox"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="ItemEdit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmPLIEdit"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="Tools.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmTools"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="Z80.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="JmpTime.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmJpTime"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="basslight.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="basscode.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="CDviaMCI.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="Players.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="AY.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="Convs.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="UniReader.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="Languages.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="FindPLItem.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmFndPLItm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="SelectCDs.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CDList"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="digidrum.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="Midi.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="winversion.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="WinVersion"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="options.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="Options"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="basstags.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="SelVolCtrl.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmSelVolCtrl"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="seldir.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SelDirDlg"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="digsound.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="digsoundcode.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="fpalsa\src\asoundlib.pp"/>
+        <IsPartOfProject Value="True"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="mixerctl.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="assoc.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="filetypes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="FileTypes"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="atari.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="sndh.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="mc68000.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="sometypes.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="settings.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="mxhelper.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmMxHlp"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="sndhtimedb.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="SNDHTimeDB"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="encoptsedit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FrmEncOptsEditor"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="EncOptsEdit"/>
+      </Unit42>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <PathDelim Value="\"/>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="fpalsa\src"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Parsing>
+      <Style Value="1"/>
+      <SyntaxOptions>
+        <CStyleOperator Value="False"/>
+      </SyntaxOptions>
+    </Parsing>
+    <CodeGeneration>
+      <SmartLinkUnit Value="True"/>
+      <Optimizations>
+        <OptimizationLevel Value="3"/>
+      </Optimizations>
+    </CodeGeneration>
+    <Linking>
+      <Debugging>
+        <GenerateDebugInfo Value="False"/>
+        <RunWithoutDebug Value="True"/>
+        <DebugInfoType Value="dsDwarf2"/>
+      </Debugging>
+      <LinkSmart Value="True"/>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <CompilerMessages>
+        <IgnoredMessages idx5091="True" idx5057="True" idx5024="True"/>
+      </CompilerMessages>
+      <CustomOptions Value="-dnobeta"/>
+    </Other>
+  </CompilerOptions>
+</CONFIG>

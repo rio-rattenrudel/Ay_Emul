@@ -1,0 +1,14 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="finder"></A>Searching for tunes in files</H1>
+
+<P>Searching for tunes in files (for example, in SNA or TAP) is implemented in Ay_Emul so that indirect data and clues are not used (such as the presence of a standard player, text identifiers, etc.). Ay_Emul analyzes only the structure of the intended module, and only after making sure that it is exactly the desired module, can apply to the player or identifiers for additional information, and even if necessary to make corrections to them (for example, STC field 'Size' is often specially corrupted). That is why carefully disguised or protected from decompilation modules are found.</P>
+
+<P>This approach is not always reliable for modules with a complex structure, and even with fixed at addresses, which also need to be calculated somehow or at least suppose variants before starting the analysis. Such severe cases include the FXM format.</P>
+
+<P>Of course, when ripping FXM modules, you can make an exception and focus on the clues described above (Z80 player codes, since they are the same for all modules, etc.). However, based on the fact that all modules have long been ripped manually by enthusiasts, and also because false positives prevented the search for other modules, it was decided to abandon the search for FXM in Ay_Emul.</P>
+
+<P>For now, it remains to be hoped that new ideas may appear in the future, and the search for FXM will become so fast and reliable that it will be possible to return it to Ay_Emul.</P>
+
+</BODY>
+</HTML>

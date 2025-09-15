@@ -1,0 +1,37 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="fls"></A>FLS</H1>
+
+<H2>General remarks</H2>
+
+<P>Information about the tracker came to me from Evgeny Barsky in the form of an archive with melodies and the player source code. Due to the presence of the source code, the format was immediately added to Ay_Emul with the file name extension ".fls".</P>
+
+<P>The main feature of the format is the binding of all pointers to the compilation address. This is also its main problem: in order to play the FLS module, you need to determine this compilation address. It is not stored anywhere inside the module, the same simple methods as with most other address-bound formats cannot be applied. Ay_Emul searches adrress in the most likely range with the deep validity testing of each variant. It's cumbersome, but it works fast enough, since incorrect variants discarded almost immediately.</P>
+
+<P>The second point that I would like to focus on: the structures of samples, ornaments and pattern channels are completely identical to STC. The only structure that does not coincide with STC is the positions list: there is no information about the transposition in it.</P>
+
+<P>Thus, any FLS can be converted to STC without loss. However, only those STCs that do not use pattern transposition can be converted to FLS.</P>
+
+<P>Since the editor for AY with the name "Flash Tracker" was never presented to the public, it can be assumed that all the FLS modules found in archives and in various programs were obtained by converting from STC.</P>
+
+<H2>Module format</H2>
+
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Designation<TH>Description</TR>
+<TR><TD>+0<TD>2<TD>PossPtr<TD>Pointer to positions list.</TR>
+<TR><TD>+2<TD>2<TD>OrnsPtr<TD>Pointer to ornaments.</TR>
+<TR><TD>+4<TD>2<TD>SamsPtr<TD>Pointer to samples.</TR>
+<TR><TD>+6<TD>?<TD>PatPtrs<TD>Three pointers (channel descriptors A, B, C, total 6 bytes) for each pattern (numbering from 1).</TR>
+<TR><TD>+OrnsPtr<TD>?<TD>OrnPtrs<TD>Ornament body pointers (up to 15 pieces, numbering from 1).</TR>
+<TR><TD>+SamsPtr<TD>?<TD>SamPtrs<TD>For each sample (up to 16 pieces, numbering from 0) four bytes each:<BR>
+ +0 &ndash; 0 then the sample is not looped, if 1..32 then it is a tick for looping, increased by 1;<BR>
+ +1 &ndash; for looped samples: the number of ticks in the looped part (1..32), for non-looped samples: not used (but usually 1);<BR>
+ +2 is sample body pointer.</TR>
+<TR><TD>+PossPtr<TD>?<TD>PosList<TD>PosList is a list of patterns in the playback order, 0 is the marker of the end of the list.</TR>
+<TR><TD><nobr>+PatPtrs[]</nobr><TD>?<TD>PatChns<TD>List of pattern channel descriptors, each with the same structure as in a regular STC. When the channel analyzer in the FLS player meet an ornament 0, the ornament is simply turned off (an empty zero ornament is played in STC). Also, this analyzer interprets the redundant code 0x82 in a different way: the 0th ornament is set in the original STC, the envelope type 2 is set in FLS and one byte is extracted for the envelope period (it looks like there is just an error in the FLS player).</TR>
+<TR><TD><nobr>+OrnPtrs[]</nobr><TD>?<TD>Orns<TD>Ornaments (32 bytes each), the same as in STC.</TR>
+<TR><TD><nobr>+SamPtrs[]</nobr><TD>?<TD>Sams<TD>Samples (3 bytes per tick, 32 ticks per sample), the same as in STC.</TR>
+</TABLE>
+
+</BODY>
+</HTML>

@@ -1,0 +1,143 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="tools"></A>"Tools" dialog box</H1>
+
+<P>Hot key is <B>P</B>. This box contains Ay_Emul parameters and tools not present in other boxes and windows.</P>
+
+<H2>Tab sheet "General"</H2>
+
+<P><B>Current Skin</B>. Here current skin information is showing. By pushing <I>Choose…</I> button you can load new skin for Ay_Emul main window (skin files have extension AYS). By pushing <I>Standard</I> button, you can set original skin.</P>
+
+<P><B>Folder with music</B>. You can to type path to default folder and save it by pressing <I>Save</I> button. Ay_Emul automatically will switch to this folder after its each starting. If you want automatically save last used path, check <I>Automatically save current</I> option.</P>
+
+<P><B>Modules editor path</B>. You can open ZX Spectrum modules directly from Playlist window in external program like Vortex Tracker II. Just point full path to executable file. Modules are passed via system temporary folder and are not deleted automatically.</P>
+
+<P><B>'Start' menu</B>. Add or remove "AY Emulator" item in Windows' Start menu.</P>
+
+<P><B>Icon on system tray</B>. You can choose <I>never</I> to remove icon from system tray and <I>always</I> to add. If you choose <I>minimize</I> option then icon would be placed on tray during minimizing Ay_Emul window. Double click icon on tray to restore window.</P>
+
+<P><B>Priority</B>. In Windows version you can choose the application priority. Check <I>high</I> if you've got unstable sound, otherwise select <I>normal</I> or even <I>idle</I> to leave more CPU time for system and other applications.</P>
+
+<P><B>Other</B>. Check <I>Save windows position</I> if you want to save position and size of some Ay_Emul windows before closing application.
+The option <I>Loop shorter of TS pair</I> is useful when playing back different durations modules glues in a Turbo Sound container (you can make a shorter module loop, even if looping is disabled on the main window), it also affects the export of TS pairs to 2 PSG files.
+The <I>Pre-scan MP3/MP2/MP1/OGG</I> option instructs the BASS library to perform a preliminary scan of the specified formats (it can greatly slow down the process of adding them to the playlist), that allows you to more accurately calculate the sound duration and seek points for MP3s with variable bitrate and chained OGGs.
+The <I>Main window double sized</I> option is useful for Ultra HD monitors, as the window area increases 4 times without blurring.
+The <I>Visualization period, ms</I> parameter defines the intervals for updating information on the main window (time, spectrum and amplitude analyzers, scrolled string), and this parameter also defines the interval for visible items duration calculating in the playlist.
+</P>
+
+<P><B>'Start' menu icon</B>. You can see icon picture and its author name. Selected icon is used during creating link at 'Start' menu in Windows-version. If link is already created, its icon will be changed automatically.</P>
+
+<P><B>Tray icon</B>. This icon would be shown at system tray area.</P>
+
+<P><B>Application icon. </B>This icon is shown on task bar and in some Ay_Emul windows title.</P>
+
+<P><B>Language.</B> Enter language code or select from list to change interface language. For the moment, Ay_Emul has English (en) and Russian (ru) translations. If you want to translate Ay_Emul to another language, go to <I>languages</I> folder and copy template Ay_Emul.pot to Ay_Emul.xx.po (change xx to your language id) and edit in text editor. You can see lclstrconsts* in that folder, these are translations of standard messages for 24 languages.</P>
+
+<P>If you want to add your translation to Ay_Emul distributive, send file to <A href="ay_en_sup_email.htm" title="Contact with author">Ay_Emul author</A>.
+
+<P><B>Default code page</B>. Before UTF-8 era, tags in MP3-files was encoded as Windows or MS-DOS code page for non-Latin chars. Various encoding tables can be in MOD, PT3 and other Ay_Emul supported formats. If Ay_Emul can't exactly detect code page, default code page will be used, and you can point it in the field (type or select from list). By default, there is <I>Ansi</I> in Windows-version and <I>CP1251</I> in Linux-version.</P>
+
+<H2>Tab sheet "Playlist"</H2>
+
+<P><B>Playlist colors and font</B>. Click on described elements to define their colors. Press <I>Choose font...</I> button to select font.</P>
+
+<H2>Tab sheet "Application registration"</H2>
+
+<P>Here you can inform system about Ay_Emul application supported formats for current user or for all users (second only if you launch Ay_Emul as administrator or superuser).</P>
+
+<P>All file types are divided to groups (Music files, BASS files, Playlists and Skin files), each group can be represented by own icon picture.</P>
+
+<P>In Linux-version information about all supported mime-type will be saved in home folder of current user (or in /usr for all users), including icons and Ay_Emul command line parameters. But Ay_Emul will not be set as default handler for any of that format, even if user select it in lists (the selection is just ignored).</P>
+
+<P>In Windows-version you can not only inform the system about supported formats, you can also select desired formats to recommend Ay_Emul as default handler for it. Due Microsoft recommendation previous associations will not be lost and will be copied to "Open with..." list, that allows user to select other application for corresponding file type in future. You can choose file type in one of four list at the tab sheet or select/deselect all in group by pressing corresponding <I>All/None</I> button. After registering application, you don't need pass full path to executable in the command line or in <I>Run</I> system dialog box, just type "Ay_Emul" with or without parameters.</P>
+
+<P>Press <I>Register</I> button to apply registering or renew previous registration. Last useful if application path or version (including beta number) was changed. Press <I>Unregister</I> button to remove information about application abilities from system.</P>
+
+<H2>Tab sheet "Searching for tunes in files"</H2>
+
+<P>This is powerful tool for ripping music from Speccy data files and memory dumps (if they not compressed or encoded). You can pre-extract files using third-party tools, for example, Vitamin's Xtractor is very convenient with the --skip-chiptunes option (this option allows you to disable music search in Xtractor itself in order to entrust it to other programs like Ay_Emul).</P>
+
+<P>In field <I>Source files</I> enter names of files (one name per line) or click on <I>Choose...</I> button. After using <I>Choose…</I> button selected files will replace previously typed <I>Source files</I> list.</P>
+
+<P>In field <I>Work folder</I> enter name of temporary folder for storing found files or click on button next to it.</P>
+
+<P>Name of new files is XXX_XXXXXXXX.ext, where XXX is source file number (hex), XXXXXXXX is offset from beginning of source file to found data, ext is a standard Ay_Emul file extension (SQT, PT2 and so on). If player with author string also found (i.e. tag for AS0, ASC, ST3, STC or STP), module is saved in both variants: with tag (suffix -tag added before extension) and without tag.</P>
+
+<P>Check desired module types for searching in field <I>Search for tunes</I>.</P>
+
+<P>If searching will produce wrong (not music) file, then uncheck corresponding option in field <I>Search for tunes</I> and repeat process. To decrease number of mistakes, don't check <I>Do not check modules integrity (faster)</I> option (unchecked by default).</P>
+
+<P>Start searching process by clicking <I>Begin</I> button, to stop click it one more time.</P>
+
+<P>Short information about found modules are show in <I>Work report</I> field.</P>
+
+<P>The search options (module types and integrity check) are remembered in the settings, because the "Search for tunes in files" tool is launched not only manually on this tab, but also implicitly when opening a file normally, if its name does not have a standard music extension (for example, a TRD disk image or a SNA snapshot). Therefore, if you get false positives when opening such files, you can disable the corresponding type on this tab. When opening folders, these options are used only if you check the box "Search for tunes in files" in the folder opening dialog. If you accidentally tried to open a large non-music file, you can interrupt the lengthy search process by pressing Esc or clicking on the main window.</P>
+
+<H2>Tab sheet "Track descriptor"</H2>
+
+<P>Here you can adjust feature "Ay_Emul Track Descriptor" for saving current Ay_Emul status in text file.</P>
+
+<P>Good tradition was among FIDO users: they liked to design their letters and conference messages with some original texts. Many message editors allow adding text from file automatically. So, you can insert cool strings of text into your letters (for example, as signature). One of these strings can be Ay_Emul status string. What you need that simply adjust Ay_Emul and your post program:</P>
+
+<P><I>File Name</I> &ndash; file name with path of text file for storing Ay_Emul current status.</P>
+
+<P><I>Prefix</I> &ndash; piece of text, which will be placed at the beginning of status string.</P>
+
+<P><I>Suffix</I> &ndash; text, which will be placed at the end of status string, in case of Ay_Emul is playing now.</P>
+
+<P><I>Nothing</I> &ndash; text, which will be placed after the <I>Prefix</I>, in case of Ay_Emul is silent now.</P>
+
+<P><I>Enabled</I> &ndash; turn on the feature.</P>
+
+<P><I>Kill on exit</I> &ndash; if checked, then file will be erased after closing Ay_Emul.</P>
+
+<P><I>Kill on nothing</I> &ndash; if checked, then file will be erased each time, when Ay_Emul is stop/pause playing.</P>
+
+<P><I>Code page</I> &ndash; type code page id or select from dropdown list.</P>
+
+<P>Type <I>Apply</I> button to start using new settings of the tab sheet.</P>
+
+<P>If you are using mail client The Bat!, then for adding string into your letter make next.</P>
+
+<P>1. Open "Account Properties" dialog (Account-&gt;Properties…).</P>
+
+<P>2. Click on "+" near of "Templates" option.</P>
+
+<P>3. Chose needed template (for example, "New message").</P>
+
+<P>4. Somewhere in template text (usually at the end) add next string:</P>
+
+<P>%PUT="C:\Ay_Emul\aystatus.txt"</P>
+
+<P>where in quotes type same string as in <I>File Name</I> field of the tab sheet.</P>
+
+<P>5. Insert this string into other templates, if you want.</P>
+
+<P>Fidolook Express 2001 (plug-in for Outlook Express) can be adjusted too. Press "Templates" button and choose page "New Post". In field "Signature" add string</P>
+
+<P>%file(c:\Ay_Emul\aystatus.txt).</P>
+
+<P>If you want, add the string into other templates. Both described programs are for Windows, so select <I>Ansi</I> code page.</P>
+
+<P>Fidolook SL can be adjusted in same way.</P>
+
+<H3>String format:</H3>
+
+<P><I>&lt;Prefix&gt;&lt;String "Author - Title" from main window&gt;&lt;Suffix&gt;</I></P>
+
+<P>if Ay_Emul is playing something, otherwise</P>
+
+<P><I>&lt;Prefix&gt;&lt;Nothing&gt;</I></P>
+
+<H2>Allocation of configuration file and default playlist file</H2>
+
+<P>Playlist content and all settings are automatically stored in special text files Ay_Emul.ayl and Ay_Emul.cfg during closing application. If they not exist at start then Ay_Emul creates it in home folder of current user (it is usually like C:\Users\User\AppData\Local\Ay_Emul\ in Windows and /home/user/.config/Ay_Emul/ in Linux).</P>
+
+<P>You can move one of them or both files to Ay_Emul folder (or just create there empty Ay_Emul.ayl or Ay_Emul.cfg) and Ay_Emul will use it from next start. Moreover, you can write protect it (or place all Ay_Emul folder to CD-R/W) to avoid change settings and default playlist.</P>
+
+<P><B>Uninstall</B> button removes default playlist, configuration file and information about application abilities from system.</P>
+
+<P><B>Close</B> button is used for closing "Tools" box. You can also press <B>Esc</B> or <B>Alt+F4</B> to close the dialog.</P>
+
+</BODY>
+</HTML>

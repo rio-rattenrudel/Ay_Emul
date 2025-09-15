@@ -1,0 +1,84 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="whatdo"></A>What is Ay_Emul</H1>
+
+<P>ZX Spectrum Sound Chip Emulator (Ay_Emul) is Windows or Linux program designed for playing music for AY-3-8912 sound chip (or its analogs are AY-3-8910 and YM2149F). Ay_Emul emulates these sound chips and does not require real ones. Ay_Emul can play ZX Spectrum beeper sound also. Additionally, Ay_Emul can play CD's audio tracks and MIDI-files. Optional BASS library by Ian Luck can be used for playing various formats like MP3 and MOD.
+<P>Ay_Emul can play files of next types.
+<OL>
+<LI>Dumps of registers recorded in many computers' emulators:
+<UL>
+<LI>OUT (recorded in ZX Spectrum emulator 'Z80' v3.xx  by G.A. Lunter);
+<LI>PSG (recorded in ZX Spectrum emulator 'Z80 Stealth' by Mr.Kirill, and in many other emulators);
+<LI>EPSG (recorded in ZX Spectrum emulator 'Z80 Stealth');
+<LI>YM ('StSound Project' by Leonard/Oxygen files, supported YM2, YM3, YM3b, YM5 and YM6 subtypes);
+<LI>VTX ('Vortex Project' by V_Soft files);
+<LI>ZXAY (designed especially for Ay_Emul).
+</UL>
+<LI>Popular ZX Spectrum musical editors' modules:
+<UL>
+<LI>ST1 &ndash; Sound Tracker v1.xx uncompiled;
+<LI>AY of ST11 subtype &ndash; Sound Tracker v1.1 uncompiled, ST1 analog;
+<LI>STC, ZXS &ndash; Sound Tracker v1.xx, Super Sonic v1.xx;
+<LI>ST3 &ndash; STC recompiled (in KSA's S.T. Music's Recompiler);
+<LI>PSC &ndash; Pro Sound Creator v1.xx;
+<LI>AS0, ASC &ndash; ASC Sound Master v0.xx-2.xx;
+<LI>PT1, PT2, PT3 &ndash; Pro Tracker v1.xx-3.xx, Vortex Tracker II v1.0;
+<LI>STF &ndash; Sound Tracker Pro uncompiled;
+<LI>STP &ndash; Sound Tracker Pro;
+<LI>FTC &ndash; Fast Tracker v1.xx;
+<LI>FLS &ndash; Flash Tracker;
+<LI>SQT &ndash; SQ-Tracker;
+<LI>GTR &ndash; Global Tracker v1.x;
+<LI>FXM &ndash; Fuxoft AY Language;
+<LI>AY of AMAD subtype &ndash; Amadeus modules, FXM analog;
+<LI>PSM &ndash; Pro Sound Maker.
+</UL>
+<LI>ZX Spectrum's, Atari ST/STe's or Amstrad CPC's memory dumps with player for processor (Z80 or MC68000):
+<UL>
+<LI>AY of EMUL subtype (DeliAY and AYPlay projects files);
+<LI>AYM (RDOSPLAY project files);
+<LI>SNDH (Atari ST or Atari STe music files).
+</UL>
+<LI>CD audio tracks (CDA). Ay_Emul can work with several CD drives, and also with disks containing not only audio tracks.
+<LI>MIDI-files:
+<UL>
+<LI>MID, MIDI &ndash; MIDI-files' standard format;
+<LI>RMI &ndash; MID-files in RIFF-container;
+<LI>KAR &ndash; standard MID-files with song texts for karaoke;
+<LI>XMI &ndash; Miles Design XMIDI format.
+</UL>
+<LI>Files played by BASS library:
+<UL>
+<LI>MP3, MP2, MP1 &ndash; MPEG 1 encoded sound record;
+<LI>OGG &ndash; Vorbis encoded sound record;
+<LI>OPUS &ndash; Opus-encoded audio;
+<LI>WAV &ndash; sound record; for all that have codec installed in the system;
+<LI>WMA &ndash; Windows Media encoded sound record (via basswma extension);
+<LI>AIFF, AIF &ndash; AIFF encoded audio;
+<LI>APE &ndash; Monkey's Audio sound record (via bassape extension);
+<LI>FLAC &ndash; Free Lossless Audio Codec sound record (via bassflac extension);
+<LI>WV &ndash; WavPack sound record (via basswv extension);
+<LI>AC3 &ndash; multichannel AC3 encoded sound record;
+<LI>AAC &ndash; sound record Advanced Audio Coding;
+<LI>M4A, MP4 &ndash; MPEG-4 audio (Advanced Audio Coding, Apple Lossless Audio Codec)
+<LI>DFF, DSF &ndash; Direct Stream Digital (Sony'n'Philips' audio format)
+<LI>MO3 &ndash; modules with MP3/OGG encoded samples;
+<LI>IT &ndash; Impulse Tracker;
+<LI>XM &ndash; Fast Tracker 2;
+<LI>S3M &ndash; Scream Tracker 3;
+<LI>MTM &ndash; MultiTracker;
+<LI>MOD &ndash; generic module format;
+<LI>UMX &ndash; Unreal Tournament music package;
+<LI>HTTP:// and FTP:// shout cast streams (internet radio, etc.).
+</UL>
+</OL>
+<P>Two of the most tracker module types from item 2 can be replayed simultaneously in Turbo Sound (TS, device for ZX Spectrum with two ordinary sound chips) mode. PT 3.7+ TS-format is also supported.
+<P>For SNDH playing MFP, DMA-Sound and some TOS functions are emulated. For MC68000 emulation used Starscream 680x0 emulation library by Neill Corlett (corlett@elwha.nrrc.ncsu.edu). Supported SNDH music duration database by Benjamin Gerard if timedb.inc.h or sndhtimedb exist in Ay_Emul folder. To install or update just place original timedb.inc.h to the Ay_Emul folder, and sndhtimedb will be generated/regenerated at next startup. The original base can be found in <A href="https://sourceforge.net/p/sc68/code/HEAD/tree/file68/src/timedb.inc.h" target="_blank">sc68 project sources</A>.
+<P>Ay_Emul supports playlist files of Winamp (M3U, M3U8), XMPlay (PLS) and of own format (AYL), and also CUE-sheets for sound streams. AYL can contain full info about each item.
+<P>Ay_Emul can be used as powerful tool for working with AY/YM data files. Built-in Speccy music ripper can to find modules of many ZX Spectrum musical editors in any non-compressed source data. Ay_Emul can convert modules to WAV, ZXAY, VTX, YM6 or PSG formats itself, and to MP3, OGG, FLAC and OPUS via BASSENC library. Ay_Emul can play digital sound is stored in OUT, ZXAY, EPSG, AY or AYM files. Beeper music in AY and AYM formats are supported too. Ay_Emul can play special effects are used by Atari ST musicians and stored in YM2, YM5 and YM6 formats.
+<P>Skin-files can change view of Ay_Emul main window.
+<P>BASS library is loaded only before playing corresponding file and unloaded immediately after stopping playing. A similar behavior is implemented for the BASSENC library &ndash; it is loaded only during encoding.
+<P>System requirements: as minimum Windows XP or Linux; for just work processor 386 or greater is required; for playing need sound card with support of 8 or 16 bit Stereo or Mono digital sound at any sample frequency in range from 8000 to 300000 Hz and powerful processor (Ay_Emul uses special filter by default for more quality of sound chip and beeper emulation). For playing extra file types of BASS require DirectX 3 or above (in Windows), for MOD music additionally processor with MMX is required.
+
+</BODY>
+</HTML>

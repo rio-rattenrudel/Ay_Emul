@@ -1,0 +1,13 @@
+{"version":1,"strings":[
+{"hash":11547879,"name":"tseldirdlg.caption","sourcebytes":[83,101,108,68,105,114,68,108,103],"value":"SelDirDlg"},
+{"hash":1339,"name":"tseldirdlg.bok.caption","sourcebytes":[79,75],"value":"OK"},
+{"hash":77089212,"name":"tseldirdlg.bcancel.caption","sourcebytes":[67,97,110,99,101,108],"value":"Cancel"},
+{"hash":83678995,"name":"tseldirdlg.gbplaylist.caption","sourcebytes":[80,108,97,121,108,105,115,116,32,102,105,108,101,115],"value":"Playlist files"},
+{"hash":51787683,"name":"tseldirdlg.rbplincl.caption","sourcebytes":[73,110,99,108,117,100,101,32,112,108,97,121,108,105,115,116,115],"value":"Include playlists"},
+{"hash":53122979,"name":"tseldirdlg.rbplexcl.caption","sourcebytes":[69,120,99,108,117,100,101,32,112,108,97,121,108,105,115,116,115],"value":"Exclude playlists"},
+{"hash":232423155,"name":"tseldirdlg.rbplonly.caption","sourcebytes":[79,110,108,121,32,112,108,97,121,108,105,115,116,115],"value":"Only playlists"},
+{"hash":108725763,"name":"tseldirdlg.gboptions.caption","sourcebytes":[79,112,116,105,111,110,115],"value":"Options"},
+{"hash":29272963,"name":"tseldirdlg.cbrecurse.caption","sourcebytes":[82,101,99,117,114,115,101,32,115,117,98,102,111,108,100,101,114,115],"value":"Recurse subfolders"},
+{"hash":95320579,"name":"tseldirdlg.cbdodetect.caption","sourcebytes":[83,101,97,114,99,104,32,102,111,114,32,116,117,110,101,115,32,105,110,32,102,105,108,101,115],"value":"Search for tunes in files"},
+{"hash":112488947,"name":"tseldirdlg.cbpathtoname.caption","sourcebytes":[80,97,116,104,32,98,97,115,101,100,32,102,105,108,101,32,110,97,109,101,115],"value":"Path based file names"}
+]}

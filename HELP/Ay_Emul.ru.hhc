@@ -1,0 +1,302 @@
+<HTML>
+<!--Sitemap 1.0-->
+<OBJECT type="text/site properties">
+</OBJECT>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Знакомство">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Что делает Ay_Emul">
+			<param name="Local" value="html/ay_ru_intro_whatdo.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_intro_whatdo.htm">Что делает Эмулятор AY-3-8910/12</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Что нового в этой версии">
+			<param name="Local" value="html/ay_ru_intro_whatsnew.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_intro_whatsnew.htm">Что нового в этой версии</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="История изменений">
+			<param name="Local" value="html/ay_ru_history.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_history.htm">История изменений</A><BR>
+	</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Использование">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Элементы управления главного окна">
+			<param name="Local" value="html/ay_ru_using_controls.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_using_controls.htm">Элементы управления главного окна</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Окно &quot;Микшер&quot;">
+			<param name="Local" value="html/ay_ru_using_mixer.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_using_mixer.htm">Окно &quot;Микшер&quot;</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Окно &quot;Инструменты&quot;">
+			<param name="Local" value="html/ay_ru_using_tools.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_using_tools.htm">Окно &quot;Инструменты&quot;</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Окно &quot;Список проигрывания&quot;">
+			<param name="Local" value="html/ay_ru_using_playlist.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_using_playlist.htm">Окно &quot;Список проигрывания&quot;</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Диалог &quot;Настройка элемента списка&quot;">
+			<param name="Local" value="html/ay_ru_using_playlistitem.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_using_playlistitem.htm">Диалог &quot;Настройка элемента списка&quot;</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Диалог &quot;Информация в заголовке файла&quot;">
+			<param name="Local" value="html/ay_ru_using_header.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_using_header.htm">Диалог &quot;Информация в заголовке файла&quot;</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Командная строка">
+			<param name="Local" value="html/ay_ru_using_commandline.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_using_commandline.htm">Командная строка</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Горячие клавиши">
+			<param name="Local" value="html/ay_ru_using_hotkeys.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_using_hotkeys.htm">Горячие клавиши</A><BR>
+	</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Поведение">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Порядок проигрывания">
+			<param name="Local" value="html/ay_ru_behav_playingorder.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_behav_playingorder.htm">Порядок проигрывания</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Зацикливание мелодии">
+			<param name="Local" value="html/ay_ru_behav_looping.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_behav_looping.htm">Зацикливание мелодии</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Запуск Ay_Emul">
+			<param name="Local" value="html/ay_ru_behav_startingemul.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_behav_startingemul.htm">Запуск Ay_Emul</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Открытие файлов">
+			<param name="Local" value="html/ay_ru_behav_fopen.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_behav_fopen.htm">Открытие файлов</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Поиск модулей в файлах">
+			<param name="Local" value="html/ay_ru_behav_finder.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_behav_finder.htm">Поиск модулей в файлах</P></A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Конвертирование из OUT и ZXAY">
+			<param name="Local" value="html/ay_ru_behav_outzxay.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_behav_outzxay.htm">Конвертирование из OUT и ZXAY</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Изменение позиции проигрывания">
+			<param name="Local" value="html/ay_ru_behav_slider.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_behav_slider.htm">Изменение позиции проигрывания</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Как прервать конвертирование">
+			<param name="Local" value="html/ay_ru_behav_intconv.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_behav_intconv.htm">Как прервать конвертирование</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Управление окнами">
+			<param name="Local" value="html/ay_ru_behav_winman.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_behav_winman.htm">Управление окнами</A><BR>
+	</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Форматы файлов">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="OUT">
+			<param name="Local" value="html/ay_ru_fmt_out.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_out.htm">OUT</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="ZXAY">
+			<param name="Local" value="html/ay_ru_fmt_zxay.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_zxay.htm">ZXAY</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="PSG">
+			<param name="Local" value="html/ay_ru_fmt_psg.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_psg.htm">PSG</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="ZX50">
+			<param name="Local" value="html/ay_ru_fmt_zx50.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_zx50.htm">ZX50</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="YM">
+			<param name="Local" value="html/ay_ru_fmt_ym.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_ym.htm">YM</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="VTX">
+			<param name="Local" value="html/ay_ru_fmt_vtx.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_vtx.htm">VTX</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="FXM">
+			<param name="Local" value="html/ay_ru_fmt_fxm.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_fxm.htm">FXM</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="ST1">
+			<param name="Local" value="html/ay_ru_fmt_st1.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_st1.htm">ST1</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="STC">
+			<param name="Local" value="html/ay_ru_fmt_stc.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_stc.htm">STC</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="FLS">
+			<param name="Local" value="html/ay_ru_fmt_fls.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_fls.htm">FLS</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="ST3">
+			<param name="Local" value="html/ay_ru_fmt_st3.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_st3.htm">ST3</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="STF">
+			<param name="Local" value="html/ay_ru_fmt_stf.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_stf.htm">STF</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="STP">
+			<param name="Local" value="html/ay_ru_fmt_stp.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_stp.htm">STP</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="SQT">
+			<param name="Local" value="html/ay_ru_fmt_sqt.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_sqt.htm">SQT</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="PSM">
+			<param name="Local" value="html/ay_ru_fmt_psm.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_psm.htm">PSM</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="AS0">
+			<param name="Local" value="html/ay_ru_fmt_as0.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_as0.htm">AS0</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="ASC">
+			<param name="Local" value="html/ay_ru_fmt_asc.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_asc.htm">ASC</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="PSC">
+			<param name="Local" value="html/ay_ru_fmt_psc.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_psc.htm">PSC</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="PT1">
+			<param name="Local" value="html/ay_ru_fmt_pt1.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_pt1.htm">PT1</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="PT2">
+			<param name="Local" value="html/ay_ru_fmt_pt2.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_pt2.htm">PT2</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="PT3">
+			<param name="Local" value="html/ay_ru_fmt_pt3.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_pt3.htm">PT3</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="GTR">
+			<param name="Local" value="html/ay_ru_fmt_gtr.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_gtr.htm">GTR</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="FTC">
+			<param name="Local" value="html/ay_ru_fmt_ftc.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_ftc.htm">FTC</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="AY">
+			<param name="Local" value="html/ay_ru_fmt_ay.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_ay.htm">AY</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="AYM">
+			<param name="Local" value="html/ay_ru_fmt_aym.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_aym.htm">AYM</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="SNDH">
+			<param name="Local" value="html/ay_ru_fmt_sndh.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_fmt_sndh.htm">SNDH</A><BR>
+	</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Поддержка">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Распространение">
+			<param name="Local" value="html/ay_ru_sup_distribution.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_sup_distribution.htm">Распространение</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Архивы музыки">
+			<param name="Local" value="html/ay_ru_sup_musicarch.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_sup_musicarch.htm">Архивы музыки</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Файлы обшивок">
+			<param name="Local" value="html/ay_ru_sup_skinfiles.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_sup_skinfiles.htm">Файлы обшивок</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Официальный сайт">
+			<param name="Local" value="html/ay_ru_sup_homepage.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_sup_homepage.htm">Официальный сайт</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Связь с автором">
+			<param name="Local" value="html/ay_ru_sup_email.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_sup_email.htm">Связь с автором</A><BR>
+	</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="Авторы и помощники">
+		</OBJECT>
+	<UL>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Благодарности">
+			<param name="Local" value="html/ay_ru_auth_blago.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_auth_blago.htm">Благодарности</A><BR>
+		<LI><OBJECT type="text/sitemap">
+			<param name="Name" value="Авторы">
+			<param name="Local" value="html/ay_ru_auth_authors.htm">
+			</OBJECT>
+			<A HREF="html/ay_ru_auth_authors.htm">Авторы</A><BR>
+	</UL>
+</UL>
+</HTML>

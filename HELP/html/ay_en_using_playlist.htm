@@ -1,0 +1,68 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="playlist"></A>"Playlist" window</H1>
+
+<P>Hot key is <B>E</B>. This window allows you manipulate play list items. You can move items from one position to another via mouse left button pressed. Type and time length of item are shown at the right side. If during loading item some error was occurred, corresponding item's file name and short error message are shown. Font and colors of playlist items in all states can be defined in "Tools" dialog.</P>
+
+<P>All main window hot keys work in playlist window too.</P>
+
+<P><B>Add items</B> button allows you add item(s) with standard "Open Files" dialog box. You can use <I>Insert</I> key also. If you hold <I>Shift</I> during clicking on this button, you call "Open files from folder" dialog (also you may use <I>Shift+Insert</I>). If you hold <I>Ctrl</I> during clicking on this button, you call "Add CD(s)" dialog (also you may use <I>Ctrl+Insert</I>).</P>
+
+<P><B>Clear list</B> button removes all list items and set playlist global settings to <I>By default</I>.</P>
+
+<P><B>Save list</B> button allows to save current playlist into file (AYL or M3U). Remember, that in M3U-files only a file names are stored. Some AY and SNDH files can contain more than one tune, and this situation cannot be saved in M3U. So, use AYL if you want to save all parameters of current playlist and of each item.</P>
+
+<P><B>List tools</B> button allows you to call popup menu with additional commands.</P>
+<P>First five commands are for sort playlist in different ways: randomly, by author, by title, by file name and by file name extension.</P>
+<P>Use command <I>Find item...</I> to search an item by string queries (<B>F7</B> hot key). You can refine <I>Search area</I> in the dialog that appeared.</P>
+<P><I>Deduplicate</I> command allows to remove duplicated items (can be useful if you are loaded all folder content with music and playlists for it).</P>
+<P>The commands from the <I>Convert all to</I> submenu allow you to initiate the conversion of all items in the playlist to PSG, VTX, YM6, ZXAY and WAV, and if there is a BASSENC library, to MP3, OGG, FLAC and OPUS. If the conversion of a specific file type is not possible or is not implemented, it is simply silently skipped. The folder to save and encoding options are set once before starting the group conversion, file names and tags are filled in automatically (taken from the playlist item settings). The uniqueness of file names is ensured by Windows-style suffixes (ordinal numbers in parentheses when the names match).</P>
+<P>The <I>Save all to folder...</I> command allows you to save all files added to the playlist to the specified folder. The same algorithm is used for auto-naming files as for the group conversion described above. You can save only those file types that the built-in search can find, while saving all the information found during the search (author strings, compilation addresses, etc.), as well as converting ST1 and ST3 to STC, STF to STP, and ASC0 to ASC. If there is a need to save the found modules without conversion and modification, use the search in the Tools window. This feature is useful as an alternative to <I>Searching for tunes in files</I>. You can open a TRD or SNA file and then save all the found modules. If an author string from the player for modules AS0, ASC, ST3, STC or STP is added to the comment of a playlist item (when opening formats like TRD, it is entered there automatically), then when saving this module, this line will be added to the saved file.</P>
+
+<P>Next button shows one of four icons and determines way of playing playlist items. Press to change cyclically: backward (up), forward (down), random order (created stealthily and fixed to get availability play previous item and avoid repetitions) and only current item selected (once if list is not in loop mode).</P>
+
+<P>Next button determines loop mode for playlist and can be in two states: when it is lowered, playlist is looped (after finishing playing last item, it starts playing first one).</P>
+
+<P>Total number of playlist items and current item number both are shown in low-right corner.</P>
+
+<P><I>Delete</I> key deletes selected items from playlist.</P>
+
+<P><I>Ctrl+A</I> key combination allows to select all items in playlist.</P>
+
+<P>Use cursor keys for navigation.</P>
+
+<P><I>Shift</I> and <I>Ctrl</I> keys with cursor keys and mouse clicks can be used to select/unselect items and its ranges. Use <I>Ctrl</I> one more time to deselect in same way.</P>
+
+<P>Use mouse double clicking on item or <I>Enter</I> key for selected items to start playing.</P>
+
+<P>You can drag and drop files and folders to playlist window to add it to the end of list.</P>
+
+<P>You may call popup menu by mouse right button clicking on an item. There are:</P>
+
+<UL>
+	<LI><I>Item adjusting...</I> calls <I>"List's Item Adjusting"</I> dialog box.</LI>
+	<LI><I>Convert to</I> calls submenu:</LI>
+	<UL>
+		<LI><I>PSG...</I> allows you convert an item to PSG-file, TS modules are converted to 2 PSG files.</LI>
+		<LI><I>VTX...</I> allows you convert an item to VTX-file. After selecting file name, "Information in the file header" dialog will appear with the most fields are set, so you can add or correct some of them.</LI>
+		<LI><I>YM6...</I> allows you convert an item to YM6-file. Also "Information in the file header" dialog will appear, but with less fields available due format specific.</LI>
+		<LI><I>ZXAY...</I> allows you convert an item to ZXAY-file (only from OUT, EPSG, AY and AYM files).</LI>
+		<LI><I>WAV...</I> allows you to convert an item to WAV-file with settings from "Mixer" dialog. It is recommended to create WAV-file at sample rate, equal to AY/YM counters frequency (AY frequency / 8, use corresponding button in mixer to set this rate), and then resample it to desired sample rate via any quality resampler. This way can give you better result, than Ay_Emul built-in resampler.</LI>
+		<LI><I>MP3...</I>, <I>OGG...</I>, <I>FLAC...</I>, <I>OPUS...</I> allows you to convert this element to the appropriate format if a library BASSENC is present, the settings are the same as when converting to WAV. A dialog box appears for configuring encoding options and tags before converting.</LI>
+	</UL>
+	<LI><I>Open in editor</I> &ndash; if "Modules editor path" is defined in "Tools" dialog and item is ZX Spectrum module, it is saved in system temporary folder and is passed to external editor. File is not deleted from temporary folder automatically.</LI>
+	<LI><I>Save as…</I> calls standard dialog for saving selected item with new name (it works similarly to the <I>Save all to folder...</I> command described above).</LI>
+</UL>
+
+<P>The most commands from that menu work with all selected items and not only with clicked one. At the same time, in the case of saving or converting, automation occurs, similar to the one described above for the <I>Save all to folder...</I> and <I>Convert all to</I> commands.</P>
+
+<P>For Turbo Sound modules: note that only first module of TS-pair will be converted to VTX or YM6 cause of limitation of target formats.</P>
+
+<P>Also don't expect miracles if you converting SNDH to YM6: special effects will be lost. This is hard hand work to convert Atari ST's MFP-effects to YM6-format, only YM-format enthusiasts could did it (mainly it is Arnaud Carre, ST Sound author). As time has shown, simplified Atari ST emulation to play memory dumps like SNDH is more rationally.</P>
+
+<P>Total playlist time length is shown at the lower right corner. Usually, it includes time length of all visible items (in this case '+' sign added at the right). To include length of invisible for the moment items, click on this field. During time calculation, Ay_Emul extracts additional information from MIDI-files and from files playing by BASS library (the process can be interrupted by pressing ESC or clicking on the main window).</P>
+
+<P>Use <B>Esc</B>, <B>E</B> or <B>Alt+F4</B> to close playlist window.</P>
+
+</BODY>
+</HTML>

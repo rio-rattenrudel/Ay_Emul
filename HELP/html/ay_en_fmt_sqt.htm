@@ -1,0 +1,138 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="sqt"></A>SQT</H1>
+
+<H2>Introduction</H2>
+
+<P>These are compiled modules of SQ Tracker (Scalex Qjeta Tracker), a project by Jiri Koudelka (George K.).</P>
+
+<P>The project is popular mainly in Eastern Europe. Like many projects are alternative to the then popular Sound Tracker, it appeared in the second quarter of the 90s, in 1993. The claim for a new generation tracker turned out to be not as powerful as the ASC Sound Master, but nevertheless it is comparable in PT2 capabilities, though there was still quite a lot of time before the appearance of it.</P>
+
+<H2>Format features</H2>
+
+<P>Unlike other formats, which grouped in patterns the A, B and C channels data, forming a single structure, each SQT channel pattern is independent. The musician has a choice to fill each playback position with three patterns (according to the number of channels) and other parameters that make this position a unique structure, which has no analogues in any other ZX Spectrum tracker.</P>
+
+<P>Some features of SQT give out a prototype (ST), for example: there is a field with the module size in the header; the length of the sample and the ornament is fixed and equal to 32 (these 32 ticks are always played out, and only then there is looping from a certain point and the loop size); the ornament, in addition to its own loop parameters, can be looped in the ST style.</P>
+
+<P>At the same time, the compiled pattern format is designed differently, it does not have a byte-by-byte cyclic iteration of options with each byte encountered as in many trackers. Instead, the analyzer works on the principle of "Enter, perform one of standard actions, exit". There is an optimization in the form of repeating the previous action the required number of times, as a result, the pattern is more compact, and the exit from the analyzer occurs almost immediately.</P>
+
+<P>And at the same time, you can see some redundant actions in the native player and even assume the absence of some data in the format, since if they were, there would be a failure. That is, from the player's point of view (from which I performed reverse engineering), the format may seem more complicated and incomprehensible than it actually is.</P>
+
+<P>The SQT module can be linked to the compilation address (when saving from Ay_Emul, unlinking is performed). But even in a linked module, this address is uniquely determined, because SamsPtr always points to the 10th byte from the beginning of the module (see below).</P>
+
+<P>Channel volume is adjusted without using complex formulas or tables (as is done in many other trackers): by simply subtracting the value "15-volume" from the amplitude (this value is stored already calculated in the pattern body). This is correct, since the DAC output characteristic (of both AY and even more so YM) is close to logarithmic.</P>
+
+<H2>Module format</H2>
+
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Designation<TH>Description</TR>
+<TR><TD>+0<TD>2<TD>Size<TD>Module size</TR>
+<TR><TD>+2<TD>2<TD>SamsPtr<TD>Pointer to samples offsets (reduced by 2, samples numbering from 1)</TR>
+<TR><TD>+4<TD>2<TD>OrnsPtr<TD>Pointer to ornaments offsets (reduced by 2, ornaments numbering from 1)</TR>
+<TR><TD>+6<TD>2<TD>PatsPtr<TD>Pointer to patterns offsets (reduced by 2, patterns numbering from 1)</TR>
+<TR><TD>+8<TD>2<TD>PossPtr<TD>Pointer to position list</TR>
+<TR><TD>+10<TD>2<TD>LoopPtr<TD>Pointer to loop position</TR>
+<TR><TD><nobr>+(SamsPtr+2)</nobr><TD>?<TD>SamPtrs<TD>Samples offsets in order (2 bytes per sample)</TR>
+<TR><TD><nobr>+(OrnsPtr+2)</nobr><TD>?<TD>OrnPtrs<TD>Ornaments offsets in order (2 bytes per ornament)</TR>
+<TR><TD><nobr>+(PatsPtr+2)</nobr><TD>?<TD>PatPtrs<TD>Channel patterns offsets in order (2 bytes per pattern)</TR>
+<TR><TD>+SamPtrs[]<TD>?<TD>Samples<TD>Samples one after another (described below)</TR>
+<TR><TD>+OrnPtrs[]<TD>?<TD>Ornaments<TD>Ornaments one after another (described below)</TR>
+<TR><TD>+PatPtrs[]<TD>?<TD>Patterns<TD>Channel patterns one after another (described below)</TR>
+<TR><TD>+PossPtr<TD>?<TD>Positions<TD>Position list in the playback order (7 bytes per position, described below). Ends with 6 zero bytes.</TR>
+</TABLE>
+
+<H3>Sample</H3>
+
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Description</TR>
+<TR><TD>+0<TD>1<TD>Loop point (0..31) or no looping (32).</TR>
+<TR><TD>+1<TD>1<TD>Loop body length in ticks.</TR>
+<TR><TD>+2<TD>96<TD>32 three-byte ticks one after the other. Every tick:<BR>
+ +0 Bits 7&ndash;4: high bits of the noise period. Bits 3&ndash;0: amplitude; envelopes are allowed only for amplitude 0.<BR>
+ +1 Bit 7: low bit of the noise period. Bit 6: tone mask: Bit 5: noise mask (the noise period is used only if the noise is resolved by the mask). Bit 4: the sign of the tone period deviation (1 for plus, 0 for minus). Bits 3&ndash;0: high bits of the tone period deviation.<BR>
+ +2 Low byte of the tone period deviation.</TR>
+</TABLE>
+
+<H3>Ornament</H3>
+
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Description</TR>
+<TR><TD>+0<TD>1<TD>Loop point (0..31) or take the loop point and body from the current sample (32).</TR>
+<TR><TD>+1<TD>1<TD>Loop body length in ticks.</TR>
+<TR><TD>+2<TD>32<TD>32 single-byte ticks (a number with a sign).</TR>
+</TABLE>
+
+<H3>Channel pattern</H3>
+
+<TABLE>
+<TR><TH>Offset<TH>Description</TR>
+<TR><TD>+0<TD>Lines number in the pattern.</TR>
+<TR><TD>+1<TD>Pattern body.</TR>
+</TABLE>
+
+<H3>Channel pattern body</H3>
+
+<P>An optional byte in square brackets.<P>
+
+<TABLE>
+<TR><TH>Bytes<TH>Description</TR>
+<TR><TD><nobr>0x00..0x5F, Cmd, [Prm], [Prm2]</nobr><TD>Set the note to 0..95. Process bytes Cmd, [Prm], [Prm2] (see below "Checking for sample, ornament and effect presence"). Exit.</TR>
+<TR><TD>0x60..0x6E, Prm<TD>Set effect 0..14 with parameter. It looks strange (perhaps there is an error in this place in the player, because the 0th effect is superfluous, and 15s is absent). Exit.</TR>
+<TR><TD>0x6F..0x7F, Prm<TD>Mute channel. For 0x70..0x7F set 1..16 effect accordingly (with the Prm parameter), for 0x6F Prm is ignored. Exit.</TR>
+<TR><TD>0x80..0x9F, Prm<TD>Change the note to the specified number of semitones. Bits 3&ndash;0: Absolute number of semitones. Bit 4: 0 for addition, 1 for subtraction. Repeat the sample, ornament (if available) and effect (if available) installation (described below). Exit.</TR>
+<TR><TD>0xA0..0xAF<TD>Exit. Skip 0..15 lines.</TR>
+<TR><TD>0xB0<TD>Repeat the sample, ornament (if available) and effect (if available) installation. Exit.</TR>
+<TR><TD>0xB1..0xBF<TD>Repeat the sample, ornament (if available) and effect (if available) installation. Exit. At subsequent entries, repeat the sample, ornament (if available) and effect (if available) installation 1..15 times and exit.</TR>
+<TR><TD>0xC0..0xFF<TD>Set 0..31 sample (although in fact, the 0th sample is not in the format). Exit.</TR>
+</TABLE>
+
+<H3>Checking for sample, ornament and effect presence</H3>
+
+<P>The note setting command is followed by 1 to 3 bytes (Cmd, [Prm], [Prm2]), in which the sample, ornament and effect can be encoded. The following describes how to decode them.</P>
+
+<P>Check for a non-zero sample number (if bit 7 is set in Cmd, the number is in bits 5&ndash;1), install if available. Check for a non–zero ornament (if bits 7 and 6 are set in Cmd, the highest bit of the number is in bit 0, and the lowest bits are in Prm bits 7-4), set if available. Check for a non–zero effect number with the parameter (if the Cmd does not have bit 7 set, then the effect number is in bits 6&ndash;0, and the parameter is in Prm, if bits 7 and 6 are set in Cmd, then the effect number is in Prm bits 3&ndash;0, and the parameter is in Prm2), set if available (description next).</P>
+
+<H3>Repeat the sample, ornament (if available) and effect (if available) installation</H3>
+
+<P>The pattern format allows you to repeat the action of bytes <0xC0..0xFF> (sample setting) and <0x00..0x5F, Cmd, [Prm], [Prm2]> (the latter without changing the note, only with checking for the sample, ornament and effect presence).</P>
+
+<P>Each time the pattern analyzer is entered, the repeat counter decreases, and until it is reset, repeat that installation and exit instead of the pattern analysis continue.</P>
+
+<H3>Effects with the parameter</H3>
+
+<P>Effects 1&ndash;6 can be disabled in the position list.</P>
+
+<P>1. Channel volume (value 0..15 in bits 3&ndash;0). 0 is maximum volume, 15 is minimum.</P>
+<P>2. Addition to the channel volume (significant result bits 3&ndash;0 only).</P>
+<P>3. All channels volume (similar to 1).</P>
+<P>4. Addition to the all channels volume (similar to 2).</P>
+<P>5. Playback speed (value 0..31 in bits 4&ndash;0, 0 for 32).</P>
+<P>6. Addition to the playback speed (significant result bits 4&ndash;0 only, 0 for 32).</P>
+<P>7. Tone glide up for each interrupt with a step in the parameter (i.e. the parameter is subtracted from the tone period shift accumulation).</P>
+<P>8. Tone glide down (similar to 7, but the parameter is added).</P>
+<P>9&ndash;15. Allow envelopes. The effect number is the envelope type increased by 1, and the parameter is low byte of the period (high byte is always 0).</P>
+
+<P>Note: Theoretically, the player can pass any number from 0 to 127 to the effect setting routine, and anything outside the range [1..8] minus one, it turns into an envelope type (4 lower bits of the result). According to indirect signs, the standard type of envelopes in SQ Tracker should be within [8..14].</P>
+
+<H2>Position</H2>
+
+<P>Size is 7 bytes, 2 bytes per channel:</P>
+
+<TABLE>
+<TR><TH>Offset<TH>Description</TR>
+<TR><TD>+0<TD>Bit 7: 1 if effects are allowed. Bits 6&ndash;0: channel pattern number.</TR>
+<TR><TD>+1<TD>Bits 7&ndash;4: transposition in semitones (0 &ndash; without transposition, 1..8 &ndash; up; 9..15 &ndash; down by 1..7 respectively). Bits 3&ndash;0: initial channel volume.</TR>
+</TABLE>
+
+<P>The seventh byte is the initial playback speed of this position.</P>
+
+<H2>An unusual format variation</H2>
+
+<P>There are unusual SQT modules in some programs on the ZX Spectrum. They are played by a player modified to play several modules (the melody number is passed at the initialization procedure entry).</P>
+
+<P>The player is followed by SQT modules (looking us usual), but they have links to each other to matching structures. If they are simply splited into separate modules, only those will turn out to be regular that do not use parts of the other modules.</P>
+
+<P>So far, such "combos" are not supported in Ay_Emul, and they are simply converted to AY format to add them to Tr_Songs.</P>
+
+</BODY>
+</HTML>

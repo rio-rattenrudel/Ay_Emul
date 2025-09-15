@@ -1,0 +1,77 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="commandline"></A>Command line</H1>
+
+<P>Ay_Emul can take parameters from command line. Parameters must be divided with spaces. If first char of parameter is '-' (can be '/' also in Windows-version) then it is interpreted as key else as file name.</P>
+
+<P>If parameter (key or file name) contains spaces, it must be double quoted (can be quoted the part of parameter with spaces).</P>
+
+<P>If several same parameters are passed, then last one is stored.</P>
+
+<P>Files in command line (except skin files) will be added to cleared playlist and first one will start playing. Skin file can be passed with or without key (see further). You can give via command line one or more file names (including playlist files: AYL, M3U, M3U8, PLS and CUE). And you can specify track/song number for multitrack/multisong formats (AY, AYM, SNDH, MID or XMI) after file name (using ":N" addition, where N is track number starting from 0).</P>
+
+<P>You don't need point full path to executable in Windows-version if you are registering application in system (see "Tools" window description).</P>
+
+<H2>List of keys</H2>
+
+<DL>
+<DT>-sX &ndash; sample rate in Hz<DD>X = from 8000 to 300000
+<DT>-b8, -b16 &ndash; bit rate<DD>8 or 16
+<DT>-dmono, -dstereo, -dlist, -dmixer &ndash; channels number for sound card<DD>mono or stereo; take or ignore pointed in playlist 
+<DT>-wonX &ndash; number of sound buffers<DD>X = from 2 to 10
+<DT>-wolX &ndash; length of sound buffer in ms<DD>X = from 5 to 2000
+<DT>-wodX &ndash; digital sound device number<DD>X >= 0
+<DT>-zX &ndash; Z80 chip frequency in Hz<DD>X = from 1000000 to 8000000
+<DT>-eay, -eym, -elist, -emixer &ndash; chip type<DD>AY-3-8910/12 or YM2149(F); take or ignore pointed in playlist 
+<DT>-yX, -ylist, -ymixer &ndash; sound chip frequency in Hz<DD>X = from 1000000 to 3000000; take or ignore pointed in playlist 
+<DT>-tX &ndash; first interrupt offset in Z80 tacts<DD>X >= 0
+<DT>-iX &ndash; number of Z80 tacts between interrupts<DD>X > 0
+<DT>-aon, -aoff &ndash; amplitude analyzer<DD>turn on or off
+<DT>-fon, -foff &ndash; spectrum analyzer<DD>turn on or off
+<DT>-lX &ndash; interface language<DD>X = standard ID for language (ru &ndash; Russian, en &ndash; English, etc.)
+<DT>-nX, -nlist, -nmixer &ndash; interrupt frequency in mHz<DD>X = from 1000 to 2000000; take or ignore pointed in playlist 
+<DT>-con, -coff &ndash; loop song playing<DD>turn on or off
+<DT>-ri, -rn, -rh &ndash; application priority (for Windows-version)<DD>idle, normal or high
+<DT>-hX, -hlist, -hmixer &ndash; channels amplification<DD>X - abbreviation for standard schematic (MONO, AYABC, YMABC, AYACB, YMACB and so on); take or ignore pointed in playlist 
+<DT>-hX,X,X,X,X,X &ndash; manual channels amplification<DD>three pairs of amplification coefficients for each chip's channel A, B and C (first number for left channel, second for right in a pair), X = from 0 to 255
+<DT>-g0, -g1, -g2 &ndash; icon in system tray<DD>never, always or minimize
+<DT>-kon, -koff &ndash; auto scroll name<DD>turn on or off
+<DT>-j0, -j1, -j2 &ndash; timer mode<DD>"elapsed", "remained", "duration”
+<DT>-p, -pX &ndash; load skin<DD>standard or from file (X is its path and name), skin file name can be pointed without key -p also
+<DT>-q, -qX &ndash; MFP timer frequency in Hz<DD>attach to AY/YM frequency or set fixed (X = from 1000000 to 3000000)
+<DT>-uX &ndash; beeper amplification<DD>X = from 0 to 255
+<DT>-vhide, -vshow &ndash; application's windows<DD>minimize or restore
+<DT>-won, -woff &ndash; auto saving path to last folder<DD>turn on or off
+<DT>-!on, -!off &ndash; auto saving volume position<DD>turn on or off
+<DT>-xon, -xoff &ndash; auto saving position of windows<DD>turn on or off
+<DT>-fdPX &ndash; adjusting track information (see "Tools" window)<DD>change P for parameter and X for its value:
+<BR>-fdfX &ndash; X is the target file name
+<BR>-fdnX &ndash; X is "Nothing" string
+<BR>-fdsX &ndash; X is "Suffix" string
+<BR>-fdpX &ndash; X is "Prefix" string
+<BR>-fde0, -fde1 &ndash; check or uncheck "Enabled"
+<BR>-fdk0, -fdk1 &ndash; check or uncheck "Kill On Nothing"
+<BR>-fdx0, -fdx1 &ndash; check or uncheck "Kill On Exit"
+<BR>-fdcX &ndash; X is "Code page" name
+<DT>-add &ndash; change adding mode for next files<DD>adding files to the end of playlist
+<DT>-adp &ndash; change adding mode for next files<DD>adding files to the end of playlist and starting playing first one of them
+</DL>
+
+<H2>Examples</H2>
+<OL>
+<LI>Play My_Song.vtx using channel B only at center (hmixer key is pointing to ignore corresponding parameter in VTX-file):
+<BR><I>Ay_Emul -h0,0,255,255,0,0 -hmixer My_Song.vtx</I>
+<LI>Play My New Song.sqt by emulating AY-3-8910/12:
+<BR><I>Ay_Emul.exe "My New Song.sqt" /eay</I>
+<LI>Setting standard amplification YMABC, chip type YM2149, chip frequency 1750000 Hz, interrupt frequency 48.828 Hz in mixer (typical xUSSR version of ZX Spectrum computer is Pentagon 128K):
+<BR><I>Ay_Emul.exe /hYMABC /eym /y1750000 /n48828</I>
+<LI>Load skin Example.ays:
+<BR><I>Ay_Emul Example.ays</I>
+<LI>Load skin Example.ays via key (backward compatibility):
+<BR><I>Ay_Emul.exe /p"C:\Skin Manager\"Example.ays</I>
+<LI>Add to playlist first track of DESERT.XMI, third melody from Dizzy 7.ay and second melody from Dizzy 6.aym:
+<BR><I>Ay_Emul -add DESERT.XMI:0 "Dizzy 7.ay":2 "Dizzy 6.aym:1"</I>
+</OL>
+
+</BODY>
+</HTML>

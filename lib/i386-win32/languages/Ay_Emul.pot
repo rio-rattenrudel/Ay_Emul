@@ -1,0 +1,2089 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: basslight.basse_already
+msgid "Already initialized/paused/whatever"
+msgstr ""
+
+#: basslight.basse_cantcratefile
+msgid "Couldn't create the file"
+msgstr ""
+
+#: basslight.basse_cantfindsnddrv
+msgid "Can't find a free sound driver"
+msgstr ""
+
+#: basslight.basse_cantgetchan
+msgid "Can't get a free channel"
+msgstr ""
+
+#: basslight.basse_cantopenfile
+msgid "Can't open the file"
+msgstr ""
+
+#: basslight.basse_chanfileend
+msgid "The channel/file has ended"
+msgstr ""
+
+#: basslight.basse_codec
+msgid "Codec is not available/supported"
+msgstr ""
+
+#: basslight.basse_connectiontimedout
+msgid "Connection timedout"
+msgstr ""
+
+#: basslight.basse_decodchan
+msgid "The channel is/isn't a \"decoding channel\""
+msgstr ""
+
+#: basslight.basse_denied
+msgctxt "basslight.basse_denied"
+msgid "The device is busy"
+msgstr ""
+
+#: basslight.basse_devicebusy
+msgctxt "basslight.basse_devicebusy"
+msgid "The device is busy"
+msgstr ""
+
+#: basslight.basse_directxver
+msgid "A sufficient DirectX version is not installed"
+msgstr ""
+
+#: basslight.basse_effectsnotenabled
+msgid "Effects are not enabled"
+msgstr ""
+
+#: basslight.basse_empty
+msgid "The file has no sample data"
+msgstr ""
+
+#: basslight.basse_illegaldevice
+msgid "Illegal device number"
+msgstr ""
+
+#: basslight.basse_illegalparam
+msgid "An illegal parameter was specified"
+msgstr ""
+
+#: basslight.basse_illegalsamplerate
+msgid "Illegal sample rate"
+msgstr ""
+
+#: basslight.basse_illegaltype
+msgid "An illegal type was specified"
+msgstr ""
+
+#: basslight.basse_invalidhnd
+msgid "Invalid handle"
+msgstr ""
+
+#: basslight.basse_invalidpos
+msgid "Invalid position"
+msgstr ""
+
+#: basslight.basse_mem
+msgid "Memory error"
+msgstr ""
+
+#: basslight.basse_no3d
+msgid "No 3D support"
+msgstr ""
+
+#: basslight.basse_noeax
+msgid "No EAX support"
+msgstr ""
+
+#: basslight.basse_nohardvoices
+msgid "No hardware voices available"
+msgstr ""
+
+#: basslight.basse_noinit
+msgid "BASS_Init has not been successfully called"
+msgstr ""
+
+#: basslight.basse_nointernet
+msgid "No internet connection could be opened"
+msgstr ""
+
+#: basslight.basse_nostart
+msgid "BASS_Start has not been successfully called"
+msgstr ""
+
+#: basslight.basse_notaudio
+msgid "File does not contain audio"
+msgstr ""
+
+#: basslight.basse_notavail
+msgid "Requested data/action is not available"
+msgstr ""
+
+#: basslight.basse_notfilestream
+msgid "The stream is not a file stream"
+msgstr ""
+
+#: basslight.basse_notplaying
+msgid "Not playing"
+msgstr ""
+
+#: basslight.basse_ok
+msgid "All is OK"
+msgstr ""
+
+#: basslight.basse_protocol
+msgid "Unsupported protocol"
+msgstr ""
+
+#: basslight.basse_reinit
+msgid "Device needs to be reinitialized"
+msgstr ""
+
+#: basslight.basse_samplebuflost
+msgid "The sample buffer was lost"
+msgstr ""
+
+#: basslight.basse_ssl
+msgid "SSL/HTTPS support isn't available"
+msgstr ""
+
+#: basslight.basse_unavailspeaker
+msgid "Unavailable speaker"
+msgstr ""
+
+#: basslight.basse_unknown
+msgid "Unknown error"
+msgstr ""
+
+#: basslight.basse_unstreamable
+msgid "Unstreamable file"
+msgstr ""
+
+#: basslight.basse_unsupfileformat
+msgid "Unsupported file format"
+msgstr ""
+
+#: basslight.basse_unsupsmpformat
+msgid "Unsupported sample format"
+msgstr ""
+
+#: basslight.basse_version
+msgid "Invalid BASS version"
+msgstr ""
+
+#: cdviamci.mes_mcierrorn
+msgid "MCI error #"
+msgstr ""
+
+#: cdviamci.mes_nocdfound
+msgid "No CD drives found"
+msgstr ""
+
+#: cdviamci.mes_specifiedcdnotfound
+msgid "Specified CD drive not found"
+msgstr ""
+
+#: findplitem.frmfndplitmanywhere
+msgid "Anywhere"
+msgstr ""
+
+#: findplitem.frmfndplitmauthorname
+msgid "Author name"
+msgstr ""
+
+#: findplitem.frmfndplitmfilename
+msgctxt "findplitem.frmfndplitmfilename"
+msgid "File name"
+msgstr ""
+
+#: findplitem.frmfndplitmmusictitle
+msgid "Music title"
+msgstr ""
+
+#: languages.ayemul_apptitle
+msgid "AY-3-8910, AY-3-8912 and YM2149F Emulator, Player, Converter and Music Ripper"
+msgstr ""
+
+#: languages.mes_analisisoffile
+msgid "Analisis of file"
+msgstr ""
+
+#: languages.mes_anystring
+msgid "Any string"
+msgstr ""
+
+#: languages.mes_averager
+msgid "Averager"
+msgstr ""
+
+#: languages.mes_ayemulfmtloaderror
+msgid "Ay_Emul.fmt loading error in line"
+msgstr ""
+
+#: languages.mes_ayemulremoved
+msgid "Ay_Emul data is removed from your system"
+msgstr ""
+
+#: languages.mes_begin
+msgctxt "languages.mes_begin"
+msgid "Begin"
+msgstr ""
+
+#: languages.mes_cantcalcstpaddr
+msgid "Can't calculate STP init address"
+msgstr ""
+
+#: languages.mes_cantcreatedestfolder
+msgid "Can not create destination folder"
+msgstr ""
+
+#: languages.mes_cantcreatetrayicon
+msgid "Can't create tray icon"
+msgstr ""
+
+#: languages.mes_cantextracttrknum
+msgid "Can't extract track number from CDA file name"
+msgstr ""
+
+#: languages.mes_cantopen
+msgid "Can't open"
+msgstr ""
+
+#: languages.mes_closebye
+msgid "Close the program and delete Ay_Emul folder to complete uninstall. See you!"
+msgstr ""
+
+#: languages.mes_damagedfileicedepack
+msgid "Error: damaged file - SNDH ICE depacking"
+msgstr ""
+
+#: languages.mes_excregadm
+msgid "(excepting restoring file registration data, administrator rights needed)"
+msgstr ""
+
+#: languages.mes_existsoverwrite
+msgid "exists. Overwrite?"
+msgstr ""
+
+#: languages.mes_file
+msgctxt "languages.mes_file"
+msgid "File"
+msgstr ""
+
+#: languages.mes_fileopenerror
+msgid "FileOpen error"
+msgstr ""
+
+#: languages.mes_filereaderror
+msgid "FileRead error"
+msgstr ""
+
+#: languages.mes_fileseekerror
+msgid "FileSeek error"
+msgstr ""
+
+#: languages.mes_fir
+msgid "FIR"
+msgstr ""
+
+#: languages.mes_flacqualityhint
+msgid "From 0 to 8 (0 for fast, 8 for best)"
+msgstr ""
+
+#: languages.mes_groupopstopped
+msgid "Operation canceled"
+msgstr ""
+
+#: languages.mes_invalidlzh
+msgid "LZH compressed data is not valid"
+msgstr ""
+
+#: languages.mes_milisec
+msgid "ms"
+msgstr ""
+
+#: languages.mes_mp3bitratehint
+msgid "Only values accepted defined in the drop down list"
+msgstr ""
+
+#: languages.mes_mp3datehint
+msgctxt "languages.mes_mp3datehint"
+msgid "Integer number from 1 to 9999"
+msgstr ""
+
+#: languages.mes_mp3qualityhint
+msgid "From 0 to 9 (0 for best, 9 for fast)"
+msgstr ""
+
+#: languages.mes_nosongplaying
+msgid "no song playing..."
+msgstr ""
+
+#: languages.mes_notay_emul20skin
+msgid "is not AY-3-8910/12 Emulator v2.0 Skin File"
+msgstr ""
+
+#: languages.mes_notfinished
+msgid "Process is not finished, aborted at item #"
+msgstr ""
+
+#: languages.mes_notfoundordenied
+msgid "not found or access denied"
+msgstr ""
+
+#: languages.mes_novaliddestformixer
+msgid "No valid destinations for selected mixer device"
+msgstr ""
+
+#: languages.mes_novolumecontrolsfound
+msgid "No volume controls found for selected destination"
+msgstr ""
+
+#: languages.mes_oggbitratehint
+msgid "Positive integer number (kbit/s)"
+msgstr ""
+
+#: languages.mes_oggqualityhint
+msgid "From -1.0 to 10.0 (-1.0 for fast, 10 for best). Used instead of bitrate."
+msgstr ""
+
+#: languages.mes_openfilesfromfolder
+msgid "Open files from folder:"
+msgstr ""
+
+#: languages.mes_opusbitratehint
+msgid "From 6 to 256 kbit/s per channel"
+msgstr ""
+
+#: languages.mes_opusdatehint
+msgid "Either YYYY/YYYY-MM/YYYY-MM-DD or valid date in system regional settings form"
+msgstr ""
+
+#: languages.mes_opusqualityhint
+msgid "From 0 to 10 (0 for fast, 10 for best)"
+msgstr ""
+
+#: languages.mes_pts
+msgid "pts"
+msgstr ""
+
+#: languages.mes_readafterendofdata
+msgid "Read after end of data"
+msgstr ""
+
+#: languages.mes_readafterendoffile
+msgid "Read after end of file"
+msgstr ""
+
+#: languages.mes_savetofolder
+msgid "Save to folder:"
+msgstr ""
+
+#: languages.mes_searchstringnotfound
+msgid "Search string not found"
+msgstr ""
+
+#: languages.mes_seekafterendoffile
+msgid "Seek after end of file"
+msgstr ""
+
+#: languages.mes_selectcontrol
+msgid "Select control:"
+msgstr ""
+
+#: languages.mes_selectdestination
+msgid "Select destination:"
+msgstr ""
+
+#: languages.mes_selectfolder
+msgid "Select folder"
+msgstr ""
+
+#: languages.mes_selectmixerdivice
+msgid "Select mixer device:"
+msgstr ""
+
+#: languages.mes_stop
+msgctxt "languages.mes_stop"
+msgid "Stop"
+msgstr ""
+
+#: languages.mes_systemvolctrlsnotdetected
+msgid "System volume controls not detected"
+msgstr ""
+
+#: languages.mes_tosmallst11
+msgid "ST11 block is too small in AY-file"
+msgstr ""
+
+#: languages.mes_tracklength
+msgid "Track length"
+msgstr ""
+
+#: languages.mes_unhandlederroraddfile
+msgid "Unhandled error during adding file"
+msgstr ""
+
+#: languages.mes_unsupportedayheader
+msgid "Unsupported AY-file header"
+msgstr ""
+
+#: languages.mes_unsupportedaymheader
+msgid "Unsupported AYM-file header"
+msgstr ""
+
+#: languages.mes_unsupportedaymrevision
+msgid "Unsupported AYM-file revision"
+msgstr ""
+
+#: languages.mes_unsupportedaytype
+msgid "Unsupported AY-file type"
+msgstr ""
+
+#: languages.mes_unsupportedepsgctype
+msgid "Unsupported EPSG-file computer type"
+msgstr ""
+
+#: languages.mes_unsupportedpsgheader
+msgid "Unsupported PSG-file header"
+msgstr ""
+
+#: languages.mes_unsupportedpsgversion
+msgid "Unsupported PSG-file version"
+msgstr ""
+
+#: languages.mes_unsupportedvtxheader
+msgid "Unsupported VTX-file header"
+msgstr ""
+
+#: languages.mes_unsupportedymheader
+msgid "Unsupported YM-file header"
+msgstr ""
+
+#: languages.mes_unsuptsstruct
+msgid "Unsupported TS-file structure"
+msgstr ""
+
+#: languages.mes_userinterrupted
+msgid "Interrupted because of user wish."
+msgstr ""
+
+#: languages.mes_winversion
+msgid "Supported in Windows version only"
+msgstr ""
+
+#: languages.sndh_convertedby
+msgid "Converted by"
+msgstr ""
+
+#: languages.sndh_rippedby
+msgid "Ripped by"
+msgstr ""
+
+#: languages.tit_appicon
+msgid "Application icon"
+msgstr ""
+
+#: languages.tit_author
+msgid "Author:"
+msgstr ""
+
+#: languages.tit_bassicon
+msgid "BASS files icon"
+msgstr ""
+
+#: languages.tit_icon
+msgid "Icon"
+msgstr ""
+
+#: languages.tit_musicicon
+msgid "Music files icon"
+msgstr ""
+
+#: languages.tit_playlisticon
+msgid "Playlists icon"
+msgstr ""
+
+#: languages.tit_skinicon
+msgid "Skin files icon"
+msgstr ""
+
+#: languages.tit_startmenuicon
+msgid "'Start' menu icon"
+msgstr ""
+
+#: languages.tit_trayicon
+msgid "Tray icon"
+msgstr ""
+
+#: languages.t_allfiles
+msgid "All files"
+msgstr ""
+
+#: languages.t_allsupfiles
+msgid "All supported types"
+msgstr ""
+
+#: players.er_erbadfilestructure
+msgid "Bad file structure"
+msgstr ""
+
+#: players.er_erbasserror
+msgid "Error calling BASS library"
+msgstr ""
+
+#: players.er_erfilenotfound
+msgid "File not found"
+msgstr ""
+
+#: players.er_erflsaddrnotdetected
+msgid "Address of compilation is not detected: not FLS-file"
+msgstr ""
+
+#: players.er_erlzhdataisnotvalid
+msgid "LZH data is not valid"
+msgstr ""
+
+#: players.er_erreadingfile
+msgid "Error reading file"
+msgstr ""
+
+#: taboutbox.caption
+msgid "About program"
+msgstr ""
+
+#: tcdlist.button2.caption
+msgctxt "tcdlist.button2.caption"
+msgid "Cancel"
+msgstr ""
+
+#: tcdlist.caption
+msgid "Select CD(s) to add from:"
+msgstr ""
+
+#: tfrmencoptseditor.bapply.caption
+msgctxt "tfrmencoptseditor.bapply.caption"
+msgid "Apply"
+msgstr ""
+
+#: tfrmencoptseditor.bapply.hint
+msgctxt "tfrmencoptseditor.bapply.hint"
+msgid "Continue with filled values"
+msgstr ""
+
+#: tfrmencoptseditor.brestore.caption
+msgctxt "tfrmencoptseditor.brestore.caption"
+msgid "Restore"
+msgstr ""
+
+#: tfrmencoptseditor.brestore.hint
+msgctxt "tfrmencoptseditor.brestore.hint"
+msgid "Swap initial and current state"
+msgstr ""
+
+#: tfrmencoptseditor.bskip.caption
+msgctxt "tfrmencoptseditor.bskip.caption"
+msgid "Skip"
+msgstr ""
+
+#: tfrmencoptseditor.bskip.hint
+msgctxt "tfrmencoptseditor.bskip.hint"
+msgid "Continue with initial values"
+msgstr ""
+
+#: tfrmencoptseditor.caption
+msgid "BASS encoder options editor"
+msgstr ""
+
+#: tfrmencoptseditor.cbauthor.caption
+msgctxt "tfrmencoptseditor.cbauthor.caption"
+msgid "Module author:"
+msgstr ""
+
+#: tfrmencoptseditor.cbauthor.hint
+msgctxt "tfrmencoptseditor.cbauthor.hint"
+msgid "Check to auto fill"
+msgstr ""
+
+#: tfrmencoptseditor.cbbitrate.caption
+msgid "Target bitrate"
+msgstr ""
+
+#: tfrmencoptseditor.cbbitrate.hint
+msgid "Uncheck for default/unspecified"
+msgstr ""
+
+#: tfrmencoptseditor.cbcomment.caption
+msgctxt "tfrmencoptseditor.cbcomment.caption"
+msgid "Comment:"
+msgstr ""
+
+#: tfrmencoptseditor.cbcomment.hint
+msgctxt "tfrmencoptseditor.cbcomment.hint"
+msgid "Check to auto fill"
+msgstr ""
+
+#: tfrmencoptseditor.cbdate.caption
+msgctxt "tfrmencoptseditor.cbdate.caption"
+msgid "Module date:"
+msgstr ""
+
+#: tfrmencoptseditor.cbdate.hint
+msgctxt "tfrmencoptseditor.cbdate.hint"
+msgid "Check to auto fill"
+msgstr ""
+
+#: tfrmencoptseditor.cbquality.caption
+msgid "Quality"
+msgstr ""
+
+#: tfrmencoptseditor.cbquality.hint
+msgid "Uncheck for default behavior"
+msgstr ""
+
+#: tfrmencoptseditor.cbtitle.caption
+msgctxt "tfrmencoptseditor.cbtitle.caption"
+msgid "Module title:"
+msgstr ""
+
+#: tfrmencoptseditor.cbtitle.hint
+msgctxt "tfrmencoptseditor.cbtitle.hint"
+msgid "Check to auto fill"
+msgstr ""
+
+#: tfrmencoptseditor.ecustom.hint
+msgid "See available options list below"
+msgstr ""
+
+#: tfrmencoptseditor.gbbitrate.caption
+msgid "Bitrate control"
+msgstr ""
+
+#: tfrmencoptseditor.lauthor.caption
+msgctxt "tfrmencoptseditor.lauthor.caption"
+msgid "Module author:"
+msgstr ""
+
+#: tfrmencoptseditor.lcomment.caption
+msgctxt "tfrmencoptseditor.lcomment.caption"
+msgid "Comment:"
+msgstr ""
+
+#: tfrmencoptseditor.lcustom.caption
+msgid "Additional custom options:"
+msgstr ""
+
+#: tfrmencoptseditor.ldate.caption
+msgctxt "tfrmencoptseditor.ldate.caption"
+msgid "Module date:"
+msgstr ""
+
+#: tfrmencoptseditor.loptshint.caption
+msgid "Available options list:"
+msgstr ""
+
+#: tfrmencoptseditor.lresult.caption
+msgctxt "tfrmencoptseditor.lresult.caption"
+msgid "Result options string:"
+msgstr ""
+
+#: tfrmencoptseditor.ltitle.caption
+msgctxt "tfrmencoptseditor.ltitle.caption"
+msgid "Module title:"
+msgstr ""
+
+#: tfrmencoptseditor.mcomment.hint
+msgid "Line wrapping is allowed"
+msgstr ""
+
+#: tfrmencoptseditor.moptshint.hint
+msgid "The syntax is like that of the specified encoders, read its documentation"
+msgstr ""
+
+#: tfrmencoptseditor.rbaverage.caption
+msgid "Average"
+msgstr ""
+
+#: tfrmencoptseditor.rbconstrained.caption
+msgid "Constrained"
+msgstr ""
+
+#: tfrmencoptseditor.rbdefault.caption
+msgctxt "tfrmencoptseditor.rbdefault.caption"
+msgid "Default"
+msgstr ""
+
+#: tfrmencoptseditor.rbfixed.caption
+msgid "Fixed"
+msgstr ""
+
+#: tfrmencoptseditor.rbvariable.caption
+msgctxt "tfrmencoptseditor.rbvariable.caption"
+msgid "Variable"
+msgstr ""
+
+#: tfrmencoptseditor.sevbr.hint
+msgid "From 0.000 to 9.999 (0.000 for higher quality, 9.999 for smaller file). You can also specify minimal bitrate in Target birate field."
+msgstr ""
+
+#: tfrmfndplitm.button1.caption
+msgid "Find next"
+msgstr ""
+
+#: tfrmfndplitm.button2.caption
+msgid "Find all"
+msgstr ""
+
+#: tfrmfndplitm.button3.caption
+msgctxt "tfrmfndplitm.button3.caption"
+msgid "Close"
+msgstr ""
+
+#: tfrmfndplitm.caption
+msgid "Find playlist item"
+msgstr ""
+
+#: tfrmfndplitm.groupbox1.caption
+msgid "Search string"
+msgstr ""
+
+#: tfrmfndplitm.radiogroup1.caption
+msgid "Search area"
+msgstr ""
+
+#: tfrmjptime.button1.caption
+msgid "Jump"
+msgstr ""
+
+#: tfrmjptime.button2.caption
+msgctxt "tfrmjptime.button2.caption"
+msgid "Cancel"
+msgstr ""
+
+#: tfrmjptime.caption
+msgid "Jump to time"
+msgstr ""
+
+#: tfrmjptime.label1.caption
+msgid "Minutes:Seconds"
+msgstr ""
+
+#: tfrmmain.hint
+msgid "Click or press Esc to cancel operation"
+msgstr ""
+
+#: tfrmmain.miclose.caption
+msgctxt "tfrmmain.miclose.caption"
+msgid "Close"
+msgstr ""
+
+#: tfrmmain.miminres.caption
+msgid "Minimize / Restore"
+msgstr ""
+
+#: tfrmmain.mimixer.caption
+msgctxt "tfrmmain.mimixer.caption"
+msgid "Mixer"
+msgstr ""
+
+#: tfrmmain.minext.caption
+msgid "Next"
+msgstr ""
+
+#: tfrmmain.miopen.caption
+msgid "Open"
+msgstr ""
+
+#: tfrmmain.miopencd.caption
+msgid "CD..."
+msgstr ""
+
+#: tfrmmain.miopenfiles.caption
+msgid "Files..."
+msgstr ""
+
+#: tfrmmain.miopenfolder.caption
+msgid "Folder..."
+msgstr ""
+
+#: tfrmmain.miplaylist.caption
+msgctxt "tfrmmain.miplaylist.caption"
+msgid "Playlist"
+msgstr ""
+
+#: tfrmmain.miplaypause.caption
+msgid "Play / Pause"
+msgstr ""
+
+#: tfrmmain.miprevious.caption
+msgid "Previous"
+msgstr ""
+
+#: tfrmmain.mirandom.caption
+msgid "Random"
+msgstr ""
+
+#: tfrmmain.mirestart.caption
+msgid "Restart"
+msgstr ""
+
+#: tfrmmain.mistop.caption
+msgctxt "tfrmmain.mistop.caption"
+msgid "Stop"
+msgstr ""
+
+#: tfrmmain.mitools.caption
+msgctxt "tfrmmain.mitools.caption"
+msgid "Tools"
+msgstr ""
+
+#: tfrmmixer.atarimonochk.caption
+msgctxt "tfrmmixer.atarimonochk.caption"
+msgid "Mono"
+msgstr ""
+
+#: tfrmmixer.atarimonochk.hint
+msgid "Force mono mode for sound driver"
+msgstr ""
+
+#: tfrmmixer.atariymmonochk.caption
+msgid "YM mono"
+msgstr ""
+
+#: tfrmmixer.atariymmonochk.hint
+msgid "Force mono for sound chip channels"
+msgstr ""
+
+#: tfrmmixer.ayemusheet.caption
+msgid "AY Emulation"
+msgstr ""
+
+#: tfrmmixer.basssheet.caption
+msgid "BASS v2.4 (optional)"
+msgstr ""
+
+#: tfrmmixer.button1.caption
+msgctxt "tfrmmixer.button1.caption"
+msgid "Restore"
+msgstr ""
+
+#: tfrmmixer.button2.caption
+msgctxt "tfrmmixer.button2.caption"
+msgid "Close"
+msgstr ""
+
+#: tfrmmixer.bvolctrldetect.caption
+msgctxt "tfrmmixer.bvolctrldetect.caption"
+msgid "Autodetect"
+msgstr ""
+
+#: tfrmmixer.bvolctrlselect.caption
+msgctxt "tfrmmixer.bvolctrlselect.caption"
+msgid "Select"
+msgstr ""
+
+#: tfrmmixer.caption
+msgctxt "tfrmmixer.caption"
+msgid "Mixer"
+msgstr ""
+
+#: tfrmmixer.cbchfrqlst.caption
+msgctxt "tfrmmixer.cbchfrqlst.caption"
+msgid "Get from list"
+msgstr ""
+
+#: tfrmmixer.cbchlst.caption
+msgctxt "tfrmmixer.cbchlst.caption"
+msgid "Get from list"
+msgstr ""
+
+#: tfrmmixer.cbchtypelst.caption
+msgctxt "tfrmmixer.cbchtypelst.caption"
+msgid "Get from list"
+msgstr ""
+
+#: tfrmmixer.cbdcbias.caption
+msgctxt "tfrmmixer.cbdcbias.caption"
+msgid "Remove DC bias"
+msgstr ""
+
+#: tfrmmixer.cbhann.caption
+msgctxt "tfrmmixer.cbhann.caption"
+msgid "Hann window"
+msgstr ""
+
+#: tfrmmixer.cbintfrqlst.caption
+msgctxt "tfrmmixer.cbintfrqlst.caption"
+msgid "Get from list"
+msgstr ""
+
+#: tfrmmixer.cblnscale.caption
+msgctxt "tfrmmixer.cblnscale.caption"
+msgid "Linear scale (as is)"
+msgstr ""
+
+#: tfrmmixer.cbproxy.caption
+msgctxt "tfrmmixer.cbproxy.caption"
+msgid "Use proxy"
+msgstr ""
+
+#: tfrmmixer.cbsvvolpos.caption
+msgctxt "tfrmmixer.cbsvvolpos.caption"
+msgid "Save volume position"
+msgstr ""
+
+#: tfrmmixer.checkbox1.caption
+msgctxt "tfrmmixer.checkbox1.caption"
+msgid "Get from list"
+msgstr ""
+
+#: tfrmmixer.checkbox12.caption
+msgid "Seek to first \"Note On\" MIDI-event"
+msgstr ""
+
+#: tfrmmixer.emfpfrq1613.text
+msgctxt "tfrmmixer.emfpfrq1613.text"
+msgid "Auto"
+msgstr ""
+
+#: tfrmmixer.gbassconn.caption
+msgctxt "tfrmmixer.gbassconn.caption"
+msgid "Connection parameters"
+msgstr ""
+
+#: tfrmmixer.gbbassvis.caption
+msgctxt "tfrmmixer.gbbassvis.caption"
+msgid "Visualization"
+msgstr ""
+
+#: tfrmmixer.gbbrate.caption
+msgctxt "tfrmmixer.gbbrate.caption"
+msgid "Bit rate"
+msgstr ""
+
+#: tfrmmixer.gbbuffs.caption
+msgctxt "tfrmmixer.gbbuffs.caption"
+msgid "Buffers"
+msgstr ""
+
+#: tfrmmixer.gbchamp.caption
+msgctxt "tfrmmixer.gbchamp.caption"
+msgid "Channels amplification"
+msgstr ""
+
+#: tfrmmixer.gbchans.caption
+msgctxt "tfrmmixer.gbchans.caption"
+msgid "Channels"
+msgstr ""
+
+#: tfrmmixer.gbchfrq.caption
+msgctxt "tfrmmixer.gbchfrq.caption"
+msgid "Sound chip frequency"
+msgstr ""
+
+#: tfrmmixer.gbchtype.caption
+msgctxt "tfrmmixer.gbchtype.caption"
+msgid "Chip type"
+msgstr ""
+
+#: tfrmmixer.gbdevice.caption
+msgctxt "tfrmmixer.gbdevice.caption"
+msgid "Device"
+msgstr ""
+
+#: tfrmmixer.gbintfrq.caption
+msgctxt "tfrmmixer.gbintfrq.caption"
+msgid "Interrupt frequency"
+msgstr ""
+
+#: tfrmmixer.gbmcfrq.caption
+msgctxt "tfrmmixer.gbmcfrq.caption"
+msgid "MC68000 frequency"
+msgstr ""
+
+#: tfrmmixer.gbmfpfrq.caption
+msgctxt "tfrmmixer.gbmfpfrq.caption"
+msgid "YM5, YM6, SNDH (MFP Timer)"
+msgstr ""
+
+#: tfrmmixer.gbmididevice.caption
+msgctxt "tfrmmixer.gbmididevice.caption"
+msgid "Device"
+msgstr ""
+
+#: tfrmmixer.gboutzxay.caption
+msgid "OUT, ZXAY, AY, AYM"
+msgstr ""
+
+#: tfrmmixer.gbresamp.caption
+msgctxt "tfrmmixer.gbresamp.caption"
+msgid "Resampler"
+msgstr ""
+
+#: tfrmmixer.gbsndh.caption
+msgctxt "tfrmmixer.gbsndh.caption"
+msgid "Atari ST emulation (SNDH)"
+msgstr ""
+
+#: tfrmmixer.gbsrate.caption
+msgctxt "tfrmmixer.gbsrate.caption"
+msgid "Sample rate"
+msgstr ""
+
+#: tfrmmixer.gbz80frq.caption
+msgctxt "tfrmmixer.gbz80frq.caption"
+msgid "Z80 frequency"
+msgstr ""
+
+#: tfrmmixer.label22.caption
+msgctxt "tfrmmixer.label22.caption"
+msgid "Hz"
+msgstr ""
+
+#: tfrmmixer.label23.caption
+msgctxt "tfrmmixer.label23.caption"
+msgid "Hz"
+msgstr ""
+
+#: tfrmmixer.label24.caption
+msgctxt "tfrmmixer.label24.caption"
+msgid "Hz"
+msgstr ""
+
+#: tfrmmixer.label25.caption
+msgctxt "tfrmmixer.label25.caption"
+msgid "Hz"
+msgstr ""
+
+#: tfrmmixer.label26.caption
+msgctxt "tfrmmixer.label26.caption"
+msgid "Hz"
+msgstr ""
+
+#: tfrmmixer.label27.caption
+msgctxt "tfrmmixer.label27.caption"
+msgid "Hz"
+msgstr ""
+
+#: tfrmmixer.lampal.caption
+msgctxt "tfrmmixer.lampal.caption"
+msgid "Left"
+msgstr ""
+
+#: tfrmmixer.lampar.caption
+msgctxt "tfrmmixer.lampar.caption"
+msgid "Right"
+msgstr ""
+
+#: tfrmmixer.lampbl.caption
+msgctxt "tfrmmixer.lampbl.caption"
+msgid "Left"
+msgstr ""
+
+#: tfrmmixer.lampbpr.caption
+msgctxt "tfrmmixer.lampbpr.caption"
+msgid "Beeper"
+msgstr ""
+
+#: tfrmmixer.lampbr.caption
+msgctxt "tfrmmixer.lampbr.caption"
+msgid "Right"
+msgstr ""
+
+#: tfrmmixer.lampcl.caption
+msgctxt "tfrmmixer.lampcl.caption"
+msgid "Left"
+msgstr ""
+
+#: tfrmmixer.lampcr.caption
+msgctxt "tfrmmixer.lampcr.caption"
+msgid "Right"
+msgstr ""
+
+#: tfrmmixer.layovfl.hint
+msgctxt "tfrmmixer.layovfl.hint"
+msgid "Warning: AY-3-8910/YM2149F output levels can overflow"
+msgstr ""
+
+#: tfrmmixer.lbassua.caption
+msgctxt "tfrmmixer.lbassua.caption"
+msgid "User-Agent (empty to fill all parameters from BASS):"
+msgstr ""
+
+#: tfrmmixer.lbuflencap.caption
+msgctxt "tfrmmixer.lbuflencap.caption"
+msgid "Buffer length"
+msgstr ""
+
+#: tfrmmixer.ldmaovfl.hint
+msgctxt "tfrmmixer.ldmaovfl.hint"
+msgid "Warning: DMA-Sound+AY-3-8910/YM2149F output levels can overflow"
+msgstr ""
+
+#: tfrmmixer.llevminmax.caption
+msgctxt "tfrmmixer.llevminmax.caption"
+msgid "Level Min/Max"
+msgstr ""
+
+#: tfrmmixer.lnumbufcap.caption
+msgctxt "tfrmmixer.lnumbufcap.caption"
+msgid "Number of buffers"
+msgstr ""
+
+#: tfrmmixer.lnumfftk.caption
+msgid "Number of FFT koef."
+msgstr ""
+
+#: tfrmmixer.loutintoffs.caption
+msgctxt "tfrmmixer.loutintoffs.caption"
+msgid "Interrupt offset"
+msgstr ""
+
+#: tfrmmixer.loutstperfrm.caption
+msgctxt "tfrmmixer.loutstperfrm.caption"
+msgid "TStates per frame"
+msgstr ""
+
+#: tfrmmixer.lpreamp.caption
+msgctxt "tfrmmixer.lpreamp.caption"
+msgid "Preamp"
+msgstr ""
+
+#: tfrmmixer.lproxy.caption
+msgctxt "tfrmmixer.lproxy.caption"
+msgid "user:pass@server:port (empty string for system settings):"
+msgstr ""
+
+#: tfrmmixer.ltotlencap.caption
+msgctxt "tfrmmixer.ltotlencap.caption"
+msgid "Total length"
+msgstr ""
+
+#: tfrmmixer.ltsovfl.hint
+msgctxt "tfrmmixer.ltsovfl.hint"
+msgid "Warning: Turbo Sound output levels can overflow"
+msgstr ""
+
+#: tfrmmixer.lvolctrl.caption
+msgctxt "tfrmmixer.lvolctrl.caption"
+msgid "Current volume control:"
+msgstr ""
+
+#: tfrmmixer.mosheet.caption
+msgid "MIDIOut"
+msgstr ""
+
+#: tfrmmixer.rbbt16.caption
+msgctxt "tfrmmixer.rbbt16.caption"
+msgid "16 bit"
+msgstr ""
+
+#: tfrmmixer.rbbt8.caption
+msgctxt "tfrmmixer.rbbt8.caption"
+msgid "8 bit"
+msgstr ""
+
+#: tfrmmixer.rbchfrqother.caption
+msgctxt "tfrmmixer.rbchfrqother.caption"
+msgid "Another"
+msgstr ""
+
+#: tfrmmixer.rbchmono.caption
+msgctxt "tfrmmixer.rbchmono.caption"
+msgid "Mono"
+msgstr ""
+
+#: tfrmmixer.rbchstereo.caption
+msgctxt "tfrmmixer.rbchstereo.caption"
+msgid "Stereo"
+msgstr ""
+
+#: tfrmmixer.rbintfrqother.caption
+msgctxt "tfrmmixer.rbintfrqother.caption"
+msgid "Another"
+msgstr ""
+
+#: tfrmmixer.rbmcfrqother.caption
+msgctxt "tfrmmixer.rbmcfrqother.caption"
+msgid "Another"
+msgstr ""
+
+#: tfrmmixer.rbmfpfrqother.caption
+msgctxt "tfrmmixer.rbmfpfrqother.caption"
+msgid "Another"
+msgstr ""
+
+#: tfrmmixer.rbresamavg.caption
+msgctxt "tfrmmixer.rbresamavg.caption"
+msgid "averager"
+msgstr ""
+
+#: tfrmmixer.rbresamfir.caption
+msgctxt "tfrmmixer.rbresamfir.caption"
+msgid "FIR-filter"
+msgstr ""
+
+#: tfrmmixer.rbsrother.caption
+msgctxt "tfrmmixer.rbsrother.caption"
+msgid "Another"
+msgstr ""
+
+#: tfrmmixer.rbz80frqother.caption
+msgctxt "tfrmmixer.rbz80frqother.caption"
+msgid "Another"
+msgstr ""
+
+#: tfrmmixer.sbhelper.caption
+msgctxt "tfrmmixer.sbhelper.caption"
+msgid "Helper"
+msgstr ""
+
+#: tfrmmixer.sbstop.caption
+msgctxt "tfrmmixer.sbstop.caption"
+msgid "Stop playing"
+msgstr ""
+
+#: tfrmmixer.tbbuflen.hint
+msgctxt "tfrmmixer.tbbuflen.hint"
+msgid "Length of one buffer"
+msgstr ""
+
+#: tfrmmixer.tbnumbuf.hint
+msgctxt "tfrmmixer.tbnumbuf.hint"
+msgid "Number of buffers"
+msgstr ""
+
+#: tfrmmixer.volumesheet.caption
+msgid "Global Volume Control"
+msgstr ""
+
+#: tfrmmixer.wosheet.caption
+msgid "Digital Sound"
+msgstr ""
+
+#: tfrmmxhlp.button1.caption
+msgid "Set"
+msgstr ""
+
+#: tfrmmxhlp.button2.caption
+msgctxt "tfrmmxhlp.button2.caption"
+msgid "Cancel"
+msgstr ""
+
+#: tfrmmxhlp.caption
+msgid "Mixer Amplifier Helper"
+msgstr ""
+
+#: tfrmmxhlp.chansrg.caption
+msgid "AY-3-8910/YM2149F Channels Allocation"
+msgstr ""
+
+#: tfrmmxhlp.tsdmachg.caption
+msgid "Leave space for additional device"
+msgstr ""
+
+#: tfrmpliedit.bcancel.caption
+msgctxt "tfrmpliedit.bcancel.caption"
+msgid "Cancel"
+msgstr ""
+
+#: tfrmpliedit.bdefload.caption
+msgctxt "tfrmpliedit.bdefload.caption"
+msgid "Load"
+msgstr ""
+
+#: tfrmpliedit.bdefload.hint
+msgid "Copy the entire playlist playback settings to the current item"
+msgstr ""
+
+#: tfrmpliedit.bdefsave.caption
+msgctxt "tfrmpliedit.bdefsave.caption"
+msgid "Save"
+msgstr ""
+
+#: tfrmpliedit.bdefsave.hint
+msgid "Copy the current item settings to the entire playlist playback settings"
+msgstr ""
+
+#: tfrmpliedit.caption
+msgid "List's Item Adjusting"
+msgstr ""
+
+#: tfrmpliedit.echfrmixer.text
+msgctxt "tfrmpliedit.echfrmixer.text"
+msgid "Mixer"
+msgstr ""
+
+#: tfrmpliedit.eplrfrmixer.text
+msgctxt "tfrmpliedit.eplrfrmixer.text"
+msgid "Mixer"
+msgstr ""
+
+#: tfrmpliedit.gbchamp.caption
+msgctxt "tfrmpliedit.gbchamp.caption"
+msgid "Channels amplification"
+msgstr ""
+
+#: tfrmpliedit.gbchip.caption
+msgctxt "tfrmpliedit.gbchip.caption"
+msgid "Chip"
+msgstr ""
+
+#: tfrmpliedit.gbchipfrq.caption
+msgctxt "tfrmpliedit.gbchipfrq.caption"
+msgid "Chip frequency"
+msgstr ""
+
+#: tfrmpliedit.gbdef.caption
+msgctxt "tfrmpliedit.gbdef.caption"
+msgid "Default list settings"
+msgstr ""
+
+#: tfrmpliedit.gbfile.caption
+msgctxt "tfrmpliedit.gbfile.caption"
+msgid "File"
+msgstr ""
+
+#: tfrmpliedit.gbinfo.caption
+msgctxt "tfrmpliedit.gbinfo.caption"
+msgid "Information"
+msgstr ""
+
+#: tfrmpliedit.gbnchans.caption
+msgctxt "tfrmpliedit.gbnchans.caption"
+msgid "Number of channels"
+msgstr ""
+
+#: tfrmpliedit.gbplay.caption
+msgctxt "tfrmpliedit.gbplay.caption"
+msgid "Playback"
+msgstr ""
+
+#: tfrmpliedit.gbplrfrq.caption
+msgctxt "tfrmpliedit.gbplrfrq.caption"
+msgid "Player frequency"
+msgstr ""
+
+#: tfrmpliedit.lauthor.caption
+msgctxt "tfrmpliedit.lauthor.caption"
+msgid "Author"
+msgstr ""
+
+#: tfrmpliedit.lcomment.caption
+msgctxt "tfrmpliedit.lcomment.caption"
+msgid "Comment:"
+msgstr ""
+
+#: tfrmpliedit.lcomputer.caption
+msgctxt "tfrmpliedit.lcomputer.caption"
+msgid "Computer"
+msgstr ""
+
+#: tfrmpliedit.ldate.caption
+msgctxt "tfrmpliedit.ldate.caption"
+msgid "Date"
+msgstr ""
+
+#: tfrmpliedit.lfaddr.caption
+msgctxt "tfrmpliedit.lfaddr.caption"
+msgid "Address"
+msgstr ""
+
+#: tfrmpliedit.lflen.caption
+msgctxt "tfrmpliedit.lflen.caption"
+msgid "Length"
+msgstr ""
+
+#: tfrmpliedit.lfloop.caption
+msgctxt "tfrmpliedit.lfloop.caption"
+msgid "Loop"
+msgstr ""
+
+#: tfrmpliedit.lfoffs.caption
+msgctxt "tfrmpliedit.lfoffs.caption"
+msgid "Offset"
+msgstr ""
+
+#: tfrmpliedit.lfspec.caption
+msgctxt "tfrmpliedit.lfspec.caption"
+msgid "Specific"
+msgstr ""
+
+#: tfrmpliedit.lftime.caption
+msgctxt "tfrmpliedit.lftime.caption"
+msgid "Time"
+msgstr ""
+
+#: tfrmpliedit.lftype.caption
+msgctxt "tfrmpliedit.lftype.caption"
+msgid "Type"
+msgstr ""
+
+#: tfrmpliedit.lprogram.caption
+msgctxt "tfrmpliedit.lprogram.caption"
+msgid "Program"
+msgstr ""
+
+#: tfrmpliedit.ltitle.caption
+msgctxt "tfrmpliedit.ltitle.caption"
+msgid "Title"
+msgstr ""
+
+#: tfrmpliedit.ltracker.caption
+msgctxt "tfrmpliedit.ltracker.caption"
+msgid "Tracker"
+msgstr ""
+
+#: tfrmpliedit.rbampdef.caption
+msgctxt "tfrmpliedit.rbampdef.caption"
+msgid "Default"
+msgstr ""
+
+#: tfrmpliedit.rbampother.caption
+msgctxt "tfrmpliedit.rbampother.caption"
+msgid "Another"
+msgstr ""
+
+#: tfrmpliedit.rbampstd.caption
+msgctxt "tfrmpliedit.rbampstd.caption"
+msgid "Standard"
+msgstr ""
+
+#: tfrmpliedit.rbchdef.caption
+msgctxt "tfrmpliedit.rbchdef.caption"
+msgid "Default"
+msgstr ""
+
+#: tfrmpliedit.rbchfrdef.caption
+msgctxt "tfrmpliedit.rbchfrdef.caption"
+msgid "Default"
+msgstr ""
+
+#: tfrmpliedit.rbchfrother.caption
+msgctxt "tfrmpliedit.rbchfrother.caption"
+msgid "Another"
+msgstr ""
+
+#: tfrmpliedit.rbndef.caption
+msgctxt "tfrmpliedit.rbndef.caption"
+msgid "Default"
+msgstr ""
+
+#: tfrmpliedit.rbnmono.caption
+msgctxt "tfrmpliedit.rbnmono.caption"
+msgid "Mono"
+msgstr ""
+
+#: tfrmpliedit.rbnstereo.caption
+msgctxt "tfrmpliedit.rbnstereo.caption"
+msgid "Stereo"
+msgstr ""
+
+#: tfrmpliedit.rbplrfrdef.caption
+msgctxt "tfrmpliedit.rbplrfrdef.caption"
+msgid "Default"
+msgstr ""
+
+#: tfrmpliedit.rbplrfrother.caption
+msgctxt "tfrmpliedit.rbplrfrother.caption"
+msgid "Another"
+msgstr ""
+
+#: tfrmplst.byauthorsort.caption
+msgid "Sort by author"
+msgstr ""
+
+#: tfrmplst.byfilenamesort.caption
+msgid "Sort by file name"
+msgstr ""
+
+#: tfrmplst.byfiletype1.caption
+msgid "Sort by file type"
+msgstr ""
+
+#: tfrmplst.bytitlesort.caption
+msgid "Sort by title"
+msgstr ""
+
+#: tfrmplst.caption
+msgctxt "tfrmplst.caption"
+msgid "Playlist"
+msgstr ""
+
+#: tfrmplst.deduplicate1.caption
+msgid "Deduplicate"
+msgstr ""
+
+#: tfrmplst.finditem1.caption
+msgid "Find item..."
+msgstr ""
+
+#: tfrmplst.menuconvert.caption
+msgid "Convert to"
+msgstr ""
+
+#: tfrmplst.menuconvertall.caption
+msgctxt "tfrmplst.menuconvertall.caption"
+msgid "Convert all to"
+msgstr ""
+
+#: tfrmplst.menuitemadjusting.caption
+msgid "Item adjusting..."
+msgstr ""
+
+#: tfrmplst.menuopenineditor.caption
+msgid "Open in editor"
+msgstr ""
+
+#: tfrmplst.menusaveas.caption
+msgid "Save as..."
+msgstr ""
+
+#: tfrmplst.randomsort.caption
+msgid "Sort randomly"
+msgstr ""
+
+#: tfrmplst.savetofolder1.caption
+msgid "Save all to folder..."
+msgstr ""
+
+#: tfrmplst.sbadd.caption
+msgctxt "tfrmplst.sbadd.caption"
+msgid "Add items"
+msgstr ""
+
+#: tfrmplst.sbclear.caption
+msgctxt "tfrmplst.sbclear.caption"
+msgid "Clear list"
+msgstr ""
+
+#: tfrmplst.sbsave.caption
+msgctxt "tfrmplst.sbsave.caption"
+msgid "Save list"
+msgstr ""
+
+#: tfrmplst.sbtools.caption
+msgctxt "tfrmplst.sbtools.caption"
+msgid "List tools"
+msgstr ""
+
+#: tfrmprbox.button1.caption
+msgid "Abort current operation"
+msgstr ""
+
+#: tfrmprbox.button2.caption
+msgid "Switch off tunes finder"
+msgstr ""
+
+#: tfrmprbox.caption
+msgid "Searching for tunes"
+msgstr ""
+
+#: tfrmselvolctrl.button2.caption
+msgctxt "tfrmselvolctrl.button2.caption"
+msgid "Cancel"
+msgstr ""
+
+#: tfrmtools.bappreg.caption
+msgctxt "tfrmtools.bappreg.caption"
+msgid "Register"
+msgstr ""
+
+#: tfrmtools.bappunreg.caption
+msgctxt "tfrmtools.bappunreg.caption"
+msgid "Unregister"
+msgstr ""
+
+#: tfrmtools.bchskin.caption
+msgctxt "tfrmtools.bchskin.caption"
+msgid "Choose..."
+msgstr ""
+
+#: tfrmtools.bsavemfld.caption
+msgctxt "tfrmtools.bsavemfld.caption"
+msgid "Save"
+msgstr ""
+
+#: tfrmtools.bsrchbegin.caption
+msgctxt "tfrmtools.bsrchbegin.caption"
+msgid "Begin"
+msgstr ""
+
+#: tfrmtools.bsrchchfiles.caption
+msgctxt "tfrmtools.bsrchchfiles.caption"
+msgid "Choose..."
+msgstr ""
+
+#: tfrmtools.bstdskin.caption
+msgctxt "tfrmtools.bstdskin.caption"
+msgid "Standard"
+msgstr ""
+
+#: tfrmtools.btlclose.caption
+msgctxt "tfrmtools.btlclose.caption"
+msgid "Close"
+msgstr ""
+
+#: tfrmtools.btluninstall.caption
+msgctxt "tfrmtools.btluninstall.caption"
+msgid "Uninstall"
+msgstr ""
+
+#: tfrmtools.btpbass.caption
+msgctxt "tfrmtools.btpbass.caption"
+msgid "All/None"
+msgstr ""
+
+#: tfrmtools.btpmus.caption
+msgctxt "tfrmtools.btpmus.caption"
+msgid "All/None"
+msgstr ""
+
+#: tfrmtools.btppl.caption
+msgctxt "tfrmtools.btppl.caption"
+msgid "All/None"
+msgstr ""
+
+#: tfrmtools.btpskin.caption
+msgctxt "tfrmtools.btpskin.caption"
+msgid "All/None"
+msgstr ""
+
+#: tfrmtools.button10.caption
+msgid "Add"
+msgstr ""
+
+#: tfrmtools.button11.caption
+msgid "Remove"
+msgstr ""
+
+#: tfrmtools.button16.caption
+msgctxt "tfrmtools.button16.caption"
+msgid "Apply"
+msgstr ""
+
+#: tfrmtools.caption
+msgctxt "tfrmtools.caption"
+msgid "Tools"
+msgstr ""
+
+#: tfrmtools.cbautosavemfld.caption
+msgctxt "tfrmtools.cbautosavemfld.caption"
+msgid "Automatically save current"
+msgstr ""
+
+#: tfrmtools.cbdescen.caption
+msgctxt "tfrmtools.cbdescen.caption"
+msgid "Enabled"
+msgstr ""
+
+#: tfrmtools.cbdesckexit.caption
+msgctxt "tfrmtools.cbdesckexit.caption"
+msgid "Kill on exit"
+msgstr ""
+
+#: tfrmtools.cbdescknoth.caption
+msgctxt "tfrmtools.cbdescknoth.caption"
+msgid "Kill on nothing"
+msgstr ""
+
+#: tfrmtools.cbdoublesz.caption
+msgid "Main window double sized"
+msgstr ""
+
+#: tfrmtools.cbforceloop.caption
+msgid "Loop shorter of TS pair"
+msgstr ""
+
+#: tfrmtools.cbforceloop.hint
+msgid "Force looping shorter module of TurboSound pair even loop button is switched off"
+msgstr ""
+
+#: tfrmtools.cbregallusers.caption
+msgctxt "tfrmtools.cbregallusers.caption"
+msgid "For all users (Administrator rights needed)"
+msgstr ""
+
+#: tfrmtools.cbsrchnotcheck.caption
+msgctxt "tfrmtools.cbsrchnotcheck.caption"
+msgid "Do not check modules integrity (faster)"
+msgstr ""
+
+#: tfrmtools.cbsrchst1.caption
+msgctxt "tfrmtools.cbsrchst1.caption"
+msgid "ST 1.x non-compiled"
+msgstr ""
+
+#: tfrmtools.cbsrchst3.caption
+msgctxt "tfrmtools.cbsrchst3.caption"
+msgid "ST 1.x recompiled"
+msgstr ""
+
+#: tfrmtools.cbsrchstf.caption
+msgctxt "tfrmtools.cbsrchstf.caption"
+msgid "ST Pro non-compiled"
+msgstr ""
+
+#: tfrmtools.cbstrprescan.caption
+msgid "Pre-scan MP3/MP2/MP1/OGG"
+msgstr ""
+
+#: tfrmtools.cbstrprescan.hint
+msgid "Pre-scan the file for accurate seek points and length reading in MP3/MP2/MP1 and chained OGG"
+msgstr ""
+
+#: tfrmtools.checkbox40.caption
+msgid "Save windows position"
+msgstr ""
+
+#: tfrmtools.eskinauth.hint
+msgctxt "tfrmtools.eskinauth.hint"
+msgid "Skin's author"
+msgstr ""
+
+#: tfrmtools.eskincom.hint
+msgctxt "tfrmtools.eskincom.hint"
+msgid "Comment"
+msgstr ""
+
+#: tfrmtools.eskinfn.hint
+msgctxt "tfrmtools.eskinfn.hint"
+msgid "File name"
+msgstr ""
+
+#: tfrmtools.fidotools.caption
+msgid "Track descriptor"
+msgstr ""
+
+#: tfrmtools.ftyptools.caption
+msgid "Application registration"
+msgstr ""
+
+#: tfrmtools.gbdefcp.caption
+msgctxt "tfrmtools.gbdefcp.caption"
+msgid "Default code page"
+msgstr ""
+
+#: tfrmtools.gbdesccp.caption
+msgctxt "tfrmtools.gbdesccp.caption"
+msgid "Code page"
+msgstr ""
+
+#: tfrmtools.gbeditor.caption
+msgctxt "tfrmtools.gbeditor.caption"
+msgid "Modules editor path"
+msgstr ""
+
+#: tfrmtools.gblang.caption
+msgctxt "tfrmtools.gblang.caption"
+msgid "Language"
+msgstr ""
+
+#: tfrmtools.gbmenu.caption
+msgctxt "tfrmtools.gbmenu.caption"
+msgid "'Start' menu"
+msgstr ""
+
+#: tfrmtools.gbmfolder.caption
+msgctxt "tfrmtools.gbmfolder.caption"
+msgid "Folder with music"
+msgstr ""
+
+#: tfrmtools.gbother.caption
+msgctxt "tfrmtools.gbother.caption"
+msgid "Other"
+msgstr ""
+
+#: tfrmtools.gbprior.caption
+msgctxt "tfrmtools.gbprior.caption"
+msgid "Priority"
+msgstr ""
+
+#: tfrmtools.gbskin.caption
+msgctxt "tfrmtools.gbskin.caption"
+msgid "Current Skin"
+msgstr ""
+
+#: tfrmtools.gbsrchopts.caption
+msgctxt "tfrmtools.gbsrchopts.caption"
+msgid "Search for tunes"
+msgstr ""
+
+#: tfrmtools.gbtray.caption
+msgctxt "tfrmtools.gbtray.caption"
+msgid "Icon on system tray"
+msgstr ""
+
+#: tfrmtools.gentools.caption
+msgid "General"
+msgstr ""
+
+#: tfrmtools.groupbox2.caption
+msgid "Playlist colors and font"
+msgstr ""
+
+#: tfrmtools.label1.caption
+msgid "Text"
+msgstr ""
+
+#: tfrmtools.label10.caption
+msgid "Suffix"
+msgstr ""
+
+#: tfrmtools.label11.caption
+msgid "Nothing"
+msgstr ""
+
+#: tfrmtools.label12.caption
+msgid "Back"
+msgstr ""
+
+#: tfrmtools.label13.caption
+msgid "SelText"
+msgstr ""
+
+#: tfrmtools.label14.caption
+msgid "SelBack"
+msgstr ""
+
+#: tfrmtools.label15.caption
+msgid "Play Text"
+msgstr ""
+
+#: tfrmtools.label16.caption
+msgid "Play Back"
+msgstr ""
+
+#: tfrmtools.label17.caption
+msgid "Play SelText"
+msgstr ""
+
+#: tfrmtools.label18.caption
+msgid "Error Text"
+msgstr ""
+
+#: tfrmtools.label19.caption
+msgid "Err SelText"
+msgstr ""
+
+#: tfrmtools.label2.caption
+msgctxt "tfrmtools.label2.caption"
+msgid "File name"
+msgstr ""
+
+#: tfrmtools.label9.caption
+msgid "Prefix"
+msgstr ""
+
+#: tfrmtools.lsrchfiles.caption
+msgctxt "tfrmtools.lsrchfiles.caption"
+msgid "Source files:"
+msgstr ""
+
+#: tfrmtools.lsrchrprt.caption
+msgctxt "tfrmtools.lsrchrprt.caption"
+msgid "Work report:"
+msgstr ""
+
+#: tfrmtools.lsrchwrkfld.caption
+msgctxt "tfrmtools.lsrchwrkfld.caption"
+msgid "Work folder:"
+msgstr ""
+
+#: tfrmtools.lvisperiod.caption
+msgctxt "tfrmtools.lvisperiod.caption"
+msgid "Visualization period, ms"
+msgstr ""
+
+#: tfrmtools.plistopts.caption
+msgctxt "tfrmtools.plistopts.caption"
+msgid "Playlist"
+msgstr ""
+
+#: tfrmtools.radiobutton10.caption
+msgid "minimize"
+msgstr ""
+
+#: tfrmtools.radiobutton3.caption
+msgid "idle"
+msgstr ""
+
+#: tfrmtools.radiobutton4.caption
+msgid "normal"
+msgstr ""
+
+#: tfrmtools.radiobutton5.caption
+msgid "high"
+msgstr ""
+
+#: tfrmtools.radiobutton8.caption
+msgid "never"
+msgstr ""
+
+#: tfrmtools.radiobutton9.caption
+msgid "always"
+msgstr ""
+
+#: tfrmtools.searchtool.caption
+msgid "Searching for tunes in files"
+msgstr ""
+
+#: tfrmtools.speedbutton1.caption
+msgid "Choose font..."
+msgstr ""
+
+#: theadereditor.btapply.caption
+msgctxt "theadereditor.btapply.caption"
+msgid "Apply"
+msgstr ""
+
+#: theadereditor.btrestore.caption
+msgctxt "theadereditor.btrestore.caption"
+msgid "Restore"
+msgstr ""
+
+#: theadereditor.caption
+msgid "Information in the file header"
+msgstr ""
+
+#: theadereditor.chanallocbox.caption
+msgid "Channels allocation"
+msgstr ""
+
+#: theadereditor.chtypebox.caption
+msgctxt "theadereditor.chtypebox.caption"
+msgid "Chip type"
+msgstr ""
+
+#: theadereditor.frqbox.caption
+msgctxt "theadereditor.frqbox.caption"
+msgid "Sound chip frequency"
+msgstr ""
+
+#: theadereditor.label1.caption
+msgctxt "theadereditor.label1.caption"
+msgid "Hz"
+msgstr ""
+
+#: theadereditor.label2.caption
+msgctxt "theadereditor.label2.caption"
+msgid "Hz"
+msgstr ""
+
+#: theadereditor.label3.caption
+msgctxt "theadereditor.label3.caption"
+msgid "Hz"
+msgstr ""
+
+#: theadereditor.label4.caption
+msgctxt "theadereditor.label4.caption"
+msgid "Hz"
+msgstr ""
+
+#: theadereditor.label5.caption
+msgctxt "theadereditor.label5.caption"
+msgid "Hz"
+msgstr ""
+
+#: theadereditor.label6.caption
+msgctxt "theadereditor.label6.caption"
+msgid "Hz"
+msgstr ""
+
+#: theadereditor.lbauthor.caption
+msgctxt "theadereditor.lbauthor.caption"
+msgid "Author"
+msgstr ""
+
+#: theadereditor.lbprogram.caption
+msgctxt "theadereditor.lbprogram.caption"
+msgid "Program"
+msgstr ""
+
+#: theadereditor.lbtitle.caption
+msgctxt "theadereditor.lbtitle.caption"
+msgid "Title"
+msgstr ""
+
+#: theadereditor.lbtotvbls.caption
+msgid "Total VBLs"
+msgstr ""
+
+#: theadereditor.lbtracker.caption
+msgctxt "theadereditor.lbtracker.caption"
+msgid "Tracker"
+msgstr ""
+
+#: theadereditor.lbyear.caption
+msgid "Year"
+msgstr ""
+
+#: theadereditor.otherbox.caption
+msgid "Other information"
+msgstr ""
+
+#: theadereditor.rbfrqother.caption
+msgctxt "theadereditor.rbfrqother.caption"
+msgid "Other"
+msgstr ""
+
+#: theadereditor.rbplfrqother.caption
+msgctxt "theadereditor.rbplfrqother.caption"
+msgid "Other"
+msgstr ""
+
+#: theadereditor.songinfobox.caption
+msgid "Information about song"
+msgstr ""
+
+#: theadereditor.vblfrqbox.caption
+msgid "VBL frequency"
+msgstr ""
+
+#: theadereditor.vblloopbox.caption
+msgid "Loop VBL"
+msgstr ""
+
+#: tseldirdlg.bcancel.caption
+msgctxt "tseldirdlg.bcancel.caption"
+msgid "Cancel"
+msgstr ""
+
+#: tseldirdlg.cbdodetect.caption
+msgctxt "tseldirdlg.cbdodetect.caption"
+msgid "Search for tunes in files"
+msgstr ""
+
+#: tseldirdlg.cbpathtoname.caption
+msgid "Path based file names"
+msgstr ""
+
+#: tseldirdlg.cbrecurse.caption
+msgctxt "tseldirdlg.cbrecurse.caption"
+msgid "Recurse subfolders"
+msgstr ""
+
+#: tseldirdlg.gboptions.caption
+msgid "Options"
+msgstr ""
+
+#: tseldirdlg.gbplaylist.caption
+msgctxt "tseldirdlg.gbplaylist.caption"
+msgid "Playlist files"
+msgstr ""
+
+#: tseldirdlg.rbplexcl.caption
+msgctxt "tseldirdlg.rbplexcl.caption"
+msgid "Exclude playlists"
+msgstr ""
+
+#: tseldirdlg.rbplincl.caption
+msgctxt "tseldirdlg.rbplincl.caption"
+msgid "Include playlists"
+msgstr ""
+
+#: tseldirdlg.rbplonly.caption
+msgctxt "tseldirdlg.rbplonly.caption"
+msgid "Only playlists"
+msgstr ""
+

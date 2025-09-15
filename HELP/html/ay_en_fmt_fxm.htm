@@ -1,0 +1,152 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="fxm"></A>FXM</H1>
+
+<P>These files store music written on Fuxoft AY Language (terminology and file header was got from RDOSPLAY documentation).</P>
+
+<P>Fuxoft (Frantisek Fuka) designed this language.</P>
+
+<H2>FXM-file structure</H2>
+
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Name<TH>Description</TR>
+<TR><TD>+0<TD>4<TD>ID<TD>Identifier 'FXSM'</TR>
+<TR><TD>+4<TD>2<TD>Addr<TD>Data block allocation address in Z80 memory</TR>
+<TR><TD>+6<TD>?<TD>Data<TD>Data block</TR>
+</TABLE>
+
+<P>Data block is original structure from software, in which this music is used.</P>
+
+<H2>Data block structure</H2>
+<TABLE>
+<TR><TH>Offset<TH>Size<TH>Name<TH>Description</TR>
+<TR><TD>+0<TD>2<TD>AddrA<TD>Fuxoft AY Language program first byte address for channel A</TR>
+<TR><TD>+2<TD>2<TD>AddrB<TD>Fuxoft AY Language program first byte address for channel B</TR>
+<TR><TD>+4<TD>2<TD>AddrC<TD>Fuxoft AY Language program first byte address for channel C</TR>
+<TR><TD>+6<TD>?<TD>Progs<TD>Programs, subprograms on Fuxoft AY Language, samples, ornaments, and also (very seldom) subprograms on Z80 machine codes</TR>
+</TABLE>
+
+<P>Programs and subprograms (as in any other program language) consist of sequence of commands. In this sequence can to select phrases. Phrase is totality of commands is needed for setting one note to playing. Note command and Silence command define the end of phrase.</P>
+
+<P>16 words size stack is given to each channel for playing module. So, maximal number of subprograms calls from other subprograms is 16. Recursive calls are not allowed.</P>
+
+<H2>Fuxoft AY Language commands description (hex numbers)</H2>
+
+<H3>00 XX &ndash; silence</H3>
+
+<P>Sound off command. Byte parameter XX after this command code is number of interrupts, during which no sound in corresponding channel.</P>
+
+<H3>01..54 XX &ndash; note number increased by 1</H3>
+
+<P>Sets note (number from 00 to 53) for playing during XX interrupts. AY tone register value 0FBF corresponds to note number 00 is note A of subcontroctave (if chip frequency is 1773400 MHz). Range between two closest notes is semitone.</P>
+
+<H3>80 XX XX &ndash; jumping to address XXXX</H3>
+
+<P>Simple jump to address XXXX (Z80 JP command analog). Usually, this command ends main programs of corresponding channels (in this case it jumps to infinite loop command address).</P>
+
+<H3>81 XX XX &ndash; subprogram at address XXXX calling</H3>
+
+<P>Stores in stack address of next command and jumps to XXXX address (subprogram calling, Z80 CALL analog). Stack size is 16 words limited.</P>
+
+<H3>82 XX &ndash; setting loop point and number of reiterations</H3>
+
+<P>Stores in stack address of next command (loop point) and XX parameter (number of reiterations increased by 1). Program part from this loop point to command 83 will be repeated (XX &ndash; 1) times (reprise).</P>
+
+<H3>83 &ndash; reprise</H3>
+
+<P>Reiterates (XX &ndash; 1) times from loop point is set by 82 XX command. This command pops from stack XX parameter and loop point address, decreases XX by 1, and, if it not equals to zero, stores both parameter and loop point address in stack and jump to loop point.</P>
+
+<H3>84 XX &ndash; noise</H3>
+
+<P>Parameter XX (00..1F) is AY noise register value.</P>
+
+<H3>85 XX&ndash; mixer</H3>
+
+<P>Parameter XX (set/reset bit 0 for enable/disable ton, and same for bit 3 for noise, all other bits are zeros) sets value of AY mixer register of corresponding channel.</P>
+
+<H3>86 XX XX &ndash; ornament</H3>
+
+<P>Parameter XXXX defines address of ornament for using with this phrase note (and by default will be used in next phrases).</P>
+
+<H3>87 XX XX &ndash; sample</H3>
+
+<P>Parameter XXXX defines address of sample for using with this phrase note (and by default will be used in next phrases; command 8A defines to continue play this sample from current position in it with next notes and command 8B defines to restart playing of this sample with next notes; by default, second described mode is on).</P>
+
+<H3>88 XX &ndash; transposition</H3>
+
+<P>Sets transposition equal to XX semitones. XX is signed byte. By default, transposition is zero.</P>
+
+<H3>89 &ndash; return from subprogram</H3>
+
+<P>Pops address from stack and jump to it (Z80 RET analog).</P>
+
+<H3>8A &ndash; do not initialize sample</H3>
+
+<P>Switch to mode during which setting of new notes do not allows to restart current sample playing (it simply continues to play from current position in this sample).</P>
+
+<H3>8B &ndash; initialize sample</H3>
+
+<P>Switch to mode during which setting of new note restarts sample playing from its beginning (default mode).</P>
+
+<H3>8C XX XX &ndash; gives control to Z80 subprogram</H3>
+
+<P>Gives control to subprogram in Z80 machine codes. I met only one FXM, which uses this command, and its Z80 subprogram does nothing for sounding. Command 8C is not supported in Ay_Emul. I think Fuxoft designed this command to synchronize some visual effects with playing melody.</P>
+
+<H3>8D XX &ndash; addition to noise</H3>
+
+<P>Addition to AY noise register current value by module 20 (or 10 in some versions, see Andsix parameter in AY-files description).</P>
+
+<H3>8E XX &ndash; addition to transposition</H3>
+
+<P>Addition to current transposition value in semitones.</P>
+
+<H3>8F &ndash; push transposition</H3>
+
+<P>Pushes current transposition value into channel stack.</P>
+
+<H3>90 &ndash; pop transposition</H3>
+
+<P>Pops transposition value from channel stack.</P>
+
+<H2>Sample structure</H2>
+
+<P><B>Sample</B> in this language has simple structure and controls amplitude of output signal only. As programs, sample is commands sequence.</P>
+
+<H3>00..0F XX &ndash; amplitude</H3>
+
+<P>Defines amplitude value in this and next interrupts (XX defines number of interrupts).</P>
+
+<H3>32..41 &ndash; amplitude</H3>
+
+<P>Defines amplitude value in only this interrupt (increased by 32).</P>
+
+<H3>80 XX XX &ndash; jump to loop point</H3>
+
+<P>Jumps to XXXX loop point of this sample.</P>
+
+<H2>Ornament structure</H2>
+
+<P><B>Ornament</B> is a bit compounder structure. It changes current frequency of tone register in current interrupt by given value.</P>
+
+<H3>80 XX XX &ndash; jump to loop point</H3>
+
+<P>Jumps to XXXX loop point of this ornament.</P>
+
+<H3>82 &ndash; semitones</H3>
+
+<P>Directs that all ornament values are in semitones.</P>
+
+<H3>83 &ndash; tone register units</H3>
+
+<P>Directs taht all ornament values are in AY tone register units.</P>
+
+<H3>84 &ndash; invert mixer bits</H3>
+
+<P>Inverts both AY mixer bits for corresponding channel.</P>
+
+<H3>Other values &ndash; addition</H3>
+
+<P>Changes value of AY tone register by adding this addition (signed byte) to it. Can be in semitones or in tone register units (set by commands 82 and 83).</P>
+
+</BODY>
+</HTML>

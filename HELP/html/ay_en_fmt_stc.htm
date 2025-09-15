@@ -1,0 +1,127 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="stc"></A>STC</H1>
+
+<H2>Introduction</H2>
+
+<P>STC is the native ZX Spectrum Sound Tracker compiled module format. Sound Tracker is the first tracker on ZX Spectrum and was very popular since presented in 1990.</P>
+
+<P>File name extension is STC in the most of music collections, but also known as ZXS in package with ZXMUS.EXE Version 1.02 Beta by Super Dima from Kaluga.</P>
+
+<P>STC-files are created in Sound Tracker Song Compiler v1.2 (came together with Sound Tracker editor). Further compilers (including built-in some Sound Tracker editor modifications) produce fully compatible result.</B>
+
+<P>Ay_Emul has built-in Sound Tracker compiler, so you can load uncompiled modules (marked as ST1 in playlist) and save them as STC.<P>
+
+<P>Files of Super Sonic by KLAV are fully compatible with compiled Sound Tracker modules, just swapped some areas in structure.</P>
+
+<P>Ay_Emul can search and detect both original and modified Super Sonic structure if source file name extension is not STC or if "Search for tunes in files" tool is used.</P>
+
+<H2>Technical details</H2>
+
+<P>Structure of STC was well documented in 1993 by Ramsoft in SoundTracker Technical Reference (see further).</P>
+
+<H2>Using extra fields for message</H2>
+
+<P>Ramsoft has skipped description of 20 bytes area from +7 to +26 in that document. So, several words from me here.</P>
+
+<P>Original compiler used 18 bytes from +7 offset to store string 'SONG BY ST COMPILE' and next word at +25 offset to store whole module size. Super Sonic stores string '(C) KLAV "S_SONIC"' here. Further compiler and re-compiler programs store here slightly different info about their name or version (total of 10 variants in my base).</P>
+
+<P>Of course, no need compiler info string for users, and many of them replaced it with string of song and author names, some hellos and even garbage (to "protect" from rippers). Moreover, if no need module size users can add extra two chars to their message (as had made Agent-X usually).</P>
+
+<H2>Another way for author's string</H2>
+
+<P>String of 18 or 20 chars is not enough. And the newest Sound Tracker compilers insert longer one into player body.</P>
+
+<P>There are two kind of author's string both 55 chars long starting with "SOUND TRACKER COMPILATION OF " and "KSA SOFTWARE COMPILATION OF ". First come with Sound Tracker 3 in alternative player of usual STC, and second from player of ST3 (recompiled STC).</P>
+
+<P>Ay_Emul can extract it from player and inject into STC during saving from playlist or by "Search for tunes in files" tool.</P>
+
+<P>To insert string, patterns data (pointed at +5 offset, see description for the term) is moved forward by 55 bytes; the author's string is inserted into the gap that appears, and then pointers corrected by +55: to patterns data (at +5 offset) and in patterns data (three pointers for each pattern). Note: marker 255 can be used at the end of patterns data (missed in Ramsoft's description).</P>
+
+<P>The injection method is better than a simple adding string to the end of the file: no chance to miss it during re-ripping and full compatibility with all known STC-players.</P>
+
+<H2>Ramsoft's description</H2>
+
+<P>Further you can read part of Ramsoft's document (file ST11FMT.TXT) dedicated to compiled song structure.</P>
+
+<P>---------------------------cut here-------------------</P>
+<pre>
+COMPILED SONG STRUCTURE                                         
+                                                                
+Start            = delay value                                  
+Start + 1        = offset of positions map                      
+Start + 3        = offset of compiled ornaments                 
+Start + 5        = offset of patterns data                      
+Start + 27 (1Bh) = compiled samples                             
+                                                                
+Note: every offset must be added to 'Start' address.            
+                                                                
+                                                                
+COMPILED POSITIONS MAP STRUCTURE                                
+                                                                
+Byte 1 = song's lenght in patterns                              
+Remaining bytes are the same as uncompiled.                     
+End marker = 255 (FFh)                                          
+                                                                
+                                                                
+COMPILED ORNAMENTS STRUCTURE                                    
+                                                                
+Lenght of compiled ornament = 33 (21h) bytes                    
+Byte 1 = ornament number                                        
+Remaining bytes are the same as uncompiled.                     
+                                                                
+Note:ornaments are stored from number 0 (empty ornament)        
+                                                                
+                                                                
+COMPILED PATTERNS DATA STRUCTURE                                
+                                                                
+Lenght of each pattern data = 7 bytes                           
+                                                                
+Byte    1   = pattern number                                    
+Bytes  2/3  = offset of channel A data                          
+Bytes  4/5  = offset of channel B data                          
+Bytes  6/7  = offset of channel C data                          
+                                                                
+                                                                
+COMPILED SAMPLES STRUCTURE                                      
+                                                                
+Lenght of compiled sample = 99 (63h) bytes                      
+                                                                
+Byte      1     (01h) = sample number                           
+Bytes 02-97 (02h-61h) = 32 (20h) groups of 3 bytes; each group  
+                        holds the values for envelope,noise     
+                        and addition for effects                
+Byte     98     (62h) = repeat value                            
+Byte     99     (63h) = repeat lenght value                     
+                                                                
+Each group of 3 bytes is arranged as below:                     
+                                                                
+Byte n.1:     bits 0-3 = envelope value (volume)                
+              bits 4-7 = high part of addition for effects      
+                                                                
+Byte n.2:     bits 0-4 = noise value                            
+              bit   5  = addition for effects sign              
+              bit   6  = envelope mask setting                  
+              bit   7  = noise mask setting                     
+                                                                
+Byte n.3:     bits 0-8 = low part of addition for effects       
+                                                                
+                                                                
+CODES MEANING ON CHANNEL DATA                                   
+                                                                
+If:    code<96  (60h)  => bits 0-4 = note in semitones (00=C-1) 
+       code<112 (70h)  => bits 0-4 = sample number              
+       code<128 (80h)  => bits 0-4 = ornament number            
+       code=128 (80h)  => rest (shuts channel)                  
+       code=129 (81h)  => empty location                        
+       code=130 (82h)  => selects ornament 0                    
+       code<143 (8Fh)  => selects effect                        
+       code=255 (FFh)  => end channel data                      
+                                                                
+Codes between 161 (A1h) and 224 (E0h),by subtracting 161 (A1h), 
+tell the number of empty locations after the subsequent code.
+</pre>
+<P>---------------------------cut here-------------------</P>
+
+</BODY>
+</HTML>

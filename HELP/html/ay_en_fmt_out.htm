@@ -1,0 +1,19 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="out"></A>OUT</H1>
+
+<P>Supported OUT-files of ZX Spectrum emulator 'Z80' versions 3.02 and 3.03 by G.A. Lunter.</P>
+
+<P>OUT-file is a sequence of five bytes blocks. First word in each block is time in Z80 processor tacts (range from 0 to 17471). Second word of block is ZX Spectrum port address. And last value of block (byte) is data was sent to this port during this tact.</P>
+
+<P>Each 17472nd tact in any case one block is wrote into OUT-file, and if during this tact no outing to any port of Speccy then first word of block is 65535. One tact of Z80 processor equal to 1/3494400 sec in 'Z80' emulator.</P>
+
+<P>OUT-file can contain outing either to any Speccy ports or to selected ones. To record outing only to AY-3-8910 ports (#BFFD and #FFFD), adjust 'Z80' emulator for storing only one port: #FD, and after creating OUT-file, convert it via Ay_Emul to some other format (for example, ZXAY-file is optimized analog of OUT-file).</P>
+
+<P>Not all player writers know some interesting Z80 CPU feature: if used commands like OUTD and OUTI for port outing, data is really outed to port BC-256 (register B decreased by 1, i.e. BC by 256 before outing). 
+So OUT-file can store wrong port address (decremented by 256).</P>
+
+<P>If player uses standard AY port addresses (#BFFD and #FFFD) for such commands, the error is masked, because of new addresses are equivalent to standard ones and Ay_Emul play that OUT-file rightly.</P>
+
+</BODY>
+</HTML>

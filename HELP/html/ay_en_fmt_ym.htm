@@ -1,0 +1,98 @@
+<!doctype html><HTML><HEAD><META HTTP-EQUIV="Content-Type" Content="text/html; charset=Windows-1251"><LINK REL="stylesheet" TYPE="text/css" HREF="Ay_Emul.css"></HEAD><BODY>
+
+<H1><A NAME="ym"></A>YM</H1>
+
+<H2>Prehistory and Ay_Emul support nuances</H2>
+
+<P>Arnaud Carre (Leonard/OXYGENE) designs this format for his player ST-Sound (with YM2149F emulation). Initially this project was presented as the Atari ST sound chip music player, but further it's became the Multi-Computer Sound Emulator.</P>
+
+<P>The project consists of many programs (player, Winamp plug-in, converters and tools) and the huge archive of music from various platforms.</P>
+
+<P>Ay_Emul supports only those project's formats in which YM2149F register dumps are stored. Additional effects in some formats are partially supported: the goal was set to play any samples only through a sound chip, forcing the corresponding channel into DAC mode, so 8-bit samples are not played directly, but are previously converted to a 4-bit format for YM2149F.</P>
+
+<P>In addition, since at the time of adding support to Ay_Emul, the source codes of the author's ST-Sound library were not yet available, and the formats were studied only according to official descriptions with minimal reverse engineering combined with the first acquaintance with the Atari ST platform, at least at the beginning not everything was implemented correctly: was mistakes, and a number of simplifications and tricks. And if the errors have been corrected over the years, then some of the tricks are still being used.</P>
+
+<P>Therefore, if it is important for you to hear some YM-format files that are either not supported in Ay_Emul, or sound wrong, use the programs of the format's author.</P>
+	
+<P>Don't forget to set chip frequency to 2 000 000 Hz for Atari ST and to 1 000 000 Hz for Amstrad while listening YM2, YM3 and YM3b files with Atari ST and Amstrad music (these subtypes are not contain data about the frequency).</P>
+
+<H2>Description</H2>
+
+<P>So, for Ay_Emul any YM-file is LHA archive (type 5), created by LHA.EXE version 2.00 or older with -h0 switch (header type 0) by Haruyasu Yoshizaki.</P>
+
+<P>This archive consists of one file with any name, the supported formats of the file are next.</P>
+
+<H3>YM2</H3>
+
+<P>First four bytes is ASCII string 'YM2!'. Its structure like <B>YM3</B>, but information about samples can be added. All YM2-samples are fixed and stored in player (these are samples from Mad Max's music).</P>
+
+<H3>YM3</H3>
+
+<P>First four bytes are ASCII string 'YM3!'. Next bytes are data block of YM chip registers values. Registers are updates one time per one interrupt (VBL). If music length is N interrupts, then block consist first N bytes for register 0, further N bytes for register 1 and so on, in total N*14 bytes. If in current interrupt was no outing to register 13 then byte of data block for this interrupt and for this register has value 255.</P>
+
+<H3>YM3b</H3>
+
+<P>First four bytes are ASCII string 'YM3b'. Next bytes are data block (see <B>YM3</B> description). And last four bytes are DWORD data: VBL number for looping the melody.</P>
+
+<H3>YM5</H3>
+
+<P>This format contains additional information: chip frequency, player frequency, title, author name, comment and specific Atari ST data (Digi-Drum and SID-Sound effects).</P>
+
+<P>From YMFORMAT.TXT:</P>
+
+<P>---------------------------cut here-------------------</P>
+<pre>
+Offset  Size    Type            Comment
+0       4       DWORD           ID of YM5 format. ('YM5!')
+4       8       string[8]       Check String ('LeOnArD!')
+12      4       DWORD           Nb of valid VBL of the file.
+16      4       DWORD           Song attributes (see bellow)
+20      2       WORD            Nb of digi-drum sample (can be 0)
+22      4       DWORD           YM2149 External frequency in Hz
+                                (ex:2000000 for ATARI-ST version,
+                                1000000 for AMSTRAD CPC)
+26      2       WORD            Player frequency in Hz
+                                (Ex: 50Hz for almost player)
+28      4       DWORD           Vbl number to loop the song.
+                                (0 is default)
+32      2       WORD            Size (in bytes) of future
+                                additional data.
+                                (must be 0 for the moment)
+
+For each digidrum sample:
+{
+..      4       DWORD           sample size
+..      ?       BYTES           sample data (8bits per sample)
+}
+
+..      ?       NT-String       Name of the song.
+..      ?       NT-String       Name of the author.
+..      ?       NT-String       Comments (YM file converter ?!)
+..      ?                       All YM2149 registers.
+..      4       DWORD           End-File check. ('End!')
+</pre>
+<P>---------------------------cut here-------------------</P>
+
+<H3>YM6</H3>
+
+<P>This format is equivalent of <B>YM5</B>, but can contain yet another two special Atari ST effects are Sinus-SID and Sync Buzzer, and can to play any two of special effects at one time.</P>
+
+<H2>Remarks</H2>
+
+<P>There are some specific terms and obscurities in YMFORMAT.TXT. Let's explain:<P>
+
+<OL>
+<LI>VBL – Vertical Blank time on Atari ST; leads to the call of the interrupt handler from the frame sync pulse, from this handler the player of the next quantum of music is usually called. And even if the music is played on some timer, on Atari ST still uses the term "VBL" (sometimes "VBI"), implying the playback of one quantum of music.
+<LI>Numeric WORD and DWORD data is stored in MOTOROLA order (from hi byte to lo).
+<LI>Parameters for special effects are stored in unused registers bits, but since there are not enough of them, virtual registers are introduced only for special effects: the 14th and 15th.
+<LI>If bit 0 of field Song Attributes is set, data block's registers are stored in YM3-style order (interleaved). If this bit is reset, then data block consists of first 16 bytes of first VBL, then next 16 bytes for second VBL and so on.</P>
+</OL>
+
+<P>Ay_Emul supports all special effects in described formats. Also, Ay_Emul can work with unpacked YM-files even.</P>
+
+<P>More info about YM-files can be found in official ST-Sound package or on ST-Sound Project Homepage (<a href="http://leonard.oxg.free.fr/" target="_blank">http://leonard.oxg.free.fr</a>).</P>
+
+<P>At that homepage can be found author's ST-Sound library with sources, Ay_Emul uses samples from the library for YM2 playing.</P>
+
+</BODY>
+</HTML>

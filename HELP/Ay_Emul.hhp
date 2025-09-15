@@ -1,0 +1,67 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Ay_Emul.chm
+Contents file=Ay_Emul.hhc
+Default topic=html\ay_en_intro_whatdo.htm
+Display compile progress=No
+Language=0x409 Английский (США)
+Title=ZX Spectrum Sound Chip Emulator
+
+
+[FILES]
+html\ay_en_history.htm
+html\ay_en_intro_whatdo.htm
+html\ay_en_intro_whatsnew.htm
+html\ay_en_using_controls.htm
+html\ay_en_using_mixer.htm
+html\ay_en_using_tools.htm
+html\ay_en_using_playlist.htm
+html\ay_en_using_playlistitem.htm
+html\ay_en_using_header.htm
+html\ay_en_using_commandline.htm
+html\ay_en_using_hotkeys.htm
+html\ay_en_behav_playingorder.htm
+html\ay_en_behav_looping.htm
+html\ay_en_behav_startingemul.htm
+html\ay_en_behav_finder.htm
+html\ay_en_behav_fopen.htm
+html\ay_en_behav_outzxay.htm
+html\ay_en_behav_slider.htm
+html\ay_en_behav_intconv.htm
+html\ay_en_behav_winman.htm
+html\ay_en_fmt_out.htm
+html\ay_en_fmt_zxay.htm
+html\ay_en_fmt_zx50.htm
+html\ay_en_fmt_st1.htm
+html\ay_en_fmt_stc.htm
+html\ay_en_fmt_fls.htm
+html\ay_en_fmt_st3.htm
+html\ay_en_fmt_stf.htm
+html\ay_en_fmt_stp.htm
+html\ay_en_fmt_sqt.htm
+html\ay_en_fmt_psm.htm
+html\ay_en_fmt_as0.htm
+html\ay_en_fmt_asc.htm
+html\ay_en_fmt_psc.htm
+html\ay_en_fmt_fxm.htm
+html\ay_en_fmt_pt1.htm
+html\ay_en_fmt_pt2.htm
+html\ay_en_fmt_pt3.htm
+html\ay_en_fmt_gtr.htm
+html\ay_en_fmt_ftc.htm
+html\ay_en_fmt_ym.htm
+html\ay_en_fmt_vtx.htm
+html\ay_en_fmt_psg.htm
+html\ay_en_fmt_ay.htm
+html\ay_en_fmt_aym.htm
+html\ay_en_fmt_sndh.htm
+html\ay_en_sup_distribution.htm
+html\ay_en_sup_musicarch.htm
+html\ay_en_sup_skinfiles.htm
+html\ay_en_sup_homepage.htm
+html\ay_en_sup_email.htm
+html\ay_en_auth_blago.htm
+html\ay_en_auth_authors.htm
+
+[INFOTYPES]
+
