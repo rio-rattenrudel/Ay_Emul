@@ -15,12 +15,14 @@ uses
  Windows, Classes, SysUtils, sometypes;
 
 var
+  hIn :     THandle;
   hOut:     THandle;
   sbInfo:   CONSOLE_SCREEN_BUFFER_INFO;
   colored:  Boolean = False;
 
-procedure OpenConsole;
+function OpenConsole: Boolean;
 procedure CloseConsole;
+procedure DisableMenuButtons;
 procedure OutputLogo(colored: Boolean = false);
 procedure OutputAYRegister;
 procedure OutputAYMID(mask,msb:uint16; data:PArray0OfByte; length:integer);
@@ -101,22 +103,60 @@ begin
   WriteLn('');
   WriteLn('  -= Rio Rattenrudel =-                                        V0.1  10/2023  ');
   WriteLn('                                                               V0.2  04/2024  ');
+  WriteLn('                                                               V0.3  09/2025  ');
 end;
 
-procedure OpenConsole;
+function OpenConsole: Boolean;
+var
+  prevMode: DWORD;
+  Rect: TSmallRect;
+  Size: COORD;
+
 begin
-  AllocConsole;
+  Result := AllocConsole;
+  if not Result then Exit;
+
+  StdInputHandle := 0;
+  StdOutputHandle := 0;
+  StdErrorHandle := 0;
+
   IsConsole := True;
   SysInitStdIO;
+  IsConsole := False;
 
   hOut := GetStdHandle( STD_OUTPUT_HANDLE );
   if hOut <> INVALID_HANDLE_VALUE then begin
 
+    // set mode
+    SetConsoleMode( hOut, ENABLE_PROCESSED_OUTPUT or ENABLE_WRAP_AT_EOL_OUTPUT);
+
+    // resize console
+    Rect.Left := 0;
+    Rect.Top := 0;
+    Rect.Right := 80 - 1;
+    Rect.Bottom := 35 - 1;
+    SetConsoleWindowInfo(hOut, True, &Rect);
+
     // save current buffer info
     GetConsoleScreenBufferInfo( hOut, &sbInfo );
+
+    // set new buffer size (avoid scrollbars)
+    Size.X := sbInfo.srWindow.Right - sbInfo.srWindow.Left + 1; // Columns
+    Size.Y := sbInfo.srWindow.Bottom - sbInfo.srWindow.Top + 1; // Rows
+    SetConsoleScreenBufferSize( hOut, Size );
   end;
 
-  SetConsoleTitle('AYMID Console V1');
+  hIn := GetStdHandle( STD_INPUT_HANDLE );
+  if hIn <> INVALID_HANDLE_VALUE then begin
+
+    // set mode (ignore selections by mouse or keys)
+    GetConsoleMode(hIn, &prevMode); 
+    SetConsoleMode(hIn, ENABLE_EXTENDED_FLAGS or (prevMode and not (ENABLE_QUICK_EDIT_MODE or ENABLE_PROCESSED_INPUT)));
+  end;
+
+  SetConsoleTitle('AYMID Console V0.3');
+
+  DisableMenuButtons;
 
   OutputLogo(true);
   OutputInstruction;
@@ -124,8 +164,27 @@ end;
 
 procedure CloseConsole;
 begin
+  SysFlushStdIO;
   FreeConsole;
-  IsConsole := False;
+  SysInitStdIO;
+end;
+
+procedure DisableMenuButtons;
+var
+  Wnd:  HWND;
+  Menu: HMENU;
+
+begin
+  Wnd := GetConsoleWindow;
+  if Wnd = 0 then Exit;
+
+  // remove maximize button
+  SetWindowLong(Wnd, GWL_STYLE, GetWindowLong(Wnd, GWL_STYLE) and not WS_MAXIMIZEBOX);
+
+  // remove close button
+  Menu := GetSystemMenu(Wnd, False);        // get menu
+  DeleteMenu(Menu, SC_CLOSE, MF_BYCOMMAND); // delete close
+  DrawMenuBar(Wnd);                         // redraw
 end;
 
 procedure OutputAYRegister;
