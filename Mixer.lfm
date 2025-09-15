@@ -1,7 +1,7 @@
 object FrmMixer: TFrmMixer
-  Left = 632
+  Left = 417
   Height = 538
-  Top = 100
+  Top = 141
   Width = 536
   AutoSize = True
   BorderStyle = bsDialog
@@ -13,24 +13,24 @@ object FrmMixer: TFrmMixer
   OnHide = FormHide
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '3.0.0.3'
+  LCLVersion = '2.2.6.0'
   object MixerTabSheet: TPageControl
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     Left = 0
-    Height = 497
+    Height = 501
     Top = 0
     Width = 536
-    ActivePage = AYEmuSheet
+    ActivePage = WOSheet
     Align = alTop
     AutoSize = True
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 0
     object AYEmuSheet: TTabSheet
       AutoSize = True
       Caption = 'AY Emulation'
-      ClientHeight = 471
+      ClientHeight = 475
       ClientWidth = 528
       object GBChAmp: TGroupBox
         AnchorSideLeft.Control = AYEmuSheet
@@ -214,6 +214,7 @@ object FrmMixer: TFrmMixer
           Caption = 'Preamp'
           Font.Height = -19
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LAmpBpr: TLabel
@@ -229,6 +230,7 @@ object FrmMixer: TFrmMixer
           Caption = 'Beeper'
           Font.Height = -13
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LAmpA: TLabel
@@ -242,6 +244,7 @@ object FrmMixer: TFrmMixer
           Caption = 'A'
           Font.Height = -19
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LAmpB: TLabel
@@ -255,6 +258,7 @@ object FrmMixer: TFrmMixer
           Caption = 'B'
           Font.Height = -19
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LAmpC: TLabel
@@ -270,6 +274,7 @@ object FrmMixer: TFrmMixer
           Caption = 'C'
           Font.Height = -19
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LAmpAL: TLabel
@@ -285,6 +290,7 @@ object FrmMixer: TFrmMixer
           Caption = 'Left'
           Font.Height = -13
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LAmpAR: TLabel
@@ -300,6 +306,7 @@ object FrmMixer: TFrmMixer
           Caption = 'Right'
           Font.Height = -13
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LAmpBL: TLabel
@@ -315,6 +322,7 @@ object FrmMixer: TFrmMixer
           Caption = 'Left'
           Font.Height = -13
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LAmpBR: TLabel
@@ -330,6 +338,7 @@ object FrmMixer: TFrmMixer
           Caption = 'Right'
           Font.Height = -13
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LAmpCL: TLabel
@@ -345,6 +354,7 @@ object FrmMixer: TFrmMixer
           Caption = 'Left'
           Font.Height = -13
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LAmpCR: TLabel
@@ -360,6 +370,7 @@ object FrmMixer: TFrmMixer
           Caption = 'Right'
           Font.Height = -13
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object TBAmpAL: TTrackBar
@@ -487,8 +498,8 @@ object FrmMixer: TFrmMixer
           Anchors = [akTop, akRight]
           BorderSpacing.Right = 4
           Constraints.MinWidth = 32
-          TabOrder = 1
           OnEditingDone = EAmpALEditingDone
+          TabOrder = 1
         end
         object EAmpAR: TEdit
           AnchorSideLeft.Control = EAmpAL
@@ -501,8 +512,8 @@ object FrmMixer: TFrmMixer
           Alignment = taCenter
           BorderSpacing.Top = 2
           Constraints.MinWidth = 32
-          TabOrder = 4
           OnEditingDone = EAmpAREditingDone
+          TabOrder = 4
         end
         object EAmpCR: TEdit
           AnchorSideLeft.Control = EAmpCL
@@ -515,8 +526,8 @@ object FrmMixer: TFrmMixer
           Alignment = taCenter
           BorderSpacing.Top = 2
           Constraints.MinWidth = 32
-          TabOrder = 16
           OnEditingDone = EAmpCREditingDone
+          TabOrder = 16
         end
         object EAmpCL: TEdit
           AnchorSideLeft.Control = EAmpBR
@@ -529,8 +540,8 @@ object FrmMixer: TFrmMixer
           Alignment = taCenter
           BorderSpacing.Top = 2
           Constraints.MinWidth = 32
-          TabOrder = 13
           OnEditingDone = EAmpCLEditingDone
+          TabOrder = 13
         end
         object EAmpBL: TEdit
           AnchorSideLeft.Control = EAmpAR
@@ -543,8 +554,8 @@ object FrmMixer: TFrmMixer
           Alignment = taCenter
           BorderSpacing.Top = 2
           Constraints.MinWidth = 32
-          TabOrder = 7
           OnEditingDone = EAmpBLEditingDone
+          TabOrder = 7
         end
         object EAmpBR: TEdit
           AnchorSideLeft.Control = EAmpBL
@@ -557,8 +568,8 @@ object FrmMixer: TFrmMixer
           Alignment = taCenter
           BorderSpacing.Top = 2
           Constraints.MinWidth = 32
-          TabOrder = 10
           OnEditingDone = EAmpBREditingDone
+          TabOrder = 10
         end
         object CheckBox1: TCheckBox
           AnchorSideLeft.Control = LAmpC
@@ -566,9 +577,9 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Side = asrCenter
           AnchorSideBottom.Side = asrBottom
           Left = 26
-          Height = 17
-          Top = 217
-          Width = 81
+          Height = 19
+          Top = 216
+          Width = 83
           BorderSpacing.Left = 4
           BorderSpacing.Bottom = 4
           Caption = 'Get from list'
@@ -703,8 +714,8 @@ object FrmMixer: TFrmMixer
           Alignment = taCenter
           BorderSpacing.Top = 2
           Constraints.MinWidth = 32
-          TabOrder = 19
           OnEditingDone = EAmpBprEditingDone
+          TabOrder = 19
         end
         object TBPreAmp: TTrackBar
           AnchorSideTop.Control = EPreAmp
@@ -736,8 +747,8 @@ object FrmMixer: TFrmMixer
           Alignment = taCenter
           BorderSpacing.Top = 2
           Constraints.MinWidth = 32
-          TabOrder = 23
           OnEditingDone = EPreAmpEditingDone
+          TabOrder = 23
         end
         object LAmpDMA: TLabel
           AnchorSideTop.Control = TBAmpDMA
@@ -753,6 +764,7 @@ object FrmMixer: TFrmMixer
           Caption = 'DMA-Sound'
           Font.Height = -13
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object TBAmpDMA: TTrackBar
@@ -785,8 +797,8 @@ object FrmMixer: TFrmMixer
           Alignment = taCenter
           BorderSpacing.Top = 2
           Constraints.MinWidth = 32
-          TabOrder = 21
           OnEditingDone = EAmpDMAEditingDone
+          TabOrder = 21
         end
         object LAYOvfl: TLabel
           AnchorSideLeft.Control = EAmpCRCur
@@ -802,9 +814,11 @@ object FrmMixer: TFrmMixer
           Width = 18
           Alignment = taCenter
           Caption = 'AY!'
+          Color = clBackground
           Font.Color = clRed
           Font.Height = -12
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
           ParentShowHint = False
           ShowHint = True
@@ -822,9 +836,11 @@ object FrmMixer: TFrmMixer
           Width = 18
           Alignment = taCenter
           Caption = 'TS!'
+          Color = clBackground
           Font.Color = clRed
           Font.Height = -12
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
           ParentShowHint = False
           ShowHint = True
@@ -842,9 +858,11 @@ object FrmMixer: TFrmMixer
           Width = 28
           Alignment = taCenter
           Caption = 'DMA'
+          Color = clBackground
           Font.Color = clRed
           Font.Height = -12
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
           ParentShowHint = False
           ShowHint = True
@@ -873,13 +891,13 @@ object FrmMixer: TFrmMixer
         AnchorSideTop.Control = GBChAmp
         AnchorSideTop.Side = asrBottom
         Left = 4
-        Height = 77
+        Height = 81
         Top = 268
         Width = 140
         AutoSize = True
         BorderSpacing.Top = 2
         Caption = 'Chip type'
-        ClientHeight = 59
+        ClientHeight = 63
         ClientWidth = 136
         Constraints.MinHeight = 77
         Constraints.MinWidth = 140
@@ -888,37 +906,37 @@ object FrmMixer: TFrmMixer
           AnchorSideLeft.Control = GBChType
           AnchorSideTop.Control = GBChType
           Left = 4
-          Height = 17
+          Height = 19
           Top = 0
-          Width = 84
+          Width = 86
           BorderSpacing.Left = 4
           Caption = 'AY-3-8910/12'
-          TabOrder = 0
           OnClick = RBChTypeAYClick
+          TabOrder = 0
         end
         object RBChTypeYM: TRadioButton
           AnchorSideLeft.Control = GBChType
           AnchorSideTop.Control = RBChTypeAY
           AnchorSideTop.Side = asrBottom
           Left = 4
-          Height = 17
-          Top = 17
-          Width = 63
+          Height = 19
+          Top = 19
+          Width = 65
           BorderSpacing.Left = 4
           Caption = 'YM2149F'
           Checked = True
+          OnClick = RBChTypeYMClick
           TabOrder = 2
           TabStop = True
-          OnClick = RBChTypeYMClick
         end
         object CBChTypeLst: TCheckBox
           AnchorSideLeft.Control = GBChType
           AnchorSideTop.Control = RBChTypeYM
           AnchorSideTop.Side = asrBottom
           Left = 8
-          Height = 17
-          Top = 36
-          Width = 81
+          Height = 19
+          Top = 40
+          Width = 83
           BorderSpacing.Left = 8
           BorderSpacing.Top = 2
           BorderSpacing.Right = 4
@@ -933,10 +951,10 @@ object FrmMixer: TFrmMixer
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBChTypeAY
           AnchorSideTop.Side = asrCenter
-          Left = 90
-          Height = 17
+          Left = 92
+          Height = 19
           Top = 0
-          Width = 18
+          Width = 20
           BorderSpacing.Left = 2
           BorderSpacing.Right = 4
           Color = clWindow
@@ -950,9 +968,9 @@ object FrmMixer: TFrmMixer
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBChTypeYM
           AnchorSideTop.Side = asrCenter
-          Left = 69
+          Left = 71
           Height = 17
-          Top = 17
+          Top = 20
           Width = 18
           AutoSize = False
           BorderSpacing.Left = 2
@@ -971,13 +989,13 @@ object FrmMixer: TFrmMixer
         Left = 351
         Height = 176
         Top = 2
-        Width = 171
+        Width = 173
         AutoSize = True
         BorderSpacing.Left = 8
         BorderSpacing.Right = 4
         Caption = 'Sound chip frequency'
         ClientHeight = 158
-        ClientWidth = 167
+        ClientWidth = 169
         Constraints.MinHeight = 176
         Constraints.MinWidth = 171
         TabOrder = 1
@@ -986,9 +1004,9 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Control = EChFrqCur
           AnchorSideTop.Side = asrBottom
           Left = 8
-          Height = 17
+          Height = 19
           Top = 130
-          Width = 81
+          Width = 83
           BorderSpacing.Left = 8
           BorderSpacing.Top = 4
           BorderSpacing.Right = 4
@@ -1002,7 +1020,7 @@ object FrmMixer: TFrmMixer
           AnchorSideLeft.Control = PnChFrqL
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = GBChFrq
-          Left = 103
+          Left = 105
           Height = 105
           Top = 0
           Width = 60
@@ -1088,8 +1106,8 @@ object FrmMixer: TFrmMixer
             Width = 60
             Alignment = taCenter
             Constraints.MinWidth = 60
-            TabOrder = 4
             OnEditingDone = EChFrqOtherEditingDone
+            TabOrder = 4
           end
         end
         object EChFrqCur: TEdit
@@ -1097,7 +1115,7 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Control = PnChFrqR
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Side = asrBottom
-          Left = 103
+          Left = 105
           Height = 21
           Top = 105
           Width = 60
@@ -1117,7 +1135,7 @@ object FrmMixer: TFrmMixer
           Left = 4
           Height = 105
           Top = 0
-          Width = 95
+          Width = 97
           Anchors = [akTop, akLeft, akBottom]
           AutoSize = True
           BorderSpacing.Left = 4
@@ -1127,58 +1145,58 @@ object FrmMixer: TFrmMixer
           ChildSizing.Layout = cclLeftToRightThenTopToBottom
           ChildSizing.ControlsPerLine = 1
           ClientHeight = 105
-          ClientWidth = 95
+          ClientWidth = 97
           TabOrder = 3
           object RBChFrqZX: TRadioButton
             Left = 0
             Height = 21
             Top = 0
-            Width = 95
+            Width = 97
             Caption = 'ZX Spectrum'
             Checked = True
+            OnClick = RBChFrqZXClick
             TabOrder = 0
             TabStop = True
-            OnClick = RBChFrqZXClick
           end
           object RBChFrqPnt: TRadioButton
             AnchorSideTop.Side = asrBottom
             Left = 0
             Height = 21
             Top = 21
-            Width = 95
+            Width = 97
             Caption = 'Pentagon 128K'
-            TabOrder = 1
             OnClick = RBChFrqPntClick
+            TabOrder = 1
           end
           object RBChFrqST: TRadioButton
             AnchorSideTop.Side = asrBottom
             Left = 0
             Height = 21
             Top = 42
-            Width = 95
+            Width = 97
             Caption = 'Atari ST'
-            TabOrder = 2
             OnClick = RBChFrqSTClick
+            TabOrder = 2
           end
           object RBChFrqCPC: TRadioButton
             AnchorSideTop.Side = asrBottom
             Left = 0
             Height = 21
             Top = 63
-            Width = 95
+            Width = 97
             Caption = 'Amstrad CPC'
-            TabOrder = 3
             OnClick = RBChFrqCPCClick
+            TabOrder = 3
           end
           object RBChFrqOther: TRadioButton
             AnchorSideTop.Side = asrBottom
             Left = 0
             Height = 21
             Top = 84
-            Width = 95
+            Width = 97
             Caption = 'Another'
-            TabOrder = 4
             OnClick = RBChFrqOtherClick
+            TabOrder = 4
           end
         end
       end
@@ -1204,13 +1222,14 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Control = EOUTStPerFrm
           AnchorSideTop.Side = asrCenter
           AnchorSideRight.Control = EOUTStPerFrm
-          Left = 42
+          Left = 43
           Height = 13
           Top = 4
-          Width = 89
+          Width = 88
           Anchors = [akTop, akRight]
           BorderSpacing.Left = 4
           Caption = 'TStates per frame'
+          ParentColor = False
         end
         object LOUTIntOffs: TLabel
           AnchorSideTop.Control = EIntOffs
@@ -1223,6 +1242,7 @@ object FrmMixer: TFrmMixer
           Anchors = [akTop, akRight]
           BorderSpacing.Left = 4
           Caption = 'Interrupt offset'
+          ParentColor = False
         end
         object EOUTStPerFrm: TEdit
           AnchorSideLeft.Side = asrBottom
@@ -1239,8 +1259,8 @@ object FrmMixer: TFrmMixer
           BorderSpacing.Left = 2
           BorderSpacing.Right = 4
           Constraints.MinWidth = 50
-          TabOrder = 0
           OnEditingDone = EOUTStPerFrmEditingDone
+          TabOrder = 0
         end
         object EIntOffs: TEdit
           AnchorSideLeft.Side = asrBottom
@@ -1259,8 +1279,8 @@ object FrmMixer: TFrmMixer
           BorderSpacing.Right = 4
           BorderSpacing.Bottom = 4
           Constraints.MinWidth = 50
-          TabOrder = 1
           OnEditingDone = EIntOffsEditingDone
+          TabOrder = 1
         end
       end
       object GBIntFrq: TGroupBox
@@ -1271,14 +1291,14 @@ object FrmMixer: TFrmMixer
         Left = 351
         Height = 131
         Top = 180
-        Width = 171
+        Width = 173
         AutoSize = True
         BorderSpacing.Left = 8
         BorderSpacing.Top = 2
         BorderSpacing.Right = 4
         Caption = 'Interrupt frequency'
         ClientHeight = 113
-        ClientWidth = 167
+        ClientWidth = 169
         Constraints.MinHeight = 131
         Constraints.MinWidth = 171
         TabOrder = 2
@@ -1287,18 +1307,18 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Control = EIntFrqCur
           AnchorSideTop.Side = asrBottom
           Left = 8
-          Height = 17
+          Height = 19
           Top = 88
-          Width = 81
+          Width = 83
           BorderSpacing.Left = 8
           BorderSpacing.Top = 4
           BorderSpacing.Right = 4
           BorderSpacing.Bottom = 4
           Caption = 'Get from list'
           Checked = True
+          OnChange = CBIntFrqLstChange
           State = cbChecked
           TabOrder = 0
-          OnChange = CBIntFrqLstChange
         end
         object PnIntFrqL: TPanel
           AnchorSideLeft.Control = GBIntFrq
@@ -1308,7 +1328,7 @@ object FrmMixer: TFrmMixer
           Left = 4
           Height = 63
           Top = 0
-          Width = 95
+          Width = 97
           Anchors = [akTop, akLeft, akBottom]
           AutoSize = True
           BorderSpacing.Left = 4
@@ -1318,46 +1338,46 @@ object FrmMixer: TFrmMixer
           ChildSizing.Layout = cclLeftToRightThenTopToBottom
           ChildSizing.ControlsPerLine = 1
           ClientHeight = 63
-          ClientWidth = 95
+          ClientWidth = 97
           TabOrder = 1
           object RBEIntFrqZX: TRadioButton
             AnchorSideTop.Side = asrCenter
             Left = 0
             Height = 21
             Top = 0
-            Width = 95
+            Width = 97
             Caption = 'ZX Spectrum'
             Checked = True
+            OnClick = RBEIntFrqZXClick
             TabOrder = 0
             TabStop = True
-            OnClick = RBEIntFrqZXClick
           end
           object RBIntFrqPnt: TRadioButton
             AnchorSideTop.Side = asrCenter
             Left = 0
             Height = 21
             Top = 21
-            Width = 95
+            Width = 97
             Caption = 'Pentagon 128K'
-            TabOrder = 1
             OnClick = RBIntFrqPntClick
+            TabOrder = 1
           end
           object RBIntFrqOther: TRadioButton
             AnchorSideTop.Side = asrCenter
             Left = 0
             Height = 21
             Top = 42
-            Width = 95
+            Width = 97
             Caption = 'Another'
-            TabOrder = 2
             OnClick = RBIntFrqOtherClick
+            TabOrder = 2
           end
         end
         object PnIntFrqR: TPanel
           AnchorSideLeft.Control = PnIntFrqL
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = GBIntFrq
-          Left = 103
+          Left = 105
           Height = 63
           Top = 0
           Width = 60
@@ -1392,8 +1412,8 @@ object FrmMixer: TFrmMixer
             Width = 60
             Alignment = taCenter
             Constraints.MinWidth = 60
-            TabOrder = 2
             OnEditingDone = EIntFrqOtherEditingDone
+            TabOrder = 2
           end
           object EIntFrqPnt: TEdit
             AnchorSideLeft.Control = PnIntFrqR
@@ -1416,7 +1436,7 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Control = PnIntFrqR
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Side = asrBottom
-          Left = 103
+          Left = 105
           Height = 21
           Top = 63
           Width = 60
@@ -1450,7 +1470,7 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Control = PnMFPFrqR
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Side = asrBottom
-          Left = 96
+          Left = 98
           Height = 21
           Top = 63
           Width = 60
@@ -1470,7 +1490,7 @@ object FrmMixer: TFrmMixer
           Left = 4
           Height = 63
           Top = 0
-          Width = 88
+          Width = 90
           Anchors = [akTop, akLeft, akBottom]
           AutoSize = True
           BorderSpacing.Left = 4
@@ -1481,45 +1501,45 @@ object FrmMixer: TFrmMixer
           ChildSizing.Layout = cclLeftToRightThenTopToBottom
           ChildSizing.ControlsPerLine = 1
           ClientHeight = 63
-          ClientWidth = 88
+          ClientWidth = 90
           TabOrder = 1
           object RBMFPFrq1613: TRadioButton
             Left = 0
             Height = 21
             Top = 0
-            Width = 88
+            Width = 90
             Caption = 'AY/YM x 16/13'
             Checked = True
+            OnClick = RBMFPFrq1613Click
             TabOrder = 0
             TabStop = True
-            OnClick = RBMFPFrq1613Click
           end
           object RBMFPFrqST: TRadioButton
             AnchorSideTop.Side = asrCenter
             Left = 0
             Height = 21
             Top = 21
-            Width = 88
+            Width = 90
             Caption = 'Atari ST'
-            TabOrder = 1
             OnClick = RBMFPFrqSTClick
+            TabOrder = 1
           end
           object RBMFPFrqOther: TRadioButton
             AnchorSideTop.Side = asrCenter
             Left = 0
             Height = 21
             Top = 42
-            Width = 88
+            Width = 90
             Caption = 'Another'
-            TabOrder = 2
             OnClick = RBMFPFrqOtherClick
+            TabOrder = 2
           end
         end
         object PnMFPFrqR: TPanel
           AnchorSideLeft.Control = PnMFPFrqL
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Side = asrBottom
-          Left = 96
+          Left = 98
           Height = 63
           Top = 0
           Width = 60
@@ -1539,8 +1559,8 @@ object FrmMixer: TFrmMixer
             Width = 60
             Alignment = taCenter
             Constraints.MinWidth = 60
-            TabOrder = 0
             OnEditingDone = EMFPFrqOtherEditingDone
+            TabOrder = 0
           end
           object EMFPFrqST: TEdit
             AnchorSideLeft.Control = PnMFPFrqR
@@ -1600,7 +1620,7 @@ object FrmMixer: TFrmMixer
           Left = 4
           Height = 63
           Top = 0
-          Width = 95
+          Width = 97
           Anchors = [akTop, akLeft, akBottom]
           AutoSize = True
           BorderSpacing.Left = 4
@@ -1610,46 +1630,46 @@ object FrmMixer: TFrmMixer
           ChildSizing.Layout = cclLeftToRightThenTopToBottom
           ChildSizing.ControlsPerLine = 1
           ClientHeight = 63
-          ClientWidth = 95
+          ClientWidth = 97
           TabOrder = 0
           object RBZ80FrqZX: TRadioButton
             AnchorSideTop.Side = asrCenter
             Left = 0
-            Height = 17
-            Top = 3
-            Width = 95
+            Height = 19
+            Top = 2
+            Width = 97
             Caption = 'ZX Spectrum'
             Checked = True
+            OnClick = RBZ80FrqZXClick
             TabOrder = 0
             TabStop = True
-            OnClick = RBZ80FrqZXClick
           end
           object RBZ80FrqPnt: TRadioButton
             AnchorSideTop.Side = asrCenter
             Left = 0
-            Height = 17
+            Height = 19
             Top = 23
-            Width = 95
+            Width = 97
             Caption = 'Pentagon 128K'
-            TabOrder = 1
             OnClick = RBZ80FrqPntClick
+            TabOrder = 1
           end
           object RBZ80FrqOther: TRadioButton
             AnchorSideTop.Side = asrCenter
             Left = 0
-            Height = 17
-            Top = 43
-            Width = 95
+            Height = 19
+            Top = 44
+            Width = 97
             Caption = 'Another'
-            TabOrder = 2
             OnClick = RBZ80FrqOtherClick
+            TabOrder = 2
           end
         end
         object PnZ80FrqR: TPanel
           AnchorSideLeft.Control = PnZ80FrqL
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = GBZ80Frq
-          Left = 103
+          Left = 105
           Height = 63
           Top = 0
           Width = 62
@@ -1706,8 +1726,8 @@ object FrmMixer: TFrmMixer
             Width = 62
             Alignment = taCenter
             Constraints.MinWidth = 60
-            TabOrder = 2
             OnEditingDone = EZ80FrqOtherEditingDone
+            TabOrder = 2
           end
         end
       end
@@ -1717,7 +1737,7 @@ object FrmMixer: TFrmMixer
         AnchorSideTop.Side = asrBottom
         Left = 4
         Height = 75
-        Top = 347
+        Top = 351
         Width = 140
         AutoSize = True
         BorderSpacing.Top = 2
@@ -1733,42 +1753,43 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Side = asrBottom
           Left = 20
           Height = 13
-          Top = 36
+          Top = 40
           Width = 6
           BorderSpacing.Left = 20
           BorderSpacing.Top = 2
           BorderSpacing.Right = 4
           BorderSpacing.Bottom = 4
           Caption = 'F'
+          ParentColor = False
         end
         object RBResamFIR: TRadioButton
           AnchorSideLeft.Control = GBResamp
           AnchorSideTop.Control = RBResamAvg
           AnchorSideTop.Side = asrBottom
           Left = 4
-          Height = 17
-          Top = 17
-          Width = 62
+          Height = 19
+          Top = 19
+          Width = 64
           BorderSpacing.Left = 4
           BorderSpacing.Right = 4
           Caption = 'FIR-filter'
           Checked = True
+          OnClick = RBResamFIRClick
           TabOrder = 1
           TabStop = True
-          OnClick = RBResamFIRClick
         end
         object RBResamAvg: TRadioButton
           AnchorSideLeft.Control = GBResamp
           AnchorSideTop.Control = GBResamp
           Left = 4
-          Height = 17
+          Height = 19
           Top = 0
-          Width = 62
+          Width = 64
           BorderSpacing.Left = 4
           BorderSpacing.Right = 4
           Caption = 'averager'
-          TabOrder = 0
           OnClick = RBResamAvgClick
+          TabOrder = 0
         end
       end
       object GBMCFrq: TGroupBox
@@ -1777,7 +1798,7 @@ object FrmMixer: TFrmMixer
         AnchorSideTop.Side = asrBottom
         Left = 4
         Height = 43
-        Top = 424
+        Top = 428
         Width = 280
         AutoSize = True
         BorderSpacing.Top = 2
@@ -1793,21 +1814,21 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Control = EMCFrqST
           AnchorSideTop.Side = asrCenter
           Left = 4
-          Height = 17
-          Top = 2
-          Width = 57
+          Height = 19
+          Top = 1
+          Width = 58
           BorderSpacing.Left = 4
           Caption = 'Atari ST'
           Checked = True
+          OnClick = RBMCFrqSTClick
           TabOrder = 0
           TabStop = True
-          OnClick = RBMCFrqSTClick
         end
         object EMCFrqST: TEdit
           AnchorSideLeft.Control = RBMCFrqST
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = GBMCFrq
-          Left = 63
+          Left = 64
           Height = 21
           Top = 0
           Width = 62
@@ -1825,21 +1846,21 @@ object FrmMixer: TFrmMixer
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBMCFrqST
           AnchorSideTop.Side = asrCenter
-          Left = 141
-          Height = 17
-          Top = 2
-          Width = 60
+          Left = 142
+          Height = 19
+          Top = 1
+          Width = 62
           BorderSpacing.Left = 16
           Caption = 'Another'
-          TabOrder = 2
           OnClick = RBMCFrqOtherClick
+          TabOrder = 2
         end
         object EMCFrqOther: TEdit
           AnchorSideLeft.Control = RBMCFrqOther
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBMCFrqOther
           AnchorSideTop.Side = asrCenter
-          Left = 201
+          Left = 204
           Height = 21
           Top = 0
           Width = 62
@@ -1847,8 +1868,8 @@ object FrmMixer: TFrmMixer
           BorderSpacing.Right = 4
           BorderSpacing.Bottom = 4
           Constraints.MinWidth = 60
-          TabOrder = 3
           OnEditingDone = EMCFrqOtherEditingDone
+          TabOrder = 3
         end
       end
       object GBSNDH: TGroupBox
@@ -1858,7 +1879,7 @@ object FrmMixer: TFrmMixer
         AnchorSideRight.Side = asrBottom
         Left = 292
         Height = 43
-        Top = 424
+        Top = 428
         Width = 230
         AutoSize = True
         BorderSpacing.Left = 8
@@ -1874,9 +1895,9 @@ object FrmMixer: TFrmMixer
           AnchorSideLeft.Control = GBSNDH
           AnchorSideTop.Control = GBSNDH
           Left = 4
-          Height = 17
+          Height = 19
           Top = 0
-          Width = 30
+          Width = 31
           BorderSpacing.Left = 4
           BorderSpacing.Bottom = 4
           Caption = 'ST'
@@ -1886,10 +1907,10 @@ object FrmMixer: TFrmMixer
           AnchorSideLeft.Control = STRB
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = GBSNDH
-          Left = 42
-          Height = 17
+          Left = 43
+          Height = 19
           Top = 0
-          Width = 36
+          Width = 37
           BorderSpacing.Left = 8
           Caption = 'STe'
           Checked = True
@@ -1900,11 +1921,11 @@ object FrmMixer: TFrmMixer
           AnchorSideLeft.Control = STeRB
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = GBSNDH
-          Left = 86
-          Height = 17
+          Left = 88
+          Height = 19
           Hint = 'Force mono for sound chip channels'
           Top = 0
-          Width = 66
+          Width = 68
           BorderSpacing.Left = 8
           BorderSpacing.Bottom = 4
           Caption = 'YM mono'
@@ -1916,11 +1937,11 @@ object FrmMixer: TFrmMixer
           AnchorSideLeft.Control = AtariYMMonoChk
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = GBSNDH
-          Left = 160
-          Height = 17
+          Left = 164
+          Height = 19
           Hint = 'Force mono mode for sound driver'
           Top = 0
-          Width = 49
+          Width = 51
           BorderSpacing.Left = 8
           BorderSpacing.Right = 4
           BorderSpacing.Bottom = 4
@@ -1934,7 +1955,7 @@ object FrmMixer: TFrmMixer
     object WOSheet: TTabSheet
       AutoSize = True
       Caption = 'Digital Sound'
-      ClientHeight = 471
+      ClientHeight = 475
       ClientWidth = 528
       ImageIndex = 1
       object SBStop: TSpeedButton
@@ -1945,7 +1966,7 @@ object FrmMixer: TFrmMixer
         AnchorSideBottom.Side = asrBottom
         Left = 184
         Height = 40
-        Top = 423
+        Top = 427
         Width = 161
         Anchors = [akLeft, akBottom]
         AutoSize = True
@@ -1961,23 +1982,23 @@ object FrmMixer: TFrmMixer
         AnchorSideLeft.Control = WOSheet
         AnchorSideTop.Control = WOSheet
         Left = 4
-        Height = 204
+        Height = 217
         Top = 0
-        Width = 127
+        Width = 129
         AutoSize = True
         BorderSpacing.Left = 4
         Caption = 'Sample rate'
-        ClientHeight = 186
-        ClientWidth = 123
+        ClientHeight = 199
+        ClientWidth = 125
         TabOrder = 0
         object SBSRAYby8: TSpeedButton
           AnchorSideLeft.Control = GBSRate
           AnchorSideLeft.Side = asrCenter
           AnchorSideTop.Control = ESROther
           AnchorSideTop.Side = asrBottom
-          Left = 19
+          Left = 20
           Height = 23
-          Top = 155
+          Top = 168
           Width = 85
           AutoSize = True
           BorderSpacing.Top = 8
@@ -1992,186 +2013,192 @@ object FrmMixer: TFrmMixer
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBSR192k
           AnchorSideTop.Side = asrCenter
-          Left = 64
+          Left = 66
           Height = 14
-          Top = 1
+          Top = 2
           Width = 20
           AutoSize = False
           BorderSpacing.Left = 2
           Caption = 'Hz'
+          ParentColor = False
         end
         object Label23: TLabel
           AnchorSideLeft.Control = RBSR96k
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBSR96k
           AnchorSideTop.Side = asrCenter
-          Left = 58
+          Left = 60
           Height = 14
-          Top = 22
+          Top = 25
           Width = 20
           AutoSize = False
           BorderSpacing.Left = 2
           Caption = 'Hz'
+          ParentColor = False
         end
         object Label24: TLabel
           AnchorSideLeft.Control = RBSR48k
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBSR48k
           AnchorSideTop.Side = asrCenter
-          Left = 58
+          Left = 60
           Height = 14
-          Top = 43
+          Top = 48
           Width = 20
           AutoSize = False
           BorderSpacing.Left = 2
           Caption = 'Hz'
+          ParentColor = False
         end
         object Label25: TLabel
           AnchorSideLeft.Control = RBSR11k
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBSR11k
           AnchorSideTop.Side = asrCenter
-          Left = 58
+          Left = 60
           Height = 14
-          Top = 106
+          Top = 117
           Width = 20
           AutoSize = False
           BorderSpacing.Left = 2
           Caption = 'Hz'
+          ParentColor = False
         end
         object Label26: TLabel
           AnchorSideLeft.Control = RBSR22k
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBSR22k
           AnchorSideTop.Side = asrCenter
-          Left = 58
+          Left = 60
           Height = 14
-          Top = 85
+          Top = 94
           Width = 20
           AutoSize = False
           BorderSpacing.Left = 2
           Caption = 'Hz'
+          ParentColor = False
         end
         object Label27: TLabel
           AnchorSideLeft.Control = RBSR44k
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBSR44k
           AnchorSideTop.Side = asrCenter
-          Left = 58
+          Left = 60
           Height = 14
-          Top = 64
+          Top = 71
           Width = 20
           AutoSize = False
           BorderSpacing.Left = 2
           Caption = 'Hz'
+          ParentColor = False
         end
         object RBSR48k: TRadioButton
           AnchorSideLeft.Control = RBSR96k
           AnchorSideTop.Control = RBSR96k
           AnchorSideTop.Side = asrBottom
           Left = 8
-          Height = 17
-          Top = 42
-          Width = 48
+          Height = 19
+          Top = 46
+          Width = 50
           BorderSpacing.Top = 4
           Caption = '48000'
-          TabOrder = 2
           OnClick = RBSR48kClick
+          TabOrder = 2
         end
         object RBSR44k: TRadioButton
           AnchorSideLeft.Control = RBSR48k
           AnchorSideTop.Control = RBSR48k
           AnchorSideTop.Side = asrBottom
           Left = 8
-          Height = 17
-          Top = 63
-          Width = 48
+          Height = 19
+          Top = 69
+          Width = 50
           BorderSpacing.Top = 4
           Caption = '44100'
           Checked = True
+          OnClick = RBSR44kClick
           TabOrder = 3
           TabStop = True
-          OnClick = RBSR44kClick
         end
         object RBSR22k: TRadioButton
           AnchorSideLeft.Control = RBSR44k
           AnchorSideTop.Control = RBSR44k
           AnchorSideTop.Side = asrBottom
           Left = 8
-          Height = 17
-          Top = 84
-          Width = 48
+          Height = 19
+          Top = 92
+          Width = 50
           BorderSpacing.Top = 4
           Caption = '22050'
-          TabOrder = 4
           OnClick = RBSR22kClick
+          TabOrder = 4
         end
         object RBSR11k: TRadioButton
           AnchorSideLeft.Control = RBSR22k
           AnchorSideTop.Control = RBSR22k
           AnchorSideTop.Side = asrBottom
           Left = 8
-          Height = 17
-          Top = 105
-          Width = 48
+          Height = 19
+          Top = 115
+          Width = 50
           BorderSpacing.Top = 4
           Caption = '11025'
-          TabOrder = 5
           OnClick = RBSR11kClick
+          TabOrder = 5
         end
         object RBSR96k: TRadioButton
           AnchorSideLeft.Control = RBSR192k
           AnchorSideTop.Control = RBSR192k
           AnchorSideTop.Side = asrBottom
           Left = 8
-          Height = 17
-          Top = 21
-          Width = 48
+          Height = 19
+          Top = 23
+          Width = 50
           BorderSpacing.Top = 4
           Caption = '96000'
-          TabOrder = 1
           OnClick = RBSR96kClick
+          TabOrder = 1
         end
         object RBSROther: TRadioButton
           AnchorSideLeft.Control = RBSR11k
           AnchorSideTop.Control = RBSR11k
           AnchorSideTop.Side = asrBottom
           Left = 8
-          Height = 17
-          Top = 128
-          Width = 60
+          Height = 19
+          Top = 140
+          Width = 62
           BorderSpacing.Top = 6
           Caption = 'Another'
-          TabOrder = 6
           OnClick = RBSROtherClick
+          TabOrder = 6
         end
         object ESROther: TEdit
           AnchorSideLeft.Control = RBSROther
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBSROther
           AnchorSideTop.Side = asrCenter
-          Left = 70
+          Left = 72
           Height = 21
-          Top = 126
+          Top = 139
           Width = 49
           Alignment = taCenter
           AutoSize = False
           BorderSpacing.Left = 2
           BorderSpacing.Right = 4
-          TabOrder = 7
           OnEditingDone = ESROtherEditingDone
+          TabOrder = 7
         end
         object RBSR192k: TRadioButton
           AnchorSideLeft.Control = GBSRate
           AnchorSideTop.Control = GBSRate
           Left = 8
-          Height = 17
+          Height = 19
           Top = 0
-          Width = 54
+          Width = 56
           BorderSpacing.Left = 8
           Caption = '192000'
-          TabOrder = 0
           OnClick = RBSR192kClick
+          TabOrder = 0
         end
       end
       object GBChans: TGroupBox
@@ -2179,52 +2206,52 @@ object FrmMixer: TFrmMixer
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = GBBRate
         AnchorSideTop.Side = asrBottom
-        Left = 139
-        Height = 85
-        Top = 66
-        Width = 97
+        Left = 141
+        Height = 91
+        Top = 70
+        Width = 99
         AutoSize = True
         BorderSpacing.Left = 8
         BorderSpacing.Top = 2
         Caption = 'Channels'
-        ClientHeight = 67
-        ClientWidth = 93
+        ClientHeight = 73
+        ClientWidth = 95
         TabOrder = 2
         object RBChStereo: TRadioButton
           AnchorSideLeft.Control = GBChans
           AnchorSideTop.Control = GBChans
           Left = 4
-          Height = 17
+          Height = 19
           Top = 0
-          Width = 51
+          Width = 53
           BorderSpacing.Left = 4
           Caption = 'Stereo'
           Checked = True
+          OnClick = RBChStereoClick
           TabOrder = 0
           TabStop = True
-          OnClick = RBChStereoClick
         end
         object RBChMono: TRadioButton
           AnchorSideLeft.Control = RBChStereo
           AnchorSideTop.Control = RBChStereo
           AnchorSideTop.Side = asrBottom
           Left = 4
-          Height = 17
-          Top = 21
-          Width = 49
+          Height = 19
+          Top = 23
+          Width = 51
           BorderSpacing.Top = 4
           Caption = 'Mono'
-          TabOrder = 1
           OnClick = RBChMonoClick
+          TabOrder = 1
         end
         object CheckBox6: TCheckBox
           AnchorSideLeft.Control = RBChMono
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBChMono
           AnchorSideTop.Side = asrCenter
-          Left = 55
+          Left = 57
           Height = 17
-          Top = 21
+          Top = 24
           Width = 18
           AutoSize = False
           BorderSpacing.Left = 2
@@ -2240,9 +2267,9 @@ object FrmMixer: TFrmMixer
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = RBChStereo
           AnchorSideTop.Side = asrCenter
-          Left = 57
+          Left = 59
           Height = 17
-          Top = 0
+          Top = 1
           Width = 18
           AutoSize = False
           BorderSpacing.Left = 2
@@ -2258,9 +2285,9 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Control = RBChMono
           AnchorSideTop.Side = asrBottom
           Left = 8
-          Height = 17
-          Top = 42
-          Width = 81
+          Height = 19
+          Top = 46
+          Width = 83
           BorderSpacing.Left = 4
           BorderSpacing.Top = 4
           BorderSpacing.Right = 4
@@ -2277,46 +2304,46 @@ object FrmMixer: TFrmMixer
         AnchorSideTop.Control = GBSRate
         AnchorSideRight.Control = GBChans
         AnchorSideRight.Side = asrBottom
-        Left = 139
-        Height = 64
+        Left = 141
+        Height = 68
         Top = 0
-        Width = 97
+        Width = 99
         Anchors = [akTop, akLeft, akRight]
         AutoSize = True
         BorderSpacing.Left = 8
         Caption = 'Bit rate'
-        ClientHeight = 46
-        ClientWidth = 93
+        ClientHeight = 50
+        ClientWidth = 95
         TabOrder = 1
         object RBBt16: TRadioButton
           AnchorSideLeft.Control = GBBRate
           AnchorSideTop.Control = GBBRate
           Left = 4
-          Height = 17
+          Height = 19
           Top = 0
-          Width = 47
+          Width = 49
           BorderSpacing.Left = 4
           BorderSpacing.Right = 4
           Caption = '16 bit'
           Checked = True
+          OnClick = RBBt16Click
           TabOrder = 0
           TabStop = True
-          OnClick = RBBt16Click
         end
         object RBBt8: TRadioButton
           AnchorSideLeft.Control = RBBt16
           AnchorSideTop.Control = RBBt16
           AnchorSideTop.Side = asrBottom
           Left = 4
-          Height = 17
-          Top = 21
-          Width = 41
+          Height = 19
+          Top = 23
+          Width = 43
           BorderSpacing.Top = 4
           BorderSpacing.Right = 4
           BorderSpacing.Bottom = 8
           Caption = '8 bit'
-          TabOrder = 1
           OnClick = RBBt8Click
+          TabOrder = 1
         end
       end
       object GBBuffs: TGroupBox
@@ -2327,22 +2354,22 @@ object FrmMixer: TFrmMixer
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = GBChans
         AnchorSideBottom.Side = asrBottom
-        Left = 244
-        Height = 151
+        Left = 248
+        Height = 161
         Top = 0
-        Width = 280
+        Width = 276
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Left = 8
         BorderSpacing.Right = 4
         Caption = 'Buffers'
-        ClientHeight = 133
-        ClientWidth = 276
+        ClientHeight = 143
+        ClientWidth = 272
         TabOrder = 3
         object LBufLen: TLabel
           AnchorSideLeft.Control = LBufLenCap
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = LBufLenCap
-          Left = 76
+          Left = 77
           Height = 13
           Top = 0
           Width = 36
@@ -2352,6 +2379,7 @@ object FrmMixer: TFrmMixer
           Caption = '726 ms'
           Font.Height = -11
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LNumBuf: TLabel
@@ -2367,6 +2395,7 @@ object FrmMixer: TFrmMixer
           Caption = '3'
           Font.Height = -11
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LTotLenCap: TLabel
@@ -2376,15 +2405,16 @@ object FrmMixer: TFrmMixer
           Left = 4
           Height = 13
           Top = 96
-          Width = 62
+          Width = 61
           BorderSpacing.Top = 2
           Caption = 'Total length'
+          ParentColor = False
         end
         object LTotLen: TLabel
           AnchorSideLeft.Control = LTotLenCap
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = LTotLenCap
-          Left = 70
+          Left = 69
           Height = 13
           Top = 96
           Width = 42
@@ -2395,6 +2425,7 @@ object FrmMixer: TFrmMixer
           Caption = '2178 ms'
           Font.Height = -11
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LBufLenCap: TLabel
@@ -2403,9 +2434,10 @@ object FrmMixer: TFrmMixer
           Left = 4
           Height = 13
           Top = 0
-          Width = 68
+          Width = 69
           BorderSpacing.Left = 4
           Caption = 'Buffer length'
+          ParentColor = False
         end
         object LNumBufCap: TLabel
           AnchorSideLeft.Control = LBufLenCap
@@ -2417,6 +2449,7 @@ object FrmMixer: TFrmMixer
           Width = 95
           BorderSpacing.Top = 2
           Caption = 'Number of buffers'
+          ParentColor = False
         end
         object TBBufLen: TTrackBar
           AnchorSideLeft.Control = GBBuffs
@@ -2428,7 +2461,7 @@ object FrmMixer: TFrmMixer
           Height = 33
           Hint = 'Length of one buffer'
           Top = 13
-          Width = 268
+          Width = 264
           Frequency = 100
           Max = 2000
           Min = 5
@@ -2451,7 +2484,7 @@ object FrmMixer: TFrmMixer
           Height = 33
           Hint = 'Number of buffers'
           Top = 61
-          Width = 268
+          Width = 264
           Min = 2
           OnChange = TBNumBufChange
           PageSize = 1
@@ -2468,17 +2501,17 @@ object FrmMixer: TFrmMixer
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = GBBuffs
         AnchorSideRight.Side = asrBottom
-        Left = 139
+        Left = 141
         Height = 51
-        Top = 153
-        Width = 385
+        Top = 163
+        Width = 383
         Anchors = [akTop, akLeft, akRight]
         AutoSize = True
         BorderSpacing.Left = 8
         BorderSpacing.Top = 2
         Caption = 'Device'
         ClientHeight = 33
-        ClientWidth = 381
+        ClientWidth = 379
         TabOrder = 4
         object cbWODevice: TComboBox
           AnchorSideLeft.Control = GBDevice
@@ -2486,23 +2519,52 @@ object FrmMixer: TFrmMixer
           Left = 8
           Height = 21
           Top = 4
-          Width = 363
+          Width = 361
           Anchors = [akTop, akLeft, akRight]
           BorderSpacing.Left = 8
           BorderSpacing.Top = 4
           BorderSpacing.Right = 8
           BorderSpacing.Bottom = 8
           ItemHeight = 13
+          OnChange = cbWODeviceChange
           Style = csDropDownList
           TabOrder = 0
-          OnChange = cbWODeviceChange
+        end
+      end
+      object GBAymid: TGroupBox
+        Left = 4
+        Height = 48
+        Top = 224
+        Width = 520
+        Anchors = [akTop]
+        Caption = 'AYMID'
+        ClientHeight = 30
+        ClientWidth = 516
+        TabOrder = 5
+        object CBAymidProtocol: TCheckBox
+          Left = 10
+          Height = 19
+          Top = 0
+          Width = 174
+          Caption = 'Use AYMID hardware protocol'
+          OnChange = CBAymidProtocolChange
+          TabOrder = 0
+        end
+        object CBAymidConsole: TCheckBox
+          Left = 321
+          Height = 19
+          Top = 0
+          Width = 134
+          Caption = 'Enable AYMID console'
+          OnChange = CBAymidConsoleChange
+          TabOrder = 1
         end
       end
     end
     object MOSheet: TTabSheet
       AutoSize = True
       Caption = 'MIDIOut'
-      ClientHeight = 471
+      ClientHeight = 475
       ClientWidth = 528
       ImageIndex = 4
       object GBMidiDevice: TGroupBox
@@ -2541,10 +2603,10 @@ object FrmMixer: TFrmMixer
           Items.Strings = (
             'MIDI Mapper'
           )
+          OnChange = cbMODeviceChange
           Style = csDropDownList
           TabOrder = 0
           Text = 'MIDI Mapper'
-          OnChange = cbMODeviceChange
         end
       end
       object CheckBox12: TCheckBox
@@ -2552,19 +2614,19 @@ object FrmMixer: TFrmMixer
         AnchorSideTop.Control = GBMidiDevice
         AnchorSideTop.Side = asrBottom
         Left = 4
-        Height = 17
+        Height = 19
         Top = 55
-        Width = 193
+        Width = 195
         BorderSpacing.Top = 4
         Caption = 'Seek to first "Note On" MIDI-event'
-        TabOrder = 1
         OnClick = CheckBox12Click
+        TabOrder = 1
       end
     end
     object VolumeSheet: TTabSheet
       AutoSize = True
       Caption = 'Global Volume Control'
-      ClientHeight = 471
+      ClientHeight = 475
       ClientWidth = 528
       ImageIndex = 3
       object LVolCtrl: TLabel
@@ -2577,6 +2639,7 @@ object FrmMixer: TFrmMixer
         BorderSpacing.Left = 8
         BorderSpacing.Top = 8
         Caption = 'Current volume control:'
+        ParentColor = False
       end
       object BVolCtrlSelect: TButton
         AnchorSideLeft.Control = EVolCtrl
@@ -2591,8 +2654,8 @@ object FrmMixer: TFrmMixer
         Caption = 'Select'
         Constraints.MinHeight = 32
         Constraints.MinWidth = 112
-        TabOrder = 1
         OnClick = BVolCtrlSelectClick
+        TabOrder = 1
       end
       object BVolCtrlDetect: TButton
         AnchorSideLeft.Control = BVolCtrlSelect
@@ -2607,8 +2670,8 @@ object FrmMixer: TFrmMixer
         Caption = 'Autodetect'
         Constraints.MinHeight = 32
         Constraints.MinWidth = 112
-        TabOrder = 2
         OnClick = BVolCtrlDetectClick
+        TabOrder = 2
       end
       object EVolCtrl: TEdit
         AnchorSideLeft.Control = LVolCtrl
@@ -2633,53 +2696,53 @@ object FrmMixer: TFrmMixer
         AnchorSideTop.Control = BVolCtrlSelect
         AnchorSideTop.Side = asrBottom
         Left = 8
-        Height = 17
+        Height = 19
         Top = 93
-        Width = 108
+        Width = 110
         BorderSpacing.Top = 8
         Caption = 'Linear scale (as is)'
-        TabOrder = 3
         OnClick = CBLnScaleClick
+        TabOrder = 3
       end
       object CBSvVolPos: TCheckBox
         AnchorSideLeft.Control = CBLnScale
         AnchorSideTop.Control = CBLnScale
         AnchorSideTop.Side = asrBottom
         Left = 8
-        Height = 17
-        Top = 114
-        Width = 127
+        Height = 19
+        Top = 116
+        Width = 129
         BorderSpacing.Top = 4
         Caption = 'Save volume position'
+        OnClick = CBSvVolPosClick
         ParentShowHint = False
         TabOrder = 4
-        OnClick = CBSvVolPosClick
       end
     end
     object BASSSheet: TTabSheet
       AutoSize = True
       Caption = 'BASS v2.4 (optional)'
-      ClientHeight = 471
+      ClientHeight = 475
       ClientWidth = 528
       ImageIndex = 2
       object GBBASSVis: TGroupBox
         AnchorSideLeft.Control = BASSSheet
         AnchorSideTop.Control = BASSSheet
         Left = 8
-        Height = 176
+        Height = 180
         Top = 0
         Width = 192
         AutoSize = True
         BorderSpacing.Left = 8
         BorderSpacing.Bottom = 8
         Caption = 'Visualization'
-        ClientHeight = 158
+        ClientHeight = 162
         ClientWidth = 188
         TabOrder = 0
         object FFTTyp: TLabel
           AnchorSideLeft.Control = LNumFFTk
           AnchorSideLeft.Side = asrBottom
-          Left = 113
+          Left = 112
           Height = 13
           Top = 0
           Width = 24
@@ -2689,6 +2752,7 @@ object FrmMixer: TFrmMixer
           Caption = '8192'
           Font.Height = -11
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object LNumFFTk: TLabel
@@ -2697,9 +2761,10 @@ object FrmMixer: TFrmMixer
           Left = 4
           Height = 13
           Top = 0
-          Width = 105
+          Width = 104
           BorderSpacing.Left = 4
           Caption = 'Number of FFT koef.'
+          ParentColor = False
         end
         object LLevMinMax: TLabel
           AnchorSideLeft.Control = CBDCBias
@@ -2707,11 +2772,12 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Side = asrBottom
           Left = 4
           Height = 13
-          Top = 106
+          Top = 110
           Width = 73
           Alignment = taRightJustify
           BorderSpacing.Top = 16
           Caption = 'Level Min/Max'
+          ParentColor = False
         end
         object aminmax: TLabel
           AnchorSideLeft.Control = LLevMinMax
@@ -2720,13 +2786,14 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Side = asrCenter
           Left = 81
           Height = 13
-          Top = 106
+          Top = 110
           Width = 27
           BorderSpacing.Left = 4
           BorderSpacing.Right = 4
           Caption = '0.003'
           Font.Height = -11
           Font.Style = [fsBold]
+          ParentColor = False
           ParentFont = False
         end
         object TBNumFFTk: TTrackBar
@@ -2755,7 +2822,7 @@ object FrmMixer: TFrmMixer
           AnchorSideRight.Side = asrBottom
           Left = 4
           Height = 33
-          Top = 121
+          Top = 125
           Width = 180
           Frequency = 100
           Max = 200
@@ -2774,28 +2841,28 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Control = TBNumFFTk
           AnchorSideTop.Side = asrBottom
           Left = 4
-          Height = 17
+          Height = 19
           Top = 52
-          Width = 91
+          Width = 93
           BorderSpacing.Top = 4
           BorderSpacing.Right = 4
           Caption = 'Hann window'
-          TabOrder = 1
           OnClick = CBHannClick
+          TabOrder = 1
         end
         object CBDCBias: TCheckBox
           AnchorSideLeft.Control = CBHann
           AnchorSideTop.Control = CBHann
           AnchorSideTop.Side = asrBottom
           Left = 4
-          Height = 17
-          Top = 73
-          Width = 100
+          Height = 19
+          Top = 75
+          Width = 102
           BorderSpacing.Top = 4
           BorderSpacing.Right = 4
           Caption = 'Remove DC bias'
-          TabOrder = 2
           OnChange = CBDCBiasChange
+          TabOrder = 2
         end
       end
       object GBASSConn: TGroupBox
@@ -2804,7 +2871,7 @@ object FrmMixer: TFrmMixer
         AnchorSideRight.Control = BASSSheet
         AnchorSideRight.Side = asrBottom
         Left = 208
-        Height = 129
+        Height = 131
         Top = 0
         Width = 312
         Anchors = [akTop, akLeft, akRight]
@@ -2813,7 +2880,7 @@ object FrmMixer: TFrmMixer
         BorderSpacing.Right = 8
         BorderSpacing.Bottom = 8
         Caption = 'Connection parameters'
-        ClientHeight = 111
+        ClientHeight = 113
         ClientWidth = 308
         TabOrder = 1
         object CBNetAgent: TComboBox
@@ -2838,8 +2905,8 @@ object FrmMixer: TFrmMixer
             'AppleWebKit/533.1 (KHTML, like Gecko)'
             'Mozilla/5.0 (iPhone; BASS/2.4)'
           )
-          TabOrder = 0
           OnChange = CBNetAgentChange
+          TabOrder = 0
         end
         object LBASSUA: TLabel
           AnchorSideLeft.Control = GBASSConn
@@ -2847,26 +2914,27 @@ object FrmMixer: TFrmMixer
           Left = 8
           Height = 13
           Top = 0
-          Width = 261
+          Width = 262
           BorderSpacing.Left = 8
           BorderSpacing.Right = 8
           Caption = 'User-Agent (empty to fill all parameters from BASS):'
+          ParentColor = False
         end
         object CBProxy: TCheckBox
           AnchorSideLeft.Control = CBNetAgent
           AnchorSideTop.Control = CBNetAgent
           AnchorSideTop.Side = asrBottom
           Left = 8
-          Height = 17
+          Height = 19
           Top = 50
-          Width = 68
+          Width = 70
           BorderSpacing.Top = 16
           BorderSpacing.Right = 8
           Caption = 'Use proxy'
           Checked = True
+          OnChange = CBProxyChange
           State = cbChecked
           TabOrder = 1
-          OnChange = CBProxyChange
         end
         object LProxy: TLabel
           AnchorSideLeft.Control = CBProxy
@@ -2874,11 +2942,12 @@ object FrmMixer: TFrmMixer
           AnchorSideTop.Side = asrBottom
           Left = 8
           Height = 13
-          Top = 69
+          Top = 71
           Width = 289
           BorderSpacing.Top = 2
           BorderSpacing.Right = 8
           Caption = 'user:pass@server:port (empty string for system settings):'
+          ParentColor = False
         end
         object EProxy: TEdit
           AnchorSideLeft.Control = LProxy
@@ -2888,12 +2957,12 @@ object FrmMixer: TFrmMixer
           AnchorSideRight.Side = asrBottom
           Left = 8
           Height = 21
-          Top = 82
+          Top = 84
           Width = 292
           Anchors = [akTop, akLeft, akRight]
           BorderSpacing.Bottom = 8
-          TabOrder = 2
           OnChange = EProxyChange
+          TabOrder = 2
         end
       end
     end
@@ -2904,7 +2973,7 @@ object FrmMixer: TFrmMixer
     AnchorSideRight.Control = Button2
     Left = 332
     Height = 32
-    Top = 501
+    Top = 505
     Width = 96
     Anchors = [akTop, akRight]
     AutoSize = True
@@ -2915,8 +2984,8 @@ object FrmMixer: TFrmMixer
     Caption = 'Restore'
     Constraints.MinHeight = 32
     Constraints.MinWidth = 96
-    TabOrder = 1
     OnClick = Button1Click
+    TabOrder = 1
   end
   object Button2: TButton
     AnchorSideTop.Control = MixerTabSheet
@@ -2925,7 +2994,7 @@ object FrmMixer: TFrmMixer
     AnchorSideRight.Side = asrBottom
     Left = 436
     Height = 32
-    Top = 501
+    Top = 505
     Width = 96
     Anchors = [akTop, akRight]
     AutoSize = True
@@ -2938,7 +3007,7 @@ object FrmMixer: TFrmMixer
     Constraints.MinHeight = 32
     Constraints.MinWidth = 96
     Default = True
-    TabOrder = 2
     OnClick = Button2Click
+    TabOrder = 2
   end
 end

@@ -4,6 +4,8 @@ AY-3-8910/12 Emulator
 Version 3.0 for Windows and Linux
 Author Sergey Vladimirovich Bulba
 (c)1999-2025 S.V.Bulba
+
+note: 2023 AYMID additions by rio rattenrudel
 }
 
 unit settings;
@@ -72,6 +74,12 @@ var
 
  BeeperMax,Atari_DMAMax:byte;
  BeeperLevel,Atari_DMALevel:integer;
+
+ UseAYMIDHardware:boolean = False;
+ UseAYMIDConsole:boolean = False;
+
+ lastNumberOfBuffers,lastSampleRate,lastBufLen_ms:integer;
+ lastV:Single;
 
 implementation
 

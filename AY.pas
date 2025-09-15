@@ -4,6 +4,8 @@ AY-3-8910/12 Emulator
 Version 3.0 for Windows and Linux
 Author Sergey Vladimirovich Bulba
 (c)1999-2025 S.V.Bulba
+
+note: 2023 AYMID additions by rio rattenrudel
 }
 
 unit AY;
@@ -43,14 +45,14 @@ type
  TRegisterAY = packed record
  case Integer of
   0:(Index:array[0..15]of byte);
-  1:(TonA,TonB,TonC: word;
-     Noise:byte;
-     Mixer:byte;
-     AmplitudeA,AmplitudeB,AmplitudeC:byte;
-     Envelope:word;
-     EnvType:byte);
- end;
-
+  1:(TonA,TonB,TonC: word;                  // 3x 12bit (lo 8bit fine, hi 4Bit coarse)
+     Noise:byte;                            //     5bit (period ctrl)
+     Mixer:byte;                            //     8bit (aka 'enable') (IOB, IOA, Noise:C, B, A, Ton:C, B, A)
+     AmplitudeA,AmplitudeB,AmplitudeC:byte; // 3x  5bit (M, L3, L2, L1, L0)
+     Envelope:word;                         //    16bit (lo 8bit fine, hi 8Bit coarse)
+     EnvType:byte);                         //     4bit (ake 'shape/cycle') (CONT, ATT, ALT, HOLD)
+ end;                                       //     8bit IO PortA (unused)
+                                            //     8bit IO PortB (unused)
 //Available soundchips
   ChTypes = (No_Chip, AY_Chip, YM_Chip);
 
@@ -166,6 +168,7 @@ procedure Synthesizer_Stereo16(Buf:pointer);
 procedure Synthesizer_Stereo8(Buf:pointer);
 procedure Synthesizer_Mono16(Buf:pointer);
 procedure Synthesizer_Mono8(Buf:pointer);
+procedure Synthesizer_AYMID(Buf:pointer);
 procedure ResetAYChipEmulation(chip:integer;zeroregs:boolean);
 
 procedure SynthesizerZX50(Buf:pointer);
@@ -899,6 +902,33 @@ Inc(Current_Tik);
 Inc(Tick_Counter.Hi);
 until Current_Tik >= Number_Of_Tiks.Hi;
 Tmp := 0; Number_Of_Tiks.Hi := Tmp; Current_Tik := Tmp;
+end;
+
+procedure Synthesizer_AYMID(Buf:pointer);
+begin
+repeat
+if Tick_Counter.Re >= Tik.Re then
+ begin
+  repeat
+   inc(Tik.Re,integer(Delay_In_Tiks));
+   if NOfTicks = VisPoint then FillVis;
+   Inc(NOfTicks);
+   Inc(BuffLen);
+   if BuffLen = BufferLength then
+    begin
+     if Current_Tik < Number_Of_Tiks.Hi then
+      IntFlag := True;
+     exit
+    end
+  until Tick_Counter.Re < Tik.Re; //simple upsampler
+  dec(Tik.Re,Tick_Counter.Re);
+  Tick_Counter.Re := 0;
+ end;
+
+inc(Current_Tik);
+Inc(Tick_Counter.Hi);
+until Current_Tik >= Number_Of_Tiks.Hi;
+Number_Of_Tiks.Hi := 0; Current_Tik := 0;
 end;
 
 procedure ResetAYChipEmulation(chip:integer;zeroregs:boolean);

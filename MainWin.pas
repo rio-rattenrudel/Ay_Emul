@@ -4,6 +4,8 @@ AY-3-8910/12 Emulator
 Version 3.0 for Windows and Linux
 Author Sergey Vladimirovich Bulba
 (c)1999-2025 S.V.Bulba
+
+note: 2023 AYMID additions by rio rattenrudel
 }
 
 unit MainWin;
@@ -24,7 +26,7 @@ uses
  {$ENDIF dbgmode}
  digsound, digsoundcode, mixerctl, SysUtils, LazFileUtils, Classes, Graphics,
  Controls, Forms, Dialogs, About, LH5, UniReader, AY, WinVersion, Languages,
- lazutf8, ExtCtrls, Menus, LConvEncoding;
+ lazutf8, ExtCtrls, Menus, LConvEncoding, AYMID, AYMIDconsole;
 
 const
  //User defined windows messages
@@ -379,6 +381,9 @@ procedure ShowProgress(a1: integer);
 procedure Set_Sample_Rate(SR: integer);
 procedure Set_Sample_Bit(SB: integer);
 procedure Set_Stereo(St: integer);
+
+procedure Set_Hardware(mode: byte);
+procedure Set_Console(mode: byte);
 
 procedure Calculate_Level_Tables2;
 
@@ -1029,6 +1034,9 @@ begin
  FrmMixer.RBChStereo.Enabled := True;
  FrmMixer.RBChMono.Enabled := True;
 
+ FrmMixer.CBAymidProtocol.Enabled := True;
+ FrmMixer.CBAymidConsole.Enabled := True;
+
  ButStop.UnPush;
  ButPause.Switch_Off;
  FrmMixer.EAmpALCur.Clear;
@@ -1079,6 +1087,9 @@ begin
  FrmMixer.RBChStereo.Enabled := False;
  FrmMixer.RBChMono.Enabled := False;
 
+ FrmMixer.CBAymidProtocol.Enabled := False;
+ FrmMixer.CBAymidConsole.Enabled := False;
+
  FrmMain.FIDO_SaveStatus(FIDO_Playing);
 
   try
@@ -1090,6 +1101,12 @@ begin
      StartCD(CurCDNum, CurCDTrk)
    else if IsMIDIFileType(CurFileType) then
      midithread_start
+   else if UseAYMIDHardware then
+    begin
+     if UseAYMIDConsole then OutputLogo;
+     digsoundthread_start;
+     aymidthread_start;
+    end
    {$ENDIF Windows}
    else
      digsoundthread_start;
@@ -1745,7 +1762,9 @@ end;
 
 procedure SetSynthesizer;
 begin
- if NumberOfChannels = 2 then
+ if UseAYMIDHardware then 
+  Synthesizer := @Synthesizer_AYMID
+ else if NumberOfChannels = 2 then
   begin
    if SampleBit = 8 then
      Synthesizer := @Synthesizer_Stereo8
@@ -1795,6 +1814,63 @@ begin
  if IsPlaying then exit;
  NumberOfChannels := St;
  SetSynthesizer;
+end;
+
+procedure Set_Hardware(mode: byte);
+begin
+ if IsPlaying then exit;
+ case mode of
+  1: begin
+      UseAYMIDHardware := FrmMixer.CBAymidProtocol.Checked;
+      SetSysVolume;
+
+      if UseAYMIDHardware then begin
+       // prevalues
+       lastBufLen_ms := BufLen_ms;
+       lastNumberOfBuffers := NumberOfBuffers;
+       lastSampleRate := SampleRate;
+
+       FrmMain.Set_BufLen_ms2(20);
+       if NumberOfBuffers < 8 then
+        FrmMain.Set_NumberOfBuffers2(7);
+       FrmMain.Set_Sample_Rate2(15625);
+
+       // disable
+       FrmMixer.RBSR192k.Enabled := False;
+       FrmMixer.RBSR96k.Enabled := False;
+       FrmMixer.RBSR48k.Enabled := False;
+       FrmMixer.RBSR44k.Enabled := False;
+       FrmMixer.RBSR22k.Enabled := False;
+       FrmMixer.RBSR11k.Enabled := False;
+       FrmMixer.TBBufLen.Enabled := False;
+      end else begin
+       // restore
+       FrmMain.Set_BufLen_ms2(lastBufLen_ms);
+       FrmMain.Set_NumberOfBuffers2(lastNumberOfBuffers);
+       FrmMain.Set_Sample_Rate2(lastSampleRate);
+
+       FrmMixer.RBSR192k.Enabled := True;
+       FrmMixer.RBSR96k.Enabled := True;
+       FrmMixer.RBSR48k.Enabled := True;
+       FrmMixer.RBSR44k.Enabled := True;
+       FrmMixer.RBSR22k.Enabled := True;
+       FrmMixer.RBSR11k.Enabled := True;
+       FrmMixer.TBBufLen.Enabled := True;
+      end;
+     end;
+ end;
+ SetSynthesizer;
+end;
+
+procedure Set_Console(mode: byte);
+begin
+ if IsPlaying then exit;
+ case mode of
+  1: begin
+      UseAYMIDConsole := FrmMixer.CBAymidConsole.Checked;
+      if UseAYMIDConsole then OpenConsole else CloseConsole;
+     end;
+ end;
 end;
 
 procedure Calculate_Level_Tables2;
@@ -4187,6 +4263,13 @@ begin
      StopCDDevice(CurCDNum)
    else if IsMIDIFileType(CurFileType) then
      midithread_stop
+   else if UseAYMIDHardware then
+    begin
+     aymidthread_stop;
+     digsoundthread_stop;
+     if CurFileType = FT.SNDH then
+      Atari_StopEmu;
+    end
    {$ENDIF Windows}
    else
     begin
@@ -4239,6 +4322,15 @@ begin
  else
    //(exp(VolumeCtrl / VolumeCtrlMax * ln(2)) - 1) //closer to linear version
    v := (exp((VolumeCtrl / VolumeCtrlMax)) - 1) / (exp(1) - 1);
+
+ if UseAYMIDHardware then
+ begin
+  lastV := v;
+  v := 0;
+ end else begin 
+  if lastV <> 0 then v := lastV;
+  lastV := 0;
+ end;
 
  //skip several notices from system mixer to prevent pos back after rounding or
  //to ignore feedback random vol changing (met in only Linuxes) to keep balance
@@ -4403,6 +4495,8 @@ begin
    SaveDW('MIDIDevice', MIDIDevice);
    SaveStr('MIDIDeviceName', FrmMixer.cbMODevice.Items[integer(MIDIDevice) + 1]);
    SaveDW('MIDISeekToFirstNote', Ord(MIDISeekToFirstNote));
+   SaveDW('UseAYMIDHardware', Ord(UseAYMIDHardware));
+   SaveDW('UseAYMIDConsole', Ord(UseAYMIDConsole));
    SaveDW('Priority', Priority);
    {$ENDIF Windows}
    SaveDW('BASSFFTType', BASSFFTType);
@@ -4642,6 +4736,10 @@ begin
        if GetDW('MIDIDevice', v) then Set_MIDIDevice2(v, dir);
        if GetDW('MIDISeekToFirstNote', v) then
          MIDISeekToFirstNote := v <> 0;
+       if GetDW('UseAYMIDHardware', v) then
+        UseAYMIDHardware := v <> 0;
+       if GetDW('UseAYMIDConsole', v) then
+        UseAYMIDConsole := v <> 0;
        {$ENDIF Windows}
        if GetDW('BASSFFTType', v) then
          if (DWORD(v) >= BASS_DATA_FFT256) and (DWORD(v) <= BASS_DATA_FFT32768) then
@@ -4859,6 +4957,7 @@ begin
  if MIDIDevice <> DWORD(MD) then
   begin
    MIDIDevice := MD;
+   AYMIDDevice := MIDIDevice;
    FrmMixer.cbMODevice.ItemIndex := MD + 1;
   end;
 end;

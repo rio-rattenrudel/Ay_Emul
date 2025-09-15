@@ -4,6 +4,8 @@ AY-3-8910/12 Emulator
 Version 3.0 for Windows and Linux
 Author Sergey Vladimirovich Bulba
 (c)1999-2025 S.V.Bulba
+
+note: 2023 AYMID additions by rio rattenrudel
 }
 
 unit Mixer;
@@ -23,8 +25,11 @@ type
  TFrmMixer = class(TForm)
    AtariMonoChk: TCheckBox;
    AtariYMMonoChk: TCheckBox;
+   CBAymidProtocol: TCheckBox;
+   CBAymidConsole: TCheckBox;
    EMFPFrq1613: TEdit;
    GBSNDH: TGroupBox;
+   GBAymid: TGroupBox;
    PnChFrqL: TPanel;
    PnZ80FrqR: TPanel;
    PnZ80FrqL: TPanel;
@@ -214,6 +219,8 @@ type
    Label25: TLabel;
    Label26: TLabel;
    Label27: TLabel;
+   procedure CBAymidConsoleChange(Sender: TObject);
+   procedure CBAymidProtocolChange(Sender: TObject);
    procedure CBIntFrqLstChange(Sender: TObject);
    procedure EAmpDMAEditingDone(Sender: TObject);
    procedure EMCFrqOtherEditingDone(Sender: TObject);
@@ -322,7 +329,7 @@ var
 implementation
 
 uses
- MainWin, Tools, AY, Z80, basslight, basscode, digsound, digsoundcode, PlayList,
+ MainWin, Tools, AY, Z80, basslight, basscode, digsound, digsoundcode, AYMID, PlayList,
  mixerctl, SelVolCtrl{$IFDEF Windows}, Midi{$ENDIF Windows}, settings, atari,
  mxhelper, Languages;
 
@@ -354,6 +361,16 @@ procedure TFrmMixer.CBIntFrqLstChange(Sender: TObject);
 begin
  RedrawPlaylist(ShownFrom, False);
  CalculateTotalTime(False);
+end;
+
+procedure TFrmMixer.CBAymidProtocolChange(Sender: TObject);
+begin
+ Set_Hardware(1);
+end;
+
+procedure TFrmMixer.CBAymidConsoleChange(Sender: TObject);
+begin
+ Set_Console(1);
 end;
 
 procedure TFrmMixer.EMCFrqOtherEditingDone(Sender: TObject);
@@ -988,6 +1005,8 @@ begin
  CBHann.Checked := BASSFFTNoWin = 0;
  {$IFDEF Windows}
  CheckBox12.Checked := MIDISeekToFirstNote;
+ CBAymidProtocol.Checked := UseAYMIDHardware;
+ CBAymidConsole.Checked := UseAYMIDConsole;
  {$ENDIF Windows}
  CBDCBias.Checked := BASSFFTRemDC = BASS_DATA_FFT_REMOVEDC;
  CBNetAgent.Text := BASSNetAgent;
@@ -1282,6 +1301,7 @@ procedure TFrmMixer.cbMODeviceChange(Sender: TObject);
 begin
  {$IFDEF Windows}
  MIDIDevice := cbMODevice.ItemIndex - 1;
+ AYMIDDevice := MIDIDevice;
  {$ENDIF Windows}
 end;
 

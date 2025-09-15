@@ -131,7 +131,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
       <RevisionNr Value="2"/>
-      <BuildNr Value="119"/>
+      <BuildNr Value="121"/>
       <StringTable FileDescription="AY-3-8910, AY-3-8912 and YM2149F Emulator, Player, Converter and Music Ripper" InternalName="AY Emulator" LegalCopyright="Sergey Bulba" OriginalFilename="Ay_Emul" ProductName="AY Emulator" ProductVersion="3.0.2.0"/>
     </VersionInfo>
     <BuildModes Count="2">
@@ -441,7 +441,6 @@
     <Linking>
       <Debugging>
         <GenerateDebugInfo Value="False"/>
-        <RunWithoutDebug Value="True"/>
         <DebugInfoType Value="dsDwarf2"/>
       </Debugging>
       <LinkSmart Value="True"/>
