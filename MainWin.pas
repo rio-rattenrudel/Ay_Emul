@@ -1571,6 +1571,10 @@ begin
       end;
      AyFreq := AY_Freq;
      FrqAyByFrqMC68000 := round(AyFreq / MC68000Freq / 8 * 4294967296);
+
+     // RIO: Prepare AYMID frequency 
+     if UseAYMIDHardware then Set_Sample_Rate2(round(Fr / 8 / 16));
+
     finally
      digsoundloop_release;
     end;
@@ -1749,7 +1753,7 @@ end;
 procedure Set_Sample_Rate(SR: integer);
 begin
  if IsPlaying then exit;
- if not ((SR >= 8000) and (SR < 300000)) then exit;
+ if not ((SR >= 7800) and (SR < 300000)) then exit; // RIO: lower the val
  SampleRate := SR;
  VisStep := round(SampleRate / 100);
  BufferLength := round(BufLen_ms * SampleRate / 1000);
@@ -1832,8 +1836,8 @@ begin
 
        FrmMain.Set_BufLen_ms2(20);
        if NumberOfBuffers < 8 then
-        FrmMain.Set_NumberOfBuffers2(7);
-       FrmMain.Set_Sample_Rate2(15625);
+        FrmMain.Set_NumberOfBuffers2(8);
+       FrmMain.Set_Sample_Rate2(round(FrmMixer.FrqAYTemp / 8 / 16));
 
        // disable
        FrmMixer.RBSR192k.Enabled := False;
