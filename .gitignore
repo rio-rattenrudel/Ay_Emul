@@ -1,0 +1,6 @@
+lib/
+backup/
+*.lpi
+*.lpr
+*.lps
+*.res
