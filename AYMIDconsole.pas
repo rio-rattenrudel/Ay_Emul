@@ -94,12 +94,13 @@ begin
   WriteLn('');
   WriteLn('  The sound chip frequency of AY_Emul must match your hardware (1.77 / 2Mhz).');
   WriteLn('  While sample rate and buffer length are set automatically,');
-  WriteLn('  the number of buffers can be adjusted as needed (recommended: 7).');
+  WriteLn('  the number of buffers can be adjusted as needed (recommended: 8).');
   WriteLn('');
   WriteLn('  AYMID is based on the ASID sysex data protocol from Elektron.');
   WriteLn('  Two masks, two MSBs and 14 registers are enuff!');
   WriteLn('');
-  WriteLn('  -= Rio Rattenrudel =-                                          V1  10/2023  ');
+  WriteLn('  -= Rio Rattenrudel =-                                        V0.1  10/2023  ');
+  WriteLn('                                                               V0.2  04/2024  ');
 end;
 
 procedure OpenConsole;
