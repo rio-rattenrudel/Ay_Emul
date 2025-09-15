@@ -33,7 +33,7 @@ procedure aymidthread_stop;
 function aymidthread_active:boolean;
 
 var
- AYMIDDevice:longword = MIDI_MAPPER;
+  AYMIDDevice:longword = MIDI_MAPPER;
 
 implementation
 
@@ -45,6 +45,15 @@ const
 
 type
   TThread1 = class(TThread)
+    private
+      data: array [0..20] of BYTE;
+      captured: record  // capture for aymid console
+        mask: uint16;
+        msb:  uint16;
+        len:  byte;
+      end;
+      procedure ASyncConsoleOutput(mask, msb: uint16; len: byte);
+      procedure PushConsole;
     protected
       procedure Execute; override;
     end;
@@ -119,18 +128,15 @@ var
   reg: byte;
   isModified: Boolean = false;
   dcc: byte = 0;
-  data: array [0..20] of BYTE = (
-    $2E, $4E, // ident, update cmd
-    0, 0,     // maskX 
-    0, 0,     // msbX
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // data (14 bytes)
-    0);       // reserved for end byte
-  play: array [0..2] of BYTE = ($2E, $4C, $F7); // ident, start cmd
-  stop: array [0..2] of BYTE = ($2E, $4D, $F7); // ident, stop cmd
   mask: uint16 = 0;
   msb: uint16 = 0;
+  play: array [0..2] of BYTE = ($2E, $4C, $F7); // ident, start cmd
+  stop: array [0..2] of BYTE = ($2E, $4D, $F7); // ident, stop cmd
 
 begin
+  aymid_thread.data[0]:=$2E; // ident
+  aymid_thread.data[1]:=$4E; // update cmd
+
   for i := 0 to 13 do begin
     reg := SoundChip[0].RegisterAY.Index[i];
 
@@ -141,7 +147,7 @@ begin
         msb := msb or (1 shl i);  // set msb
       mask := mask or (1 shl i);  // set mask
 
-      data[dcc+6] := reg and $7f; // fill data
+      aymid_thread.data[dcc+6] := reg and $7f; // fill data
 
       isModified := true;
       Inc(dcc);
@@ -154,18 +160,23 @@ begin
   end;
 
   if isModified then begin
-    data[2] := mask and $7f;
-    data[3] := (mask shr 7) and $7f;
-    data[4] := msb and $7f;
-    data[5] := (msb shr 7) and $7f;
+    aymid_thread.data[2] := mask and $7f;
+    aymid_thread.data[3] := (mask shr 7) and $7f;
+    aymid_thread.data[4] := msb and $7f;
+    aymid_thread.data[5] := (msb shr 7) and $7f;
 
-    if UseAYMIDConsole then
-      OutputAYMID(mask, msb, @data, dcc);
+    if UseAYMIDConsole then begin
+      // instead of raw output:
+      // OutputAYMID(mask, msb, @aymid_thread.data, dcc);
 
-    data[dcc+6] := $F7; // end byte
+      // try queue the data to main:
+      aymid_thread.ASyncConsoleOutput(mask, msb, dcc);
+    end;
+
+    aymid_thread.data[dcc+6] := $F7; // end byte
     Inc(dcc);
 
-    output_sysex_data(0,@data,dcc+6);
+    output_sysex_data(0,@aymid_thread.data,dcc+6);
 
     keepAwakeCC := FALL_ASLEEP_COUNT;
   end else if keepAwakeCC > 0 then dec(keepAwakeCC);
@@ -241,6 +252,24 @@ begin
   end;
 end;
 
+procedure TThread1.ASyncConsoleOutput(mask, msb: uint16; len: byte);
+begin
+  // capture data to queue
+  captured.len  := len;
+  captured.mask := mask;
+  captured.msb  := msb;
+
+  Queue(@PushConsole);
+end;
+
+procedure TThread1.PushConsole;
+begin
+  OutputAYMID(captured.mask, 
+              captured.msb, 
+              @data, // raw, no copy, minor priority
+              captured.len);
+end;
+
 function aymidthread_active:boolean;
 begin
   Result := aymid_thread <> nil;
@@ -288,4 +317,3 @@ finalization
 DeleteCriticalSection(aymidcall_csection);
 
 end.
-
