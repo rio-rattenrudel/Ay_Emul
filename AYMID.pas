@@ -40,6 +40,9 @@ implementation
 uses
   MainWin, settings, sometypes, AY, AYMIDconsole;
 
+const
+  FALL_ASLEEP_COUNT = 10;
+
 type
   TThread1 = class(TThread)
     protected
@@ -53,6 +56,8 @@ var
   AYMIDOUTH:HMIDIOUT = 0;
   aymid_thread:TThread1 = nil;
   aymidcall_csection:TCriticalSection;
+
+  keepAwakeCC: BYTE = FALL_ASLEEP_COUNT;
 
 procedure AYMIDEnumDevices(cb:TComboBox);
 var
@@ -161,7 +166,9 @@ begin
     Inc(dcc);
 
     output_sysex_data(0,@data,dcc+6);
-  end;
+
+    keepAwakeCC := FALL_ASLEEP_COUNT;
+  end else if keepAwakeCC > 0 then dec(keepAwakeCC);
 end;
 
 procedure init_midi_out;
@@ -211,6 +218,10 @@ begin
 
   // main loop
   repeat
+
+    // goto sleep, reduce cpu load
+    if keepAwakeCC = 0 then Sleep(1);
+
     if not IntFlag then continue;
     Sendout;
 
