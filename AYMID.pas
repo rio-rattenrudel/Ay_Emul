@@ -70,8 +70,8 @@ var
 
 procedure AYMIDEnumDevices(cb:TComboBox);
 var
-  outcaps:MIDIOUTCAPS;
-  i:integer;
+  outcaps: MIDIOUTCAPS;
+  i: integer;
 
 begin
   for i := 0 to integer(midiOutGetNumDevs) - 1 do
@@ -83,8 +83,8 @@ end;
 
 procedure output_sysex_data(init:byte;data:PArray0OfByte;length:integer);
 var
-  mh:MIDIHDR;
-  tmp:byte;
+  mh: MIDIHDR;
+  tmp: byte;
 
 begin
   if AYMIDOUTH = 0 then exit;
@@ -115,6 +115,7 @@ end;
 
 procedure Sendstop;
 var
+  i: BYTE;
   stop: array [0..2] of BYTE = ($2E, $4D, $F7); // ident, stop cmd
 
 begin
@@ -124,7 +125,7 @@ end;
 
 procedure Sendout;
 var
-  i:BYTE;
+  i: BYTE;
   reg: byte;
   isModified: Boolean = false;
   dcc: byte = 0;
@@ -136,6 +137,11 @@ var
 begin
   aymid_thread.data[0]:=$2E; // ident
   aymid_thread.data[1]:=$4E; // update cmd
+
+  // init data
+  if not running then begin
+    for i := 0 to 13 do regs[i] := $FF;
+  end;
 
   for i := 0 to 13 do begin
     reg := SoundChip[0].RegisterAY.Index[i];
@@ -196,7 +202,7 @@ end;
 
 procedure close_midi_out;
 var
-  i:integer;
+  i: integer;
 
 begin
   if AYMIDOUTH <> 0 then begin
