@@ -3,6 +3,15 @@ AYMIDconsole.pas - AYMID console for displaying nerdy outputs
 -------------------------------------------------------------
 
 (c)2025 by rio rattenrudel
+
+  The sound chip frequency of AY_Emul must match
+  your hardware (1.77 / 2 MHz), which can be set
+  on the 1st setup page at the top right. A MIDI 
+  interface is capable of outputting data within 
+  20ms (23ms), which corresponds to an interrupt 
+  frequency of 50Hz.
+
+  Keep in mind that this is close to the limit.
 }
 
 unit AYMIDconsole;
