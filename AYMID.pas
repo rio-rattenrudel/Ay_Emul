@@ -10,7 +10,7 @@ Author Sergey Vladimirovich Bulba
 AYMID is inspired by ASID interpretation by Jouni Paulus
 and Vice ASID implementation by aTc
 
-(c)2023 by rio rattenrudel
+(c)2025 by rio rattenrudel
 }
 
 unit AYMID;

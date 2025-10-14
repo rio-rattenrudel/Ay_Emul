@@ -5,7 +5,7 @@ Version 3.0 for Windows and Linux
 Author Sergey Vladimirovich Bulba
 (c)1999-2025 S.V.Bulba
 
-note: 2023 AYMID additions by rio rattenrudel
+note: 2025 AYMID additions by rio rattenrudel
 }
 
 unit settings;

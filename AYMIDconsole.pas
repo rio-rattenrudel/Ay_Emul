@@ -2,7 +2,7 @@
 AYMIDconsole.pas - AYMID console for displaying nerdy outputs
 -------------------------------------------------------------
 
-(c)2023 by rio rattenrudel
+(c)2025 by rio rattenrudel
 }
 
 unit AYMIDconsole;
@@ -101,9 +101,10 @@ begin
   WriteLn('  AYMID is based on the ASID sysex data protocol from Elektron.');
   WriteLn('  Two masks, two MSBs and 14 registers are enuff!');
   WriteLn('');
-  WriteLn('  -= Rio Rattenrudel =-                                        V0.1  10/2023  ');
+  WriteLn('  ~~ rio rattenrudel ~~                                        V0.1  10/2023  ');
   WriteLn('                                                               V0.2  04/2024  ');
   WriteLn('                                                               V0.3  09/2025  ');
+  WriteLn('                                                               V1.0  10/2025  ');
 end;
 
 function OpenConsole: Boolean;
@@ -154,7 +155,7 @@ begin
     SetConsoleMode(hIn, ENABLE_EXTENDED_FLAGS or (prevMode and not (ENABLE_QUICK_EDIT_MODE or ENABLE_PROCESSED_INPUT)));
   end;
 
-  SetConsoleTitle('AYMID Console V0.3');
+  SetConsoleTitle('AYMID Console V1.0');
 
   DisableMenuButtons;
 

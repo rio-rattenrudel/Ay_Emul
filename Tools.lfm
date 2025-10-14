@@ -21,9 +21,8 @@ object FrmTools: TFrmTools
     Left = 0
     Height = 375
     Top = 0
-    Width = 599
+    Width = 586
     ActivePage = GenTools
-    Align = alTop
     AutoSize = True
     TabIndex = 0
     TabOrder = 0
@@ -31,7 +30,7 @@ object FrmTools: TFrmTools
       AutoSize = True
       Caption = 'General'
       ClientHeight = 349
-      ClientWidth = 591
+      ClientWidth = 578
       object GBOther: TGroupBox
         AnchorSideLeft.Control = GBMFolder
         AnchorSideLeft.Side = asrBottom
@@ -98,7 +97,7 @@ object FrmTools: TFrmTools
           Height = 17
           Hint = 'Force looping shorter module of TurboSound pair even loop button is switched off'
           Top = 17
-          Width = 136
+          Width = 135
           BorderSpacing.Right = 4
           Caption = 'Loop shorter of TS pair'
           Checked = True
@@ -589,7 +588,7 @@ object FrmTools: TFrmTools
       AutoSize = True
       Caption = 'Playlist'
       ClientHeight = 349
-      ClientWidth = 591
+      ClientWidth = 578
       object GroupBox2: TGroupBox
         AnchorSideLeft.Control = PListOpts
         AnchorSideTop.Control = PListOpts
@@ -760,7 +759,7 @@ object FrmTools: TFrmTools
       AutoSize = True
       Caption = 'Application registration'
       ClientHeight = 349
-      ClientWidth = 591
+      ClientWidth = 578
       ImageIndex = 1
       object BAppReg: TButton
         AnchorSideLeft.Control = CBRegAllUsers
@@ -940,7 +939,7 @@ object FrmTools: TFrmTools
       AutoSize = True
       Caption = 'Searching for tunes in files'
       ClientHeight = 349
-      ClientWidth = 591
+      ClientWidth = 578
       ImageIndex = 2
       object LSrchFiles: TLabel
         AnchorSideLeft.Control = SearchTool
@@ -967,7 +966,7 @@ object FrmTools: TFrmTools
       object LSrchRprt: TLabel
         AnchorSideLeft.Control = MReport
         AnchorSideTop.Control = GBSrchOpts
-        Left = 268
+        Left = 267
         Height = 13
         Top = 140
         Width = 66
@@ -979,7 +978,7 @@ object FrmTools: TFrmTools
         AnchorSideTop.Control = MSrchFiles
         AnchorSideRight.Control = SearchTool
         AnchorSideRight.Side = asrBottom
-        Left = 513
+        Left = 500
         Height = 24
         Top = 13
         Width = 74
@@ -1000,12 +999,12 @@ object FrmTools: TFrmTools
         Left = 4
         Height = 162
         Top = 140
-        Width = 252
+        Width = 251
         AutoSize = True
         BorderSpacing.Top = 4
         Caption = 'Search for tunes'
         ClientHeight = 144
-        ClientWidth = 248
+        ClientWidth = 247
         TabOrder = 4
         object PnSrchOptsL: TPanel
           AnchorSideLeft.Control = GBSrchOpts
@@ -1027,7 +1026,7 @@ object FrmTools: TFrmTools
             Left = 0
             Height = 17
             Top = 0
-            Width = 122
+            Width = 121
             Caption = 'ST 1.x non-compiled'
             Checked = True
             State = cbChecked
@@ -1041,7 +1040,7 @@ object FrmTools: TFrmTools
             Left = 0
             Height = 17
             Top = 17
-            Width = 109
+            Width = 108
             Caption = 'Sound Tracker 1.x'
             Checked = True
             State = cbChecked
@@ -1055,7 +1054,7 @@ object FrmTools: TFrmTools
             Left = 0
             Height = 17
             Top = 34
-            Width = 107
+            Width = 106
             Caption = 'ST 1.x recompiled'
             Checked = True
             State = cbChecked
@@ -1069,7 +1068,7 @@ object FrmTools: TFrmTools
             Left = 0
             Height = 17
             Top = 51
-            Width = 125
+            Width = 124
             Caption = 'ST Pro non-compiled'
             Checked = True
             State = cbChecked
@@ -1083,7 +1082,7 @@ object FrmTools: TFrmTools
             Left = 0
             Height = 17
             Top = 68
-            Width = 112
+            Width = 111
             Caption = 'Sound Tracker Pro'
             Checked = True
             State = cbChecked
@@ -1141,14 +1140,14 @@ object FrmTools: TFrmTools
           Left = 147
           Height = 119
           Top = 0
-          Width = 97
+          Width = 96
           AutoSize = True
           BorderSpacing.Left = 8
           BorderSpacing.Right = 4
           BorderSpacing.Bottom = 4
           BevelOuter = bvNone
           ClientHeight = 119
-          ClientWidth = 97
+          ClientWidth = 96
           TabOrder = 1
           object CBSrchSQT: TCheckBox
             AnchorSideLeft.Control = PnSrchOptsR
@@ -1156,7 +1155,7 @@ object FrmTools: TFrmTools
             Left = 0
             Height = 17
             Top = 0
-            Width = 73
+            Width = 72
             Caption = 'SQ-Tracker'
             Checked = True
             State = cbChecked
@@ -1170,7 +1169,7 @@ object FrmTools: TFrmTools
             Left = 0
             Height = 17
             Top = 17
-            Width = 97
+            Width = 96
             Caption = 'Pro Tracker 1.xx'
             Checked = True
             State = cbChecked
@@ -1184,7 +1183,7 @@ object FrmTools: TFrmTools
             Left = 0
             Height = 17
             Top = 34
-            Width = 97
+            Width = 96
             Caption = 'Pro Tracker 2.xx'
             Checked = True
             State = cbChecked
@@ -1198,7 +1197,7 @@ object FrmTools: TFrmTools
             Left = 0
             Height = 17
             Top = 51
-            Width = 97
+            Width = 96
             Caption = 'Pro Tracker 3.xx'
             Checked = True
             State = cbChecked
@@ -1212,7 +1211,7 @@ object FrmTools: TFrmTools
             Left = 0
             Height = 17
             Top = 68
-            Width = 79
+            Width = 78
             Caption = 'Fast Tracker'
             Checked = True
             State = cbChecked
@@ -1226,7 +1225,7 @@ object FrmTools: TFrmTools
             Left = 0
             Height = 17
             Top = 85
-            Width = 92
+            Width = 91
             Caption = 'Global Tracker'
             Checked = True
             State = cbChecked
@@ -1240,7 +1239,7 @@ object FrmTools: TFrmTools
             Left = 0
             Height = 17
             Top = 102
-            Width = 85
+            Width = 84
             Caption = 'Flash Tracker'
             Checked = True
             State = cbChecked
@@ -1258,10 +1257,10 @@ object FrmTools: TFrmTools
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = BSrchBegin
         AnchorSideBottom.Side = asrBottom
-        Left = 264
+        Left = 263
         Height = 176
         Top = 153
-        Width = 319
+        Width = 307
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Left = 8
         BorderSpacing.Right = 4
@@ -1280,7 +1279,7 @@ object FrmTools: TFrmTools
         Left = 79
         Height = 16
         Top = 308
-        Width = 177
+        Width = 176
         Anchors = [akTop, akLeft, akRight]
         TabOrder = 6
       end
@@ -1306,7 +1305,7 @@ object FrmTools: TFrmTools
         Left = 4
         Height = 60
         Top = 13
-        Width = 505
+        Width = 492
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Left = 4
         ScrollBars = ssVertical
@@ -1335,7 +1334,7 @@ object FrmTools: TFrmTools
         Left = 4
         Height = 21
         Top = 94
-        Width = 583
+        Width = 570
         ShowHidden = False
         ButtonWidth = 23
         NumGlyphs = 1
@@ -1349,13 +1348,13 @@ object FrmTools: TFrmTools
       AutoSize = True
       Caption = 'Track descriptor'
       ClientHeight = 349
-      ClientWidth = 591
+      ClientWidth = 578
       ImageIndex = 3
       object Label2: TLabel
         AnchorSideTop.Control = EDeskFN
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = EDeskFN
-        Left = 78
+        Left = 65
         Height = 13
         Top = 12
         Width = 49
@@ -1369,7 +1368,7 @@ object FrmTools: TFrmTools
         AnchorSideTop.Control = EDeskPfx
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = EDeskPfx
-        Left = 99
+        Left = 86
         Height = 13
         Top = 41
         Width = 28
@@ -1383,7 +1382,7 @@ object FrmTools: TFrmTools
         AnchorSideTop.Control = EDeskSfx
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = EDeskSfx
-        Left = 98
+        Left = 85
         Height = 13
         Top = 70
         Width = 29
@@ -1397,7 +1396,7 @@ object FrmTools: TFrmTools
         AnchorSideTop.Control = EDeskNoth
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = EDeskNoth
-        Left = 84
+        Left = 71
         Height = 13
         Top = 99
         Width = 43
@@ -1411,7 +1410,7 @@ object FrmTools: TFrmTools
         AnchorSideTop.Control = FIDOTools
         AnchorSideRight.Control = FIDOTools
         AnchorSideRight.Side = asrBottom
-        Left = 131
+        Left = 118
         Height = 21
         Top = 8
         Width = 452
@@ -1425,7 +1424,7 @@ object FrmTools: TFrmTools
         AnchorSideTop.Control = EDeskFN
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Side = asrBottom
-        Left = 131
+        Left = 118
         Height = 21
         Top = 37
         Width = 452
@@ -1436,7 +1435,7 @@ object FrmTools: TFrmTools
         AnchorSideLeft.Control = EDeskPfx
         AnchorSideTop.Control = EDeskPfx
         AnchorSideTop.Side = asrBottom
-        Left = 131
+        Left = 118
         Height = 21
         Top = 66
         Width = 452
@@ -1447,7 +1446,7 @@ object FrmTools: TFrmTools
         AnchorSideLeft.Control = EDeskSfx
         AnchorSideTop.Control = EDeskSfx
         AnchorSideTop.Side = asrBottom
-        Left = 131
+        Left = 118
         Height = 21
         Top = 95
         Width = 452
@@ -1458,7 +1457,7 @@ object FrmTools: TFrmTools
         AnchorSideLeft.Control = EDeskNoth
         AnchorSideTop.Control = EDeskNoth
         AnchorSideTop.Side = asrBottom
-        Left = 131
+        Left = 118
         Height = 17
         Top = 124
         Width = 60
@@ -1470,7 +1469,7 @@ object FrmTools: TFrmTools
         AnchorSideLeft.Control = CBDescEn
         AnchorSideTop.Control = CBDescEn
         AnchorSideTop.Side = asrBottom
-        Left = 131
+        Left = 118
         Height = 17
         Top = 149
         Width = 71
@@ -1482,7 +1481,7 @@ object FrmTools: TFrmTools
         AnchorSideLeft.Control = CBDescKExit
         AnchorSideTop.Control = CBDescKExit
         AnchorSideTop.Side = asrBottom
-        Left = 131
+        Left = 118
         Height = 17
         Top = 174
         Width = 95
@@ -1495,7 +1494,7 @@ object FrmTools: TFrmTools
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = CBDescKNoth
         AnchorSideTop.Side = asrBottom
-        Left = 247
+        Left = 241
         Height = 32
         Top = 207
         Width = 96
@@ -1514,7 +1513,7 @@ object FrmTools: TFrmTools
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = EDeskNoth
         AnchorSideRight.Side = asrBottom
-        Left = 463
+        Left = 450
         Height = 47
         Top = 124
         Width = 120
