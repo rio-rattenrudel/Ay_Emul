@@ -18,3 +18,8 @@ Win64: Lazarus 3.8, FPC 3.2.2, x86_64-win64-win32/win64
 Lin32: Lazarus 3.8, FPC 3.2.2, i386-linux-gtk2
 Lin64: Lazarus 3.8, FPC 3.2.2, x86_64-linux-gtk2
 ```
+
+## AYMID Support
+
+Contains the AYMID console + protocol for transferring song data in real time via midi 1.0, which is supported, for example, by Twisted Electrons' AY3 hardware device from version 4 onwards.
+The special version includes a slightly modified version of the ‘Sinclair’ skin by Ironfist `<ironfist[at]inbox[dot]ru>` as standard. The credit goes to him.
