@@ -79,7 +79,7 @@ begin
    {$IFDEF Windows}
    StartDDE;
    {$ENDIF Windows}
- Application.Scaled:=True;
+  Application.Scaled:=True;
    Application.Initialize;
    Application.CreateForm(TFrmMain, FrmMain);
    Application.CreateForm(TFrmMixer, FrmMixer);

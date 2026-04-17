@@ -887,6 +887,14 @@ msgctxt "tfrmmixer.caption"
 msgid "Mixer"
 msgstr ""
 
+#: tfrmmixer.cbaymidconsole.caption
+msgid "Enable AYMID console"
+msgstr ""
+
+#: tfrmmixer.cbaymidprotocol.caption
+msgid "Use AYMID hardware protocol"
+msgstr ""
+
 #: tfrmmixer.cbchfrqlst.caption
 msgctxt "tfrmmixer.cbchfrqlst.caption"
 msgid "Get from list"
@@ -949,6 +957,10 @@ msgstr ""
 #: tfrmmixer.gbassconn.caption
 msgctxt "tfrmmixer.gbassconn.caption"
 msgid "Connection parameters"
+msgstr ""
+
+#: tfrmmixer.gbaymid.caption
+msgid "AYMID"
 msgstr ""
 
 #: tfrmmixer.gbbassvis.caption

@@ -131,12 +131,55 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="3"/>
       <RevisionNr Value="2"/>
-      <BuildNr Value="128"/>
+      <BuildNr Value="136"/>
       <StringTable FileDescription="AY-3-8910, AY-3-8912 and YM2149F Emulator, Player, Converter and Music Ripper" InternalName="AY Emulator" LegalCopyright="Sergey Bulba" OriginalFilename="Ay_Emul" ProductName="AY Emulator" ProductVersion="3.0.2.0"/>
     </VersionInfo>
-    <BuildModes Count="2">
+    <BuildModes Count="3">
       <Item1 Name="release" Default="True"/>
-      <Item2 Name="debug">
+      <Item2 Name="release x86">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <PathDelim Value="\"/>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <OtherUnitFiles Value="fpalsa\src"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <Style Value="1"/>
+            <SyntaxOptions>
+              <CStyleOperator Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <TargetCPU Value="i386"/>
+            <TargetOS Value="win32"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+              <DebugInfoType Value="dsDwarf2"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CompilerMessages>
+              <IgnoredMessages idx5091="True" idx5057="True" idx5024="True"/>
+            </CompilerMessages>
+            <CustomOptions Value="-dnobeta"/>
+          </Other>
+        </CompilerOptions>
+      </Item2>
+      <Item3 Name="debug">
         <CompilerOptions>
           <Version Value="11"/>
           <PathDelim Value="\"/>
@@ -169,7 +212,7 @@
 -ddbgmode"/>
           </Other>
         </CompilerOptions>
-      </Item2>
+      </Item3>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
